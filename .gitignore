@@ -1,0 +1,25 @@
+# Secrets — never commit
+.env
+.env.local
+*.key
+
+# Python artifacts (from previous bot setup)
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Local fallback notification file
+NOTIFICATIONS.md
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
