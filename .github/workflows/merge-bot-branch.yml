@@ -1,0 +1,26 @@
+name: Merge bot branch to main
+
+on:
+  push:
+    branches:
+      - 'claude/**'
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Merge bot branch into main
+        run: |
+          git config user.email "bot@binance-bot"
+          git config user.name "Bot Merge Action"
+          git fetch origin ${{ github.ref_name }}
+          git merge origin/${{ github.ref_name }} --no-ff -m "auto-merge ${{ github.ref_name }}"
+          git push origin main
