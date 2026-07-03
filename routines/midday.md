@@ -72,6 +72,6 @@ STEP 7 — Notification: only if action was taken (sell, stop tightened, thesis 
 STEP 8 — COMMIT AND PUSH (only if memory files changed; skip if no-op):
   git add memory/TRADE-LOG.md memory/RESEARCH-LOG.md
   git commit -m "midday scan $DATE"
-  git push origin main
+  git push origin HEAD:main
 
 On push failure: git pull --rebase origin main, then push again. NEVER force-push.

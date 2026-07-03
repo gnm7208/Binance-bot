@@ -71,6 +71,6 @@ STEP 7 — Notification: only if a trade was placed.
 STEP 8 — COMMIT AND PUSH (mandatory if any trades executed; skip if no trades fired):
   git add memory/TRADE-LOG.md
   git commit -m "morning-execution trades $DATE"
-  git push origin main
+  git push origin HEAD:main
 
 On push failure: git pull --rebase origin main, then push again. NEVER force-push.

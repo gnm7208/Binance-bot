@@ -103,6 +103,6 @@ STEP 7 — COMMIT AND PUSH (mandatory):
   # If TRADING-STRATEGY.md was updated, add it too:
   # git add memory/TRADING-STRATEGY.md
   git commit -m "weekly review $DATE"
-  git push origin main
+  git push origin HEAD:main
 
 On push failure: git pull --rebase origin main, then push again. NEVER force-push.

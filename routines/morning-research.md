@@ -81,7 +81,7 @@ thesis broke overnight, extreme macro event). If urgent:
 STEP 6 — COMMIT AND PUSH (mandatory):
   git add memory/RESEARCH-LOG.md
   git commit -m "morning-research $DATE"
-  git push origin main
+  git push origin HEAD:main
 
 On push failure due to divergence:
   git pull --rebase origin main

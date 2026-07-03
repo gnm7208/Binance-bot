@@ -67,6 +67,6 @@ Tomorrow: <one-line plan or 'HOLD — no strong edge'>"
 STEP 6 — COMMIT AND PUSH (mandatory — this is the baseline for tomorrow's day P&L):
   git add memory/TRADE-LOG.md
   git commit -m "EOD snapshot $DATE"
-  git push origin main
+  git push origin HEAD:main
 
 On push failure: git pull --rebase origin main, then push again. NEVER force-push.
