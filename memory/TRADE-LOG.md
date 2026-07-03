@@ -8,6 +8,13 @@ No positions. Bot launching tomorrow. Starting capital confirmed in Binance acco
 
 ---
 
+## 2026-07-03 — Midday Scan (BLOCKED)
+**Scan skipped:** Binance API unreachable from this environment — all endpoints (including
+unauthenticated `price`/`quote`) return HTTP 451 (Unavailable For Legal Reasons). No positions
+were reviewed, no stops changed. Root cause is network/geo-level (Binance blocking this
+environment's egress IP), not a code or credentials issue. Needs infra fix (e.g. allowed
+egress region or proxy) before any routine touching Binance can run.
+
 <!-- New entries appended below. Format:
 
 ## YYYY-MM-DD — Trade Entry
