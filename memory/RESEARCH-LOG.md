@@ -81,3 +81,9 @@ TRADE: [list tickers] or HOLD (default — no strong edge today)
 
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
+
+### 2026-07-11 — Midday Addendum
+- Binance API still returns HTTP 451 (geo-restricted) on `positions`, `orders`, `price` — outage persists from this morning, unresolved.
+- Midday scan blocked: could not cut losers, tighten stops, or check thesis — no account visibility.
+- No TRADE-LOG changes; per Day 0 baseline there were 0 open positions prior to this outage, so no known unmanaged risk, but this cannot be confirmed live.
+- Action: none taken (none possible). Re-run midday checks once connectivity restored.
