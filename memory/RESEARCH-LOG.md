@@ -81,3 +81,19 @@ TRADE: [list tickers] or HOLD (default — no strong edge today)
 
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
+
+## 2026-07-13 — Morning Execution (blocked)
+
+### Account Snapshot
+- **BLOCKED**: `bash scripts/binance.sh account|positions|orders|price BTCUSDT` all returned HTTP 451 "Service unavailable from a restricted location" — same geo-restriction as 2026-07-11. Even the public `price` endpoint is blocked, confirming this is network/IP-level, not credential-related.
+- No RESEARCH-LOG entry existed for today prior to this one (no 07-12 entry either) — no documented catalysts to validate against buy-side gate regardless.
+- Last known state: $10,000.00 USDT, 0 open positions (unchanged since Day 0 — no trades ever executed).
+
+### Trade Ideas
+- None evaluated — outage precludes any market data or account checks.
+
+### Risk Factors
+- **Binance API geo-blocked (451), now confirmed on 2026-07-11 and 2026-07-13 (3+ day span)** — persistent, not transient. No account visibility, no order placement possible from this execution environment.
+
+### Decision
+TRADE: none. HOLD — mandatory: Binance API unreachable (451) across account, positions, orders, and public price endpoints. ClickUp alert sent. Buy-side gate not evaluated (no trade ideas to test, no market access). Needs environment/network fix (e.g. proxy or IP allowlist) before this bot can trade — flagging for escalation beyond routine retry.
