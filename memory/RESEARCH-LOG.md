@@ -43,6 +43,37 @@ Daily morning research entries appended below.
 TRADE: [list tickers] or HOLD (default — no strong edge today)
 -->
 
+## 2026-07-16 — Morning Research (via morning-execution, research entry missing)
+
+### Account Snapshot
+- **BLOCKED**: Binance API returned HTTP 451 "Service unavailable from a restricted location" on `account`, `positions`, `orders` — confirmed via direct curl to `/api/v3/ping`, same 451 geo-restriction message. Identical failure to 2026-07-11, unresolved for 5 days.
+- Last known state (Day 0 baseline, TRADE-LOG.md, unchanged since no trades ever executed): $10,000.00 USDT, 100% cash, 0 open positions.
+- Trades this week: 0/3.
+- ClickUp alert sent naming the outage.
+
+### Market Context (WebSearch fallback — Perplexity key not set)
+- BTC: ~$65,244 (24h % change not confirmed via this source)
+- BTC Dominance: ~56% (Jul 9 reading, most recent available)
+- Fear & Greed Index: 36 (Fear) per one tracker; readings range 22-46 across providers — treat as Fear-leaning, not confirmed
+- No DXY / macro / on-chain data pulled — execution is blocked regardless, so full research sweep skipped.
+
+### On-Chain / Derivatives
+- Not pulled — account API blocked, no position-specific need; skipped given execution is impossible today.
+
+### News on Held Positions
+- None — 0 open positions.
+
+### Trade Ideas
+- None generated — cannot verify account state, quotes, spreads, or place orders while Binance API is geo-blocked.
+
+### Risk Factors
+- **Binance API geo-blocked (451) from this execution environment for 5+ consecutive days (2026-07-11 → 2026-07-16). Highest-priority operational risk — no execution capability at all until resolved.**
+- PERPLEXITY_API_KEY not set in this environment — research quality degraded to WebSearch fallback even once trading resumes.
+- Fear & Greed near "Fear" territory — sentiment fragile.
+
+### Decision
+TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state, quotes, or place/manage orders. ClickUp alert sent. This is the second consecutive blocked session since 2026-07-11; recommend escalating environment/network-egress configuration outside the bot's control.
+
 ## 2026-07-11 — Morning Research
 
 ### Account Snapshot
