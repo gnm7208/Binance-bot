@@ -8,6 +8,16 @@ No positions. Bot launching tomorrow. Starting capital confirmed in Binance acco
 
 ---
 
+## Jul 18 — EOD Snapshot SKIPPED (infra failure)
+
+Binance REST API returned HTTP 451 (restricted location) on all endpoints, including
+unauthenticated public ping. No account/positions/orders/price data available — no P&L
+snapshot possible. Not a credentials issue; egress IP/region for this cloud environment
+appears geo-blocked by Binance. ClickUp alert sent. No trades attempted, no data changed.
+Last known baseline remains Day 0 ($10,000.00, 100% cash) until connectivity is restored.
+
+---
+
 <!-- New entries appended below. Format:
 
 ## YYYY-MM-DD — Trade Entry
