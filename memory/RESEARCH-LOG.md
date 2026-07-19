@@ -81,3 +81,29 @@ TRADE: [list tickers] or HOLD (default — no strong edge today)
 
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
+
+## 2026-07-19 — Morning Research
+
+### Account Snapshot
+- **BLOCKED**: Binance API returned HTTP 451 "Service unavailable from a restricted location" on `account`, `positions`, `orders` — confirmed via wrapper calls and direct curl to `/api/v3/ping`. Identical failure to 2026-07-11, now unresolved for 8 days.
+- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 open positions.
+- Trades this week: 0/3 (per TRADE-LOG, no entries since launch).
+- ClickUp alert sent naming the outage and its duration.
+
+### Market Context
+- Not researched — execution halted at the account-state gate before market research was needed. PERPLEXITY_API_KEY also unset in this environment (would require WebSearch fallback).
+
+### On-Chain / Derivatives
+- N/A — blocked.
+
+### News on Held Positions
+- None — 0 open positions (per last known state).
+
+### Trade Ideas
+- None. No execution is possible regardless of setup quality while account access is unavailable.
+
+### Risk Factors
+- **Binance API geo-blocked (451) from this execution environment — unresolved for 8+ days (first seen 2026-07-11).** This is now a recurring operational failure, not a one-off. No account visibility, no order placement/cancellation, no stop management possible.
+
+### Decision
+TRADE: none. HOLD — mandatory: Binance API unreachable (451), same outage as 2026-07-11, still unresolved. Escalated via ClickUp. Re-run once connectivity is confirmed restored.
