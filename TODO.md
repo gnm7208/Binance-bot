@@ -2,76 +2,50 @@
 
 ## Blockers (Bot Cannot Trade Until Fixed)
 
-### 1. Binance API — Enable Trading Permission
-- **Problem:** API key only has "Enable Reading" checked. Bot cannot place orders.
-- **Steps:**
-  1. Go to binance.com → Profile → API Management → find your key → **Edit**
-  2. Under IP restrictions: select **"Restrict access to trusted IPs only"**
-  3. Add your home/office IP (find it at whatismyip.com)
-  4. Check **"Enable Spot & Margin Trading"**
-  5. Save
-- **Note:** Cloud routine IPs will also need to be added after the first successful run. Check the run logs for the outbound IP and add it to the Binance API whitelist.
+### 1. Update Cloud Routine Environment Variables (Bybit)
+- **Problem:** All 5 routines still have BINANCE_* env vars — need replacing with BYBIT_*.
+- **Steps:** For each of the 5 routines in claude.ai/code → Edit → environment variables:
+  - Remove: `BINANCE_API_KEY`, `BINANCE_SECRET_KEY`, `BINANCE_BASE_URL`
+  - Add: `BYBIT_API_KEY` = your Bybit API key
+  - Add: `BYBIT_SECRET_KEY` = your Bybit secret key
+  - Add: `BYBIT_BASE_URL` = `https://api.bybit.com`
 
-### 2. Cloud Routine Network Access — Allow External APIs
-- **Problem:** Cloud routine network policy is blocking calls to `api.binance.com` and `api.clickup.com` (both returned 403 on the first live run).
-- **Steps:**
-  1. Open any routine in claude.ai/code → Edit → **Behavior** tab (or network settings)
-  2. Change network access from **Trusted** to **All** (or unrestricted)
-  3. Save and apply to all 5 routines
-- **Why:** Without this, the bot can research (WebSearch works) but cannot read account state or place orders.
+### 2. Verify Bybit API Works from Cloud
+- After updating env vars, click **Run now** on morning-research
+- Check logs: `bash scripts/bybit.sh account` should return wallet balance JSON (not a 4xx error)
+- If successful: Bybit access confirmed, bot can proceed to trade
 
-### 3. Unrestricted Branch Push — Save Fails in Claude Code UI
-- **Problem:** "Allow unrestricted git push" toggle fails to save in the Permissions tab.
-- **Current workaround:** GitHub Action (`.github/workflows/merge-bot-branch.yml`) auto-merges `claude/*` branches into `main`. This works but adds ~30s delay.
-- **Ideal fix:** Report this bug at github.com/anthropics/claude-code/issues and retry when fixed.
+### 3. Fix Weekly Review Schedule
+- **Problem:** Weekly review shows "Every Sunday at 11:45 PM" — should be 6:00 PM CT.
+- **Fix:** Edit routine → cron `0 18 * * 0`, timezone `America/Chicago`
 
 ---
 
 ## High Priority (Do Soon)
 
-### 4. Fix Weekly Review Schedule
-- **Problem:** Weekly review routine shows "Every Sunday at 11:45 PM" — should be 6:00 PM CT.
-- **Steps:** Edit routine → change cron to `0 18 * * 0` with timezone `America/Chicago`
+### 4. Add Bybit Cloud IP to API Whitelist (after first successful run)
+- Currently: No IP restriction (necessary until we know the cloud server's IP)
+- After first successful run: find outbound IP in the run logs
+- Go to bybit.com → Account → API Management → Edit key → switch to IP whitelist → add cloud IP
 
-### 5. Verify First Successful End-to-End Run
-- After fixing items 1 and 2 above, run morning-research and confirm:
-  - [ ] `bash scripts/bybit.sh account` returns real JSON (not 403)
-  - [ ] Research entry committed and merged to `main` (check GitHub Actions tab)
-  - [ ] ClickUp receives the notification (if configured)
-- Then let morning-execution run at 9 AM and confirm it reads the research and evaluates trades
-
-### 6. Add Binance Cloud IPs to API Whitelist
-- After the first successful routine run, find the outbound IP in the run logs
-- Add it to binance.com → API Management → your key → Edit → IP whitelist
-- This is separate from your home IP
+### 5. Fix "Allow unrestricted branch push" Toggle
+- **Current workaround:** GitHub Action auto-merges `claude/*` branches into `main` (working)
+- **Ideal fix:** Report at github.com/anthropics/claude-code/issues and retry when fixed
 
 ---
 
 ## Optional Improvements
 
-### 7. ClickUp Notifications (Optional but Recommended)
-- Currently falling back to `NOTIFICATIONS.md` (local file) because ClickUp credentials are missing or blocked
-- Set `CLICKUP_API_KEY`, `CLICKUP_WORKSPACE_ID`, `CLICKUP_CHANNEL_ID` in each routine's environment
-- Verify the channel ID format: `4-XXXXXXX-X` from your ClickUp chat channel URL
+### 6. ClickUp Notifications
+- Set `CLICKUP_API_KEY`, `CLICKUP_WORKSPACE_ID`, `CLICKUP_CHANNEL_ID` in routine environments
+- Currently falling back to `NOTIFICATIONS.md` local file
 
-### 8. Perplexity API (Optional)
-- Bot currently uses WebSearch fallback — this works fine
-- Add `PERPLEXITY_API_KEY` to routine environments for higher-quality cited research
-- Usage-based pricing, fractions of a cent per query
+### 7. Perplexity API (Optional)
+- Leave blank — WebSearch fallback works fine
+- Add `PERPLEXITY_API_KEY` later for higher-quality cited research
 
-### 9. Rename "morning excecution" Typo
-- Routine name has a typo: "excecution" → "execution"
-- Fix: Edit routine → change Name field → Save
-
-### 10. Local Testing with `.env`
-- Copy `env.template` to `.env` and fill in credentials
-- Test locally before relying on cloud runs:
-  ```bash
-  bash scripts/bybit.sh account          # should return JSON
-  bash scripts/bybit.sh positions        # should return balances
-  bash scripts/clickup.sh "test message"   # should post to ClickUp
-  ```
-- Run `/portfolio` in Claude Code to get a read-only account snapshot
+### 8. Fix Routine Name Typo
+- "morning excecution" → "morning execution"
 
 ---
 
@@ -79,8 +53,6 @@
 
 | Item | Description |
 |---|---|
-| Sector watchlist | Add a curated list of L1/DeFi/AI tokens to `TRADING-STRATEGY.md` for the bot to scan |
-| Take-profit orders | Add OCO orders (limit take-profit + stop) once the basic stop-limit flow is proven |
-| Position sizing calculator | Script to compute exact quantity given USDT amount and current price |
-| Weekly performance chart | Artifact showing P&L vs BTC over time |
-| Telegram notifications | Alternative to ClickUp if ClickUp proves unreliable |
+| Sector watchlist | Add curated L1/DeFi/AI token list to `TRADING-STRATEGY.md` |
+| Take-profit orders | OCO orders once basic stop-limit flow is proven |
+| Weekly P&L chart | Artifact showing performance vs BTC over time |

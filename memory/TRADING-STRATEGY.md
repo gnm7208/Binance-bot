@@ -2,11 +2,11 @@
 
 ## Mission
 Outperform BTC buy-and-hold over the challenge window using disciplined swing trades on
-Binance Spot. Spot only — no margin, no futures, no leverage, ever.
+Bybit Spot. Spot only — no margin, no futures, no leverage, ever.
 
 ## Capital & Constraints
 - Starting capital: ~$10,000 USDT
-- Platform: Binance Spot
+- Platform: Bybit Spot
 - Instruments: Spot crypto only (USDT pairs preferred)
 - Market hours: 24/7 — but focus research during US morning (6-10 AM CT)
 
@@ -34,18 +34,22 @@ Binance Spot. Spot only — no margin, no futures, no leverage, ever.
 - Position cost ≤ 20% of total portfolio USDT value
 - Position cost ≤ available USDT balance
 - Catalyst documented in today's RESEARCH-LOG entry
-- Instrument is spot crypto (USDT pair on Binance)
+- Instrument is spot crypto (USDT pair on Bybit)
 
 ## Order Shapes
-```
+```bash
 # Market buy (spend USDT amount)
-symbol=BTCUSDT&side=BUY&type=MARKET&quoteOrderQty=2000
+bash scripts/bybit.sh order \
+  '{"category":"spot","symbol":"BTCUSDT","side":"Buy","orderType":"Market","qty":"2000","marketUnit":"quoteCoin"}'
 
 # Stop-limit GTC (10% below fill price — place immediately after fill)
-symbol=BTCUSDT&side=SELL&type=STOP_LOSS_LIMIT&quantity=0.002&stopPrice=90000&price=89900&timeInForce=GTC
+bash scripts/bybit.sh order \
+  '{"category":"spot","symbol":"BTCUSDT","side":"Sell","orderType":"Limit","qty":"0.001","price":"89900","triggerPrice":"90000","triggerBy":"LastPrice","orderFilter":"StopOrder","timeInForce":"GTC"}'
 
-# Tightened stop-limit (cancel old, place new at 7% or 5% below current price)
-symbol=BTCUSDT&side=SELL&type=STOP_LOSS_LIMIT&quantity=0.002&stopPrice=95000&price=94900&timeInForce=GTC
+# Tightened stop-limit (cancel old stop first, then place new at 7% or 5% below current price)
+bash scripts/bybit.sh cancel BTCUSDT <old_order_id>
+bash scripts/bybit.sh order \
+  '{"category":"spot","symbol":"BTCUSDT","side":"Sell","orderType":"Limit","qty":"0.001","price":"94905","triggerPrice":"95000","triggerBy":"LastPrice","orderFilter":"StopOrder","timeInForce":"GTC"}'
 ```
 
 ## Sell-Side Rules (evaluated at midday scan)

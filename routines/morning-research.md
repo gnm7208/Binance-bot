@@ -42,7 +42,7 @@ for each of the following:
   - "Top crypto catalysts and news today $DATE"
   - "Macro factors affecting crypto today: DXY, Fed policy, risk sentiment $DATE"
   - "Crypto sector momentum this week: L1s, DeFi, AI tokens, gaming"
-  - "Binance exchange inflows outflows and funding rates today"
+  - "Crypto exchange inflows outflows and funding rates today"
   - News on each currently held token (one query per position)
 
 If Perplexity exits with code 3, fall back to native WebSearch and note the fallback
