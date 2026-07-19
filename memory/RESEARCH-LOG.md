@@ -81,3 +81,46 @@ TRADE: [list tickers] or HOLD (default — no strong edge today)
 
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
+
+---
+
+## 2026-07-19 — Morning Research
+
+### Account Snapshot
+- **BLOCKED**: Bybit API returned HTTP 403 (Amazon CloudFront "configured to block access from your country") on `account` and all public/authed endpoints. Confirmed via direct curl to `/v5/market/time` and `/v5/market/tickers` — geo-block, not a key/auth issue. Same operational failure mode as 2026-07-11 (Binance 451). No account visibility, no order placement/cancellation, no stop management possible.
+- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 open positions.
+- Trades this week: 0/3.
+- Market data below sourced from CoinGecko + alternative.me + WebSearch (all reachable); only the trading venue is blocked.
+
+### Market Context
+- BTC: $64,541 (+0.47% 24h)
+- ETH: $1,866.74 (+1.19% 24h)
+- SOL: $75.89 (+1.12% 24h)
+- Total crypto market cap: ~$2.29T (+0.47% 24h)
+- BTC Dominance: 56.5% (ETH 9.8%) — "Bitcoin Season" (Altcoin Season Index ~46/100)
+- Fear & Greed Index: 28 (Fear)
+- DXY: ~100.9, easing from late-June 13-month high (~101.6) on softer labor data
+- Macro: FOMC Jul 28-29 — markets price ~94% odds of a hold (no SEP); any move pushed to September. Softer US inflation print mid-July gave risk assets a tailwind.
+- Sector leaders: L1s (Solana), DeFi (Hyperliquid), privacy (Zcash) showing relative strength with clear catalysts; AI / DePIN drawing rotational interest. Broad market rangebound near BTC $64k.
+- Catalysts: SEC added 3 crypto rulemaking items to its 2026 agenda (Jul 7) — asset sales, custody, market structure; renewed hopes for crypto legislation in H2 2026.
+
+### On-Chain / Derivatives
+- Crypto ETF flows: turned positive — week ending Jul 10 saw +$197.4M net (ending 8 weeks of outflows); spot BTC ETFs +$368M over a recent 3-session streak; ETH ETFs leading weekly inflows (~$105M). Institutional flow improving.
+- Funding rates: BTC ~+0.32% (43.7% APR), ETH ~+0.40%, SOL ~+0.48% — sustained but moderate long bias; not frothy.
+- OI trend: no real-time print retrieved (would need CoinGlass direct); funding suggests measured positioning.
+
+### News on Held Positions
+- None — 0 open positions.
+
+### Trade Ideas
+1. No executable entries — trading venue (Bybit) is geo-blocked; no order can be placed regardless of setup quality.
+2. Watchlist for when access is restored: SOL (L1 leader, +momentum, funding constructive), HYPE (DeFi revenue leader — verify Bybit Spot listing/liquidity), ZEC (privacy narrative reviving). Need fresh catalyst + live quotes before any entry.
+
+### Risk Factors
+- **Bybit API geo-blocked (403 CloudFront) from this execution environment — highest-priority operational risk.** Live ~$10k account is untradeable and unmonitored until connectivity is resolved. Recurring: Binance was 451-blocked on Jul 11; venue has changed but the block persists 8 days on.
+- Fear & Greed at 28 (Fear) + "Bitcoin Season" — weak breadth, poor environment for aggressive alt entries.
+- DXY still elevated near 101 — latent headwind for risk assets despite recent easing.
+- FOMC Jul 28-29 event risk — hold widely expected but any hawkish surprise hits crypto.
+
+### Decision
+TRADE: none. HOLD — mandatory: Bybit API geo-blocked (403), cannot verify account state or place/manage orders. Even absent the block, environment (Fear + BTC-season + FOMC ahead) does not warrant new entries. Re-run research/execution once venue connectivity is confirmed restored.
