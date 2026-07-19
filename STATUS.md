@@ -19,7 +19,7 @@ Repo: `github.com/gnm7208/Binance-bot` | Branch: `main`
 | `CLAUDE.md` | ✅ Done | Auto-loaded rulebook — hard rules, schedule, API usage |
 | `env.template` | ✅ Done | Credential template for local `.env` setup |
 | `.gitignore` | ✅ Done | Excludes `.env`, `NOTIFICATIONS.md`, `.venv/` |
-| `scripts/binance.sh` | ✅ Done | Full Binance Spot API wrapper with HMAC-SHA256 signing |
+| `scripts/bybit.sh` | ✅ Done | Full Bybit Spot API wrapper with HMAC-SHA256 signing |
 | `scripts/perplexity.sh` | ✅ Done | Research wrapper — exits code 3 if key unset (triggers WebSearch fallback) |
 | `scripts/clickup.sh` | ✅ Done | ClickUp Chat v3 notifications — falls back to `NOTIFICATIONS.md` |
 | `memory/TRADING-STRATEGY.md` | ✅ Done | Bot rulebook — seeded, ready to evolve |

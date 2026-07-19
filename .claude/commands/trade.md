@@ -8,10 +8,10 @@ Args: SYMBOL (e.g. BTC), USDT_AMOUNT, SIDE (buy or sell). If missing, ask.
 Pair = SYMBOL + "USDT" (e.g. BTCUSDT).
 
 1. Pull live state:
-   bash scripts/binance.sh account
-   bash scripts/binance.sh positions
-   bash scripts/binance.sh orders
-   bash scripts/binance.sh quote <PAIR>
+   bash scripts/bybit.sh account
+   bash scripts/bybit.sh positions
+   bash scripts/bybit.sh orders
+   bash scripts/bybit.sh quote <PAIR>
 
 2. For BUY, validate ALL of these. If ANY fail, STOP and print the failed checks:
    ✓ Total positions after fill ≤ 6
@@ -26,14 +26,14 @@ Pair = SYMBOL + "USDT" (e.g. BTCUSDT).
 4. Print order params + validation results. Ask: "Execute? (y/n)"
 
 5. On "y":
-   bash scripts/binance.sh order \
-     "symbol=<PAIR>&side=BUY&type=MARKET&quoteOrderQty=<USDT_AMOUNT>"
+   bash scripts/bybit.sh order \
+     '{"category":"spot","symbol":"<PAIR>","side":"Buy","orderType":"Market","qty":"<USDT_AMOUNT>","marketUnit":"quoteCoin"}'
 
 6. For BUYs, immediately place stop-limit at 10% below fill price:
    stop_price = fill_price × 0.90
    limit_price = stop_price × 0.999
-   bash scripts/binance.sh order \
-     "symbol=<PAIR>&side=SELL&type=STOP_LOSS_LIMIT&quantity=<qty>&stopPrice=<X>&price=<X>&timeInForce=GTC"
+   bash scripts/bybit.sh order \
+     '{"category":"spot","symbol":"<PAIR>","side":"Sell","orderType":"Limit","qty":"<qty>","price":"<limit_price>","triggerPrice":"<stop_price>","triggerBy":"LastPrice","orderFilter":"StopOrder","timeInForce":"GTC"}'
 
 7. Append to memory/TRADE-LOG.md (full thesis, entry, stop, target, R:R, stop order ID).
 

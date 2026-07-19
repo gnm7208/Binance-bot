@@ -35,7 +35,7 @@
 
 ### 5. Verify First Successful End-to-End Run
 - After fixing items 1 and 2 above, run morning-research and confirm:
-  - [ ] `bash scripts/binance.sh account` returns real JSON (not 403)
+  - [ ] `bash scripts/bybit.sh account` returns real JSON (not 403)
   - [ ] Research entry committed and merged to `main` (check GitHub Actions tab)
   - [ ] ClickUp receives the notification (if configured)
 - Then let morning-execution run at 9 AM and confirm it reads the research and evaluates trades
@@ -67,8 +67,8 @@
 - Copy `env.template` to `.env` and fill in credentials
 - Test locally before relying on cloud runs:
   ```bash
-  bash scripts/binance.sh account          # should return JSON
-  bash scripts/binance.sh positions        # should return balances
+  bash scripts/bybit.sh account          # should return JSON
+  bash scripts/bybit.sh positions        # should return balances
   bash scripts/clickup.sh "test message"   # should post to ClickUp
   ```
 - Run `/portfolio` in Claude Code to get a read-only account snapshot

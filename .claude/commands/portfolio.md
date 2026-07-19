@@ -4,10 +4,10 @@ description: Read-only snapshot of account, positions, open orders, and stops
 
 Print a clean ad-hoc snapshot. No state changes, no orders, no file writes.
 
-1. bash scripts/binance.sh account
-2. bash scripts/binance.sh positions
-3. bash scripts/binance.sh orders
-4. For each non-USDT position: bash scripts/binance.sh price <TICKER>USDT
+1. bash scripts/bybit.sh account
+2. bash scripts/bybit.sh positions
+3. bash scripts/bybit.sh orders
+4. For each non-USDT position: bash scripts/bybit.sh price <TICKER>USDT
 
 Compute total portfolio value = free USDT + sum(qty × current_price).
 

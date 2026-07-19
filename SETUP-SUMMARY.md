@@ -4,7 +4,7 @@
 
 An autonomous crypto trading bot where **Claude IS the bot**. Instead of a Python script
 running 24/7, five scheduled Claude Code cloud routines fire throughout the day, read your
-trading strategy from GitHub, make decisions, place real trades on Binance Spot, and write
+trading strategy from GitHub, make decisions, place real trades on Bybit Spot, and write
 memory back to the repo. Based on the Nate Herk YouTube guide, adapted for Binance crypto
 instead of Alpaca stocks.
 
@@ -18,7 +18,7 @@ instead of Alpaca stocks.
 
 | File / Folder | Purpose |
 |---|---|
-| `scripts/binance.sh` | Wraps Binance Spot API with HMAC-SHA256 signing. Subcommands: account, balance, positions, quote, price, orders, order, cancel, close |
+| `scripts/bybit.sh` | Wraps Bybit Spot API with HMAC-SHA256 signing. Subcommands: account, balance, positions, quote, price, orders, order, cancel, close |
 | `scripts/perplexity.sh` | Runs market research queries via Perplexity API. Falls back to Claude's WebSearch if key is missing |
 | `scripts/clickup.sh` | Sends notifications to your ClickUp chat channel. Falls back to a local file if credentials are missing |
 | `memory/TRADING-STRATEGY.md` | The bot's rulebook — read every session before any decision |
@@ -69,8 +69,8 @@ instead of Alpaca stocks.
 Set these in `.env` locally and in each cloud routine's settings:
 
 ```
-BINANCE_API_KEY        = (your key from Binance API Management)
-BINANCE_SECRET_KEY     = (your secret — only shown once at creation)
+BYBIT_API_KEY        = (your key from Binance API Management)
+BYBIT_SECRET_KEY     = (your secret — only shown once at creation)
 BINANCE_BASE_URL       = https://api.binance.com
 PERPLEXITY_API_KEY     = (optional — leave blank to use WebSearch fallback)
 CLICKUP_API_KEY        = (from ClickUp Settings → Apps)
