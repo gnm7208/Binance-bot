@@ -81,3 +81,40 @@ TRADE: [list tickers] or HOLD (default — no strong edge today)
 
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
+
+## 2026-07-19 — Morning Research
+
+### Account Snapshot
+- **BLOCKED**: Bybit API unreachable. `bybit.sh account` and direct `curl https://api.bybit.com/v5/market/time` both return **HTTP 403 CloudFront** — "distribution is configured to block access from your country" (proxy egress POP `IAD61`, US-East). Bybit does not serve US IPs; this is a hard geo-block, not transient. Same class of failure as the 07-11 Binance 451 — now the **second exchange blocked** from this environment.
+- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 open positions. No unmanaged stop risk, but zero trading capability.
+- Perplexity key not set → research done via WebSearch/WebFetch fallback. ClickUp wrapper also erroring (500 / key not configured).
+- Trades this week: 0/3 (no entries ever placed).
+
+### Market Context
+- BTC: ~$64,376 (roughly flat 24h), total crypto mcap ~$2.27T
+- ETH: ~$1,867 (+1.44% 24h)
+- BTC Dominance: **57.1%** (up from ~54–56% on 07-11 — BTC leading, alts losing relative ground)
+- Fear & Greed Index: **28 (Fear)**
+- DXY: ~100.6 (easing from early-July high ~101.4; softer labor data)
+- Macro: Fed held 3.50–3.75% (Jun 17). Next FOMC Jul 28–29 (no SEP). Markets price ~12% hike odds in July, ~56% by September; hawkish lean persists.
+- Sector leaders (weekly): DeXe (DEXE) +61% to record $49.43; Zcash (ZEC) and Uniswap (UNI) double-digit gains. Dated catalysts: Solana, Hyperliquid (HYPE), Zcash. H2 narratives: SUI, ONDO, LINK, RNDR. Themes: RWA, AI infra, DeFi.
+
+### On-Chain / Derivatives
+- Spot BTC ETFs: 4-day net-inflow streak; +$132.3M on Jul 17 (IBIT +$136.5M led); cumulative +$51.4B — mildly supportive.
+- BTC perp OI rising with positive funding = leverage building, but **not backed by spot demand** (spot ETFs saw ~$7B outflows May–Jun) — squeeze-risk / fragile setup either direction.
+
+### News on Held Positions
+- None — 0 open positions.
+
+### Trade Ideas
+1. No new entries possible — Bybit account unreachable (geo-block); execution impossible regardless of setup quality.
+2. Environment even so favors caution: dominance rising to 57%, F&G in Fear, leverage-led (not spot-led) derivatives = poor alt-entry conditions. Best posture is patience.
+3. Watchlist once connectivity restored: SOL, HYPE, ZEC (fresh momentum) — require dated catalyst + live levels before any entry.
+
+### Risk Factors
+- **Bybit API geo-blocked (403 CloudFront) from this cloud environment — highest-priority operational risk.** No account visibility, no order placement/cancellation, no stop management. Two consecutive exchanges (Binance, Bybit) blocked → the cloud egress region (US) cannot reach either exchange's retail API. Needs a fix: non-US egress route, or an exchange that serves the proxy's region.
+- Rising BTC dominance + Fear sentiment — alts underperforming, risk-off tilt.
+- Derivatives leverage building without spot support — volatility / liquidation risk.
+
+### Decision
+TRADE: none. HOLD — mandatory: Bybit API unreachable (403 geo-block), cannot verify account or place/manage orders. Operational blocker escalated. Re-run once exchange connectivity from this environment is resolved.
