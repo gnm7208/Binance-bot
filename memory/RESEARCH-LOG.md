@@ -81,3 +81,11 @@ TRADE: [list tickers] or HOLD (default — no strong edge today)
 
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
+
+## 2026-07-20 — Midday Scan (blocked)
+
+- **BLOCKED**: Bybit API returned HTTP 403 "Amazon CloudFront distribution is configured to block access from your country" on `positions`/`orders`/direct `/v5/market/time` curl. Same failure class as the 2026-07-11 Binance 451 geo-block, now against Bybit from this execution environment.
+- No positions/orders visible → cut-loss (-7%), stop-tightening (+15%/+20%), and thesis checks could not be performed.
+- TRADE-LOG.md shows no entries since Day 0 baseline — account state has been unverified for 9+ days.
+- ClickUp alert sent naming the outage.
+- Decision: HOLD — mandatory. Re-run midday scan once Bybit connectivity is confirmed restored.
