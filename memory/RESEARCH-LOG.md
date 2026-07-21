@@ -43,6 +43,47 @@ Daily morning research entries appended below.
 TRADE: [list tickers] or HOLD (default — no strong edge today)
 -->
 
+## 2026-07-21 — Morning Research
+
+### Account Snapshot
+- **PARTIAL API OUTAGE**: MEXC `/api/v3/account` returns `code 700007 "No permission to access the endpoint"` (HTTP 400). Breaks `account`/`balance`/`positions`/`close` (all read /account). Signed `openOrders` returns 200 `[]`; `order`/`cancel`/public price/quote all work. Key present (18-char key / 32-char secret), timestamp skew ~1.5s (fine). → API-key permission/whitelist issue, human fix needed.
+- Open orders: **0** (openOrders empty → no active stop orders).
+- Last known state (TRADE-LOG): $10,000 USDT, 100% cash, 0 positions. Cannot re-verify balances due to 700007.
+- Trades this week: 0/15.
+
+### Market Context
+- BTC: ~$66,377 (+2.3% 24h) — reclaiming $66k on renewed ETF demand
+- ETH: ~$1,935 (+2.7% 24h) — laggard, ~49% below Oct-2025 high; Glamsterdam upgrade slipped to Q3
+- SOL $78.4 (+1.8%), BNB $577 (+1.2%), XRP $1.136 (+2.9%) — majors broadly green
+- BTC Dominance: ~56.3–56.6% (elevated) — risk-off consolidation, no alt season (Alt Season Index ~30–35)
+- Total crypto mcap: ~$2.3T (≈-47% from Oct-2025 peak)
+- Fear & Greed: **25 (Extreme Fear)**, down from 29 prior day — sentiment fragile despite green tape
+- DXY: ~101 (firm) — safe-haven bid on Middle-East tension + rising oil/yields
+- Macro: Fed held 3.50–3.75% (Jun); **FOMC Jul 28–29 = week's dominant catalyst**. Soft Jun CPI (Jul 14) cut Jul-hike odds to ~6%, but Sep-hike odds ~55%; Chair Warsh hawkish lean
+- Sector leaders: DeFi (UNI first higher-high in months; Curve LlamaLend 2 activated on ETH mainnet today), AI (TAO/RENDER), RWA (ONDO); privacy (ZEC) hot but "privacy crackdown" headline risk; DeXe (DEXE) at record high
+
+### On-Chain / Derivatives
+- Spot BTC ETF: **5 consecutive inflow days**, +$227M on Jul 20 (outflow streak ended)
+- Open interest: total derivatives OI +10.6% to ~$418B; BTC futures OI ~$48.9B; funding neutral-to-slightly-positive
+- Short liquidations ~$31.7M — mild squeeze fueling the bounce
+
+### News on Held Positions
+- None — 0 open positions.
+
+### Trade Ideas (watchlist — see Decision)
+1. **BTC** — catalyst: 5-day ETF inflow streak + $66k reclaim; best risk-adjusted long in high-dominance/risk-off regime. Entry on dip ~$65,000, stop ~$60,450 (-7%), TP ~$71,500 (+10% cap). R:R ~1.4:1 (capped by +10% rule) — modest.
+2. **UNI** — catalyst: DeFi momentum, first higher-high in months, Curve LlamaLend 2 activation today. Confirm MEXC spot liquidity + levels before any entry; stop -7%, TP +10%.
+3. **SOL** — catalyst: L1 leader holding $78 with market; add-on-strength candidate if BTC.D rolls over post-FOMC. Stop -7%, TP +10%.
+
+### Risk Factors
+- **F&G 25 (Extreme Fear) + BTC.D ~56.5%** = risk-off; alts fragile, capital hiding in BTC
+- **FOMC Jul 28–29 = binary event ~1 week out** — avoid heavy deployment into it
+- DXY ~101 + hawkish Warsh Fed + Middle-East/oil = macro headwind for risk assets
+- **Operational: /account 700007** — cannot verify balances/positions or use `close` (market-sell) until key permission fixed; risk-management path is degraded
+
+### Decision
+**HOLD — no new entries.** Rationale: (1) Extreme Fear + elevated dominance + binary FOMC in ~1 week argue for standing aside; (2) account/balance API (700007) is down, so pre-trade balance gate can't be verified and the `close` exit path is broken — trading blind on a live account violates risk discipline. Re-run execution once F&G/dominance improve post-FOMC AND MEXC /account access is restored. Escalated.
+
 ## 2026-07-11 — Morning Research
 
 ### Account Snapshot
