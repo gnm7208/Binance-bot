@@ -81,3 +81,44 @@ TRADE: [list tickers] or HOLD (default — no strong edge today)
 
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
+
+---
+
+## 2026-07-21 — Morning Research
+
+### Account Snapshot
+- **MEXC API now reachable** (canTrade:true, SPOT) — the Binance 451 geo-block that halted the bot on 2026-07-11 is resolved post-migration.
+- **CRITICAL: MEXC account is EMPTY.** Free USDT: $0.00 | balances: [] | open positions: 0. Day-0 baseline was $10,000 (Binance). Capital has NOT been funded/transferred to the MEXC spot account. No trade can be placed until funded.
+- Trades this week: 0/15.
+
+### Market Context
+- BTC: ~$66,423 (MEXC live) / ~$64–65.3k (aggregators); +~1% 24h. Sources diverge ~2%.
+- ETH: ~$1,940 (MEXC live)
+- BTC Dominance: ~56.3–56.5% — still Bitcoin Season; Altcoin Season Index ~30–35, no altseason.
+- Fear & Greed: mixed — 25 Extreme Fear (some trackers, dropping from 29) to 46 Neutral (CFGI). Fear-leaning.
+- Total crypto mcap: ~$2.28–2.31T
+- Macro: Fed funds 3.50–3.75%; rate cuts (Q3) remain the primary risk-asset unlock. DXY not freshly retrieved.
+
+### On-Chain / Derivatives
+- Spot BTC ETFs: +$273M over 2 weeks, breaking an 8-week / >$8B outflow streak; wk Jul 13–17 +$75.7M (Fri +$132.3M, BlackRock IBIT led +$136.5M). Recovery real but thin vs prior exodus.
+- Funding rates: neutral. Retail longs below average.
+- Open interest: stable, BTC futures OI +3.52% to $48.9B — balanced positioning.
+- Structural headwind: 30-day ETF net still ~-$4.1B.
+
+### News on Held Positions
+- None — 0 open positions, $0 capital.
+
+### Trade Ideas (WATCHLIST ONLY — no capital to execute)
+1. SOL — high-perf L1 leadership; sector in momentum. Wait for funding + a clean catalyst; entry on strength above prior week high, stop 8–10% below, target 2:1.
+2. LINK — infra/oracle + RWA tailwind; accumulate on dips, stop 8% below entry.
+3. ONDO — RWA tokenization narrative (strongest structural sector); size small, stop 8%.
+   All gated behind: (a) account funding, (b) F&G confirmation, (c) BTC dominance not spiking.
+
+### Risk Factors
+- **$0 balance on MEXC — bot is non-operational until funded. Highest-priority issue.**
+- Extreme Fear / fragile sentiment — poor risk-on backdrop for new alt entries.
+- BTC dominance 56%+ — alts underperforming; single-sector rallies isolated.
+- Thin ETF recovery + net 30-day outflows — demand not confirmed.
+
+### Decision
+TRADE: none. HOLD — mandatory: MEXC account holds $0 (unfunded). API works but there is no capital to deploy. Even if funded, backdrop (Extreme Fear, high BTC dominance) favors patience. Fund account, then re-run execution.
