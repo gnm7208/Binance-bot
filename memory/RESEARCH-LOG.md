@@ -81,3 +81,16 @@ TRADE: [list tickers] or HOLD (default — no strong edge today)
 
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
+
+---
+
+## 2026-07-21 — Morning Execution (blocked, no trade)
+
+### Execution attempt outcome
+- **No trade placed.** Two independent blockers, either sufficient to force HOLD:
+  1. **No research for today.** Latest RESEARCH-LOG entry is 2026-07-11. Buy-side gate requires a catalyst documented in *today's* research; none exists, so there are no validated ideas to execute. The morning-research routine has not produced an entry in 10 days.
+  2. **Bybit API geo-blocked.** `scripts/bybit.sh account` → HTTP 403. Confirmed the block is upstream, not the agent proxy: proxy status healthy (no relay failures), and the unauthenticated public endpoint `GET https://api.bybit.com/v5/market/time` returns `403 — "The Amazon CloudFront distribution is configured to block access from your country."` No account visibility, no quotes, no order placement/stop management possible.
+- **Note:** The Binance→Bybit migration (commits b3138f8, 8edc1c4) did **not** resolve the geo-restriction that blocked the bot on 2026-07-11. Bybit's CloudFront blocks this execution environment's country the same way Binance's 451 did. The exchange changed; the geo-block did not.
+
+### Decision
+TRADE: none. HOLD — mandatory. Cannot execute: no today's research + Bybit API geo-blocked (403 CloudFront). No ClickUp trade alert (no trade fired). Blocker must be resolved (VPN/allowed-region egress, or an exchange reachable from this environment) before any routine can trade.
