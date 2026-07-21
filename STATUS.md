@@ -16,7 +16,8 @@ Repo: `github.com/gnm7208/Binance-bot` | Branch: `main`
 |---|---|---|
 | `CLAUDE.md` | Done | Auto-loaded rulebook — hard rules, schedule, API usage |
 | `env.template` | Done | Credential template for local `.env` setup |
-| `scripts/bybit.sh` | Done | Bybit Spot API wrapper with HMAC-SHA256 (X-BAPI-* headers) |
+| `scripts/bybit.sh` | Kept (unused) | Bybit Spot API wrapper — superseded by mexc.sh |
+| `scripts/mexc.sh` | Done | MEXC Spot API wrapper with HMAC-SHA256 (X-MEXC-APIKEY header) |
 | `scripts/perplexity.sh` | Done | Research wrapper — exits code 3 if key unset (WebSearch fallback) |
 | `scripts/clickup.sh` | Done | ClickUp Chat v3 notifications — falls back to NOTIFICATIONS.md |
 | `memory/TRADING-STRATEGY.md` | Done | Bot rulebook — Bybit order shapes, rules, entry checklist |
@@ -47,10 +48,10 @@ Repo: `github.com/gnm7208/Binance-bot` | Branch: `main`
 ---
 
 ### Exchange Migration History
-- Original: Binance — blocked with HTTP 451 geo-restriction from cloud provider IPs (Jul 11-Jul 19)
-- Migrated to: Bybit — same HMAC-SHA256 auth, same spot features, no cloud IP blocks
-- Migration date: 2026-07-19
-- Bybit API key: Read-Write + SPOT Trade only, No IP restriction (tighten after first run)
+- Original: Binance — blocked HTTP 451 from cloud provider IPs (Jul 11-19)
+- Migrated to: Bybit (Jul 19) — also blocked, CloudFront 403 same as Binance
+- Migrated to: MEXC (Jul 21) — no cloud IP blocking, 0% maker fees
+- MEXC API key: create at mexc.com/user/openapi, Spot Trade only
 
 ---
 
