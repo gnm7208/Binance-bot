@@ -25,3 +25,10 @@ No positions. Bot launching tomorrow. Starting capital confirmed in Binance acco
 |--------|-----|-------|-------|---------|----------------|------|
 **Notes:** ...
 -->
+
+## Jul 21 — EOD Snapshot (Tuesday)
+**Portfolio:** $0.00 | **Cash:** $0.00 (n/a) | **Day P&L:** $0 (0%) | **Phase P&L:** $0 (0%)
+| Ticker | Qty | Entry | Price | Day Chg | Unrealized P&L | Stop |
+|--------|-----|-------|-------|---------|----------------|------|
+| — | — | — | — | — | — | — |
+**Notes:** MEXC account authenticates (canTrade=true, SPOT perms) — no geoblock, unlike prior Binance 451. But account is **UNFUNDED: $0 USDT, 0 positions, 0 open orders.** No capital ever deployed on MEXC. $10k baseline is pre-launch only; funds are not on this account. Bot cannot trade until account is funded. BTC ref $66,753. No P&L to compute (no equity, no positions). **BLOCKER: fund the MEXC account.**
