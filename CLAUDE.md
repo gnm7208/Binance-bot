@@ -31,15 +31,17 @@ Cloud routines live in `routines/`. Local slash commands in `.claude/commands/`.
 
 - **SPOT ONLY** — no margin, no futures, no leverage, ever
 - Max 5-6 open positions at a time
-- Max 20% of portfolio per position (~$2,000 on $10k)
+- Max 20% of portfolio per position
 - 75-85% capital deployed; hold 15-25% USDT as dry powder
 - **Every position gets a stop-limit GTC order immediately after fill** — no exceptions
 - Cut losers at -7% from entry (cancel stop, market sell)
-- Tighten stop to 7% below current price at +15%; tighten to 5% at +20%
+- **Trailing stop (manual)**: stop at -10% on entry → tighten to 7% below current at +3% gain → close at +7%
 - Never tighten within 3% of current price; never move a stop down
-- Max 15 new trades per week
-- **Circuit breaker**: if ≥ 40% of this week's closed trades are losses (min 5 trades) → halt new entries; resume when F&G > 50 AND BTC 24h > 0%
-- **Take-profit cap**: close position at +10% gain
+- Max 25 new trades per week; max 5 trades per day
+- **Weekly circuit breaker**: if ≥ 40% of this week's closed trades are losses (min 5 trades) → halt; resume when F&G > 50 AND BTC 24h > 0%
+- **Daily gate**: if ≥ 5 trades today AND win rate < 60% → halt until tomorrow
+- **Take-profit**: close at +7% gain — no exceptions
+- **Momentum filter**: only enter if 24h price change ≥ +2% OR strong confirmed catalyst
 - Follow crypto sector momentum; exit a sector after 2 consecutive losses
 
 ## API Wrappers

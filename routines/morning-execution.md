@@ -34,7 +34,9 @@ STEP 2 — Re-validate with live data:
 Check bid/ask spread on each planned ticker. If spread > 0.5% or either side is zero,
 skip that ticker and log the reason.
 
-STEP 3 — Circuit breaker check BEFORE any trade:
+STEP 3 — Circuit breaker and daily gate checks BEFORE any trade:
+
+  A) Weekly circuit breaker:
   From memory/TRADE-LOG.md, count closed trades Mon–today this week: N_closed
   Count losing closed trades this week (P&L < 0): N_loss
   If N_closed >= 5 AND N_loss / N_closed >= 0.40:
@@ -44,13 +46,29 @@ STEP 3 — Circuit breaker check BEFORE any trade:
       Log "Circuit breaker triggered but market positive — resuming" in RESEARCH-LOG
     Else:
       bash scripts/clickup.sh "CIRCUIT BREAKER: ${N_loss}/${N_closed} losses this week — new entries halted"
-      Log halt in RESEARCH-LOG, COMMIT AND PUSH, then EXIT (skip steps 4-8)
+      Log halt in RESEARCH-LOG, COMMIT AND PUSH, then EXIT (skip steps 4-9)
+
+  B) Daily gate:
+  From memory/TRADE-LOG.md, count trades placed today: N_today
+  Count winning trades today (P&L > 0): N_win_today
+  If N_today >= 5:
+    If N_win_today / N_today < 0.60:
+      bash scripts/clickup.sh "DAILY GATE: ${N_win_today}/${N_today} wins today — halting new entries until tomorrow"
+      Log halt in RESEARCH-LOG, COMMIT AND PUSH, then EXIT (skip steps 4-9)
+    Else:
+      Log "Daily gate: ${N_win_today}/${N_today} wins — continuing" in RESEARCH-LOG
+  If N_today >= 5: EXIT regardless (max 5 trades/day reached)
 
 STEP 4 — Run buy-side gate on EACH planned order. Skip any that fail; log the reason:
   ✓ Total positions after fill ≤ 6
-  ✓ Trades this week (including this one) ≤ 15
+  ✓ Trades today (including this one) ≤ 5
+  ✓ Trades this week (including this one) ≤ 25
   ✓ Position USDT cost ≤ 20% of total portfolio value
   ✓ Position USDT cost ≤ free USDT balance
+  ✓ Momentum check: get 24h price change for each ticker:
+      curl -s "https://api.mexc.com/api/v3/ticker/24hr?symbol=XYZUSDT" \
+        | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['priceChangePercent'])"
+      Skip ticker if priceChangePercent < 2.0 AND no strong confirmed catalyst in RESEARCH-LOG
   ✓ Catalyst documented in today's RESEARCH-LOG entry
   ✓ Instrument is a spot USDT pair on MEXC (not a derivative)
 
@@ -71,14 +89,14 @@ If still rejected, log "STOP BLOCKED — set manually ASAP" in TRADE-LOG and sen
 
 STEP 7 — Append each trade to memory/TRADE-LOG.md:
   ## YYYY-MM-DD — Trade Entry
-  **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (+10%)
+  **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (+7%)
   Stop order ID: XXXXXXXXXX
   **Thesis:** ...
   **Catalyst:** ...
   **Sector:** ...
 
 STEP 8 — Notification: only if a trade was placed.
-  bash scripts/clickup.sh "Bought TICKER × qty @ $X.XX | stop $X.XX | target +10% | thesis: ..."
+  bash scripts/clickup.sh "Bought TICKER × qty @ $X.XX | stop $X.XX | target +7% | thesis: ..."
 
 STEP 9 — COMMIT AND PUSH (mandatory if any trades executed; skip if no trades fired):
   git add memory/TRADE-LOG.md

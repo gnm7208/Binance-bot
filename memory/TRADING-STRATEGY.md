@@ -16,13 +16,18 @@ MEXC Spot. Spot only — no margin, no futures, no leverage, ever.
 3. 5-6 positions max; 20% of total portfolio per position
 4. Every position gets a stop-limit GTC order immediately after fill — no exceptions
 5. Cut losers at -7% from entry: cancel stop order, market sell
-6. Take profit at +10%: cancel stop order, market sell — no exceptions
-7. Tighten stop-limit: 7% below current price at +15%, 5% at +20% (if +10% exit missed)
-8. Never tighten within 3% of current price; never move a stop down
-9. Max 15 new trades per week
-10. Circuit breaker: if ≥ 40% of this week's closed trades are losses (min 5 trades) → halt new entries; resume when F&G > 50 AND BTC 24h > 0%
-11. Follow sector momentum (L1s, DeFi, AI/data layer, gaming/NFT, BTC dominance)
-12. Exit a sector after 2 consecutive failed trades
+6. Take profit at +7%: cancel stop order, market sell — no exceptions
+7. Trailing stop (manual — MEXC has no native trailing stop):
+   - Entry: stop at -10% below fill price
+   - At +3% gain: tighten stop to 7% below current price (locks in near-breakeven)
+   - At +7% gain: close for take profit
+   - Never tighten within 3% of current price; never move a stop down
+8. Max 25 new trades per week; max 5 new trades per day
+9. Weekly circuit breaker: if ≥ 40% of this week's closed trades are losses (min 5 trades) → halt new entries; resume when F&G > 50 AND BTC 24h > 0%
+10. Daily gate: if ≥ 5 trades placed today AND today's win rate < 60% → halt new entries until tomorrow
+11. Momentum filter: only enter if 24h price change ≥ +2% OR a strong confirmed catalyst justifies entry against trend
+12. Follow sector momentum (L1s, DeFi, AI/data layer, gaming/NFT, BTC dominance)
+13. Exit a sector after 2 consecutive failed trades
 
 ## Entry Checklist (document ALL before placing order)
 - Specific catalyst today?
@@ -31,11 +36,14 @@ MEXC Spot. Spot only — no margin, no futures, no leverage, ever.
 - Target (minimum 2:1 R:R)?
 
 ## Buy-Side Gate (every check must pass)
-- Circuit breaker NOT active (< 40% loss rate on min 5 closed trades this week)
+- Weekly circuit breaker NOT active (< 40% loss rate on min 5 closed trades this week)
+- Daily gate NOT active (if ≥ 5 trades today, today's win rate ≥ 60%)
 - Total positions after fill ≤ 6
-- Trades placed this week + 1 ≤ 15
+- Trades placed today + 1 ≤ 5
+- Trades placed this week + 1 ≤ 25
 - Position cost ≤ 20% of total portfolio USDT value
 - Position cost ≤ available USDT balance
+- Momentum: 24h price change ≥ +2% OR strong confirmed catalyst documented
 - Catalyst documented in today's RESEARCH-LOG entry
 - Instrument is spot crypto (USDT pair on MEXC)
 
@@ -61,10 +69,9 @@ bash scripts/mexc.sh order \
 
 ## Sell-Side Rules (evaluated at midday scan)
 - Unrealized loss ≤ -7%: close immediately (cancel stop, market sell)
-- Up +10%: close immediately — take profit (cancel stop, market sell)
+- Up +7% or more: close immediately — take profit (cancel stop, market sell)
+- Up +3% to +6%: tighten stop to 7% below current price (trailing stop adjustment)
 - Thesis broken (catalyst invalidated, sector rolling over): close even if not at -7%
-- Up +20%: tighten stop to 5% below current price (if +10% exit was somehow missed)
-- Up +15%: tighten stop to 7% below current price (if +10% exit was somehow missed)
 - Sector has 2 consecutive failed trades: exit all positions in that sector
 
 ## Research Priorities (morning-research workflow)

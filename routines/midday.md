@@ -39,18 +39,17 @@ Append to memory/TRADE-LOG.md:
   **SELL** SYMBOL | Exit: $X.XX | Realized P&L: -$X (-X%) | Reason: cut at -7% per rule
   Stop order <ID> cancelled.
 
-STEP 4 — Take profit on winners. For every position where unrealized P&L % ≥ +10%:
+STEP 4 — Take profit on winners. For every position where unrealized P&L % ≥ +7%:
   bash scripts/mexc.sh cancel <SYMBOL>USDT <orderID>  # cancel stop order first
   bash scripts/mexc.sh close <SYMBOL>USDT             # market sell full position
 
 Append to memory/TRADE-LOG.md:
   ## YYYY-MM-DD — Trade Exit (take profit)
-  **SELL** SYMBOL | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: +10% take-profit rule
+  **SELL** SYMBOL | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: +7% take-profit rule
   Stop order <ID> cancelled.
 
-STEP 5 — Tighten stop-limits on remaining positions not yet at +10%. For each:
-- Up +20% or more → cancel old stop, place new stop-limit at 5% below current price
-- Up +15% or more → cancel old stop, place new stop-limit at 7% below current price
+STEP 5 — Tighten trailing stops on remaining positions (up +3% to +6%). For each:
+- Up +3% or more AND not yet at +7% → cancel old stop, place new stop-limit at 7% below current price
 - NEVER tighten within 3% of current price
 - NEVER move a stop down
 
