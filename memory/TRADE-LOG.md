@@ -2,9 +2,9 @@
 
 ## Day 0 — EOD Snapshot (pre-launch baseline)
 
-**Portfolio:** $10,000.00 USDT | **Cash:** $10,000.00 (100%) | **Day P&L:** $0 | **Phase P&L:** $0
+**Portfolio:** $32.32 USDT | **Cash:** $32.32 (100%) | **Day P&L:** $0 | **Phase P&L:** $0
 
-No positions. Bot launching tomorrow. Starting capital confirmed in Binance account.
+No positions. Starting capital: 4,500 KES → 34.32 USDT via Remitano M-Pesa P2P, 2 USDT withdrawal fee, net 32.32 USDT deposited to MEXC on 2026-07-22.
 
 ---
 

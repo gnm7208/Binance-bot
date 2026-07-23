@@ -2,9 +2,9 @@
 
 ## Overview
 - **What:** Autonomous crypto swing trading bot challenge
-- **Starting capital:** ~$10,000 USDT
-- **Platform:** Bybit Spot
-- **Strategy:** Swing trading spot crypto, no leverage, no futures
+- **Starting capital:** $32.32 USDT (funded 2026-07-22 via M-Pesa → Remitano → MEXC)
+- **Platform:** MEXC Spot
+- **Strategy:** Aggressive swing trading spot crypto, no leverage, no futures
 - **Architecture:** Claude Code cloud routines (Claude IS the bot)
 - **Memory:** Git-committed markdown files in this repo
 - **Notifications:** ClickUp chat channel
@@ -13,7 +13,7 @@
 ## How It Works
 Five cloud routines fire daily on a cron schedule. Each run:
 1. Clones this repo at `main` (reads latest memory)
-2. Calls `scripts/bybit.sh` for account/market data
+2. Calls `scripts/mexc.sh` for account/market data
 3. Calls `scripts/perplexity.sh` for research
 4. Makes trading decisions per `memory/TRADING-STRATEGY.md`
 5. Writes updates to memory files
