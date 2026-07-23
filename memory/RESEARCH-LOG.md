@@ -43,6 +43,47 @@ Daily morning research entries appended below.
 TRADE: [list tickers] or HOLD (default — no strong edge today)
 -->
 
+## 2026-07-23 — Morning Research
+
+### Account Snapshot
+- Total portfolio value: $32.32 USDT
+- Free USDT: $32.32 (100%)
+- Open positions: 0
+- Trades this week: 0/25
+- MEXC API: **live and healthy** (account, price, quote all responding). Prior Binance 451 block resolved by MEXC migration.
+
+### Market Context
+- BTC: $65,714 (-0.00% 24h; intraday range $65,365–$66,384)
+- ETH: $1,929 (+0.40% 24h)
+- SOL: $77.60 (+0.36% 24h, but ~+16% on the week)
+- BNB: $570 (+0.08% 24h)
+- BTC Dominance: ~56–58% (sources vary); Altcoin Season Index ~57 (threshold for altseason is 75 — not there yet)
+- Fear & Greed: readings scattered again — 51/46 (Neutral) on some trackers, 33/23 (Fear/Extreme Fear) on others. Treat as **Neutral, fragile**.
+- Sector leaders: selective rotation, not broad altseason — SOL (L1) + Hyperliquid (DeFi) leading; capital rotating into a narrow set of names rather than a full alt rally.
+- Macro: DXY / current Fed print not confirmed via WebSearch this run (Perplexity key unset). June context: spot-ETF outflows were the largest since launch; BTC fell >20% in June. Risk tone cautious.
+
+### On-Chain / Derivatives
+- SOL on-chain activity climbing toward yearly highs as price attempts to base — constructive.
+- Bitwise SOL ETF: +$2.64M net inflow Jul 21, cumulative ~$1.14B — institutional interest holding.
+- Funding / OI: no real-time print (Perplexity unavailable; would need CoinGlass direct).
+
+### News on Held Positions
+- None — 0 open positions.
+
+### Trade Ideas
+1. **No qualifying entry today.** Momentum filter (24h ≥ +2%) FAILS on every major — BTC/ETH/SOL/BNB all within ±0.4% on 24h. Choppy, directionless tape.
+2. **Watchlist — SOL:** best-looking setup if it wakes up. +16% weekly bounce, ETF inflows, on-chain highs, Alpenglow consensus upgrade a potential Q3 catalyst. Trigger: 24h ≥ +2% AND clean break/hold above $80. Entry ~$80.50, stop ~$74.85 (-7%), target ~$86.15 (+7%), R:R ~1:1 on the rule set — sector L1.
+3. **Watchlist — HYPE (Hyperliquid):** DeFi revenue leader in rotation; only if listed/liquid on MEXC Spot and it prints ≥ +2% 24h with a fresh catalyst.
+
+### Risk Factors
+- Momentum filter fails market-wide — forcing an entry here would violate rule 11.
+- F&G Neutral-but-fragile; June ETF-outflow / -20% BTC backdrop still fresh — risk-off can resume fast.
+- Perplexity API key unset — degraded macro/derivatives visibility; running on WebSearch + MEXC only.
+- Tiny capital ($32.32): 20% cap ≈ $6.46/position — check MEXC min-notional before any live order.
+
+### Decision
+TRADE: none. **HOLD** — no setup passes the momentum gate today (all majors flat on 24h, no strong same-day catalyst). Market is Neutral/choppy. SOL and HYPE on watch for a ≥ +2% breakout with volume. Re-evaluate at morning-execution / midday.
+
 ## 2026-07-11 — Morning Research
 
 ### Account Snapshot
