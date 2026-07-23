@@ -8,6 +8,18 @@ No positions. Starting capital: 4,500 KES → 34.32 USDT via Remitano M-Pesa P2P
 
 ---
 
+## Jul 23 — EOD Snapshot (Day 1, Thursday)
+
+**Portfolio:** $32.32 | **Cash:** $32.32 (100%) | **Day P&L:** $0 (0.00%) | **Phase P&L:** $0 (0.00%)
+
+| Ticker | Qty | Entry | Price | Day Chg | Unrealized P&L | Stop |
+|--------|-----|-------|-------|---------|----------------|------|
+| — | — | — | — | — | — | — |
+
+**Notes:** No positions. 0 trades today, 0 this week. 100% cash — deployment (75-85%) still pending first entry. No morning-research/execution entries logged today. BTC ref $64,824.93. Account live on MEXC Spot (canTrade=true), USDT free $32.32 / locked $0. No open orders.
+
+---
+
 <!-- New entries appended below. Format:
 
 ## YYYY-MM-DD — Trade Entry
