@@ -81,3 +81,21 @@ TRADE: [list tickers] or HOLD (default — no strong edge today)
 
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
+
+## 2026-07-23 — Morning Execution (no-op)
+
+### Result
+NO TRADE. Execution ran but had nothing to act on.
+
+### Why
+- **No research entry for today.** Last research is 2026-07-11 (12 days ago). Buy-side gate requires a catalyst documented in *today's* RESEARCH-LOG — none exists, so no buy is permissible. Zero valid trade ideas to validate/execute.
+- Morning-research appears to have produced/committed nothing for 12 days despite Bybit→MEXC migration commits in that window — pipeline likely stale/not firing.
+
+### Account state (MEXC, live — API now reachable, no longer 451)
+- Free USDT: **$32.32** | Locked: $0 | Open positions: 0
+- **Discrepancy:** memory files (TRADE-LOG Day 0) still claim ~$10,000 baseline; live account holds $32.32. Needs human review — capital moved, prior loss, or account mismatch across Binance→Bybit→MEXC migration.
+
+### Action taken
+- Placed no orders (correct per rules).
+- No ClickUp notification (no trade fired).
+- Flagged research-pipeline gap and account-balance discrepancy for follow-up.
