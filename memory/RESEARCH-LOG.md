@@ -81,3 +81,43 @@ TRADE: [list tickers] or HOLD (default — no strong edge today)
 
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
+
+---
+
+## 2026-07-23 — Morning Research
+
+### Account Snapshot
+- Total portfolio value: $32.32 USDT (MEXC Spot — API live, `account` OK)
+- Free USDT: $32.32 (100%)
+- Open positions: 0
+- Trades this week: 0/25
+
+### Market Context
+- BTC: $65,674 (live MEXC quote); consolidating, web sources noisy/conflicting on 24h
+- ETH: $1,925.63
+- BTC Dominance: ~54-56% (not freshly confirmed; Perplexity unavailable, WebSearch fallback)
+- Fear & Greed Index: ~46-53 (Neutral)
+- Total crypto mcap: ~$2.21T
+- DXY: strong (~100+), inverse to BTC (corr ~-0.6 to -0.8) — mild headwind
+- Macro: Fed Chair Warsh held rates steady in June, took 2026 cut off table (hawkish). Next FOMC Jul 28-29 — market pricing ~35% odds of a HIKE = event risk this week.
+- Sector leaders: AI / GameFi narratives; DeFi maturing toward institutional-grade infra
+
+### On-Chain / Derivatives
+- ETF flows: reported reversal to inflows mid-July (softer inflation) — constructive but unconfirmed today
+- Funding rates / OI: not retrieved (Perplexity API key unset in cloud run; WebSearch fallback only)
+
+### News on Held Positions
+- None — 0 open positions
+
+### Trade Ideas
+1. No entry today. Neutral sentiment + late-July FOMC event risk + no strong confirmed catalyst = no edge. Momentum filter (24h ≥ +2%) not satisfied by any confirmed setup.
+2. Watchlist (need fresh catalyst + momentum on execution run): AI (TAO/RENDER), GameFi leaders, DeFi bluechips (AAVE). Confirm MEXC Spot listing + live 24h ≥ +2% before any buy.
+
+### Risk Factors
+- FOMC Jul 28-29 with ~35% hike odds — binary macro risk into month-end; favor patience
+- DXY strength / hawkish Fed under Warsh — risk-asset headwind
+- Perplexity API key unset in cloud run — research on WebSearch fallback only; data less precise
+- Micro capital ($32.32): MEXC min-notional/fees make sub-$5-10 positions impractical; size accordingly
+
+### Decision
+TRADE: none. HOLD — no confirmed catalyst, neutral sentiment, FOMC event risk into month-end. Re-evaluate at execution run only if a name clears momentum filter (24h ≥ +2%) with a documented catalyst.
