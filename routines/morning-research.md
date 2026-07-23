@@ -33,18 +33,48 @@ STEP 2 — Pull live account state:
   bash scripts/mexc.sh positions
   bash scripts/mexc.sh orders
 
-STEP 3 — Pull trending coins from CoinGecko (free, no auth needed):
+STEP 3 — Pull free data signals (no API keys needed):
+
+  A) CoinGecko trending (retail/social momentum — top 10 by search volume):
   curl -s "https://api.coingecko.com/api/v3/search/trending" \
     | python3 -c "
 import json, sys
 data = json.load(sys.stdin)
 for i, coin in enumerate(data.get('coins', [])[:10], 1):
     c = coin['item']
-    print(f\"{i}. {c['symbol'].upper()} — {c['name']} | rank #{c['market_cap_rank']} | score {c.get('score',0)}\")
+    print(f\"{i}. {c['symbol'].upper()} — {c['name']} | rank #{c['market_cap_rank']}\")
 "
-  This shows what retail/social momentum is chasing right now — the top 10 trending coins
-  on CoinGecko by search volume. Flag any that also pass the +2% momentum gate as priority
-  trade ideas.
+
+  B) DeFiLlama gainers (protocols gaining TVL = institutional/smart money flowing in):
+  curl -s "https://api.llama.fi/gainers" \
+    | python3 -c "
+import json, sys
+data = json.load(sys.stdin)
+gainers = data if isinstance(data, list) else data.get('gainers', [])
+for g in gainers[:8]:
+    name = g.get('name','?')
+    change = g.get('change_1d', g.get('change_24h', '?'))
+    tvl = g.get('tvl', '?')
+    print(f'{name}: TVL change +{change}% | TVL \${tvl:,.0f}' if isinstance(tvl, (int,float)) else f'{name}: +{change}%')
+" 2>/dev/null || echo "DeFiLlama unavailable — skip"
+
+  C) CoinMarketCap trending (different algorithm from CoinGecko — cross-reference):
+  curl -s "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/spotlight?limit=10" \
+    | python3 -c "
+import json, sys
+try:
+    data = json.load(sys.stdin)
+    coins = data.get('data',{}).get('trendingList', data.get('data',[]))
+    if isinstance(coins, list):
+        for c in coins[:8]:
+            sym = c.get('symbol','?')
+            chg = c.get('priceChange',{}).get('priceChange24h', c.get('priceChange24h','?'))
+            print(f'{sym}: {chg}%')
+except: print('CMC unavailable — skip')
+" 2>/dev/null
+
+  Flag any coin appearing in 2+ of the above lists that also passes the +2% gate —
+  these are highest-conviction watchlist entries.
 
 STEP 4 — Research market context via Perplexity. Run
   bash scripts/perplexity.sh "<query>"
@@ -56,8 +86,9 @@ for each of the following:
   - "Macro factors affecting crypto today: DXY, Fed policy, risk sentiment $DATE"
   - "Crypto sector momentum this week: L1s, DeFi, AI tokens, gaming"
   - "Crypto exchange inflows outflows and funding rates today"
-  - "crypto twitter trending coins altcoins pumping today $DATE site:twitter.com OR site:x.com"
-  - "CryptoKaleo OR AltcoinGordon OR WhalePanda crypto calls today $DATE"
+  - "CryptoKaleo OR pentoshi OR Bluntz_Capital OR CryptoCobain crypto trade calls $DATE"
+  - "whale alert large crypto transactions today $DATE"
+  - "reddit CryptoCurrency top posts today $DATE"
   - News on each currently held token (one query per position)
 
 If Perplexity exits with code 3, fall back to native WebSearch for ALL queries above and
@@ -78,8 +109,13 @@ STEP 5 — Write a dated entry to memory/RESEARCH-LOG.md:
   ### News on Held Positions
   (one bullet per held token)
 
-  ### CoinGecko Trending
-  (top 3 trending coins that also pass +2% momentum gate — priority watchlist)
+  ### Signal Confluence (coins appearing in 2+ sources below)
+  - CoinGecko trending: ...
+  - DeFiLlama TVL gainers: ...
+  - CoinMarketCap trending: ...
+  - Trader calls (Kaleo/pentoshi/Bluntz): ...
+  - Whale alert / Reddit: ...
+  **Highest conviction:** TICKER (appeared in X/5 sources, +X% 24h)
 
   ### Trade Ideas
   1. TICKER — catalyst: ..., entry $X, stop $X (-10%), target $X (+7%), sector: ...
