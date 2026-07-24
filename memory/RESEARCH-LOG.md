@@ -81,3 +81,43 @@ TRADE: [list tickers] or HOLD (default — no strong edge today)
 
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
+
+## 2026-07-24 — Morning Research
+
+### Account Snapshot
+- MEXC API healthy (`account`, `price`, `quote` all OK — prior Binance 451 geo-block no longer relevant; on MEXC now).
+- Equity: **$32.32 USDT | 100% cash | 0 open positions** (unchanged from Day 0 baseline).
+- Trades this week: 0/25.
+
+### Market Context
+- BTC: **$65,176** (MEXC live). Weekly ~**-5.2%** — in a downtrend. Broad market cap ~$2.3T, -1.3% on the day.
+- BTC Dominance: **~56.6%** (strong — capital defensive, not rotating to alts).
+- Fear & Greed: **28 (Extreme Fear)**, dropped from ~46; deepening caution.
+- DXY: firm (+0.52% wk); VIX 18.4 (+6.8%); SPX -1.8% wk; BTC beta to SPX >2x (risk-off amplifier).
+- Macro: **FOMC Jul 28–29 is a LIVE meeting** — hike on the table (9/18 officials project ≥1 hike; Chair Warsh hawkish on above-target inflation). Funds 3.50–3.75%. Highest-weight event of the window.
+- ETH $1,873, SOL $75.7 — both soft/declining with BTC.
+
+### On-Chain / Derivatives
+- BTC ETF outflows: **3rd straight week**, ~$1.72B (wk of Jun 23–27); 2026 total outflows >$7B — persistent distribution.
+- Options/futures: Deribit + CME monthly BTC/ETH expiry Fri **Jul 31** (post-FOMC volatility cluster).
+
+### Sector Momentum
+- **DeFi** the lone bright spot: **+9.8%** on the day vs broad -1.3%. Aave small-whale accumulation (+~180k AAVE / ~$16M in 48h); Hyperliquid ~$800M annualized revenue.
+- Top 24h gainers: Polkadot, XRP Ledger ecosystem.
+- L1s (SOL/ETH) and majors weak — dominance rising confirms defensive tape.
+
+### News on Held Positions
+- None — 0 open positions.
+
+### Trade Ideas
+1. **No new entries today.** Momentum filter fails: BTC/ETH/SOL all red 24h & weekly; F&G Extreme Fear (28); live FOMC hike risk in 4 days is a binary event I won't front-run with a first entry. Sizing is also marginal — 20% cap on $32.32 ≈ $6.46/position, at/near MEXC min notional.
+2. **Watchlist (DeFi-led, post-FOMC):** AAVE ($95, whale accumulation + on-chain growth), HYPE ($57.83, real-revenue leader). Trigger only on 24h ≥ +2% with confirmed catalyst AND after Jul 29 FOMC clears. Reassess dominance — need it to roll over for alt entries to work.
+
+### Risk Factors
+- **FOMC Jul 28–29 live hike risk** — dominant near-term risk; DXY/VIX firm, BTC 2x beta means a hawkish surprise hits crypto hard.
+- **Extreme Fear (28) + rising BTC dominance** — defensive tape, poor environment for fresh long alt entries.
+- Persistent ETF outflows (3rd wk, >$7B YTD) — structural sell pressure.
+- Jul 31 monthly options/futures expiry — added volatility into month-end.
+
+### Decision
+**HOLD** — no entries. Extreme Fear, BTC weekly downtrend, and a live FOMC (hike-risk) in 4 days make this a stand-aside window. Preserve 100% dry powder; re-evaluate DeFi watchlist post-FOMC once momentum filter and sentiment permit.
