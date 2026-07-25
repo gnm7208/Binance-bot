@@ -7,68 +7,53 @@ Daily morning research entries appended below.
 ## 2026-07-03 — Morning Research
 
 ### Account Snapshot
-- **UNAVAILABLE** — Binance API blocked by environment network egress policy (403 on
-  api.binance.com for all endpoints, including public unauthenticated price). ClickUp
-  alert delivery also blocked (api.clickup.com, 403). Fallback alert appended to
-  NOTIFICATIONS.md. Needs network policy fix before execution routines can run.
-- Last known state (TRADE-LOG Day 0 baseline): $10,000 USDT, 0 positions, 0/3 trades this week.
+- **BLOCKED:** `scripts/binance.sh` (and raw `api.binance.com/api/v3/ping`) returned HTTP 451
+  "Service unavailable from a restricted location" — this environment's egress IP is
+  geo-blocked by Binance. Could not pull account/positions/orders.
+- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 positions.
+- Trades this week: 0/3 (per TRADE-LOG, no entries logged yet)
+- Perplexity: PERPLEXITY_API_KEY not set — fell back to native WebSearch for all queries below.
 
 ### Market Context
-- BTC: ~$60,100–$61,700 (source variance); +2% vs 24h ago per some sources, but down
-  **-5.24% for the week**; recently touched intraday low ~$59,541. Recovering from
-  late-June multi-month lows.
-- ETH: down **-7.59%** for the week, underperforming BTC.
-- BTC Dominance: ~55.5–55.7% (some sources report up to 60%; stablecoins ($308B, 13.9%
-  of total cap) dilute the reading by ~6-8pp).
-- Fear & Greed Index: conflicting reads — 15 (Extreme Fear) per feargreedmeter/CoinCodex,
-  44 (Neutral) per CFGI. Directionally fearful, not confirmed extreme.
-- DXY: 101.30 (June 30 close), broke above 100 to a 13-month high after the Fed held
-  rates 3.50–3.75% on June 17 (Kevin Warsh's first meeting as Chair) with hawkish
-  guidance. Markets now pricing a possible hike as early as September; BofA flagged
-  risk of up to 3 hikes in 2026 if inflation (currently 4.2%) doesn't cool. Strong
-  dollar + hawkish Fed = headwind for crypto liquidity.
-- Sector leaders this week: Solana DeFi + AI-adjacent tokens were the only pockets of
-  strength — SOL +2.32% (only large-cap green), JUP +29% pulling liquidity from
-  ETH L1/L2. AI sector (~$26.6B mkt cap, led by LINK/NEAR/TAO) posted 21
-  gainers/35 losers. Weakest: L2s (-24.9%), DePIN (-24.8%), L1s ex-SOL (-22.8%).
-- Next major catalyst: FOMC meeting July 28-29. CLARITY Act Senate vote pending
-  (July 4 symbolic deadline missed — Senate short of 60 votes, returns July 13).
+- BTC: ~$61,300–61,700 (+2.5% 24h, +2.7% 7d); intraday low ~$59,541 touched recently
+- BTC Dominance: ~55.5–55.7%
+- Fear & Greed Index: split readings — 44 (Neutral) vs. 15 (Extreme Fear) depending on source;
+  broader tone leans fearful
+- DXY: ~101.3–101.4, choppy; market pricing ~2x 25bp cuts in 2026 vs. Fed dot plot showing 1
+- Macro notes: soft July 2 US jobs data cooled hawkish Fed bets; next FOMC July 28–29 is the
+  key macro catalyst; CLARITY Act Senate vote (July 4 target) is the key regulatory catalyst —
+  cloture math still short of 60 votes; GENIUS Act stablecoin KYC rules proposed (USDC/USDT)
+- Sector leaders: altcoins with AI/GameFi narratives or technical breakouts (e.g. BEAT +112%
+  on burn news) diverging from a broader market still in Extreme Fear; L1s weak (-22.8%
+  segment performance); DeFi mixed (42 gainers/117 losers); AI mixed (21 gainers/35 losers,
+  ~$3.4B daily volume)
+- Bitcoin spot ETFs had their worst month ever in June, shedding $4.5B — outflow trend is a
+  headwind until it stabilizes
 
 ### On-Chain / Derivatives
-- BTC perp funding ~+0.51% avg (longs paying ~70% APR to hold) per January reference
-  data point found — could not confirm current-day figure via free search; treat as
-  stale. Recommend pulling live CoinGlass/Binance funding data once API access restored.
-- Exchange inflow/outflow and open-interest figures not available without direct
-  exchange/CoinGlass API access (search fallback returned only tool pointers, not data).
-- Spot BTC ETFs had their worst month ever in June: -$4.5B outflows — bearish
-  institutional signal into this week.
+- Could not pull Binance-specific funding/OI/flow data (API blocked); public aggregators
+  (CoinGlass) confirm standard 8h funding cadence, no extreme funding skew reported today
+- No specific inflow/outflow or OI-trend numbers found via WebSearch — treat as unknown, not
+  neutral
 
 ### News on Held Positions
-- None — 0 open positions (per last known TRADE-LOG state).
+- N/A — no open positions (Day 0, bot has not traded yet)
 
 ### Trade Ideas
-No new entries — macro and sector backdrop argues against putting capital to work today:
-1. Hawkish Fed (possible Sept hike) + DXY at 13-month highs is a structural headwind,
-   not a one-day wobble.
-2. BTC ETF outflows (-$4.5B in June) show institutional money still exiting, not
-   rotating in.
-3. Only bright spot (Solana DeFi/AI tokens) is narrow, meme/liquidity-driven (JUP +29%,
-   PUMP has a 23.31% supply unlock July 12 — event risk for the SOL ecosystem trade).
-4. Fear & Greed signal is mixed/unconfirmed — not a clean contrarian buy signal either way.
+- None documented today. No single-name catalyst cleared the entry checklist (specific
+  catalyst + sector momentum + 2:1 R:R), and account state can't be verified to size a
+  position responsibly while the API is blocked.
 
 ### Risk Factors
-- Binance/ClickUp API access blocked in this environment — cannot execute or alert
-  even if a setup appeared. Highest-priority fix needed before 9AM execution routine.
-- FOMC July 28-29 is a binary macro risk event — avoid initiating new positions with
-  stops that would get run over by pre-FOMC volatility.
-- PUMP token unlock July 12 (23.31% of supply) — SOL-ecosyston volatility risk.
-- Fear & Greed source disagreement (15 vs 44) — sentiment read is not reliable today.
+- **Binance API geo-block (451) — cannot verify account state, cannot place or manage
+  orders.** This blocks execution entirely, not just today's research, until resolved.
+- ETF outflow trend still negative; a sustained break below $59K could drag alts down further
+- Fear & Greed readings conflict across sources — sentiment signal is noisy today
+- CLARITY Act vote and July 28–29 FOMC are binary-ish event risk sitting ahead
 
 ### Decision
-TRADE: none — HOLD. No account access to execute even if a setup existed; macro
-backdrop (hawkish Fed, DXY strength, ETF outflows) doesn't support new risk today.
-
----
+HOLD — no trade evaluated or planned. Execution is impossible regardless while Binance API
+access is geo-blocked; this needs to be fixed before morning-execution can run.
 
 <!-- Format for each entry:
 
