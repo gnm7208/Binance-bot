@@ -43,8 +43,9 @@ MEXC Spot. Spot only — no margin, no futures, no leverage, ever.
 - Trades placed this week + 1 ≤ 25
 - Position cost ≤ 20% of total portfolio USDT value
 - Position cost ≤ available USDT balance
-- Momentum: 24h price change ≥ +2% OR strong confirmed catalyst documented
-- Catalyst documented in today's RESEARCH-LOG entry
+- Entry signal: EITHER a strong catalyst documented in today's RESEARCH-LOG (news event,
+  protocol upgrade, whale accumulation, sector rotation) OR 24h price change ≥ +2% with
+  no catalyst needed. Catalyst alone is sufficient — do not require both.
 - Instrument is spot crypto (USDT pair on MEXC)
 
 ## Order Shapes

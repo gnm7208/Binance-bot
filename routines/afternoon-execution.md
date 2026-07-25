@@ -85,7 +85,10 @@ STEP 5 — Re-check watchlist from morning research for afternoon momentum break
   (If Perplexity exits 3, use WebSearch.)
 
   Entry criteria — ALL must pass:
-  ✓ 24h priceChangePercent ≥ +2%
+  ✓ Entry signal — EITHER is sufficient:
+      OPTION A: Strong catalyst documented (news, upgrade, whale move, sector rotation)
+      OPTION B: No catalyst but 24h priceChangePercent ≥ +2%
+      Skip only if NEITHER condition is met.
   ✓ Total positions after fill ≤ 6
   ✓ Trades today (including this one) ≤ 5
   ✓ Trades this week (including this one) ≤ 25

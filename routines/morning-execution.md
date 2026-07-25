@@ -65,11 +65,13 @@ STEP 4 — Run buy-side gate on EACH planned order. Skip any that fail; log the 
   ✓ Trades this week (including this one) ≤ 25
   ✓ Position USDT cost ≤ 20% of total portfolio value
   ✓ Position USDT cost ≤ free USDT balance
-  ✓ Momentum check: get 24h price change for each ticker:
-      curl -s "https://api.mexc.com/api/v3/ticker/24hr?symbol=XYZUSDT" \
-        | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['priceChangePercent'])"
-      Skip ticker if priceChangePercent < 2.0 AND no strong confirmed catalyst in RESEARCH-LOG
-  ✓ Catalyst documented in today's RESEARCH-LOG entry
+  ✓ Entry signal (EITHER is sufficient — do not require both):
+      OPTION A — Strong catalyst: news event, protocol upgrade, whale accumulation, sector
+        rotation documented in today's RESEARCH-LOG → enter regardless of 24h % move
+      OPTION B — Momentum breakout: no clear catalyst but 24h price change ≥ +2%:
+        curl -s "https://api.mexc.com/api/v3/ticker/24hr?symbol=XYZUSDT" \
+          | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['priceChangePercent'])"
+      Skip only if NEITHER condition is met.
   ✓ Instrument is a spot USDT pair on MEXC (not a derivative)
 
 STEP 5 — Execute approved buys (market orders, spend USDT amount):

@@ -41,7 +41,7 @@ Cloud routines live in `routines/`. Local slash commands in `.claude/commands/`.
 - **Weekly circuit breaker**: if ≥ 40% of this week's closed trades are losses (min 5 trades) → halt; resume when F&G > 50 AND BTC 24h > 0%
 - **Daily gate**: if ≥ 5 trades today AND win rate < 60% → halt until tomorrow
 - **Take-profit**: close at +7% gain — no exceptions
-- **Momentum filter**: only enter if 24h price change ≥ +2% OR strong confirmed catalyst
+- **Entry signal**: strong catalyst documented in RESEARCH-LOG (sufficient alone) OR 24h price change ≥ +2% (sufficient alone) — do not require both
 - Follow crypto sector momentum; exit a sector after 2 consecutive losses
 
 ## API Wrappers
