@@ -81,3 +81,43 @@ TRADE: [list tickers] or HOLD (default — no strong edge today)
 
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
+
+## 2026-07-25 — Morning Research
+
+### Account Snapshot
+- Total portfolio value: $32.32 USDT (Day 0 baseline, TRADE-LOG)
+- Free USDT: $32.32 (100%)
+- Open positions: 0
+- Trades this week: 0/25
+- MEXC API: LIVE — price/quote/24hr all responding normally (Binance 451 issue no longer relevant, using MEXC)
+
+### Market Context
+- BTC: $64,034 (**-1.79% 24h**; open 65,206, high 65,808, low 63,737) — rejected at 65.8k, back to lower band
+- ETH: $1,859 (weak vs BTC)
+- SOL: $74.13 | BNB: $566.03
+- BTC Dominance: ~56–58% (rising) — capital NOT rotating to alts
+- Fear & Greed: 29 (Fear) on some trackers, 46 (Neutral) on CFGI — Fear-leaning, no conviction on dips
+- DXY: ~106.8 — strong dollar, notable risk-asset headwind
+- Altcoin Season Index: 46/100 — squarely "Bitcoin Season"
+- Macro: Fed Chair Warsh hawkish — 2026 rate cut off the table, 9/18 officials now expect a HIKE; sticky CPI
+
+### On-Chain / Derivatives
+- US spot BTC ETFs: **-$225.2M net outflow (Jul 24)**, breaking a 7-day inflow streak amid global risk-off
+- Consolidation band ~$60k–$65k; compressed volatility, expansion pending (direction unconfirmed)
+- Funding/OI: not retrieved (Perplexity key unset in cloud env; CoinGlass direct needed for live print)
+
+### News on Held Positions
+- None — 0 open positions
+
+### Trade Ideas
+1. No qualifying entries. BTC -1.79% 24h and broad risk-off fail the momentum gate (need 24h ≥ +2% OR strong confirmed catalyst). No confirmed catalyst today.
+2. Watchlist only (act only on a confirmed +2% breakout with catalyst): SOL (L1), BNB (exchange token strength), INJ (mainnet-upgrade momentum noted early July). No levels committed — re-check at execution.
+
+### Risk Factors
+- Risk-off regime: DXY ~106.8, hawkish Fed (hike odds rising), ETF outflows, Bitcoin Season — poor backdrop for alt long entries
+- F&G in Fear; sentiment fragile
+- Tiny account ($32.32) — MEXC min-notional (~$1–5) limits position sizing; one 20% slice ≈ $6.46
+- Compressed BB / imminent volatility expansion — whipsaw risk on premature entries
+
+### Decision
+TRADE: none. HOLD — momentum filter fails (BTC -1.79% 24h), risk-off macro, no confirmed catalyst. Preserve dry powder; re-evaluate at execution window on a confirmed +2% move with catalyst.
