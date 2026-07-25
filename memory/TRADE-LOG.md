@@ -38,16 +38,12 @@ No positions. Starting capital: 4,500 KES → 34.32 USDT via Remitano M-Pesa P2P
 **Notes:** ...
 -->
 
-## Jul 22 — EOD Snapshot (Wednesday)
-**Portfolio:** $0.00 | **Cash:** $0.00 USDT (0%) | **Day P&L:** $0.00 (0%) | **Phase P&L:** $0.00 (no capital deployed)
+## Jul 24 — EOD Snapshot (Day 2, Friday)
+
+**Portfolio:** $32.32 | **Cash:** $32.32 (100%) | **Day P&L:** $0.00 (0.0%) | **Phase P&L:** $0.00 (0.0%)
 
 | Ticker | Qty | Entry | Price | Day Chg | Unrealized P&L | Stop |
 |--------|-----|-------|-------|---------|----------------|------|
 | — | — | — | — | — | — | — |
 
-**Notes:**
-- MEXC account is UNFUNDED — `account` returns empty balances, USDT free=0/locked=0, positions=[], open orders=[]. No capital present.
-- API is healthy: `price BTCUSDT` = $65,933.09, `account` returns canTrade=true. This is a funding gap, not an outage (unlike Jul 11 Binance 451 geo-block).
-- Day 0 baseline ($10,000) was on the original Binance account; funds were never migrated to MEXC after the Binance→Bybit→MEXC migration (commits b3138f8, 5b61f76).
-- No trades executed to date. Trades this week: 0/15.
-- **Action required:** fund the MEXC spot account with USDT before any trading can resume. Bot cannot deploy capital or place stops with $0 balance.
+**Notes:** No positions; 100% cash at $32.32 baseline. No trades placed. MEXC Spot API confirmed reachable (`account`, `positions` OK; `orders` needs a symbol arg). BTC $64,063.8. 0/25 trades this week. Deployment 0% vs 75-85% target — still awaiting a qualifying setup (momentum ≥ +2% or confirmed catalyst) before first entry.
