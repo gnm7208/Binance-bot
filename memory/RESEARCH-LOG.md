@@ -140,8 +140,41 @@ sector today and worth first look once account access is restored.
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
 
-### 2026-07-11 — Midday Addendum
-- Binance API still returns HTTP 451 (geo-restricted) on `positions`, `orders`, `price` — outage persists from this morning, unresolved.
-- Midday scan blocked: could not cut losers, tighten stops, or check thesis — no account visibility.
-- No TRADE-LOG changes; per Day 0 baseline there were 0 open positions prior to this outage, so no known unmanaged risk, but this cannot be confirmed live.
-- Action: none taken (none possible). Re-run midday checks once connectivity restored.
+## 2026-07-12 — Morning Research
+
+### Account Snapshot
+- **BLOCKED (2nd consecutive day)**: Binance API returned HTTP 451 (geo-restricted) on `account`, `positions`, `orders` — same failure as 2026-07-11, unresolved.
+- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 open positions.
+- ClickUp alert sent flagging persistent outage — needs infra fix (proxy/region), not a retry issue.
+- Trades this week: 0/3 (per TRADE-LOG, no entries yet).
+- Perplexity also unavailable today: `PERPLEXITY_API_KEY not set`, exit code 3 → fell back to native WebSearch for all queries per fallback rule.
+
+### Market Context
+- BTC: ~$64,000–$64,300 (+0.5-0.9% 24h), total crypto market cap ~$1.29T (WebSearch, sources vary)
+- BTC Dominance: ~54-58% depending on source; broad consensus mid-to-high 50s%, one report flags "Bitcoin Season" (Altcoin Season Index 46/100)
+- Fear & Greed Index: 26 (Fear) most-cited reading today; other trackers show 20-45 across methodologies — treat as Fear-leaning
+- DXY: ~100.5-100.7, down from a 5-week high (~101.5) in late June; Fed funds decision July 28-29, market pricing ~62% odds of a September hike, mixed/uncertain outlook
+- Sector leaders: DeFi maturing (Aave, Uniswap, Compound — regulatory clarity tailwind); AI/blockchain fusion (TAO, Autonolas); gaming presale flow continues; Solana RWA ecosystem at ATH $3.41B; Robinhood Chain now #2 Uniswap deployment chain by volume
+- Catalysts: APT unlocks 1.31% of supply (~$6.78M) today; Senate targeting Aug 7 for final CLARITY Act draft; US-Iran geopolitical situation remains a TBD macro risk
+
+### On-Chain / Derivatives
+- Binance-wide aggregate flow/funding data not retrievable via WebSearch fallback (no CoinGlass/Binance-direct access)
+- XRP-specific data point only: Binance funding rate recovered to 0.007 (+266% WoW) after briefly negative in late June; XRP OI falling ($500M mid-June → $399M by Jul 10); long liquidations +94% WoW
+- No BTC/ETH funding or OI figures obtained today — gap in coverage
+
+### News on Held Positions
+- None — 0 open positions.
+
+### Trade Ideas
+1. No new entries proposed today — Binance API unreachable (451), so no execution possible regardless of setup quality.
+2. Watchlist unchanged from 2026-07-11, pending API access: SOL (L1 momentum, RWA growth ATH), TAO (AI/blockchain narrative), DeFi blue-chips (AAVE/UNI on regulatory clarity) — need fresh catalyst + live levels once connectivity restored.
+
+### Risk Factors
+- **Binance API geo-blocked (451), unresolved for 2 straight sessions — top operational risk.** No account visibility, no order placement/cancellation/stop management possible.
+- Perplexity API key also missing today — research quality degraded to WebSearch-only, less precise/current data (e.g., no direct BTC/ETH funding rates).
+- DXY off recent highs but Fed policy still uncertain/hawkish-leaning — mixed macro backdrop
+- Fear & Greed in Fear territory — fragile sentiment, not a green light for aggressive entries
+- APT token unlock today — localized volatility in that name only (not held)
+
+### Decision
+TRADE: none. HOLD — mandatory: Binance API unreachable (451) for a second consecutive day, cannot verify account state or place/manage orders. ClickUp alert sent. Re-run research/execution once connectivity and Perplexity credentials are confirmed restored.
