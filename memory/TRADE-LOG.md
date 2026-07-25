@@ -8,12 +8,15 @@ No positions. Starting capital: 4,500 KES → 34.32 USDT via Remitano M-Pesa P2P
 
 ---
 
-## 2026-07-03 — Midday Scan (BLOCKED)
-**Scan skipped:** Binance API unreachable from this environment — all endpoints (including
-unauthenticated `price`/`quote`) return HTTP 451 (Unavailable For Legal Reasons). No positions
-were reviewed, no stops changed. Root cause is network/geo-level (Binance blocking this
-environment's egress IP), not a code or credentials issue. Needs infra fix (e.g. allowed
-egress region or proxy) before any routine touching Binance can run.
+## Jul 09 — EOD Note (no snapshot — Binance API unreachable)
+
+Binance API returned HTTP 451 "restricted location" on every endpoint, including
+unauthenticated `/api/v3/ping` — this session's egress IP is geo-blocked by Binance,
+not a proxy/credential issue. Could not pull account/positions/orders, so no EOD
+P&L snapshot was computed (avoiding fabricated numbers). Day 0 baseline above still
+stands for tomorrow's day P&L calc. ClickUp alert sent. No trades attempted.
+
+---
 
 <!-- New entries appended below. Format:
 
