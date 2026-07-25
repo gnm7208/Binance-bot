@@ -174,36 +174,36 @@ TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify ac
 ## 2026-07-19 — Morning Research
 
 ### Account Snapshot
-- **STILL BLOCKED (Day 8 of outage)**: Binance API returns HTTP 451 "restricted location" on all calls (`price`, `account`, `positions`). Confirmed again today via `scripts/binance.sh`. No account visibility, no order placement/management possible.
-- Env note: `PERPLEXITY_API_KEY` is empty in this cloud run (len 0) → research via WebSearch fallback. `BYBIT_*` keys unset; live infra is Binance (creds present) despite CLAUDE.md referencing Bybit. ClickUp wrapper works.
-- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 open positions. Unchanged for 8 days — no trades executable.
-- Trades this week: 0/3.
+- **BLOCKED**: Bybit API unreachable. `bybit.sh account` and direct `curl https://api.bybit.com/v5/market/time` both return **HTTP 403 CloudFront** — "distribution is configured to block access from your country" (proxy egress POP `IAD61`, US-East). Bybit does not serve US IPs; this is a hard geo-block, not transient. Same class of failure as the 07-11 Binance 451 — now the **second exchange blocked** from this environment.
+- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 open positions. No unmanaged stop risk, but zero trading capability.
+- Perplexity key not set → research done via WebSearch/WebFetch fallback. ClickUp wrapper also erroring (500 / key not configured).
+- Trades this week: 0/3 (no entries ever placed).
 
 ### Market Context
-- BTC: ~$64,376 (roughly flat 24h, ~+1% vs last week's ~$63,800)
-- BTC Dominance: ~56–60% across sources (call it ~57%); still elevated, mild alt rotation
-- Fear & Greed: wide dispersion — 22–25 (Extreme Fear) on most trackers, 54 (Neutral) on one; Fear-leaning
-- DXY: ~100.5, at a ~4-week low, cooling from early-July 101.4 after weak June payrolls (+57k, May revised to 129k)
-- Macro: Fed hold now the base case — ~65% odds of no change at Jul 29 (range 3.50–3.75%). Tension: inflation 4.2% (tighten) vs soft labor (hold). Geopolitical/energy adds upside inflation risk.
-- Sector leaders: SOL strongest major (+~16% on the week, record on-chain activity, Alpenglow upgrade catalyst); AI (TAO/Bittensor) narrative intact; DeFi (Uniswap/Robinhood partnership) firm
+- BTC: ~$64,376 (roughly flat 24h), total crypto mcap ~$2.27T
+- ETH: ~$1,867 (+1.44% 24h)
+- BTC Dominance: **57.1%** (up from ~54–56% on 07-11 — BTC leading, alts losing relative ground)
+- Fear & Greed Index: **28 (Fear)**
+- DXY: ~100.6 (easing from early-July high ~101.4; softer labor data)
+- Macro: Fed held 3.50–3.75% (Jun 17). Next FOMC Jul 28–29 (no SEP). Markets price ~12% hike odds in July, ~56% by September; hawkish lean persists.
+- Sector leaders (weekly): DeXe (DEXE) +61% to record $49.43; Zcash (ZEC) and Uniswap (UNI) double-digit gains. Dated catalysts: Solana, Hyperliquid (HYPE), Zcash. H2 narratives: SUI, ONDO, LINK, RNDR. Themes: RWA, AI infra, DeFi.
 
 ### On-Chain / Derivatives
-- Spot BTC ETFs: turned net positive — ~$1.2B weekly inflow, reversing a 10-day/$2.73B outflow streak and June's record $4.5B outflow. AUM recovered to ~$78B. But 30-day trend still net outflow.
-- Funding: neutral (balanced positioning)
-- Open interest: BTC futures OI ~$48.9B, +3.5% — mild leverage rebuild
+- Spot BTC ETFs: 4-day net-inflow streak; +$132.3M on Jul 17 (IBIT +$136.5M led); cumulative +$51.4B — mildly supportive.
+- BTC perp OI rising with positive funding = leverage building, but **not backed by spot demand** (spot ETFs saw ~$7B outflows May–Jun) — squeeze-risk / fragile setup either direction.
 
 ### News on Held Positions
 - None — 0 open positions.
 
 ### Trade Ideas
-1. **No executable entries** — Binance API unreachable, so no order can be placed regardless of setup quality. All ideas are watchlist-only.
-2. Watchlist (execute only once connectivity restored + fresh levels): **SOL** — strongest-sector L1 momentum, Alpenglow upgrade catalyst, record activity; **TAO** — AI narrative leader; **UNI** — DeFi + Robinhood distribution.
+1. No new entries possible — Bybit account unreachable (geo-block); execution impossible regardless of setup quality.
+2. Environment even so favors caution: dominance rising to 57%, F&G in Fear, leverage-led (not spot-led) derivatives = poor alt-entry conditions. Best posture is patience.
+3. Watchlist once connectivity restored: SOL, HYPE, ZEC (fresh momentum) — require dated catalyst + live levels before any entry.
 
 ### Risk Factors
-- **Binance API geo-blocked (451) for 8 consecutive days — top operational risk.** Bot is fully non-functional: no account read, no execution, no stop management. Persisting unresolved.
-- Extreme Fear sentiment + still-elevated BTC dominance → fragile alt setups; not a clean risk-on entry backdrop
-- Inflation 4.2% with hawkish-leaning Fed under Warsh — headwind for risk assets despite DXY softening
-- ETF flows improving but 30-day trend still net outflow — not confirmation yet
+- **Bybit API geo-blocked (403 CloudFront) from this cloud environment — highest-priority operational risk.** No account visibility, no order placement/cancellation, no stop management. Two consecutive exchanges (Binance, Bybit) blocked → the cloud egress region (US) cannot reach either exchange's retail API. Needs a fix: non-US egress route, or an exchange that serves the proxy's region.
+- Rising BTC dominance + Fear sentiment — alts underperforming, risk-off tilt.
+- Derivatives leverage building without spot support — volatility / liquidation risk.
 
 ### Decision
-TRADE: none. HOLD — mandatory. Binance API unreachable (451), 8th straight day; cannot verify account or place/manage orders. Re-escalated via ClickUp. Even absent the outage, backdrop (Extreme Fear + high dominance) argues patience. Re-run once connectivity confirmed.
+TRADE: none. HOLD — mandatory: Bybit API unreachable (403 geo-block), cannot verify account or place/manage orders. Operational blocker escalated. Re-run once exchange connectivity from this environment is resolved.
