@@ -82,46 +82,46 @@ HOLD — no trade today. Binance API inaccessible (HTTP 451), so account/positio
 TRADE: [list tickers] or HOLD (default — no strong edge today)
 -->
 
-## 2026-07-21 — Morning Research
+## 2026-07-23 — Morning Research
 
 ### Account Snapshot
-- **PARTIAL API OUTAGE**: MEXC `/api/v3/account` returns `code 700007 "No permission to access the endpoint"` (HTTP 400). Breaks `account`/`balance`/`positions`/`close` (all read /account). Signed `openOrders` returns 200 `[]`; `order`/`cancel`/public price/quote all work. Key present (18-char key / 32-char secret), timestamp skew ~1.5s (fine). → API-key permission/whitelist issue, human fix needed.
-- Open orders: **0** (openOrders empty → no active stop orders).
-- Last known state (TRADE-LOG): $10,000 USDT, 100% cash, 0 positions. Cannot re-verify balances due to 700007.
-- Trades this week: 0/15.
+- Total portfolio value: $32.32 USDT
+- Free USDT: $32.32 (100%)
+- Open positions: 0
+- Trades this week: 0/25
+- MEXC API: **live and healthy** (account, price, quote all responding). Prior Binance 451 block resolved by MEXC migration.
 
 ### Market Context
-- BTC: ~$66,377 (+2.3% 24h) — reclaiming $66k on renewed ETF demand
-- ETH: ~$1,935 (+2.7% 24h) — laggard, ~49% below Oct-2025 high; Glamsterdam upgrade slipped to Q3
-- SOL $78.4 (+1.8%), BNB $577 (+1.2%), XRP $1.136 (+2.9%) — majors broadly green
-- BTC Dominance: ~56.3–56.6% (elevated) — risk-off consolidation, no alt season (Alt Season Index ~30–35)
-- Total crypto mcap: ~$2.3T (≈-47% from Oct-2025 peak)
-- Fear & Greed: **25 (Extreme Fear)**, down from 29 prior day — sentiment fragile despite green tape
-- DXY: ~101 (firm) — safe-haven bid on Middle-East tension + rising oil/yields
-- Macro: Fed held 3.50–3.75% (Jun); **FOMC Jul 28–29 = week's dominant catalyst**. Soft Jun CPI (Jul 14) cut Jul-hike odds to ~6%, but Sep-hike odds ~55%; Chair Warsh hawkish lean
-- Sector leaders: DeFi (UNI first higher-high in months; Curve LlamaLend 2 activated on ETH mainnet today), AI (TAO/RENDER), RWA (ONDO); privacy (ZEC) hot but "privacy crackdown" headline risk; DeXe (DEXE) at record high
+- BTC: $65,714 (-0.00% 24h; intraday range $65,365–$66,384)
+- ETH: $1,929 (+0.40% 24h)
+- SOL: $77.60 (+0.36% 24h, but ~+16% on the week)
+- BNB: $570 (+0.08% 24h)
+- BTC Dominance: ~56–58% (sources vary); Altcoin Season Index ~57 (threshold for altseason is 75 — not there yet)
+- Fear & Greed: readings scattered again — 51/46 (Neutral) on some trackers, 33/23 (Fear/Extreme Fear) on others. Treat as **Neutral, fragile**.
+- Sector leaders: selective rotation, not broad altseason — SOL (L1) + Hyperliquid (DeFi) leading; capital rotating into a narrow set of names rather than a full alt rally.
+- Macro: DXY / current Fed print not confirmed via WebSearch this run (Perplexity key unset). June context: spot-ETF outflows were the largest since launch; BTC fell >20% in June. Risk tone cautious.
 
 ### On-Chain / Derivatives
-- Spot BTC ETF: **5 consecutive inflow days**, +$227M on Jul 20 (outflow streak ended)
-- Open interest: total derivatives OI +10.6% to ~$418B; BTC futures OI ~$48.9B; funding neutral-to-slightly-positive
-- Short liquidations ~$31.7M — mild squeeze fueling the bounce
+- SOL on-chain activity climbing toward yearly highs as price attempts to base — constructive.
+- Bitwise SOL ETF: +$2.64M net inflow Jul 21, cumulative ~$1.14B — institutional interest holding.
+- Funding / OI: no real-time print (Perplexity unavailable; would need CoinGlass direct).
 
 ### News on Held Positions
 - None — 0 open positions.
 
-### Trade Ideas (watchlist — see Decision)
-1. **BTC** — catalyst: 5-day ETF inflow streak + $66k reclaim; best risk-adjusted long in high-dominance/risk-off regime. Entry on dip ~$65,000, stop ~$60,450 (-7%), TP ~$71,500 (+10% cap). R:R ~1.4:1 (capped by +10% rule) — modest.
-2. **UNI** — catalyst: DeFi momentum, first higher-high in months, Curve LlamaLend 2 activation today. Confirm MEXC spot liquidity + levels before any entry; stop -7%, TP +10%.
-3. **SOL** — catalyst: L1 leader holding $78 with market; add-on-strength candidate if BTC.D rolls over post-FOMC. Stop -7%, TP +10%.
+### Trade Ideas
+1. **No qualifying entry today.** Momentum filter (24h ≥ +2%) FAILS on every major — BTC/ETH/SOL/BNB all within ±0.4% on 24h. Choppy, directionless tape.
+2. **Watchlist — SOL:** best-looking setup if it wakes up. +16% weekly bounce, ETF inflows, on-chain highs, Alpenglow consensus upgrade a potential Q3 catalyst. Trigger: 24h ≥ +2% AND clean break/hold above $80. Entry ~$80.50, stop ~$74.85 (-7%), target ~$86.15 (+7%), R:R ~1:1 on the rule set — sector L1.
+3. **Watchlist — HYPE (Hyperliquid):** DeFi revenue leader in rotation; only if listed/liquid on MEXC Spot and it prints ≥ +2% 24h with a fresh catalyst.
 
 ### Risk Factors
-- **F&G 25 (Extreme Fear) + BTC.D ~56.5%** = risk-off; alts fragile, capital hiding in BTC
-- **FOMC Jul 28–29 = binary event ~1 week out** — avoid heavy deployment into it
-- DXY ~101 + hawkish Warsh Fed + Middle-East/oil = macro headwind for risk assets
-- **Operational: /account 700007** — cannot verify balances/positions or use `close` (market-sell) until key permission fixed; risk-management path is degraded
+- Momentum filter fails market-wide — forcing an entry here would violate rule 11.
+- F&G Neutral-but-fragile; June ETF-outflow / -20% BTC backdrop still fresh — risk-off can resume fast.
+- Perplexity API key unset — degraded macro/derivatives visibility; running on WebSearch + MEXC only.
+- Tiny capital ($32.32): 20% cap ≈ $6.46/position — check MEXC min-notional before any live order.
 
 ### Decision
-**HOLD — no new entries.** Rationale: (1) Extreme Fear + elevated dominance + binary FOMC in ~1 week argue for standing aside; (2) account/balance API (700007) is down, so pre-trade balance gate can't be verified and the `close` exit path is broken — trading blind on a live account violates risk discipline. Re-run execution once F&G/dominance improve post-FOMC AND MEXC /account access is restored. Escalated.
+TRADE: none. **HOLD** — no setup passes the momentum gate today (all majors flat on 24h, no strong same-day catalyst). Market is Neutral/choppy. SOL and HYPE on watch for a ≥ +2% breakout with volume. Re-evaluate at morning-execution / midday.
 
 ## 2026-07-11 — Morning Research
 
