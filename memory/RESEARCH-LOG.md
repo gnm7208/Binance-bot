@@ -212,43 +212,41 @@ sector today and worth first look once account access is restored.
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
 
-## 2026-07-22 — Morning Research
+## 2026-07-23 — Morning Research
 
 ### Account Snapshot
-- MEXC API reachable (SPOT, canTrade=true). Binance 451 issue resolved via migration to MEXC wrapper.
-- **Free USDT: $0.00 — account UNFUNDED. 0 open positions, empty balances.** No execution possible regardless of setup quality.
-- Trades this week: 0/15.
+- MEXC API healthy (public + authenticated calls succeed).
+- Total portfolio value: **$32.32 USDT** (100% cash), 0 open positions, 0 open orders.
+- **Capital note:** live MEXC balance ($32.32) is far below the $10,000 baseline in TRADE-LOG (Binance-era). No trades have ever been logged, so this is an unfunded/underfunded account, not a drawdown. At $32, max position (20% = ~$6.46) is below viable trade size — meaningful trading is not possible until the account is funded.
+- Trades this week: 0/25.
 
 ### Market Context
-- BTC: ~$66,321 (live MEXC) — first push above $66k since Jun 17, recovering on institutional demand
-- ETH: ~$1,931 (live MEXC) — notably weak vs BTC; ETH/BTC underperforming, laggard
-- BTC Dominance: ~56.4% — elevated; capital NOT yet rotating into alts
-- Fear & Greed: inconsistent across providers (29 on Jul 20 → some show 72 Jul 22, others 34/46). Treat as Neutral, improving-but-unconfirmed. Not confirmed Greed.
-- Altcoin Season index: 55/100 — highest in months, but mixed follow-through
-- DXY: strong; would reverse (crypto tailwind) only if Fed pivots to easing
-- Macro: **FOMC meeting late July = event risk.** 5 straight days of spot BTC ETF inflows (~$727M, BlackRock IBIT leading $116.5M); total BTC ETF AUM > $79B
-- Sector notes: AI tokens weak today (FET -2.9%, TAO -2.6%); DePIN/AI mixed; PUMP social-driven memecoin surge. Majors/BTC leading, alts lagging.
+- BTC: $65,726 (−0.87% 24h)
+- ETH: $1,923.94 (−0.40% 24h)
+- SOL: $77.64 (−0.67% 24h) · XRP: $1.136 (−0.38%) · LINK: $8.62 (−0.97%) · SUI: $0.763 (−0.77%)
+- BTC Dominance: ~56–60% (sources vary; ~56.3% TradingView-Hub, higher elsewhere) — alt-season index only ~30–35, no altseason
+- Fear & Greed: ~41–45 (Fear/Neutral, mixed across providers)
+- DXY: 100.59 (hawkish-Fed vs soft-CPI tug-of-war)
+- Macro: FOMC Jul 28–29, funds rate 3.50–3.75%; committee split, ~25–46% odds of a 25bp HIKE under Chair Warsh ("inflation too high"). June CPI eased to 3.5% YoY (core 2.6%). Net: risk-off headwind into the meeting.
+- Sector leaders (relative): AI, RWA tokenization, DeFi, high-performance L1s. SOL highest-momentum large-cap (Alpenglow finality upgrade narrative).
 
 ### On-Chain / Derivatives
-- BTC ETF: 5-session inflow streak, ~$727.3M total; last session +$226.9M (best since Jul 6) — bullish institutional demand
-- Funding rate: ~0.0043%/day (neutral, ~1.56% annualized) — no overheating, healthy
-- Open interest: ~$48.9B, stable (+3.5-3.9% 30d) — no crowded leverage
-- Long/short: 54.1/45.9 (1.18x) — only mildly long-biased
+- No live funding/OI print (Perplexity key unset → WebSearch fallback; CoinGlass not queried). Broad tape is flat-to-down, consistent with pre-FOMC de-risking.
 
 ### News on Held Positions
 - None — 0 open positions.
 
-### Trade Ideas (watchlist — NOT executable, account unfunded; levels off live MEXC quotes)
-1. BTC — best risk-adjusted in a high-dominance tape. Catalyst: 5-day ETF inflow streak + reclaim of $66k, neutral funding (room to run). Entry: hold above ~$66,300; stop ~$61,700 (-7%); target ~$72,950 (+10%). Sector: majors/BTC.
-2. BNB — exchange/L1, holds up in BTC-led regimes. Live ~$572.5. Entry ~$573; stop ~$533 (-7%); target ~$630 (+10%). Sector: exchange/L1. Conditional on BTC staying bid.
-3. SOL — L1 leader, live ~$78.1. Only if dominance starts rolling over / alt-season index >60. Entry ~$78.1; stop ~$72.6 (-7%); target ~$85.9 (+10%). Sector: L1. Higher beta — wait for confirmation.
+### Trade Ideas
+- **None actionable today.** Two independent blockers:
+  1. **Momentum gate fails everywhere** — every major (BTC/ETH/SOL/XRP/LINK/SUI) is negative on 24h; nothing clears the ≥ +2% filter and no strong confirmed catalyst justifies a counter-trend entry into FOMC.
+  2. **Insufficient capital** — $32.32 total cannot fund a compliant position.
+- Watchlist for when funded + momentum returns: **SOL** (L1 momentum leader, Alpenglow catalyst), **ETH** (strongest large-cap alt on fundamentals), **LINK/ONDO** (RWA/oracle narrative). Require ≥ +2% 24h and a dated catalyst before entry.
 
 ### Risk Factors
-- **Account unfunded ($0 USDT) — hard operational blocker. No trade can execute. Highest priority.**
-- Late-July FOMC event risk — avoid entering into the meeting
-- High BTC dominance (56.4%) + weak ETH → alts fragile; favor majors if/when funded
-- F&G readings contradictory — sentiment signal unreliable this print
-- DXY strength — macro headwind unless Fed pivots
+- **Underfunded account ($32.32) — cannot execute the strategy; needs deposit or baseline reconciliation.**
+- FOMC Jul 28–29 with live hike risk (~25–46%) — event risk, favors staying flat.
+- DXY firm + hawkish Warsh — persistent headwind for risk assets.
+- Flat/negative tape, no altseason (alt-index 30–35) — thin momentum edge.
 
 ### Decision
-HOLD. No entries. Even with a constructive BTC tape (ETF inflows, neutral funding, $66k reclaim), the account holds $0 and cannot execute; late-July FOMC also argues against fresh risk. Watchlist above ready for when funding lands and post-FOMC. Fund the MEXC account to resume operations.
+HOLD — no entries. Momentum filter fails across all majors AND account is underfunded ($32.32 vs $10k baseline). No trade meets the buy-side gate. Re-evaluate once account is funded and a name clears ≥ +2% 24h with a dated catalyst; stay flat through FOMC (Jul 28–29).
