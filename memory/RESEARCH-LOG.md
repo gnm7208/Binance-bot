@@ -289,3 +289,18 @@ HOLD-biased. No high-conviction entry on a red pre-FOMC tape. If 9AM execution c
 HOLD-biased into FOMC. Candidates now CONFIRMED green (BANK/VVV/ZRO pass the +2% gate) — at most ONE small starter (~$6, ≤20%) with immediate −10% stop-limit if execution still confirms ≥+2% and clean structure; VVV preferred over extended BANK for a fresh entry. Otherwise stay 100% cash into Jul 29. No broad deployment pre-FOMC.
 
 Sources: [CFGI](https://cfgi.io/), [Milk Road F&G](https://milkroad.com/fear-greed/), [CoinGabbar Jul 25](https://www.coingabbar.com/en/crypto-currency-news/crypto-news-today-btc-drops-dexe-layerzero-beat-lead-gains), [CoinMarketCap BTC Dominance](https://coinmarketcap.com/charts/bitcoin-dominance/).
+
+## 2026-07-25 — Morning Execution (09:00 CT)
+
+### Buy-Side Gate — validated live
+- Account: $32.32 USDT free, 0 positions, 0/25 trades. Portfolio/daily/weekly gates all PASS.
+- Momentum gate re-confirmed live (MEXC 24hr, % is a fraction): **VVV +5.55%**, **ZRO +4.81%**, **BANK +24.89%**, BTC −1.92%. All three candidates still ≥ +2%.
+- Per research: at most ONE small starter, VVV preferred (BANK extended +24%).
+
+### BLOCKER — no stop-limit support on MEXC spot API
+- `exchangeInfo.orderTypes` for VVV/BANK/ZRO **and BTCUSDT** = `[LIMIT, MARKET, LIMIT_MAKER]`. **No `STOP_LOSS_LIMIT`.** MEXC spot exposes stop orders only in its web UI, not the REST API our wrapper uses.
+- Rule 4 (mandatory stop-limit GTC immediately after every fill, no exceptions) is **unexecutable** on MEXC via API. Buying would leave an unprotected position into a live-FOMC week — a hard rule violation.
+- Analogous to prior Binance-451 / Bybit-403 operational blockers: the venue cannot support the risk framework. Reachability-gate protocol → HALT, alert, place no orders.
+
+### Decision
+**NO TRADE.** Setups qualified (VVV/ZRO/BANK green), but the mandatory protective stop cannot be placed on MEXC spot via API → HALT. 100% cash ($32.32) into FOMC. Escalated. Needs resolution before any entry: (a) confirm a MEXC endpoint/param that accepts spot stops, or (b) migrate to a venue whose API supports resting stop-limit GTC orders and is reachable from this IP.
