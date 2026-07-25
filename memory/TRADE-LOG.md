@@ -36,9 +36,16 @@ Last known baseline remains Day 0 ($10,000.00, 100% cash) until connectivity is 
 **Notes:** ...
 -->
 
-## Jul 21 — EOD Snapshot (Tuesday)
-**Portfolio:** $0.00 | **Cash:** $0.00 (n/a) | **Day P&L:** $0 (0%) | **Phase P&L:** $0 (0%)
+## Jul 22 — EOD Snapshot (Wednesday)
+**Portfolio:** $0.00 | **Cash:** $0.00 USDT (0%) | **Day P&L:** $0.00 (0%) | **Phase P&L:** $0.00 (no capital deployed)
+
 | Ticker | Qty | Entry | Price | Day Chg | Unrealized P&L | Stop |
 |--------|-----|-------|-------|---------|----------------|------|
 | — | — | — | — | — | — | — |
-**Notes:** MEXC account authenticates (canTrade=true, SPOT perms) — no geoblock, unlike prior Binance 451. But account is **UNFUNDED: $0 USDT, 0 positions, 0 open orders.** No capital ever deployed on MEXC. $10k baseline is pre-launch only; funds are not on this account. Bot cannot trade until account is funded. BTC ref $66,753. No P&L to compute (no equity, no positions). **BLOCKER: fund the MEXC account.**
+
+**Notes:**
+- MEXC account is UNFUNDED — `account` returns empty balances, USDT free=0/locked=0, positions=[], open orders=[]. No capital present.
+- API is healthy: `price BTCUSDT` = $65,933.09, `account` returns canTrade=true. This is a funding gap, not an outage (unlike Jul 11 Binance 451 geo-block).
+- Day 0 baseline ($10,000) was on the original Binance account; funds were never migrated to MEXC after the Binance→Bybit→MEXC migration (commits b3138f8, 5b61f76).
+- No trades executed to date. Trades this week: 0/15.
+- **Action required:** fund the MEXC spot account with USDT before any trading can resume. Bot cannot deploy capital or place stops with $0 balance.
