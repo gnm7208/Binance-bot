@@ -212,20 +212,42 @@ sector today and worth first look once account access is restored.
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
 
-## 2026-07-23 — Morning Execution (no-op)
+---
 
-### Result
-NO TRADE. Execution ran but had nothing to act on.
+## 2026-07-23 — Morning Research
 
-### Why
-- **No research entry for today.** Last research is 2026-07-11 (12 days ago). Buy-side gate requires a catalyst documented in *today's* RESEARCH-LOG — none exists, so no buy is permissible. Zero valid trade ideas to validate/execute.
-- Morning-research appears to have produced/committed nothing for 12 days despite Bybit→MEXC migration commits in that window — pipeline likely stale/not firing.
+### Account Snapshot
+- Total portfolio value: $32.32 USDT (MEXC Spot — API live, `account` OK)
+- Free USDT: $32.32 (100%)
+- Open positions: 0
+- Trades this week: 0/25
 
-### Account state (MEXC, live — API now reachable, no longer 451)
-- Free USDT: **$32.32** | Locked: $0 | Open positions: 0
-- **Discrepancy:** memory files (TRADE-LOG Day 0) still claim ~$10,000 baseline; live account holds $32.32. Needs human review — capital moved, prior loss, or account mismatch across Binance→Bybit→MEXC migration.
+### Market Context
+- BTC: $65,674 (live MEXC quote); consolidating, web sources noisy/conflicting on 24h
+- ETH: $1,925.63
+- BTC Dominance: ~54-56% (not freshly confirmed; Perplexity unavailable, WebSearch fallback)
+- Fear & Greed Index: ~46-53 (Neutral)
+- Total crypto mcap: ~$2.21T
+- DXY: strong (~100+), inverse to BTC (corr ~-0.6 to -0.8) — mild headwind
+- Macro: Fed Chair Warsh held rates steady in June, took 2026 cut off table (hawkish). Next FOMC Jul 28-29 — market pricing ~35% odds of a HIKE = event risk this week.
+- Sector leaders: AI / GameFi narratives; DeFi maturing toward institutional-grade infra
 
-### Action taken
-- Placed no orders (correct per rules).
-- No ClickUp notification (no trade fired).
-- Flagged research-pipeline gap and account-balance discrepancy for follow-up.
+### On-Chain / Derivatives
+- ETF flows: reported reversal to inflows mid-July (softer inflation) — constructive but unconfirmed today
+- Funding rates / OI: not retrieved (Perplexity API key unset in cloud run; WebSearch fallback only)
+
+### News on Held Positions
+- None — 0 open positions
+
+### Trade Ideas
+1. No entry today. Neutral sentiment + late-July FOMC event risk + no strong confirmed catalyst = no edge. Momentum filter (24h ≥ +2%) not satisfied by any confirmed setup.
+2. Watchlist (need fresh catalyst + momentum on execution run): AI (TAO/RENDER), GameFi leaders, DeFi bluechips (AAVE). Confirm MEXC Spot listing + live 24h ≥ +2% before any buy.
+
+### Risk Factors
+- FOMC Jul 28-29 with ~35% hike odds — binary macro risk into month-end; favor patience
+- DXY strength / hawkish Fed under Warsh — risk-asset headwind
+- Perplexity API key unset in cloud run — research on WebSearch fallback only; data less precise
+- Micro capital ($32.32): MEXC min-notional/fees make sub-$5-10 positions impractical; size accordingly
+
+### Decision
+TRADE: none. HOLD — no confirmed catalyst, neutral sentiment, FOMC event risk into month-end. Re-evaluate at execution run only if a name clears momentum filter (24h ≥ +2%) with a documented catalyst.
