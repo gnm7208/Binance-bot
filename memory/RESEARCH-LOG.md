@@ -174,42 +174,36 @@ TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify ac
 ## 2026-07-19 — Morning Research
 
 ### Account Snapshot
-- **BLOCKED**: `BYBIT_API_KEY` and `BYBIT_SECRET_KEY` are **empty in the cloud routine environment** — `scripts/bybit.sh` aborts before any request. No account, positions, orders, or stop visibility. Cannot place/cancel/manage orders.
-- `PERPLEXITY_API_KEY` also empty → research done via WebSearch fallback (no Perplexity).
-- Last known state (Day 0 baseline, TRADE-LOG): $10,000.00 USDT, 100% cash, 0 open positions. **Still 0 trades placed on Day 8** — system has never been able to execute since launch (Binance 451 → migrated to Bybit → creds not configured).
+- **STILL BLOCKED (Day 8 of outage)**: Binance API returns HTTP 451 "restricted location" on all calls (`price`, `account`, `positions`). Confirmed again today via `scripts/binance.sh`. No account visibility, no order placement/management possible.
+- Env note: `PERPLEXITY_API_KEY` is empty in this cloud run (len 0) → research via WebSearch fallback. `BYBIT_*` keys unset; live infra is Binance (creds present) despite CLAUDE.md referencing Bybit. ClickUp wrapper works.
+- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 open positions. Unchanged for 8 days — no trades executable.
+- Trades this week: 0/3.
 
 ### Market Context
-- BTC: ~$64,376 (roughly flat 24h; mid-July range ~$63,900–$64,900)
-- ETH: ~$1,840 (−0.75% 24h, laggard)
-- BTC Dominance: ~56–60% (≈57% consensus)
-- Total crypto market cap: ~$2.19T
-- Fear & Greed: mixed across providers 22–54 — **Fear-leaning (~25–40)**, driven by geopolitics, thin volume, pending US inflation data
-- DXY: ~100.6–100.9 (firm but easing from early-July ~101.4 highs)
-- Macro: FOMC Jul 28–29 — ~65% priced for **hold** at 3.50–3.75%; weak June payrolls (57k) pushed any hike odds to September; risk-neutral backdrop
-- Sector leaders: alts **stabilizing but no altseason** — BTC still commands flows; SOL = risk-on tell (watch for SOL outperformance as fear-easing signal); ETH ETFs +$36.7M small inflows
-- Catalyst: CLARITY Act (market-structure bill) optimism lifting BTC/ETH/XRP sentiment
+- BTC: ~$64,376 (roughly flat 24h, ~+1% vs last week's ~$63,800)
+- BTC Dominance: ~56–60% across sources (call it ~57%); still elevated, mild alt rotation
+- Fear & Greed: wide dispersion — 22–25 (Extreme Fear) on most trackers, 54 (Neutral) on one; Fear-leaning
+- DXY: ~100.5, at a ~4-week low, cooling from early-July 101.4 after weak June payrolls (+57k, May revised to 129k)
+- Macro: Fed hold now the base case — ~65% odds of no change at Jul 29 (range 3.50–3.75%). Tension: inflation 4.2% (tighten) vs soft labor (hold). Geopolitical/energy adds upside inflation risk.
+- Sector leaders: SOL strongest major (+~16% on the week, record on-chain activity, Alpenglow upgrade catalyst); AI (TAO/Bittensor) narrative intact; DeFi (Uniswap/Robinhood partnership) firm
 
 ### On-Chain / Derivatives
-- Funding: near-neutral/mildly positive (~0.003%) — leverage washed out vs early-2026 froth; low cascade risk
-- Open interest: BTC futures ~$48.9B (+3.5%), balanced positioning
-- ETF flows: recent 2-day +$191M bounce reversing a 10-day −$2.73B streak; **net outflows still dominate 7d/30d**
-- On-chain: subdued retail demand, negative Coinbase premium, low chain activity → caution
+- Spot BTC ETFs: turned net positive — ~$1.2B weekly inflow, reversing a 10-day/$2.73B outflow streak and June's record $4.5B outflow. AUM recovered to ~$78B. But 30-day trend still net outflow.
+- Funding: neutral (balanced positioning)
+- Open interest: BTC futures OI ~$48.9B, +3.5% — mild leverage rebuild
 
 ### News on Held Positions
 - None — 0 open positions.
 
 ### Trade Ideas
-_No executable ideas — account is unreachable (empty Bybit creds). Watchlist only, pending fixed connectivity + live quotes:_
-1. SOL — thesis: first mover if fear eases / altseason builds; risk-on proxy. Enter only on confirmed BTC-relative strength. Levels TBD on live quotes.
-2. ETH — thesis: ETF inflows resuming, stablecoin/RWA platform narrative; but currently a laggard. Wait for reclaim of relative strength vs BTC.
-3. BTC — thesis: dominance high + low leverage = cleanest risk-on vehicle if CLARITY Act catalyst lands. Default beta.
+1. **No executable entries** — Binance API unreachable, so no order can be placed regardless of setup quality. All ideas are watchlist-only.
+2. Watchlist (execute only once connectivity restored + fresh levels): **SOL** — strongest-sector L1 momentum, Alpenglow upgrade catalyst, record activity; **TAO** — AI narrative leader; **UNI** — DeFi + Robinhood distribution.
 
 ### Risk Factors
-- **Bybit credentials not set in cloud routine env — top operational risk.** The entire bot cannot trade; morning-execution (9 AM) will fail. 8 days live, still $0 deployed. Escalating via ClickUp.
-- Fear-leaning sentiment + choppy range-bound BTC — no strong directional edge
-- Net ETF outflows / subdued retail — demand-side weakness
-- DXY firm + hawkish-lean Fed — risk-asset headwind
-- Thin summer volume amplifies whipsaw
+- **Binance API geo-blocked (451) for 8 consecutive days — top operational risk.** Bot is fully non-functional: no account read, no execution, no stop management. Persisting unresolved.
+- Extreme Fear sentiment + still-elevated BTC dominance → fragile alt setups; not a clean risk-on entry backdrop
+- Inflation 4.2% with hawkish-leaning Fed under Warsh — headwind for risk assets despite DXY softening
+- ETF flows improving but 30-day trend still net outflow — not confirmation yet
 
 ### Decision
-TRADE: none. HOLD — mandatory: Bybit API credentials missing from cloud environment; cannot verify account or place/manage orders. Even absent the outage, sentiment is Fear-leaning with no clear edge → HOLD is the correct discretionary call. Fix credential configuration before 9 AM execution routine.
+TRADE: none. HOLD — mandatory. Binance API unreachable (451), 8th straight day; cannot verify account or place/manage orders. Re-escalated via ClickUp. Even absent the outage, backdrop (Extreme Fear + high dominance) argues patience. Re-run once connectivity confirmed.
