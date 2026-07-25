@@ -171,13 +171,10 @@ sector today and worth first look once account access is restored.
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
 
-## 2026-07-20 — Morning Execution (no trade fired)
+## 2026-07-20 — Midday Scan (blocked)
 
-- **BLOCKED**: Bybit API geo-restricted. `api.bybit.com` returns HTTP 403 on both private (`account`) and public (`/v5/market/time`, `price`) endpoints. Body: `The Amazon CloudFront distribution is configured to block access from your country`. Agent proxy healthy (no relay failures), so this is exchange-side geo-blocking, not a proxy fault.
-- **Migration did not resolve the outage**: repo migrated Binance→Bybit (commits b3138f8/8edc1c4) to escape the Jul-11 Binance 451, but Bybit is also geo-blocked from this environment (403). Root cause is the execution environment's location, not the specific exchange.
-- No RESEARCH-LOG entry exists for 2026-07-20 (morning-research has not produced a new entry since 2026-07-11), so no catalyst-documented, gate-eligible trade idea exists to execute.
-- Buy-side gate cannot be satisfied: no live quotes, no account/balance verification, no order placement. Zero trades placed.
-- Trades this week: 0/3. Open positions: 0 (per TRADE-LOG Day-0 baseline; unverifiable while API is down).
-
-### Decision
-TRADE: none. HOLD — mandatory: exchange API unreachable (Bybit 403 geo-block). Cannot verify account or place/manage orders. ClickUp not notified (no trade fired, per routine rule). Operational blocker persisting 9+ days across two exchanges — needs a non-geo-blocked execution environment/proxy or region-permitted exchange to resume trading.
+- **BLOCKED**: Bybit API returned HTTP 403 "Amazon CloudFront distribution is configured to block access from your country" on `positions`/`orders`/direct `/v5/market/time` curl. Same failure class as the 2026-07-11 Binance 451 geo-block, now against Bybit from this execution environment.
+- No positions/orders visible → cut-loss (-7%), stop-tightening (+15%/+20%), and thesis checks could not be performed.
+- TRADE-LOG.md shows no entries since Day 0 baseline — account state has been unverified for 9+ days.
+- ClickUp alert sent naming the outage.
+- Decision: HOLD — mandatory. Re-run midday scan once Bybit connectivity is confirmed restored.
