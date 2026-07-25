@@ -253,3 +253,39 @@ Tape is red into FOMC — only relative-strength names that are GREEN today qual
 
 ### Decision
 HOLD-biased. No high-conviction entry on a red pre-FOMC tape. If 9AM execution confirms a candidate (BANK first) still printing ≥ +2% 24h with clean structure, ONE small starter (~$6, ≤20%) with immediate −10% stop-limit is acceptable; otherwise stay 100% cash into FOMC. Do not deploy broadly before Jul 29.
+
+## 2026-07-25 — Research Refresh (intraday)
+
+### Account Snapshot
+- MEXC Spot API healthy (`account`/`positions`/`price`/`quote` all responding). Reachability gate PASS.
+- Total portfolio: $32.32 USDT · Free: $32.32 (100%) · Open positions: 0 · Trades this week: 0/25
+- Perplexity key still unset → WebSearch fallback (no live funding/OI print).
+
+### Market Context (live MEXC 24hr)
+- BTC: $64,150 (−1.84% 24h · H $65,808 / L $63,737) — still red, holding above low
+- ETH: $1,861 (−1.02%) · SOL: $74.24 (−2.03%) — majors FAIL momentum gate
+- BTC Dominance: ~58–59% (rising) — capital defensive in BTC, alts broadly weak
+- Fear & Greed: 27 (Fear), slipped 28→27 — cautious sentiment persists
+- Total crypto mcap ~$2.28T (−1.1% 24h)
+- Macro: **FOMC Jul 28–29** (statement Wed 2pm ET), consensus hold 3.50–3.75%, ~33% hike tail. Binary event 3 sessions out.
+
+### Confirmed Relative-Strength Movers (pass +2% gate vs red tape)
+- **BANK (Lorenzo Protocol)**: $0.3201 (**+28.66% 24h**, H $0.3222 / L $0.2301) — pressing ATH, DeFi/RWA yield. Strongest breakout on the board.
+- **ZRO (LayerZero)**: $0.854 (**+5.00% 24h**) — interop narrative.
+- **VVV (Venice)**: $12.56 (**+5.07% 24h**) — AI narrative.
+
+### Trade Ideas (research only — execution owns the decision)
+1. **BANK** — px $0.3201, 24h +28.66% (gate PASS). Entry ~live, stop-limit −10% ~$0.288 (hard cut −7% ~$0.298), target +7% ~$0.343. Sector DeFi/RWA. **Caveat:** already +28% today — chasing an extended ATH into FOMC is high whipsaw risk; if taken, tiny size only.
+2. **VVV** — px $12.56, +5.07% (gate PASS). Cleaner, less-extended structure than BANK. Entry ~live, stop −10% ~$11.30, target +7% ~$13.44. Sector AI.
+3. **ZRO** — px $0.854, +5.00% (gate PASS). Entry ~live, stop −10% ~$0.769, target +7% ~$0.914. Sector interop/infra.
+
+### Risk Factors
+- FOMC Jul 28–29 live ~33% hike tail — avoid size before it; prefer waiting or ~$6 starter.
+- Broad red tape (−1.1% mcap) + rising BTC dominance → alt longs against the current; momentum fragile.
+- BANK extended +28% intraday — mean-reversion risk elevated.
+- Tiny account ($32.32): 20% cap ≈ $6.46/position; watch MEXC min-notional, fee/slippage drag.
+
+### Decision
+HOLD-biased into FOMC. Candidates now CONFIRMED green (BANK/VVV/ZRO pass the +2% gate) — at most ONE small starter (~$6, ≤20%) with immediate −10% stop-limit if execution still confirms ≥+2% and clean structure; VVV preferred over extended BANK for a fresh entry. Otherwise stay 100% cash into Jul 29. No broad deployment pre-FOMC.
+
+Sources: [CFGI](https://cfgi.io/), [Milk Road F&G](https://milkroad.com/fear-greed/), [CoinGabbar Jul 25](https://www.coingabbar.com/en/crypto-currency-news/crypto-news-today-btc-drops-dexe-layerzero-beat-lead-gains), [CoinMarketCap BTC Dominance](https://coinmarketcap.com/charts/bitcoin-dominance/).
