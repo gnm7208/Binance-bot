@@ -30,6 +30,12 @@ stands for tomorrow's day P&L calc. ClickUp alert sent. No trades attempted.
 
 ---
 
+## Jul 14 — EOD Snapshot ATTEMPT FAILED (Day N/A, Tuesday)
+
+**Binance API unreachable — HTTP 451 "Service unavailable from a restricted location" on ALL endpoints, including unauthenticated `/api/v3/ping`.** Not a credentials issue — env vars confirmed set. Cloud environment's egress IP/region is geo-blocked by Binance.
+
+No account/positions/price data available. No P&L computed, no snapshot recorded — carrying forward last known state (Day 0 baseline, no positions). ClickUp alert sent. Needs infra fix (egress region/proxy) before next routine can execute or report.
+
 <!-- New entries appended below. Format:
 
 ## YYYY-MM-DD — Trade Entry
