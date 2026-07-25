@@ -78,63 +78,61 @@ HOLD — no trade possible today (Binance API blocked); reassess once connectivi
 TRADE: [list tickers] or HOLD (default — no strong edge today)
 -->
 
-## 2026-07-07 — Morning Research
+## 2026-07-08 — Morning Research
 
 ### Account Snapshot
-- **BLOCKED**: Binance API unreachable from this session — both signed (`account`,
-  `positions`, `orders`) and public (`price`) endpoints returned HTTP 451
-  (Unavailable For Legal Reasons). Confirmed not an auth/env issue — same 451
-  on unsigned price lookup. ClickUp alert sent.
-- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000 USDT, 100% cash,
-  0 open positions, 0/3 trades this week.
-- Perplexity API key not configured this session — fell back to native WebSearch
-  per routine fallback rule.
+- **BLOCKED**: `bash scripts/binance.sh account/positions/orders` all returned HTTP 451
+  ("Service unavailable from a restricted location according to 'b. Eligibility'") from
+  every api*.binance.com host tried (api, api1, api2, api3, api-gcp) — the cloud
+  environment's outbound IP is geo-restricted for private/signed Binance endpoints.
+  Public data mirror (data-api.binance.vision) still works, used for market prices below.
+- Per Trade Log: still Day 0, no positions opened yet, so no open-position exposure to
+  verify — but position count / cash / weekly trade count cannot be confirmed from here.
+- Trades this week: 0/3 (per Trade Log, no entries yet)
 
 ### Market Context
-- BTC: ~$63,973 (+0.92% 24h), market cap ~$1.28T, -49% off Oct 2025 ATH ($126,200)
-- BTC Dominance: ~55.5%
-- Fear & Greed Index: 24 (Extreme Fear) — up from 12 a week ago but still deep fear
-- DXY: ~100.3, Fed (Warsh) holding a hawkish tilt; May CPI ran hot at 4.2% on
-  energy shock, but a weak payrolls print tempered additional-hike fears
-- Crypto sector leaders today: Solana (Alpenglow upgrade momentum), AI/GameFi
-  narrative tokens (e.g. BEAT +112% on burn news) — highly momentum-driven, not
-  broad-based
-- Sector laggards: L2s (-24.9%), DePIN (-24.8%), L1s ex-SOL (-22.8%)
-- Macro notes: Bitcoin ETF flows turned positive (+$223.5M net, led by FBTC/ARKB);
-  Ripple secured MiCA/CASP authorization in Luxembourg; a large corporate BTC
-  sale (2,225 BTC July 6, following 1,363 BTC June 30) is a known overhang;
-  July 4 rebound was on thin holiday volume — watch if it holds now that US
-  trading is back to full volume
+- BTC: $63,008 (-0.55% 24h) — live pull from data-api.binance.vision
+- ETH: $1,759.48 (-1.15% 24h) — live pull from data-api.binance.vision
+- BTC Dominance: ~55.5-56.2% (sources vary; stablecoin-adjusted would run a few pts higher)
+- Fear & Greed Index: ~22-24 (Extreme Fear)
+- DXY: ~100.9, holding below 101 — softer June NFP (+57k vs 110k expected) cut Fed hike
+  odds, pressuring dollar and supporting risk assets incl. crypto
+- Macro notes: Weak labor data reduced Sept rate-hike odds to ~50% (from ~66%); real wages
+  negative (3.5% nominal earnings vs 4.2% CPI) keeps Fed's Warsh boxed in on dovish easing;
+  July 29 FOMC is next major catalyst
+- Sector leaders: DeFi firming (AAVE +9% wk, strongest Ethereum new-wallet day since 2021,
+  ~$12.2B TVL) despite broader weakness. L1s weakest narrative, -22.8% in Q2. AI tokens
+  mixed (TAO, FET, ICP cited as leaders) but breadth poor (21 gainers/35 losers). Gaming
+  narrow/momentum-driven (BEAT +112% on burn news, not broad strength).
+- Note: initial WebSearch pass for BTC price returned a conflicting $99,887/+4.18% figure
+  from a low-quality source — discarded in favor of the direct Binance public-data pull
+  above, which is authoritative.
 
 ### On-Chain / Derivatives
-- Exchange inflows spiked ~49,000 BTC on June 30 (CryptoQuant "rare extreme"),
-  avg deposit size doubled — reads as whale repositioning ahead of volatility,
-  not retail panic
-- Open interest fell ~23,000 BTC (368k → ~342-346k) July 1-2 — signals a short
-  squeeze / position-clearing, not durable conviction buying
-- Funding rates: no reliable July 2026 figure found via WebSearch fallback;
-  flag for direct CoinGlass/Binance check once API access is restored
+- Spot BTC ETFs: snapped 10-day, $2.7B outflow streak with +$221.7M inflow (largest daily
+  haul in 2 months), timed with the soft payrolls print
+- BTC funding rates: ~0.0087%, moderate — fresh leverage building, no euphoria
+- Open interest: ~$47.7B; short liquidations ($86.6M) outweighing longs ($54.0M), i.e.
+  shorts getting squeezed on the bounce
 
 ### News on Held Positions
-- N/A — 0 open positions per TRADE-LOG baseline
+- None — no open positions (Day 0)
 
-### Trade Ideas (watchlist only — not actionable until account access confirmed)
-1. SOLUSDT — catalyst: Alpenglow upgrade (sub-150ms finality) driving highest
-   large-cap momentum; sector: L1. Needs live price for entry/stop/target.
-2. AI/GameFi momentum names (e.g. BEAT-style burn/narrative plays) — high
-   volatility, narrow thesis; sector: AI/gaming. Treat as speculative, small size only.
-3. No L2/DePIN/L1-ex-SOL entries — sector momentum negative (-22% to -25%)
-   this week; avoid per momentum-following rule.
+### Trade Ideas
+No trade ideas this session — account state (cash, position count, weekly trade count)
+cannot be verified due to the Binance API access blocker above, so the buy-side gate
+cannot be evaluated regardless of setup quality. DeFi (AAVE) is the strongest momentum
+sector today and worth first look once account access is restored.
 
 ### Risk Factors
-- **Cannot verify account state or execute the buy-side gate** (position count,
-  weekly trade count, USDT balance) — Binance API fully blocked this session.
-- Extreme Fear (24) can be contrarian-bullish but also reflects real downside
-  risk (large BTC seller overhang, thin-volume bounce not yet retested).
-- Open-interest short squeeze suggests recent strength may be mechanical, not
-  conviction-driven.
+- Binance private/signed API endpoints are geo-blocked (HTTP 451) from this environment —
+  hard blocker on account state, execution, and stop management until resolved
+  (proxy/network config or environment IP change needed)
+- Fear & Greed at extreme fear (~22) — contrarian bounce signal but also reflects real
+  downside risk/volatility
+- Sentiment/price data conflicting across sources today — cross-check before acting
+- July 29 FOMC and pending CLARITY Act / XRP catalyst could move the market sharply
 
 ### Decision
-HOLD — no trade evaluation possible without confirmed account/positions data;
-Binance API access blocked (HTTP 451) all session. Re-run research once API
-access is restored before considering SOL or AI/GameFi watchlist names.
+HOLD — forced by Binance API access blocker (cannot verify account/position state);
+also no strong catalyst-backed setup identified today
