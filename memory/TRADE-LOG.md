@@ -8,13 +8,15 @@ No positions. Starting capital: 4,500 KES → 34.32 USDT via Remitano M-Pesa P2P
 
 ---
 
-## Jul 18 — EOD Snapshot SKIPPED (infra failure)
+## Jul 23 — EOD Snapshot (Day 1, Thursday)
 
-Binance REST API returned HTTP 451 (restricted location) on all endpoints, including
-unauthenticated public ping. No account/positions/orders/price data available — no P&L
-snapshot possible. Not a credentials issue; egress IP/region for this cloud environment
-appears geo-blocked by Binance. ClickUp alert sent. No trades attempted, no data changed.
-Last known baseline remains Day 0 ($10,000.00, 100% cash) until connectivity is restored.
+**Portfolio:** $32.32 | **Cash:** $32.32 (100%) | **Day P&L:** $0 (0.00%) | **Phase P&L:** $0 (0.00%)
+
+| Ticker | Qty | Entry | Price | Day Chg | Unrealized P&L | Stop |
+|--------|-----|-------|-------|---------|----------------|------|
+| — | — | — | — | — | — | — |
+
+**Notes:** No positions. 0 trades today, 0 this week. 100% cash — deployment (75-85%) still pending first entry. No morning-research/execution entries logged today. BTC ref $64,824.93. Account live on MEXC Spot (canTrade=true), USDT free $32.32 / locked $0. No open orders.
 
 ---
 
