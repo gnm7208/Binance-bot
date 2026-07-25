@@ -5,11 +5,12 @@ on:
     branches:
       - 'claude/**'
 
+permissions:
+  contents: write
+
 jobs:
   merge:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -19,8 +20,8 @@ jobs:
 
       - name: Merge bot branch into main
         run: |
-          git config user.email "bot@binance-bot"
-          git config user.name "Bot Merge Action"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
           git fetch origin ${{ github.ref_name }}
           git merge origin/${{ github.ref_name }} --no-ff -m "auto-merge ${{ github.ref_name }}"
           git push origin main
