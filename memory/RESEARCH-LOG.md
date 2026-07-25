@@ -179,40 +179,38 @@ TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify ac
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
 
-## 2026-07-15 — Morning Research
+## 2026-07-16 — Morning Research
 
 ### Account Snapshot
-- **BLOCKED — Day 4 of outage**: `account`, `positions`, `orders` all fail with HTTP 451 "Service unavailable from a restricted location" (same geo-block first hit 2026-07-11, unresolved 4 calendar days straight).
-- Last known state: Day 0 baseline (TRADE-LOG.md) — $10,000.00 USDT, 100% cash, 0 open positions. No trades have been recorded since, so this is still the most current confirmed figure.
-- PERPLEXITY_API_KEY / PERPLEXITY_MODEL also missing from environment — used WebSearch fallback for all market research below (per STEP 3 fallback rule).
-- Trades this week: 0/3 (per TRADE-LOG, no entries recorded).
+- **BLOCKED (Day 5 of outage)**: Binance API still returns HTTP 451 "Service unavailable from a restricted location" on `account`, `positions`, `orders` — unchanged since first flagged 2026-07-11. No routine has successfully pulled account state in the intervening 5 days (no research/execution/midday/summary log entries exist between 07-11 and today).
+- Confirmed the request path uses the session's configured HTTPS proxy (agent proxy active, `/__agentproxy/status` reports enabled) — the 451 is Binance's own geo-restriction on the response, not a local proxy/TLS failure.
+- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 open positions. No trades have executed since — trades this week: 0/3.
+- PERPLEXITY_API_KEY also unset in this environment (empty string) — all queries below used WebSearch fallback per STEP 3 fallback rule.
 
 ### Market Context
-- BTC: ~$62,500–$63,000 (down slightly on the day; June 2026 was BTC's worst month in 4 years, some "green July" seasonal rebound chatter)
-- BTC Dominance: ~56–58%, still elevated (some sources show a brief one-month-low dip to ~54% dip earlier in the month before recovering); CMC Altcoin Season Index 46/100 — Bitcoin Season territory
-- Fear & Greed Index: sources disagree sharply — 22 (Extreme Fear) vs. 44-48 (Neutral); treat as fear-leaning but unconfirmed, same cross-provider divergence as 07-11
-- DXY: ~100.7-100.9, range-bound 100.5-102 for 3 weeks; softer June CPI (3.5% vs 3.8% expected) cooled hike odds, but 9 of 18 FOMC members now pencil in a 2026 hike — hawkish tail risk into the Jul 28-29 FOMC under Fed Chair Warsh
-- Macro: US resumed strikes on Iran / naval blockade reinstated after interim peace deal broke down — fresh Strait of Hormuz tension, risk-off drag on crypto Monday; CLARITY Act 2026 passage odds trimmed to ~48% (Senate cloture math unresolved, White House had wanted July 4 deadline)
-- Sector leaders: DEX (+10.2%) and Lending (+8.8%) led gains this week; Meme -5.5%. YTD: AI +42.9%, Gaming +2.1%, DeFi -25.6%, Layer1 -28% (broad L1 underperformance). AI narrative reviving (DeXe breakout, TAO/NEAR near technical inflections); Solana RWA TVL fresh ATH $3.41B
+- BTC: ~$64,700 (+3.3% 24h), reclaimed $65K intraday on softer June CPI (3.5% YoY vs 4.2% prior) cooling rate-hike odds
+- BTC Dominance: ~56.2–56.5%
+- Fear & Greed Index: readings split 25 (Extreme Fear) to 49–58 (Neutral) depending on provider — treat as Neutral-leaning, sentiment has firmed materially off the 07-11 Fear reading
+- DXY: ~100.6–100.9, easing off early-July highs (~101.4) on softer labor data and cooler inflation print
+- Macro: Fed (Chair Warsh) still signaling higher-for-longer/hawkish despite the softer CPI print; Middle East tension (Hormuz shipping-fee threat) rescinded July 14, easing a geopolitical risk premium on oil/inflation
+- Sector leaders: AI tokens strongest (+42.9% YTD, narrative intact), DeFi mixed but DEX (+10.2%)/Lending (+8.8%) subsegments leading, Hyperliquid (HYPE) still >61% of DeFi index weight and +160% YTD; broad L1 basket weak (-27.9% YTD) though Solana still drawing inflows; gaming modest (+2.1% YTD)
 
 ### On-Chain / Derivatives
-- Could not pull current CoinGlass/Binance funding-rate or OI prints via WebSearch fallback — no live figure (same gap as 07-11 entry); flagged as recurring blind spot while Perplexity access is down.
-- Prior data point (07-11, may be stale): net BTC exchange inflows ~4,933 BTC/7d, Binance largest single inflow (~2,007 BTC) — mildly bearish distribution signal; June 2026 BTC ETF outflows >$1.6B
+- Exchange inflows: net ~4,933 BTC into CEXs over the 7 days to Jul 5, Binance largest single inflow (~2,007 BTC) — same distribution signal noted on 07-11, no fresher on-chain print surfaced via WebSearch
+- Funding rates / OI: not retrieved — Perplexity down and WebSearch didn't surface a current numeric print; needs CoinGlass/Binance futures direct once account access is restored
 
 ### News on Held Positions
-- None — 0 confirmed open positions (per last verified account state).
+- None — 0 open positions (per last confirmed account state, Day 0).
 
 ### Trade Ideas
-1. No new entries proposed — account API still unreachable (451, day 4), so no execution is possible regardless of setup quality. Buy-side gate requires live position count + USDT balance, which we cannot verify.
-2. Watchlist only (unchanged thesis from 07-11, re-confirmed by this week's sector data): SOL (L1 momentum via RWA growth, though broader L1 sector is down ~28% YTD — mixed signal), TAO (AI narrative strength, DeXe/NEAR also near breakouts), DEX/Lending-sector names (best-performing categories this week) — need fresh catalyst + live levels once account access is restored.
+1. No new entries proposed — account API is unreachable, so no execution is possible regardless of setup quality (Buy-Side Gate requires live balance/position verification).
+2. Watchlist only: HYPE (DeFi revenue/index-weight leader, +160% YTD — confirm Binance Spot listing/liquidity once live), AI-sector basket (TAO etc. — narrative strongest sector YTD), SOL (still drawing altcoin inflows despite weak broad-L1 basket).
 
 ### Risk Factors
-- **Binance API geo-blocked (451), now 4 consecutive days — escalating operational risk.** No account visibility, no order placement/cancellation/stop management. This is no longer a one-off outage; needs infra/access investigation, not just a daily retry.
-- Geopolitical: renewed US-Iran conflict / Strait of Hormuz risk — active risk-off driver for crypto
-- Fear & Greed readings fear-leaning but inconsistent across providers — low-conviction signal either way
-- DXY range-bound with hawkish 2026-hike tail risk into July 28-29 FOMC — potential headwind
-- Layer1 sector down ~28% YTD — avoid until momentum turns; DEX/Lending and AI are the week's relative strength
-- Perplexity API key missing — research quality degraded to WebSearch-only until credential is restored
+- **Binance API geo-blocked (451) — now a 5-day-plus operational outage.** Zero account visibility, zero order/stop management capability. This has graduated from a one-day blip to a standing failure of the core trading loop.
+- No routine (research/execution/midday/summary) appears to have logged a run between 2026-07-11 and 2026-07-16 — gap needs owner attention independent of the API issue.
+- PERPLEXITY_API_KEY empty in this environment — research quality degraded to WebSearch-only until fixed.
+- Fed still hawkish under Warsh despite softer CPI — policy whipsaw risk remains a headwind for risk assets.
 
 ### Decision
-TRADE: none. HOLD — mandatory: Binance API unreachable (451) for a 4th straight day, cannot verify account state or place/manage orders. Escalating via ClickUp given outage duration. Re-run research/execution once connectivity is confirmed restored.
+TRADE: none. HOLD — mandatory: Binance API still unreachable (451), 5+ days running. Cannot verify account state or place/manage orders. ClickUp alert sent (5-day escalation). Re-run research/execution once connectivity is confirmed restored.
