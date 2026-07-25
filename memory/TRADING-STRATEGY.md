@@ -86,4 +86,10 @@ bash scripts/mexc.sh order \
 
 ## Notes from Experience
 (Updated weekly; see WEEKLY-REVIEW.md for context)
-- No entries yet — bot launching today
+- Week 1 (ending 2026-07-19): 0 trades. Grade F. Root cause is OPERATIONAL, not strategic —
+  exchange API geo-blocked from this environment. Binance = HTTP 451; migrated to Bybit,
+  which returns HTTP 403 (CloudFront geo-block) on both auth and public endpoints. Bot has
+  never traded. No trading rule is at fault; connectivity must be fixed before strategy matters.
+- **Reachability gate:** every run must first confirm the exchange API responds
+  (`bash scripts/bybit.sh price BTCUSDT`). If it fails, HALT, alert, and place no orders —
+  do not migrate exchanges again without verifying the new venue is reachable from this IP.
