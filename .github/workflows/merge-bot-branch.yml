@@ -19,9 +19,11 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Merge bot branch into main
+        env:
+          BRANCH: ${{ github.ref_name }}
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          git fetch origin ${{ github.ref_name }}
-          git merge origin/${{ github.ref_name }} --no-ff -m "auto-merge ${{ github.ref_name }}"
+          git fetch origin "$BRANCH"
+          git merge "origin/$BRANCH" --no-ff -m "auto-merge $BRANCH"
           git push origin main
