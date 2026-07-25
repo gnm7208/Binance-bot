@@ -174,25 +174,42 @@ TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify ac
 ## 2026-07-19 — Morning Research
 
 ### Account Snapshot
-- **BLOCKED**: Binance API returned HTTP 451 "Service unavailable from a restricted location" on `account`, `positions`, `orders` — confirmed via wrapper calls and direct curl to `/api/v3/ping`. Identical failure to 2026-07-11, now unresolved for 8 days.
-- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 open positions.
-- Trades this week: 0/3 (per TRADE-LOG, no entries since launch).
-- ClickUp alert sent naming the outage and its duration.
+- **BLOCKED**: `BYBIT_API_KEY` and `BYBIT_SECRET_KEY` are **empty in the cloud routine environment** — `scripts/bybit.sh` aborts before any request. No account, positions, orders, or stop visibility. Cannot place/cancel/manage orders.
+- `PERPLEXITY_API_KEY` also empty → research done via WebSearch fallback (no Perplexity).
+- Last known state (Day 0 baseline, TRADE-LOG): $10,000.00 USDT, 100% cash, 0 open positions. **Still 0 trades placed on Day 8** — system has never been able to execute since launch (Binance 451 → migrated to Bybit → creds not configured).
 
 ### Market Context
-- Not researched — execution halted at the account-state gate before market research was needed. PERPLEXITY_API_KEY also unset in this environment (would require WebSearch fallback).
+- BTC: ~$64,376 (roughly flat 24h; mid-July range ~$63,900–$64,900)
+- ETH: ~$1,840 (−0.75% 24h, laggard)
+- BTC Dominance: ~56–60% (≈57% consensus)
+- Total crypto market cap: ~$2.19T
+- Fear & Greed: mixed across providers 22–54 — **Fear-leaning (~25–40)**, driven by geopolitics, thin volume, pending US inflation data
+- DXY: ~100.6–100.9 (firm but easing from early-July ~101.4 highs)
+- Macro: FOMC Jul 28–29 — ~65% priced for **hold** at 3.50–3.75%; weak June payrolls (57k) pushed any hike odds to September; risk-neutral backdrop
+- Sector leaders: alts **stabilizing but no altseason** — BTC still commands flows; SOL = risk-on tell (watch for SOL outperformance as fear-easing signal); ETH ETFs +$36.7M small inflows
+- Catalyst: CLARITY Act (market-structure bill) optimism lifting BTC/ETH/XRP sentiment
 
 ### On-Chain / Derivatives
-- N/A — blocked.
+- Funding: near-neutral/mildly positive (~0.003%) — leverage washed out vs early-2026 froth; low cascade risk
+- Open interest: BTC futures ~$48.9B (+3.5%), balanced positioning
+- ETF flows: recent 2-day +$191M bounce reversing a 10-day −$2.73B streak; **net outflows still dominate 7d/30d**
+- On-chain: subdued retail demand, negative Coinbase premium, low chain activity → caution
 
 ### News on Held Positions
-- None — 0 open positions (per last known state).
+- None — 0 open positions.
 
 ### Trade Ideas
-- None. No execution is possible regardless of setup quality while account access is unavailable.
+_No executable ideas — account is unreachable (empty Bybit creds). Watchlist only, pending fixed connectivity + live quotes:_
+1. SOL — thesis: first mover if fear eases / altseason builds; risk-on proxy. Enter only on confirmed BTC-relative strength. Levels TBD on live quotes.
+2. ETH — thesis: ETF inflows resuming, stablecoin/RWA platform narrative; but currently a laggard. Wait for reclaim of relative strength vs BTC.
+3. BTC — thesis: dominance high + low leverage = cleanest risk-on vehicle if CLARITY Act catalyst lands. Default beta.
 
 ### Risk Factors
-- **Binance API geo-blocked (451) from this execution environment — unresolved for 8+ days (first seen 2026-07-11).** This is now a recurring operational failure, not a one-off. No account visibility, no order placement/cancellation, no stop management possible.
+- **Bybit credentials not set in cloud routine env — top operational risk.** The entire bot cannot trade; morning-execution (9 AM) will fail. 8 days live, still $0 deployed. Escalating via ClickUp.
+- Fear-leaning sentiment + choppy range-bound BTC — no strong directional edge
+- Net ETF outflows / subdued retail — demand-side weakness
+- DXY firm + hawkish-lean Fed — risk-asset headwind
+- Thin summer volume amplifies whipsaw
 
 ### Decision
-TRADE: none. HOLD — mandatory: Binance API unreachable (451), same outage as 2026-07-11, still unresolved. Escalated via ClickUp. Re-run once connectivity is confirmed restored.
+TRADE: none. HOLD — mandatory: Bybit API credentials missing from cloud environment; cannot verify account or place/manage orders. Even absent the outage, sentiment is Fear-leaning with no clear edge → HOLD is the correct discretionary call. Fix credential configuration before 9 AM execution routine.
