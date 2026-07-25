@@ -171,39 +171,43 @@ sector today and worth first look once account access is restored.
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
 
+---
+
 ## 2026-07-19 — Morning Research
 
 ### Account Snapshot
-- **BLOCKED**: Bybit API unreachable. `bybit.sh account` and direct `curl https://api.bybit.com/v5/market/time` both return **HTTP 403 CloudFront** — "distribution is configured to block access from your country" (proxy egress POP `IAD61`, US-East). Bybit does not serve US IPs; this is a hard geo-block, not transient. Same class of failure as the 07-11 Binance 451 — now the **second exchange blocked** from this environment.
-- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 open positions. No unmanaged stop risk, but zero trading capability.
-- Perplexity key not set → research done via WebSearch/WebFetch fallback. ClickUp wrapper also erroring (500 / key not configured).
-- Trades this week: 0/3 (no entries ever placed).
+- **BLOCKED**: Bybit API returns HTTP 403 via CloudFront — "The Amazon CloudFront distribution is configured to block access from your country." Hits both authed (`account`, `positions`, `orders`) and public (`price`, `quote`) endpoints. Confirmed via direct curl to `/v5/market/time`.
+- **The Binance→Bybit migration did NOT restore exchange access** — same geo-block wall, different exchange (Binance was 451, Bybit is 403/CloudFront). Root cause is the cloud exit IP's country, not the exchange.
+- Perplexity also unavailable (PERPLEXITY_API_KEY not set in cloud env) — research via WebSearch fallback only.
+- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 open positions → **no open risk exposure, no stops to manage.**
+- Trades this week: 0/3 (no entries yet).
 
 ### Market Context
-- BTC: ~$64,376 (roughly flat 24h), total crypto mcap ~$2.27T
-- ETH: ~$1,867 (+1.44% 24h)
-- BTC Dominance: **57.1%** (up from ~54–56% on 07-11 — BTC leading, alts losing relative ground)
-- Fear & Greed Index: **28 (Fear)**
-- DXY: ~100.6 (easing from early-July high ~101.4; softer labor data)
-- Macro: Fed held 3.50–3.75% (Jun 17). Next FOMC Jul 28–29 (no SEP). Markets price ~12% hike odds in July, ~56% by September; hawkish lean persists.
-- Sector leaders (weekly): DeXe (DEXE) +61% to record $49.43; Zcash (ZEC) and Uniswap (UNI) double-digit gains. Dated catalysts: Solana, Hyperliquid (HYPE), Zcash. H2 narratives: SUI, ONDO, LINK, RNDR. Themes: RWA, AI infra, DeFi.
+- BTC: ~$64,600 (rebounded from <$58k earlier in July); options flow betting $72k by month-end
+- ETH: ~$1,737 (-2.9% 24h) · SOL: ~$77.28 (-5.2% 24h) · XRP: ~$1.09 (-2.9% 24h) — alts broadly red
+- BTC Dominance: ~58.8% (rising; total crypto mcap ~$1.30T) — capital rotating INTO BTC, OUT of alts
+- Fear & Greed Index: ~36 (Fear); range 27–46 across trackers mid-July → cautious sentiment
+- DXY: ~100.7 (eased from ~101.4 early July); hawkish Waller put a July hike back on the table, but market ~65% odds Fed HOLDS on Jul 29
+- Macro: inflation 4.2% (argues tighten) vs weak 57k payrolls (argues hold) — Fed split; Middle East/Iran tension adding risk-off + energy-inflation pressure
+- Sector leaders: Polkadot ecosystem, XRP Ledger ecosystem (only green pockets today)
 
 ### On-Chain / Derivatives
-- Spot BTC ETFs: 4-day net-inflow streak; +$132.3M on Jul 17 (IBIT +$136.5M led); cumulative +$51.4B — mildly supportive.
-- BTC perp OI rising with positive funding = leverage building, but **not backed by spot demand** (spot ETFs saw ~$7B outflows May–Jun) — squeeze-risk / fragile setup either direction.
+- Spot BTC ETF inflows: +$132M/day; ETH products +$36.7M — institutional bid intact despite volatility
+- Funding/OI: no real-time print (Perplexity down, exchange geo-blocked) — would need CoinGlass direct
 
 ### News on Held Positions
 - None — 0 open positions.
 
 ### Trade Ideas
-1. No new entries possible — Bybit account unreachable (geo-block); execution impossible regardless of setup quality.
-2. Environment even so favors caution: dominance rising to 57%, F&G in Fear, leverage-led (not spot-led) derivatives = poor alt-entry conditions. Best posture is patience.
-3. Watchlist once connectivity restored: SOL, HYPE, ZEC (fresh momentum) — require dated catalyst + live levels before any entry.
+1. **No entries possible** — exchange API geo-blocked, cannot place or manage orders regardless of setup quality.
+2. Environment is also poor for alt entries even if live: rising BTC dominance + alts red + Fear sentiment + geopolitical risk-off = not a momentum window for alts. BTC itself is the relative strength but strategy is spot swing on alts/sectors.
+3. Watchlist for when access is restored: BTC (relative strength, ETF bid, $72k options target) as a dominance-play anchor; monitor Polkadot/XRP ecosystems if rotation continues.
 
 ### Risk Factors
-- **Bybit API geo-blocked (403 CloudFront) from this cloud environment — highest-priority operational risk.** No account visibility, no order placement/cancellation, no stop management. Two consecutive exchanges (Binance, Bybit) blocked → the cloud egress region (US) cannot reach either exchange's retail API. Needs a fix: non-US egress route, or an exchange that serves the proxy's region.
-- Rising BTC dominance + Fear sentiment — alts underperforming, risk-off tilt.
-- Derivatives leverage building without spot support — volatility / liquidation risk.
+- **Exchange API geo-blocked from this execution environment — highest-priority operational risk, now confirmed across BOTH Binance and Bybit.** The migration did not fix it; the challenge cannot run from this cloud IP. Needs an infra fix (proxy/VPN/allowed region or a different exit), not another exchange swap.
+- Rising BTC dominance — alt headwind
+- Fear sentiment + Middle East geopolitical risk — fragile risk appetite
+- Hawkish Fed tail risk (Waller) — DXY/rates headwind for crypto
 
 ### Decision
-TRADE: none. HOLD — mandatory: Bybit API unreachable (403 geo-block), cannot verify account or place/manage orders. Operational blocker escalated. Re-run once exchange connectivity from this environment is resolved.
+TRADE: none. HOLD — mandatory: Bybit API geo-blocked (403 CloudFront), cannot verify account or place/manage orders. No open positions, so no exposure at risk. Escalating: exchange access is an infra/geo problem that a second exchange migration did not solve. Re-run once a non-geo-blocked route to a spot exchange is in place.
