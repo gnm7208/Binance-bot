@@ -217,41 +217,38 @@ TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify ac
 ## 2026-07-21 — Morning Research
 
 ### Account Snapshot
-- **BLOCKED**: MEXC authenticated API returns `code 700007 "No permission to access the endpoint"` (HTTP 400) on `account`/`positions`/`orders`. Public endpoints (price, ticker, time, ping) all work fine, so it's not a geo-block — it's an API-key permission / IP-whitelist issue (key lacks Spot read/trade scope, or this run's egress IP isn't whitelisted on the MEXC key).
-- Env vars ARE present (MEXC_API_KEY, MEXC_SECRET_KEY, MEXC_BASE_URL set). So it's the key's config on MEXC's side, not a missing secret.
-- Last known state (TRADE-LOG Day 0 baseline): $10,000.00 USDT, 100% cash, 0 open positions. No trades ever executed.
-- Trades this week: 0/15. Circuit breaker: NOT active (0 closed trades).
+- **MEXC API now reachable** (canTrade:true, SPOT) — the Binance 451 geo-block that halted the bot on 2026-07-11 is resolved post-migration.
+- **CRITICAL: MEXC account is EMPTY.** Free USDT: $0.00 | balances: [] | open positions: 0. Day-0 baseline was $10,000 (Binance). Capital has NOT been funded/transferred to the MEXC spot account. No trade can be placed until funded.
+- Trades this week: 0/15.
 
 ### Market Context
-- BTC: ~$65,300–66,300 (+0.8% to +2.1% 24h) — rebounded off ~$64k support back above $65k; momentum weakening, volume declining
-- ETH: ~$1,905–1,935 (+1.7% to +2.3% 24h)
-- SOL: $78.37 (+1.6%) | BNB: $576 (+1.0%)
-- BTC Dominance: 56.3% (firm; capital not decisively rotating to alts)
-- Total crypto market cap: ~$2.28–2.31T
-- Fear & Greed: **25 (Extreme Fear)** — deteriorating from 29 (Fear) yesterday
-- DXY: strong-dollar backdrop persists (BTC/DXY correlation ~ -0.6 to -0.8 = headwind)
-- Macro: FOMC **Jul 29** (Warsh) — held 3.50–3.75% in Jan & Mar, data-dependent, no urgency to cut. Geopolitical tensions weighing on risk assets (equities down 3rd straight session).
-- Catalyst: CLARITY Act dispute easing (White House + Senate R's agreed on ethics provisions) — potential risk-appetite tailwind
+- BTC: ~$66,423 (MEXC live) / ~$64–65.3k (aggregators); +~1% 24h. Sources diverge ~2%.
+- ETH: ~$1,940 (MEXC live)
+- BTC Dominance: ~56.3–56.5% — still Bitcoin Season; Altcoin Season Index ~30–35, no altseason.
+- Fear & Greed: mixed — 25 Extreme Fear (some trackers, dropping from 29) to 46 Neutral (CFGI). Fear-leaning.
+- Total crypto mcap: ~$2.28–2.31T
+- Macro: Fed funds 3.50–3.75%; rate cuts (Q3) remain the primary risk-asset unlock. DXY not freshly retrieved.
 
 ### On-Chain / Derivatives
-- BTC futures OI: $48.93B (stable, +3.9% 30d) — no leverage blow-off building
-- Funding: neutral ~0.0043%/day (1.56% annualized); long/short 54/46 (1.18x) — not overcrowded, no contrarian signal
-- ETF flows: short-term recovery (~$191M in over 2 days mid-July, +$273M recent) BUT structural headwind intact — YTD net **-$5.4B**, 30d **-$4.1B**. Institutions still net-reducing.
+- Spot BTC ETFs: +$273M over 2 weeks, breaking an 8-week / >$8B outflow streak; wk Jul 13–17 +$75.7M (Fri +$132.3M, BlackRock IBIT led +$136.5M). Recovery real but thin vs prior exodus.
+- Funding rates: neutral. Retail longs below average.
+- Open interest: stable, BTC futures OI +3.52% to $48.9B — balanced positioning.
+- Structural headwind: 30-day ETF net still ~-$4.1B.
 
 ### News on Held Positions
-- None — 0 open positions.
+- None — 0 open positions, $0 capital.
 
-### Trade Ideas (WATCHLIST ONLY — execution blocked by API)
-1. ADA — catalyst: first community-led hard fork completed today (+5.6%). Spot ADAUSDT. Wait for pullback/hold above breakout; entry on retest, stop -8%, target +10% cap. Sector: L1.
-2. WLD — catalyst: Grayscale Worldcoin ETF filing (+4.75%). Momentum name; size small, stop -8%. Sector: AI/identity. Higher volatility risk.
-3. SOL — L1 leader holding $78 above support; tokenized-stocks + prediction-market growth. Entry on strength above $79, stop ~$72 (-8%), target +10%. Sector: L1.
-- Avoid the meme spikes (JIMOTHY +122%, PONS +72%) — outside strategy.
+### Trade Ideas (WATCHLIST ONLY — no capital to execute)
+1. SOL — high-perf L1 leadership; sector in momentum. Wait for funding + a clean catalyst; entry on strength above prior week high, stop 8–10% below, target 2:1.
+2. LINK — infra/oracle + RWA tailwind; accumulate on dips, stop 8% below entry.
+3. ONDO — RWA tokenization narrative (strongest structural sector); size small, stop 8%.
+   All gated behind: (a) account funding, (b) F&G confirmation, (c) BTC dominance not spiking.
 
 ### Risk Factors
-- **MEXC authenticated API blocked (700007) — highest-priority operational risk.** No account visibility, no order placement, no stop management. Same class of blocker as the prior Binance 451; migration didn't fix execution.
-- Extreme Fear (25) + weakening BTC momentum + declining volume + risk-off geopolitics = poor entry environment
-- Structural ETF outflows (-$5.4B YTD) and firm DXY — macro headwinds intact
-- FOMC Jul 29 event risk approaching
+- **$0 balance on MEXC — bot is non-operational until funded. Highest-priority issue.**
+- Extreme Fear / fragile sentiment — poor risk-on backdrop for new alt entries.
+- BTC dominance 56%+ — alts underperforming; single-sector rallies isolated.
+- Thin ETF recovery + net 30-day outflows — demand not confirmed.
 
 ### Decision
-**HOLD — no entries.** Two independent reasons: (1) mandatory — MEXC authenticated API unreachable (700007), cannot verify state or place/manage orders; (2) even if live, Extreme Fear + fading momentum + risk-off macro offer no strong edge. Watchlist (ADA/WLD/SOL) parked pending API fix. Operational blocker escalated.
+TRADE: none. HOLD — mandatory: MEXC account holds $0 (unfunded). API works but there is no capital to deploy. Even if funded, backdrop (Extreme Fear, high BTC dominance) favors patience. Fund account, then re-run execution.
