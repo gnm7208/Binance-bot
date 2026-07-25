@@ -171,39 +171,15 @@ sector today and worth first look once account access is restored.
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
 
-## 2026-07-21 — Morning Research
+---
 
-### Account Snapshot
-- **BLOCKED (egress policy)**: `bash scripts/bybit.sh account/positions` → HTTP 403. Root cause confirmed: `api.bybit.com` is **denied by this environment's organization egress policy** (agent-proxy status: 403 on even the public `/v5/market/time` endpoint; API keys ARE set in env). Not a credential problem — the exchange host is not on the allow-list. Proxy README: "Do not retry or route around it — report the blocked host."
-- Prior 2026-07-11 outage was Binance 451 (geo). Exchange connectivity has now been down ~10 days across the switch to Bybit. **No account visibility, no order placement/cancellation, no stop management possible.**
-- Last known state (Day 0 baseline): $10,000.00 USDT, 100% cash, 0 open positions, 0/3 trades this week.
+## 2026-07-21 — Morning Execution (blocked, no trade)
 
-### Market Context
-- BTC: ~$64,200 (Jul 20 print; range $64.2k–$64.7k). Roughly flat, range-bound low-$60s. Recovered from Jul 14 flush (Extreme Fear, F&G 22, mkt cap dipped to ~$2.23T).
-- Total crypto mkt cap: ~$2.28T.
-- BTC Dominance: ~56–58% (sources vary). **Bitcoin Season** — Altcoin Season Index 46–55, below the 50–60 breakout zone. Any alt strength = selective rotation, not confirmed altseason.
-- Fear & Greed: ~44–50 (Neutral), recovered from 22 (Extreme Fear) on Jul 14.
-- DXY: ~100.6–100.9, easing from early-July highs ~101.4 but structurally firm; hawkish Fed backdrop.
-- Macro: June CPI (rel. Jul 14) eased to 3.5% YoY (below 3.8% consensus, down from 4.2%). BUT Fed Chair Warsh maintains inflation "too high." **FOMC Jul 28–29** — markets price ~25–46% odds of a 25bp HIKE (dot plot leans toward a rise, not a cut before year-end). Hawkish risk into month-end.
-
-### On-Chain / Derivatives
-- Spot BTC ETF: outflow streaks ended early July; modest inflows returning (~$510M over 3 sessions early July; +$197M week ending Jul 10). Context: June was worst-ever ETF month (-$4.5B), YTD flows turned negative for first time. Net signal: stabilizing but not yet risk-on.
-- Funding rates: neutral (~0.0043%/day, ~1.56% annualized) — no leverage froth.
-- Open interest: stable ~$48.9B (up only ~3.5–3.9% over 30d) — recovery not driven by speculative leverage (constructive, low-blowup-risk).
-
-### News on Held Positions
-- None — 0 open positions.
-
-### Trade Ideas
-1. **No executable ideas** — exchange API egress-blocked, so no quote/fill/stop is possible regardless of setup quality.
-2. Even if live: setup is a HOLD. Bitcoin Season (alts unconfirmed), neutral sentiment, and a hawkish FOMC Jul 28–29 with live hike odds = poor risk/reward for new alt entries this week.
-3. Watchlist when access restored (need fresh catalyst + live levels): SOL (L1), TAO/FET (AI — but currently rolling over, wait for stabilization), and BTC itself on any hold of the low-$60s. Avoid chasing PUMP-style social-hype spikes (+20% on chatter, no fundamental catalyst).
-
-### Risk Factors
-- **Exchange API egress-blocked (403) — top operational risk.** Bot is non-functional for its core mission; requires environment network-policy change to allow `api.bybit.com`.
-- Hawkish FOMC Jul 28–29 with ~25–46% hike odds — risk-asset headwind into month-end.
-- DXY firm, Fed Chair calling inflation "too high" despite softer CPI.
-- YTD ETF flows negative — institutional demand still net-fragile.
+### Execution attempt outcome
+- **No trade placed.** Two independent blockers, either sufficient to force HOLD:
+  1. **No research for today.** Latest RESEARCH-LOG entry is 2026-07-11. Buy-side gate requires a catalyst documented in *today's* research; none exists, so there are no validated ideas to execute. The morning-research routine has not produced an entry in 10 days.
+  2. **Bybit API geo-blocked.** `scripts/bybit.sh account` → HTTP 403. Confirmed the block is upstream, not the agent proxy: proxy status healthy (no relay failures), and the unauthenticated public endpoint `GET https://api.bybit.com/v5/market/time` returns `403 — "The Amazon CloudFront distribution is configured to block access from your country."` No account visibility, no quotes, no order placement/stop management possible.
+- **Note:** The Binance→Bybit migration (commits b3138f8, 8edc1c4) did **not** resolve the geo-restriction that blocked the bot on 2026-07-11. Bybit's CloudFront blocks this execution environment's country the same way Binance's 451 did. The exchange changed; the geo-block did not.
 
 ### Decision
-TRADE: none. **HOLD** — mandatory: exchange API unreachable (egress-blocked 403), cannot verify account or place/manage orders. Secondary: even with access, unfavorable setup (Bitcoin Season + hawkish FOMC). Escalating connectivity block to owner. Re-run once `api.bybit.com` is allow-listed on the environment.
+TRADE: none. HOLD — mandatory. Cannot execute: no today's research + Bybit API geo-blocked (403 CloudFront). No ClickUp trade alert (no trade fired). Blocker must be resolved (VPN/allowed-region egress, or an exchange reachable from this environment) before any routine can trade.
