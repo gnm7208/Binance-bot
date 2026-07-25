@@ -253,3 +253,41 @@ Tape is red into FOMC — only relative-strength names that are GREEN today qual
 
 ### Decision
 HOLD-biased. No high-conviction entry on a red pre-FOMC tape. If 9AM execution confirms a candidate (BANK first) still printing ≥ +2% 24h with clean structure, ONE small starter (~$6, ≤20%) with immediate −10% stop-limit is acceptable; otherwise stay 100% cash into FOMC. Do not deploy broadly before Jul 29.
+
+## 2026-07-25 — Intraday Research Update
+
+### Account Snapshot
+- Portfolio: $32.32 USDT | Free: $32.32 (100%) | Positions: 0 | Trades this week: 0/25
+- MEXC Spot API healthy — reachability gate PASS (`price`/`quote`/`balance` all responding).
+
+### Market Context (live MEXC 24h)
+- BTC: $64,149 (−1.83% 24h) — FAILS momentum gate
+- ETH: $1,860 | SOL: $74.24 (−2.01% 24h) — FAILS gate
+- BTC Dominance: ~56.4% (rising) | Total mcap ~$2.28T (−1.1% 24h) — broad risk-off, capital defensive in BTC
+- Fear & Greed: 27 (Fear, alt.me) / 46 (Neutral, CFGI) — Fear-to-Neutral, unchanged from AM
+- Macro: **FOMC Jul 28–29** live event risk (~33% hike tail). Stance into it: capital-preservation.
+
+### Movers Passing Momentum Gate (24h ≥ +2%) — all EXTENDED/parabolic
+- **DEXE +144–158% 24h** ($5.15): vertical blow-off. Chasing = buying the exact top; NO entry.
+- **BANK (Lorenzo) +29.6% 24h** ($0.322): extending a multi-day ATH run (prior +98% day). Late-stage, extended.
+- **ZRO (LayerZero) +5–9% 24h** ($0.855): bouncing DESPITE a ~$20M token unlock Jul 20 — that's a supply overhang (headwind), not a bullish catalyst. Rally suspect.
+
+### On-Chain / Derivatives
+- Perplexity key unset (WebSearch fallback) — no live funding/OI print.
+- Rising BTC dominance + red tape = defensive rotation; alt strength today is isolated single-name pumps, not sector breadth.
+
+### News on Held Positions
+- None — 0 open positions.
+
+### Trade Ideas
+1. **No qualifying entry.** The only names clearing the +2% gate (DEXE, BANK, ZRO) are all late/parabolic moves — mechanically pass the rule but violate risk sense (chasing extension into a binary FOMC). Buying a +150%/+30% candle with a −10% stop = high whipsaw odds.
+2. **ZRO** specifically DISQUALIFIED on thesis: up into a fresh $20M unlock = distribution risk, not accumulation.
+3. Majors (BTC/SOL) flat-to-red — no momentum, no entry.
+
+### Risk Factors
+- FOMC Jul 28–29, ~33% hike tail — binary event 3 sessions out; avoid size before it.
+- All qualifying movers are extended pumps — reversal risk high, poor R:R at these levels.
+- Tiny account ($32.32); 20% cap ≈ $6.46 — fees/slippage a heavy % drag, esp. chasing volatile pumps.
+
+### Decision
+HOLD — stay 100% cash into FOMC. No clean, non-extended setup passes the gate. Reassess after the Jul 29 FOMC statement; do not chase parabolic single-name pumps in the interim.
