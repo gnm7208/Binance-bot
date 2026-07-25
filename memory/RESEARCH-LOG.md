@@ -212,41 +212,20 @@ sector today and worth first look once account access is restored.
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
 
-## 2026-07-23 — Morning Research
+## 2026-07-23 — Morning Execution (no-op)
 
-### Account Snapshot
-- MEXC API healthy (public + authenticated calls succeed).
-- Total portfolio value: **$32.32 USDT** (100% cash), 0 open positions, 0 open orders.
-- **Capital note:** live MEXC balance ($32.32) is far below the $10,000 baseline in TRADE-LOG (Binance-era). No trades have ever been logged, so this is an unfunded/underfunded account, not a drawdown. At $32, max position (20% = ~$6.46) is below viable trade size — meaningful trading is not possible until the account is funded.
-- Trades this week: 0/25.
+### Result
+NO TRADE. Execution ran but had nothing to act on.
 
-### Market Context
-- BTC: $65,726 (−0.87% 24h)
-- ETH: $1,923.94 (−0.40% 24h)
-- SOL: $77.64 (−0.67% 24h) · XRP: $1.136 (−0.38%) · LINK: $8.62 (−0.97%) · SUI: $0.763 (−0.77%)
-- BTC Dominance: ~56–60% (sources vary; ~56.3% TradingView-Hub, higher elsewhere) — alt-season index only ~30–35, no altseason
-- Fear & Greed: ~41–45 (Fear/Neutral, mixed across providers)
-- DXY: 100.59 (hawkish-Fed vs soft-CPI tug-of-war)
-- Macro: FOMC Jul 28–29, funds rate 3.50–3.75%; committee split, ~25–46% odds of a 25bp HIKE under Chair Warsh ("inflation too high"). June CPI eased to 3.5% YoY (core 2.6%). Net: risk-off headwind into the meeting.
-- Sector leaders (relative): AI, RWA tokenization, DeFi, high-performance L1s. SOL highest-momentum large-cap (Alpenglow finality upgrade narrative).
+### Why
+- **No research entry for today.** Last research is 2026-07-11 (12 days ago). Buy-side gate requires a catalyst documented in *today's* RESEARCH-LOG — none exists, so no buy is permissible. Zero valid trade ideas to validate/execute.
+- Morning-research appears to have produced/committed nothing for 12 days despite Bybit→MEXC migration commits in that window — pipeline likely stale/not firing.
 
-### On-Chain / Derivatives
-- No live funding/OI print (Perplexity key unset → WebSearch fallback; CoinGlass not queried). Broad tape is flat-to-down, consistent with pre-FOMC de-risking.
+### Account state (MEXC, live — API now reachable, no longer 451)
+- Free USDT: **$32.32** | Locked: $0 | Open positions: 0
+- **Discrepancy:** memory files (TRADE-LOG Day 0) still claim ~$10,000 baseline; live account holds $32.32. Needs human review — capital moved, prior loss, or account mismatch across Binance→Bybit→MEXC migration.
 
-### News on Held Positions
-- None — 0 open positions.
-
-### Trade Ideas
-- **None actionable today.** Two independent blockers:
-  1. **Momentum gate fails everywhere** — every major (BTC/ETH/SOL/XRP/LINK/SUI) is negative on 24h; nothing clears the ≥ +2% filter and no strong confirmed catalyst justifies a counter-trend entry into FOMC.
-  2. **Insufficient capital** — $32.32 total cannot fund a compliant position.
-- Watchlist for when funded + momentum returns: **SOL** (L1 momentum leader, Alpenglow catalyst), **ETH** (strongest large-cap alt on fundamentals), **LINK/ONDO** (RWA/oracle narrative). Require ≥ +2% 24h and a dated catalyst before entry.
-
-### Risk Factors
-- **Underfunded account ($32.32) — cannot execute the strategy; needs deposit or baseline reconciliation.**
-- FOMC Jul 28–29 with live hike risk (~25–46%) — event risk, favors staying flat.
-- DXY firm + hawkish Warsh — persistent headwind for risk assets.
-- Flat/negative tape, no altseason (alt-index 30–35) — thin momentum edge.
-
-### Decision
-HOLD — no entries. Momentum filter fails across all majors AND account is underfunded ($32.32 vs $10k baseline). No trade meets the buy-side gate. Re-evaluate once account is funded and a name clears ≥ +2% 24h with a dated catalyst; stay flat through FOMC (Jul 28–29).
+### Action taken
+- Placed no orders (correct per rules).
+- No ClickUp notification (no trade fired).
+- Flagged research-pipeline gap and account-balance discrepancy for follow-up.
