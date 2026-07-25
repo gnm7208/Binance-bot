@@ -212,43 +212,43 @@ sector today and worth first look once account access is restored.
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
 
----
-
-## 2026-07-21 — Morning Research
+## 2026-07-22 — Morning Research
 
 ### Account Snapshot
-- **MEXC API now reachable** (canTrade:true, SPOT) — the Binance 451 geo-block that halted the bot on 2026-07-11 is resolved post-migration.
-- **CRITICAL: MEXC account is EMPTY.** Free USDT: $0.00 | balances: [] | open positions: 0. Day-0 baseline was $10,000 (Binance). Capital has NOT been funded/transferred to the MEXC spot account. No trade can be placed until funded.
+- MEXC API reachable (SPOT, canTrade=true). Binance 451 issue resolved via migration to MEXC wrapper.
+- **Free USDT: $0.00 — account UNFUNDED. 0 open positions, empty balances.** No execution possible regardless of setup quality.
 - Trades this week: 0/15.
 
 ### Market Context
-- BTC: ~$66,423 (MEXC live) / ~$64–65.3k (aggregators); +~1% 24h. Sources diverge ~2%.
-- ETH: ~$1,940 (MEXC live)
-- BTC Dominance: ~56.3–56.5% — still Bitcoin Season; Altcoin Season Index ~30–35, no altseason.
-- Fear & Greed: mixed — 25 Extreme Fear (some trackers, dropping from 29) to 46 Neutral (CFGI). Fear-leaning.
-- Total crypto mcap: ~$2.28–2.31T
-- Macro: Fed funds 3.50–3.75%; rate cuts (Q3) remain the primary risk-asset unlock. DXY not freshly retrieved.
+- BTC: ~$66,321 (live MEXC) — first push above $66k since Jun 17, recovering on institutional demand
+- ETH: ~$1,931 (live MEXC) — notably weak vs BTC; ETH/BTC underperforming, laggard
+- BTC Dominance: ~56.4% — elevated; capital NOT yet rotating into alts
+- Fear & Greed: inconsistent across providers (29 on Jul 20 → some show 72 Jul 22, others 34/46). Treat as Neutral, improving-but-unconfirmed. Not confirmed Greed.
+- Altcoin Season index: 55/100 — highest in months, but mixed follow-through
+- DXY: strong; would reverse (crypto tailwind) only if Fed pivots to easing
+- Macro: **FOMC meeting late July = event risk.** 5 straight days of spot BTC ETF inflows (~$727M, BlackRock IBIT leading $116.5M); total BTC ETF AUM > $79B
+- Sector notes: AI tokens weak today (FET -2.9%, TAO -2.6%); DePIN/AI mixed; PUMP social-driven memecoin surge. Majors/BTC leading, alts lagging.
 
 ### On-Chain / Derivatives
-- Spot BTC ETFs: +$273M over 2 weeks, breaking an 8-week / >$8B outflow streak; wk Jul 13–17 +$75.7M (Fri +$132.3M, BlackRock IBIT led +$136.5M). Recovery real but thin vs prior exodus.
-- Funding rates: neutral. Retail longs below average.
-- Open interest: stable, BTC futures OI +3.52% to $48.9B — balanced positioning.
-- Structural headwind: 30-day ETF net still ~-$4.1B.
+- BTC ETF: 5-session inflow streak, ~$727.3M total; last session +$226.9M (best since Jul 6) — bullish institutional demand
+- Funding rate: ~0.0043%/day (neutral, ~1.56% annualized) — no overheating, healthy
+- Open interest: ~$48.9B, stable (+3.5-3.9% 30d) — no crowded leverage
+- Long/short: 54.1/45.9 (1.18x) — only mildly long-biased
 
 ### News on Held Positions
-- None — 0 open positions, $0 capital.
+- None — 0 open positions.
 
-### Trade Ideas (WATCHLIST ONLY — no capital to execute)
-1. SOL — high-perf L1 leadership; sector in momentum. Wait for funding + a clean catalyst; entry on strength above prior week high, stop 8–10% below, target 2:1.
-2. LINK — infra/oracle + RWA tailwind; accumulate on dips, stop 8% below entry.
-3. ONDO — RWA tokenization narrative (strongest structural sector); size small, stop 8%.
-   All gated behind: (a) account funding, (b) F&G confirmation, (c) BTC dominance not spiking.
+### Trade Ideas (watchlist — NOT executable, account unfunded; levels off live MEXC quotes)
+1. BTC — best risk-adjusted in a high-dominance tape. Catalyst: 5-day ETF inflow streak + reclaim of $66k, neutral funding (room to run). Entry: hold above ~$66,300; stop ~$61,700 (-7%); target ~$72,950 (+10%). Sector: majors/BTC.
+2. BNB — exchange/L1, holds up in BTC-led regimes. Live ~$572.5. Entry ~$573; stop ~$533 (-7%); target ~$630 (+10%). Sector: exchange/L1. Conditional on BTC staying bid.
+3. SOL — L1 leader, live ~$78.1. Only if dominance starts rolling over / alt-season index >60. Entry ~$78.1; stop ~$72.6 (-7%); target ~$85.9 (+10%). Sector: L1. Higher beta — wait for confirmation.
 
 ### Risk Factors
-- **$0 balance on MEXC — bot is non-operational until funded. Highest-priority issue.**
-- Extreme Fear / fragile sentiment — poor risk-on backdrop for new alt entries.
-- BTC dominance 56%+ — alts underperforming; single-sector rallies isolated.
-- Thin ETF recovery + net 30-day outflows — demand not confirmed.
+- **Account unfunded ($0 USDT) — hard operational blocker. No trade can execute. Highest priority.**
+- Late-July FOMC event risk — avoid entering into the meeting
+- High BTC dominance (56.4%) + weak ETH → alts fragile; favor majors if/when funded
+- F&G readings contradictory — sentiment signal unreliable this print
+- DXY strength — macro headwind unless Fed pivots
 
 ### Decision
-TRADE: none. HOLD — mandatory: MEXC account holds $0 (unfunded). API works but there is no capital to deploy. Even if funded, backdrop (Extreme Fear, high BTC dominance) favors patience. Fund account, then re-run execution.
+HOLD. No entries. Even with a constructive BTC tape (ETF inflows, neutral funding, $66k reclaim), the account holds $0 and cannot execute; late-July FOMC also argues against fresh risk. Watchlist above ready for when funding lands and post-FOMC. Fund the MEXC account to resume operations.
