@@ -212,42 +212,44 @@ sector today and worth first look once account access is restored.
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
 
-## 2026-07-24 — Morning Research
+## 2026-07-25 — Morning Research
 
 ### Account Snapshot
-- MEXC API healthy (`account`, `price`, `quote` all OK — prior Binance 451 geo-block no longer relevant; on MEXC now).
-- Equity: **$32.32 USDT | 100% cash | 0 open positions** (unchanged from Day 0 baseline).
-- Trades this week: 0/25.
+- Total portfolio value: $32.32 USDT (MEXC Spot API healthy — `account`/`positions`/`balance` all returned; the old Binance 451 block does not apply, we are on MEXC)
+- Free USDT: $32.32 (100%)
+- Open positions: 0
+- Trades this week: 0/25
 
 ### Market Context
-- BTC: **$65,176** (MEXC live). Weekly ~**-5.2%** — in a downtrend. Broad market cap ~$2.3T, -1.3% on the day.
-- BTC Dominance: **~56.6%** (strong — capital defensive, not rotating to alts).
-- Fear & Greed: **28 (Extreme Fear)**, dropped from ~46; deepening caution.
-- DXY: firm (+0.52% wk); VIX 18.4 (+6.8%); SPX -1.8% wk; BTC beta to SPX >2x (risk-off amplifier).
-- Macro: **FOMC Jul 28–29 is a LIVE meeting** — hike on the table (9/18 officials project ≥1 hike; Chair Warsh hawkish on above-target inflation). Funds 3.50–3.75%. Highest-weight event of the window.
-- ETH $1,873, SOL $75.7 — both soft/declining with BTC.
+- BTC: $64,113 (−1.3% 24h)
+- ETH: $1,860 (−, soft recovery attempt)
+- SOL: $74.35 (−2.18% 24h)
+- BTC Dominance: ~56.4% (high/rising — capital NOT rotating to alts; broad alt weakness)
+- Fear & Greed Index: 27 (Fear) on alt.me trackers / 46 (Neutral) on CFGI — Fear-to-Neutral, cautious
+- DXY: ~100.6 (range-bound, ~2pts off late-June high)
+- Total crypto mcap: ~$2.28T (−1.1% 24h) — broad risk-off tape today
+- Macro: **FOMC Jul 28–29** (Chair Warsh, statement Wed 2pm ET). Consensus = hold 3.50–3.75%; ~33% pricing a 25bp HIKE; no dot plot this meeting. Month-end options expiry + Big Tech earnings same week → elevated event risk.
+- Sector leaders bucking the red tape: DeXe (DEXE), LayerZero (ZRO), BEAT, Lorenzo Protocol (BANK, near ATH); narrative flow in Solana ecosystem, AI (Venice/VVV, TAO), Telegram-DeFi (TAC)
 
 ### On-Chain / Derivatives
-- BTC ETF outflows: **3rd straight week**, ~$1.72B (wk of Jun 23–27); 2026 total outflows >$7B — persistent distribution.
-- Options/futures: Deribit + CME monthly BTC/ETH expiry Fri **Jul 31** (post-FOMC volatility cluster).
-
-### Sector Momentum
-- **DeFi** the lone bright spot: **+9.8%** on the day vs broad -1.3%. Aave small-whale accumulation (+~180k AAVE / ~$16M in 48h); Hyperliquid ~$800M annualized revenue.
-- Top 24h gainers: Polkadot, XRP Ledger ecosystem.
-- L1s (SOL/ETH) and majors weak — dominance rising confirms defensive tape.
+- Perplexity key not set in cloud env → WebSearch fallback; no real-time funding/OI print retrieved
+- Context: broad −1% tape with rising BTC dominance = defensive rotation into BTC, alts underperforming
+- Prior signal (stale): net BTC exchange inflows / mild distribution — monitor, unconfirmed today
 
 ### News on Held Positions
 - None — 0 open positions.
 
 ### Trade Ideas
-1. **No new entries today.** Momentum filter fails: BTC/ETH/SOL all red 24h & weekly; F&G Extreme Fear (28); live FOMC hike risk in 4 days is a binary event I won't front-run with a first entry. Sizing is also marginal — 20% cap on $32.32 ≈ $6.46/position, at/near MEXC min notional.
-2. **Watchlist (DeFi-led, post-FOMC):** AAVE ($95, whale accumulation + on-chain growth), HYPE ($57.83, real-revenue leader). Trigger only on 24h ≥ +2% with confirmed catalyst AND after Jul 29 FOMC clears. Reassess dominance — need it to roll over for alt entries to work.
+Tape is red into FOMC — only relative-strength names that are GREEN today qualify (strategy gate: 24h ≥ +2% OR strong catalyst). Majors (BTC/SOL) FAIL the momentum gate today. Candidates below must be re-validated for live ≥ +2% 24h at 9AM execution before any order:
+1. **BANK (Lorenzo Protocol)** — px $0.3116. Catalyst: pressing new ATH while broad tape is red (relative-strength breakout). Entry ~$0.312, stop-limit −10% $0.2805 (hard cut −7% $0.290), target +7% $0.334. Sector: DeFi/RWA yield. *Confirm it's still ≥+2% 24h at execution.*
+2. **DEXE / ZRO / BEAT** — flagged as today's top gainers vs a down market. No live MEXC level captured yet; pull `price` + 24h at execution, enter only the one printing ≥ +2% 24h with the cleanest structure. Entry = live px, stop −10%, target +7%.
+3. **VVV (Venice)** — px $12.51. Watch-only: AI narrative + product traction, but need a confirmed +2% day or fresh catalyst; not qualifying on today's tape.
 
 ### Risk Factors
-- **FOMC Jul 28–29 live hike risk** — dominant near-term risk; DXY/VIX firm, BTC 2x beta means a hawkish surprise hits crypto hard.
-- **Extreme Fear (28) + rising BTC dominance** — defensive tape, poor environment for fresh long alt entries.
-- Persistent ETF outflows (3rd wk, >$7B YTD) — structural sell pressure.
-- Jul 31 monthly options/futures expiry — added volatility into month-end.
+- **FOMC Jul 28–29 with a live ~33% hike tail** — binary event risk 3 sessions out; avoid getting caught in size before it. Prefer waiting or tiny size.
+- Red broad tape (−1.1% mcap) + rising BTC dominance → alt longs fighting the current; momentum entries fragile, whipsaw risk high.
+- Tiny account ($32.32): 20% cap = ~$6.46/position. MEXC min-notional (~$1–5) makes positions viable but fees/slippage are a larger % drag — size deliberately, avoid over-trading.
+- F&G in Fear — sentiment thin.
 
 ### Decision
-**HOLD** — no entries. Extreme Fear, BTC weekly downtrend, and a live FOMC (hike-risk) in 4 days make this a stand-aside window. Preserve 100% dry powder; re-evaluate DeFi watchlist post-FOMC once momentum filter and sentiment permit.
+HOLD-biased. No high-conviction entry on a red pre-FOMC tape. If 9AM execution confirms a candidate (BANK first) still printing ≥ +2% 24h with clean structure, ONE small starter (~$6, ≤20%) with immediate −10% stop-limit is acceptable; otherwise stay 100% cash into FOMC. Do not deploy broadly before Jul 29.
