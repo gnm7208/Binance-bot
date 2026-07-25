@@ -171,18 +171,41 @@ sector today and worth first look once account access is restored.
 ### Decision
 TRADE: none. HOLD — mandatory: Binance API unreachable (451), cannot verify account state or place/manage orders. Escalated via ClickUp. Re-run research/execution once connectivity is confirmed restored.
 
-## 2026-07-17 — Morning Execution (blocked)
+## 2026-07-18 — Morning Research
 
 ### Account Snapshot
-- **BLOCKED again**: `bash scripts/binance.sh account` / `positions` / `orders` all return HTTP 451 "Service unavailable from a restricted location" — identical geo-restriction seen 2026-07-11. Unresolved for 6+ days.
-- Last known state: Day 0 baseline (TRADE-LOG.md) — $10,000.00 USDT, 100% cash, 0 open positions. No trades executed since bot launch.
-- No morning-research entries exist between 2026-07-11 and today — research/execution routines appear to have been unable to run (or ran and hit the same block) for the entire week.
+- **BLOCKED (7th consecutive day)**: Binance API returns HTTP 451 "Service unavailable from a restricted location" on `account`, `positions`, `orders` — same geo-restriction as 2026-07-11, still unresolved one week later.
+- Last known state: $10,000.00 USDT, 100% cash, 0 open positions (Day 0 baseline — never updated since; no trade has ever executed).
+- PERPLEXITY_API_KEY not set in local env — fell back to native WebSearch for all research below.
+- Trades this week: 0/3. Trades ever: 0.
+
+### Market Context
+- BTC: ~$64,050 (-1.4% 24h per CoinGecko; range $62,528–$64,286)
+- BTC Dominance: 56.3%, total crypto market cap ~$2.28T
+- Fear & Greed Index: 54 (Neutral) as of Jul 16 — recovering from Extreme Fear (22) printed Jul 14; sentiment whipsawing on geopolitical tension and weak volumes
+- DXY: 100.91 (Jul 14), up ~2.8% YTD, easing off early-July highs near 101.39
+- Macro: FOMC held 3.50-3.75% at Jun 16-17 meeting; NY Fed's Williams signals no hike needed at Jul 28-29 meeting, but 9/18 FOMC members pencil in a 2026 hike — hawkish lean persists under Chair Warsh
+- Sector leaders: Memes +220% YTD, Prediction Markets +80% YTD, AI/GameFi narratives (TAO, Autonolas) drawing bullish flow. Laggards: L1s -28% YTD, DeFi -26% YTD — momentum has rotated away from majors into speculative/attention narratives
+- Catalysts today: Cardano "Van Rossem" hard fork live (lower fees, Leios groundwork); GENIUS Act final stablecoin KYC rules due; CLARITY Act Senate floor vote expected this month
+
+### On-Chain / Derivatives
+- Bitcoin ETFs: 10-day, $2.73B outflow streak snapped early July; ~$1.2B net inflows week of Jul 10, reversing June's $4.5B outflow record — flows improving
+- Funding rates: BTC funding slightly positive (~0.003%), neutral/mild long bias
+- Open interest: BTC futures OI ~$48.9B (+3.5%); OI fell ~23k BTC in early July alongside rising price — reads as short squeeze, not fresh conviction
+
+### News on Held Positions
+- None — 0 open positions.
 
 ### Trade Ideas
-None evaluated — no live account data, no fresh research entry for today, and no order placement possible while the API is geo-blocked.
+1. No new entries proposed — account API unreachable, execution impossible regardless of setup quality.
+2. Watchlist only (unconfirmed against live account): meme/prediction-market names showing the strongest 2026 momentum, but these sit outside typical swing-trade risk profile — needs fresh look once quotes/account access restored. AI-narrative names (TAO) remain a secondary watch.
+3. L1s and DeFi both down >25% YTD — avoid until sector shows reversal confirmation; two straight down sectors per strategy rule 10.
 
 ### Risk Factors
-- **Binance API geo-blocked (451) from the cloud execution environment — unresolved for 6+ days.** Bot has been unable to verify account state or trade since launch (Day 0).
+- **Binance API geo-blocked (451), now 7 days running — top operational risk.** Zero account visibility, cannot place/cancel/manage any order. This is no longer a one-off outage; it needs infrastructure-level attention (proxy/region fix), not a daily retry.
+- No trade has executed since bot launch (Day 0) — the challenge window is burning with the account fully idle.
+- Fear & Greed whipsawing (22 → 54 in 2 days) — unstable sentiment, poor entry conditions even if API were live
+- Hawkish FOMC minority (9/18 penciling a hike) — headwind risk for risk assets into the Jul 28-29 meeting
 
 ### Decision
-TRADE: none. HOLD — mandatory: Binance API still unreachable (451), same failure as 2026-07-11. Escalated via ClickUp and user notification. Needs infrastructure fix (execution region / IP allowlist / Binance API access) before this bot can trade at all.
+TRADE: none. HOLD — mandatory: Binance API still unreachable (451) for the 7th straight day, cannot verify account state or place/manage orders. Escalating via ClickUp given the duration. Re-run research/execution once connectivity is confirmed restored.
