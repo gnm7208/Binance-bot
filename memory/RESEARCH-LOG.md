@@ -94,36 +94,37 @@ access is geo-blocked; this needs to be fixed before morning-execution can run.
 TRADE: [list tickers] or HOLD (default — no strong edge today)
 -->
 
-## 2026-07-03 — Morning Research
+## 2026-07-04 — Morning Research
 
 ### Account Snapshot
-- **BLOCKED:** Binance API returned HTTP 451 on account/positions/orders — "Service unavailable from a restricted location" (Binance ToS 'b. Eligibility'). Cloud env's outbound IP is geo-blocked. Cannot verify equity, cash, open positions, or trades-this-week count from this session.
-- Last known state (Day 0 baseline): $10,000 USDT, no positions, 0/3 trades this week.
-- ClickUp alert sent flagging this will also block morning-execution/midday order placement and stop management until fixed.
+- **BLOCKED:** Binance API returned HTTP 451 on `account`, `positions`, `orders` — "Service unavailable from a restricted location" per Binance ToS Eligibility clause. Not a credentials issue (keys are set); this cloud environment's egress IP is geo-restricted by Binance.
+- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 positions.
+- Trades this week: unknown (cannot confirm from here) — treat as unchanged from last confirmed count.
+- Perplexity also unavailable (PERPLEXITY_API_KEY empty) — fell back to native WebSearch per routine STEP 3 fallback rule.
 
 ### Market Context
-- BTC: ~$60-62K, +1% to +2.4% 24h (sources vary: Coinbase $61.4K/+1.17%, Kraken $60.4K/+2.36%). Bounced off recent lows near $57.7K on whale accumulation.
-- BTC Dominance: ~55.5-55.7%
-- Fear & Greed Index: 15 (Extreme Fear)
-- DXY: ~101.3, firm; Fed held 3.50-3.75% on June 17, some reports of hawkish tilt/possible hike, others cite dovish signals from a new Fed chair — conflicting/noisy, treat cautiously
-- Sector leaders: speculative/momentum names (AI, GameFi) diverging from broader Extreme Fear backdrop; L1s weak (-22.8% narrative-wide), DeFi mixed/weak (42 gainers vs 117 losers in Q2)
-- Macro notes: CLARITY Act Senate vote pending (symbolic July 4 target, cloture math short); stablecoin KYC rules proposed under GENIUS Act; next FOMC July 28-29; Bitcoin ETFs had worst month ever in June (-$4.5B outflows)
-- Source: WebSearch fallback (Perplexity key not set in env — noted per routine STEP 3)
+- BTC: ~$62,600–$63,000 (sources vary; +2–4% 24h)
+- BTC Dominance: 55.5%
+- Fear & Greed Index: Extreme Fear, readings 15–24 across providers (down from "Fear" 36 a few weeks ago) — sentiment deteriorating
+- DXY: ~100.7, highest since May 2025, dollar strengthening on hawkish Fed hold (3.50–3.75%, held 17 June under new Chair Warsh)
+- Macro: May PCE inflation 4.1% YoY (highest since Apr 2023), core PCE 3.4% — hot print. June nonfarm payrolls weak (+57K, prior months revised down), unemployment 4.2%. Next FOMC July 29 — some desks (BofA) calling for hikes, not cuts, if inflation stays elevated.
+- Regulatory catalyst: CLARITY Act signing deadline is today (July 4) but Senate cloture short of 60 votes; Polymarket odds ~48% passage. Outcome uncertain as of this write-up.
+- Sector momentum: ETH +~10% week, SOL +~19% week; broader L1/L2/DePIN still down double digits over Q2. AI/GameFi narrative tokens outperforming (e.g., BEAT +112% on burn news) — market is narrative-driven and selective, not broad-based strength.
 
 ### On-Chain / Derivatives
-- Not pulled — Binance API blocked, no wrapper fallback for funding/OI data this session.
+- No reliable July 2026 real-time funding/OI/exchange-flow figures surfaced via WebSearch (dashboards like CoinGlass require live query, not searchable). Flagging as a gap, not fabricating numbers.
 
 ### News on Held Positions
-- None — no open positions (Day 0, bot not yet trading).
+- None — 0 open positions per last confirmed account state.
 
 ### Trade Ideas
-- Not generated. Extreme Fear (15) + API outage + Day 0 zero-position state = no basis for entries today. Sector picture is thin/conflicting (Fed direction unclear, L1s/DeFi weak, only speculative AI/GameFi names showing strength) — not a high-conviction setup even if API were live.
+- None generated. Extreme Fear + hawkish dollar + hot inflation print + unresolved regulatory catalyst (CLARITY Act) + no verifiable account/position data = no defensible entry today.
 
 ### Risk Factors
-- **Binance API access is the critical blocker** — cannot trade, monitor stops, or verify account state until resolved.
-- Fed policy signals contradictory across sources — macro direction unclear into July 28-29 FOMC.
-- Extreme Fear (15) can mark a bottom or further downside; no confirmation either way.
-- ETF outflows (-$4.5B in June) is a structural headwind for BTC.
+- **Binance API geo-block (451) is the dominant risk** — if this persists, this environment cannot execute trades, place stops, or monitor positions at all. Needs resolution before any TRADE decision is safe.
+- Macro headwind: DXY strength + hot PCE print increases hike odds, typically risk-off for crypto.
+- CLARITY Act outcome unresolved — binary regulatory event today.
+- Market in Extreme Fear — elevated volatility risk either direction.
 
 ### Decision
-TRADE: none — HOLD. Blocked on Binance API (451); no account visibility, no execution capability. Escalated via ClickUp. Re-run research once API access confirmed restored.
+HOLD — no trade. Cannot verify account state, open positions, or execute orders from this environment (Binance API blocked, HTTP 451). Macro backdrop (Extreme Fear, strong dollar, hot inflation, unresolved regulatory catalyst) does not offer a clean setup regardless.
