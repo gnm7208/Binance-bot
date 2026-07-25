@@ -4,56 +4,40 @@ Daily morning research entries appended below.
 
 ---
 
-## 2026-07-03 — Morning Research
+## 2026-07-06 — Morning Research
 
 ### Account Snapshot
-- **BLOCKED:** `scripts/binance.sh` (and raw `api.binance.com/api/v3/ping`) returned HTTP 451
-  "Service unavailable from a restricted location" — this environment's egress IP is
-  geo-blocked by Binance. Could not pull account/positions/orders.
-- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000.00 USDT, 100% cash, 0 positions.
-- Trades this week: 0/3 (per TRADE-LOG, no entries logged yet)
-- Perplexity: PERPLEXITY_API_KEY not set — fell back to native WebSearch for all queries below.
+- **UNVERIFIED — Binance API unreachable (HTTP 451, geo-block) from this environment.** Confirmed persistent across `account`, `positions`, `orders`, and even unauthenticated `price` calls — not a credentials issue, egress IP is blocked by Binance outright.
+- Last known state (Day 0 baseline, TRADE-LOG.md): $10,000 USDT, 100% cash, no open positions.
+- Trades this week: 0/3 (per TRADE-LOG, no entries yet)
+- ClickUp alert sent naming the outage.
 
 ### Market Context
-- BTC: ~$61,300–61,700 (+2.5% 24h, +2.7% 7d); intraday low ~$59,541 touched recently
-- BTC Dominance: ~55.5–55.7%
-- Fear & Greed Index: split readings — 44 (Neutral) vs. 15 (Extreme Fear) depending on source;
-  broader tone leans fearful
-- DXY: ~101.3–101.4, choppy; market pricing ~2x 25bp cuts in 2026 vs. Fed dot plot showing 1
-- Macro notes: soft July 2 US jobs data cooled hawkish Fed bets; next FOMC July 28–29 is the
-  key macro catalyst; CLARITY Act Senate vote (July 4 target) is the key regulatory catalyst —
-  cloture math still short of 60 votes; GENIUS Act stablecoin KYC rules proposed (USDC/USDT)
-- Sector leaders: altcoins with AI/GameFi narratives or technical breakouts (e.g. BEAT +112%
-  on burn news) diverging from a broader market still in Extreme Fear; L1s weak (-22.8%
-  segment performance); DeFi mixed (42 gainers/117 losers); AI mixed (21 gainers/35 losers,
-  ~$3.4B daily volume)
-- Bitcoin spot ETFs had their worst month ever in June, shedding $4.5B — outflow trend is a
-  headwind until it stabilizes
+- BTC: ~$63,537 (+0.69% 24h); market cap $1.27T. Late June saw a sharp selloff (AI-chip-rout-driven) to a 21-month low of $58,188 with $1.48B in liquidations; price has partially recovered since.
+- BTC Dominance: ~55.5% (range 55-60% depending on stablecoin treatment)
+- Fear & Greed Index: 15 — Extreme Fear
+- DXY: ~101 (regained 100 level); soft June jobs report (+57K, weak, with downward revisions) cut Sept hike odds from ~64% to ~50%. Mixed Fed signals — some FOMC members still penciling in hikes, Chair Warsh notes reduced urgency to tighten.
+- Sector momentum: broadly defensive/negative breadth. L2s -24.9%, DePIN -24.8%, L1s -22.8% (weakest narratives). DeFi mixed (42 gainers/117 losers). AI/GameFi showing isolated pockets of strength but market-wide breadth still narrow, diverging from Extreme Fear backdrop.
+- Catalysts: CLARITY Act (crypto market structure bill) had a White House-pushed July 4 deadline — Polymarket odds ~48%, Senate cloture unresolved. Hyperliquid (HYPE) has a $645M core-contributor token unlock landing today (bearish supply overhang). Five US regulators proposed bank-grade KYC rules for stablecoin issuers under GENIUS Act (USDC/USDT scrutiny).
 
 ### On-Chain / Derivatives
-- Could not pull Binance-specific funding/OI/flow data (API blocked); public aggregators
-  (CoinGlass) confirm standard 8h funding cadence, no extreme funding skew reported today
-- No specific inflow/outflow or OI-trend numbers found via WebSearch — treat as unknown, not
-  neutral
+- Not pulled — Binance API blocked. Could not source Binance-specific funding rates/OI/inflows; general web data points to elevated derivatives caution post the late-June liquidation cascade but nothing exchange-specific and verifiable today.
 
 ### News on Held Positions
-- N/A — no open positions (Day 0, bot has not traded yet)
+- None — no open positions (per TRADE-LOG.md, Day 0 baseline only).
 
 ### Trade Ideas
-- None documented today. No single-name catalyst cleared the entry checklist (specific
-  catalyst + sector momentum + 2:1 R:R), and account state can't be verified to size a
-  position responsibly while the API is blocked.
+- None generated. Market breadth is narrow/defensive under Extreme Fear, HYPE unlock and CLARITY Act outcome are unresolved binary catalysts, and — decisively — no trade can be validated or executed today because account state cannot be verified and order placement is blocked (Binance API HTTP 451).
 
 ### Risk Factors
-- **Binance API geo-block (451) — cannot verify account state, cannot place or manage
-  orders.** This blocks execution entirely, not just today's research, until resolved.
-- ETF outflow trend still negative; a sustained break below $59K could drag alts down further
-- Fear & Greed readings conflict across sources — sentiment signal is noisy today
-- CLARITY Act vote and July 28–29 FOMC are binary-ish event risk sitting ahead
+- **Binance API access blocked (HTTP 451) from this environment — bot cannot trade, verify positions, or manage stops until resolved. Needs infra/ops attention (likely IP/region allowlist issue).**
+- Perplexity API key not configured in this environment; used native WebSearch fallback (per routine's exit-code-3 fallback rule) for all research this session.
+- Market-wide: Extreme Fear (15) + narrow breadth + two unresolved binary catalysts (CLARITY Act, HYPE unlock) = elevated whipsaw risk even once trading capability is restored.
 
 ### Decision
-HOLD — no trade evaluated or planned. Execution is impossible regardless while Binance API
-access is geo-blocked; this needs to be fixed before morning-execution can run.
+HOLD — no trade possible today (Binance API blocked); reassess once connectivity is restored.
+
+---
 
 <!-- Format for each entry:
 
