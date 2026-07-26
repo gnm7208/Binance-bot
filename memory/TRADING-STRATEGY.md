@@ -91,5 +91,12 @@ bash scripts/mexc.sh order \
   which returns HTTP 403 (CloudFront geo-block) on both auth and public endpoints. Bot has
   never traded. No trading rule is at fault; connectivity must be fixed before strategy matters.
 - **Reachability gate:** every run must first confirm the exchange API responds
-  (`bash scripts/bybit.sh price BTCUSDT`). If it fails, HALT, alert, and place no orders —
+  (`bash scripts/mexc.sh price BTCUSDT`). If it fails, HALT, alert, and place no orders —
   do not migrate exchanges again without verifying the new venue is reachable from this IP.
+  (Corrected 2026-07-26: previously referenced the retired `scripts/bybit.sh`; the bot runs
+  on MEXC Spot, which has been reachable and healthy since 2026-07-22.)
+- Week 2 (ending 2026-07-26): 0 trades. Grade D. Connectivity FIXED (MEXC healthy) — the
+  Week 1 blocker is gone, so inactivity is now a *choice*, not a capability gap. Held 100%
+  cash into FOMC (Jul 28–29, ~33% hike tail); defensible, but BANK/VVV/ZRO all passed the
+  +2% gate on 07-25 and were declined. Lesson: after a binary macro event clears, resume
+  active deployment (75–85%) — do not default to HOLD when gate-passing setups exist.

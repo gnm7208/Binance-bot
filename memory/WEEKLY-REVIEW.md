@@ -87,3 +87,49 @@ None (last known: 100% USDT cash).
 
 ### Overall Grade: F
 Zero trades executed in Week 1 of the challenge. The mission (beat BTC) was not pursued at all because the account/market API is unreachable, and the mid-week exchange migration did not restore access. Full week of the challenge window lost.
+
+---
+
+## Week ending 2026-07-26 (Week 2)
+
+### Stats
+| Metric              | Value  |
+|---------------------|--------|
+| Starting portfolio  | $32.32 (real MEXC account, funded 2026-07-22; Week 1's $10,000 was a stale pre-funding placeholder) |
+| Ending portfolio    | $32.29 |
+| Week return         | $0.00 (0.0%) — the $0.03 delta is display rounding, no trades |
+| BTC week return     | ~+0.4% (~$64,376 on 07-19 close → $64,661 on 07-26) |
+| Bot vs BTC          | −0.4% |
+| Trades              | 0 (W:0 / L:0 / open:0) |
+| Win rate            | N/A (no closed trades) |
+| Best trade          | N/A |
+| Worst trade         | N/A |
+| Profit factor       | N/A |
+
+### Closed Trades
+None. No orders placed all week.
+
+### Open Positions at Week End
+None — 100% USDT cash ($32.29 free, 0 locked). Reachability gate PASS (MEXC `account`/`price`/`positions` all healthy).
+
+### What Worked
+- **Operational blocker resolved.** The Binance/Bybit geo-block that killed Week 1 is gone — the account now runs on MEXC Spot and the API is live and healthy every run (`canTrade=true`). This is the single biggest improvement over Week 1: the bot *can* trade now.
+- **Discipline into a binary event.** Sat 100% cash ahead of FOMC (Jul 28–29, live ~33% hike tail) rather than getting caught in size before a coin-flip macro print on a $32 account. Defensible risk control.
+- **Momentum gate did its job** on most sessions — majors (BTC/ETH/SOL) were flat-to-red and failed the +2% filter, correctly blocking low-quality entries.
+
+### What Didn't Work
+- **Second straight zero-trade week.** The mandate is "disciplined AND active" and to beat BTC; 0 trades = 0 pursuit of the mission. BTC rose ~0.4% while we held cash, so we lost ground again (small, but the direction is the point).
+- **Declined valid gate-passing setups.** On 07-25, BANK (+28.66%), VVV (+5.07%) and ZRO (+5.00%) all passed the +2% momentum gate. All were declined on FOMC caution. Reasonable once — but the pattern of finding qualifying signals and taking none needs to break after FOMC clears.
+- **Tiny-capital friction.** At $32.29, the 20% cap ≈ $6.46/position; MEXC min-notional plus fee/slippage is a heavier % drag than normal. Real, but not a reason to stay flat — it argues for a small number of higher-conviction entries, not zero.
+
+### Key Lessons
+- Capability is restored; the constraint is now *decision-making*, not connectivity. Week 1's excuse (API dark) no longer applies — inactivity from here is a choice, and it must be justified per-session, not defaulted to.
+- Holding cash into a genuine binary macro event (FOMC) is fine. Holding cash *after* it clears, when gate-passing setups exist, is not.
+
+### Adjustments for Next Week
+- **Post-FOMC (after Jul 29): resume active deployment.** Once the FOMC print is out and digested, take the best gate-passing setup(s) — target 75–85% deployed per strategy — rather than defaulting to HOLD. First look: relative-strength names that held up pre-FOMC (BANK/VVV/ZRO) if still in momentum.
+- Fixed a stale operational note in TRADING-STRATEGY.md: the reachability gate still referenced `scripts/bybit.sh` though the bot migrated to MEXC — corrected to `scripts/mexc.sh price BTCUSDT`.
+- No hard trading-rule change warranted this week — the strategy behaved as designed (gate caution into a binary event). The gap is execution follow-through, not the rulebook.
+
+### Overall Grade: D
+Up from Week 1's F because the operational blocker is resolved and the account is genuinely trade-ready, and holding cash into a live-tail FOMC on a $32 account is defensible. But it is still a zero-trade week that trailed BTC by ~0.4%, with gate-passing setups declined. Two straight weeks of no trades in an "aggressive, active" mandate keeps the grade low; the bar for next week is clear — deploy after FOMC.
