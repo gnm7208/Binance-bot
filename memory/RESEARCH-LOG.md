@@ -290,17 +290,18 @@ HOLD-biased into FOMC. Candidates now CONFIRMED green (BANK/VVV/ZRO pass the +2%
 
 Sources: [CFGI](https://cfgi.io/), [Milk Road F&G](https://milkroad.com/fear-greed/), [CoinGabbar Jul 25](https://www.coingabbar.com/en/crypto-currency-news/crypto-news-today-btc-drops-dexe-layerzero-beat-lead-gains), [CoinMarketCap BTC Dominance](https://coinmarketcap.com/charts/bitcoin-dominance/).
 
-## 2026-07-27 — Morning Execution (validation only)
+## 2026-07-26 — Morning Execution (validation of 2026-07-25 plan)
 
-### Account Snapshot
-- Total portfolio: $32.29 USDT · Free: $32.29 (100%) · Open positions: 0 · Trades this week: 0/25
-- MEXC Spot API healthy — reachability gate PASS (`price`/`account`/`positions`/`quote` all responding, canTrade=true).
+- Reachability gate: **PASS** — MEXC Spot API healthy (`price`/`quote`/`account`/`positions` all responding).
+- Account: $32.29 USDT · 100% cash · 0 positions · 0/25 trades this week · 0 today. BTC $64,415 (+0.60% 24h).
+- No dedicated 2026-07-26 research entry; executed against most-recent plan (2026-07-25 intraday: HOLD-biased into FOMC, ≤1 small ~$6 starter only on ≥+2% **and** clean structure, VVV preferred).
 
-### Candidate Re-Validation (live MEXC 24hr)
-- **BANK**: $0.3967, **+6.37% 24h** — momentum gate PASS, but Jul 25 flagged extended (chasing ATH into FOMC = high whipsaw).
-- **ZRO**: $0.8989, **+6.47% 24h** — momentum gate PASS.
-- **VVV**: $13.83, **−0.28% 24h** — momentum gate FAIL. This was the *preferred* pre-FOMC starter; it has lost qualification.
-- BTC: $65,524 (+1.74% 24h).
+### Candidate re-validation (live MEXC 24hr)
+| Sym | 24h chg | Live px | Verdict |
+|-----|---------|---------|---------|
+| VVV | +13.55% | 14.25 (= 24h high) | Momentum PASS, structure FAIL — at exact 24h high, extended/chasing |
+| BANK | +15.73% | 0.371 | PASS but de-prioritized — extended (+28% two days prior, +16% more) |
+| ZRO | −1.97% | 0.844 | Momentum FAIL — rolled over, dropped out |
 
 ### Decision
-HOLD — no trade fires. No fresh research entry exists for today; the only standing plan (Jul 25) is "stay 100% cash into Jul 29, no deployment pre-FOMC," which left a door open for ONE tiny starter with **VVV preferred**. VVV now fails the momentum gate; the two candidates that pass (BANK, ZRO) are both extended movers running into the binary **FOMC Jul 28–29** event tomorrow, validated only against 2-day-stale research. Discipline over activity: stay 100% cash into FOMC. Re-run full morning-research post-FOMC before any entry. No ClickUp alert (no trade fired).
+**HOLD — no trade fired.** ZRO fails the +2% gate; VVV/BANK pass momentum but are extended, chasing 24h highs, and the "clean structure" execution condition is not met (VVV at exact 24h high). FOMC Jul 28–29 binary risk (~33% hike tail) is 2–3 sessions out — the dominant risk the plan was built to avoid. Stay 100% cash into FOMC. No ClickUp alert (trade did not fire). Re-evaluate at midday / post-FOMC.
