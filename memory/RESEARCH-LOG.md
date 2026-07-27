@@ -349,3 +349,13 @@ Sources: [Milk Road F&G](https://milkroad.com/fear-greed/), [CFGI](https://cfgi.
 
 ### Decision
 **NO TRADE.** Setups qualified (VVV/ZRO/BANK green), but the mandatory protective stop cannot be placed on MEXC spot via API → HALT. 100% cash ($32.32) into FOMC. Escalated. Needs resolution before any entry: (a) confirm a MEXC endpoint/param that accepts spot stops, or (b) migrate to a venue whose API supports resting stop-limit GTC orders and is reachable from this IP.
+
+## 2026-07-27 — Morning Execution (09:00 CT)
+
+### Gates — validated live
+- **Reachability gate PASS:** `price BTCUSDT` = $65,127.31.
+- **Stop-order gate FAIL (hard blocker, unchanged):** `exchangeInfo.orderTypes` for AAVEUSDT / ETHUSDT / BANKUSDT (and BTCUSDT) = `[LIMIT, MARKET, LIMIT_MAKER]`. No `STOP_LOSS_LIMIT`. Rule 4 (mandatory stop-limit GTC immediately after every fill) is **unexecutable** on MEXC via API.
+- Account: $32.29 free, 0 positions, 0/25 wk, 0/5 today — buy-side portfolio/daily/weekly gates all PASS.
+
+### Decision
+**NO TRADE.** Today's research candidates (AAVE +8.5% / ETH +4.1% / BANK +8.8%) pass the +2% momentum gate, but a buy would leave an unprotected position → hard Rule 4 violation. HALT, 100% cash. Also FOMC binary event tomorrow (Jul 28–29) argues against size regardless. Blocker unchanged from Jul 25/27 and already escalated. No ClickUp alert (no trade fired). Re-evaluate post-FOMC.
