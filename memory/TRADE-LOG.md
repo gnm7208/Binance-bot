@@ -50,12 +50,12 @@ No positions. Starting capital: 4,500 KES → 34.32 USDT via Remitano M-Pesa P2P
 
 ---
 
-## Jul 25 — EOD Snapshot (Day 3, Saturday)
+## Jul 26 — EOD Snapshot (Day 4, Sunday)
 
-**Portfolio:** $32.29 | **Cash:** $32.29 (100%) | **Day P&L:** $0.00 (0.0%) | **Phase P&L:** −$0.03 (−0.08%)
+**Portfolio:** $32.29 | **Cash:** $32.29 (100%) | **Day P&L:** -$0.03 (-0.09%) | **Phase P&L:** -$0.03 (-0.09%)
 
 | Ticker | Qty | Entry | Price | Day Chg | Unrealized P&L | Stop |
 |--------|-----|-------|-------|---------|----------------|------|
 | — | — | — | — | — | — | — |
 
-**Notes:** No positions; 100% cash. Actual MEXC free balance $32.2946 (prior logs rounded to $32.32 baseline; −$0.03 phase delta is settlement rounding, not a loss — flat). 0 trades today, 0/25 this week. MEXC Spot API healthy (`account`/`positions`/`balance`/`price` all OK; canTrade=true), no open orders. BTC $64,225.38 (−0.9% vs $64,824.93 Day-1 ref) → cash-flat position slightly ahead of BTC buy-and-hold since launch. Held per plan: red pre-FOMC tape (FOMC Jul 28–29, ~33% hike tail), rising BTC dominance ~56.4%, F&G Fear-to-Neutral (27/46). Candidates (BANK/DEXE/ZRO/VVV) flagged but no entry — staying dry into FOMC. Deployment 0% vs 75-85% target, deliberately.
+**Notes:** No positions; 100% cash. USDT free $32.2946 / locked $0 (canTrade=true). 0 open orders. 0 trades today, 0/25 this week. Deployment 0% vs 75-85% target — still no qualifying entry taken. Day P&L measured vs last snapshot (Jul 24 $32.32); no Jul 25 EOD snapshot was logged. Balance drift -$0.03 from baseline is dust/rounding, no fills. BTC ref $64,694.29. Research log stance: HOLD into FOMC — movers parabolic, waiting for cleaner setup.
