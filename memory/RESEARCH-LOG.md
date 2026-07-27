@@ -359,3 +359,15 @@ Sources: [Milk Road F&G](https://milkroad.com/fear-greed/), [CFGI](https://cfgi.
 
 ### Decision
 **NO TRADE.** Today's research candidates (AAVE +8.5% / ETH +4.1% / BANK +8.8%) pass the +2% momentum gate, but a buy would leave an unprotected position → hard Rule 4 violation. HALT, 100% cash. Also FOMC binary event tomorrow (Jul 28–29) argues against size regardless. Blocker unchanged from Jul 25/27 and already escalated. No ClickUp alert (no trade fired). Re-evaluate post-FOMC.
+
+## 2026-07-27 — Afternoon Execution
+
+### Gates — validated live
+- **Reachability gate PASS:** `price BTCUSDT` = $65,054.38.
+- **Stop-order gate FAIL (hard blocker, unchanged):** `exchangeInfo.orderTypes` for BTCUSDT = `[LIMIT, MARKET, LIMIT_MAKER]`. No `STOP_LOSS_LIMIT`. Rule 4 unexecutable on MEXC via API.
+- Account: $32.29 free, 0 open positions, 0 open orders, 0/25 wk, 0/5 today.
+- No open positions → no take-profit/cut/trailing-stop actions needed.
+- No closed trades this week → circuit breaker N/A (min 5 closed trades). 0 trades today → daily gate N/A.
+
+### Decision
+**NO TRADE.** Same hard blocker as this morning: any buy would leave an unprotected position, violating Rule 4 (no exceptions). Watchlist re-check skipped — blocker applies regardless of momentum/catalyst. HALT, 100% cash. No ClickUp alert (unchanged from morning, already escalated). Re-evaluate post-FOMC.
