@@ -93,3 +93,17 @@ bash scripts/mexc.sh order \
 - **Reachability gate:** every run must first confirm the exchange API responds
   (`bash scripts/bybit.sh price BTCUSDT`). If it fails, HALT, alert, and place no orders —
   do not migrate exchanges again without verifying the new venue is reachable from this IP.
+- **2026-07-25 (afternoon-execution): stop-order gate — MEXC Spot API does not support
+  stop orders.** First live buy (VVV, $6 starter) succeeded, but the mandatory
+  `STOP_LOSS_LIMIT` immediately failed with `{"code":500,"msg":"invalid type"}`. Confirmed
+  via `exchangeInfo` that `orderTypes` is `["LIMIT","MARKET","LIMIT_MAKER"]` for every pair
+  checked (VVVUSDT, BANKUSDT, ZROUSDT, **and BTCUSDT**) — no stop type exists on this
+  exchange/API for any symbol. Alternate type names all rejected too. Per "no exceptions,"
+  the unprotected position was closed immediately (~breakeven, -$0.03 spread/fee drag).
+  **New hard gate: before any future BUY, first confirm a working protective-order mechanism
+  exists** (retest `STOP_LOSS_LIMIT`, or find MEXC's correct algo-order endpoint/type — do
+  not assume Binance-style order types transfer). Until resolved, do not open new positions
+  even on a qualifying setup — cash-only. Separately, `scripts/mexc.sh` had a wrapper bug
+  (`_auth_post` sent params in the POST body instead of the query string, causing
+  `{"code":700013,"msg":"Invalid content Type."}` on every order call) — fixed same session;
+  unrelated to the stop-order gate above.

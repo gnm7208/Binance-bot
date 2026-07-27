@@ -51,9 +51,7 @@ _auth_post() {
   local sig; sig=$(_sign "$full")
   curl -fsS -X POST \
     -H "X-MEXC-APIKEY: $MEXC_API_KEY" \
-    -H "Content-Type: application/x-www-form-urlencoded" \
-    -d "${full}&signature=${sig}" \
-    "${BASE}${path}"
+    "${BASE}${path}?${full}&signature=${sig}"
 }
 
 _auth_delete() {
