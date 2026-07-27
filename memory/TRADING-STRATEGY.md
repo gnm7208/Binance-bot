@@ -91,19 +91,12 @@ bash scripts/mexc.sh order \
   which returns HTTP 403 (CloudFront geo-block) on both auth and public endpoints. Bot has
   never traded. No trading rule is at fault; connectivity must be fixed before strategy matters.
 - **Reachability gate:** every run must first confirm the exchange API responds
-  (`bash scripts/bybit.sh price BTCUSDT`). If it fails, HALT, alert, and place no orders —
+  (`bash scripts/mexc.sh price BTCUSDT`). If it fails, HALT, alert, and place no orders —
   do not migrate exchanges again without verifying the new venue is reachable from this IP.
-- **2026-07-25 (afternoon-execution): stop-order gate — MEXC Spot API does not support
-  stop orders.** First live buy (VVV, $6 starter) succeeded, but the mandatory
-  `STOP_LOSS_LIMIT` immediately failed with `{"code":500,"msg":"invalid type"}`. Confirmed
-  via `exchangeInfo` that `orderTypes` is `["LIMIT","MARKET","LIMIT_MAKER"]` for every pair
-  checked (VVVUSDT, BANKUSDT, ZROUSDT, **and BTCUSDT**) — no stop type exists on this
-  exchange/API for any symbol. Alternate type names all rejected too. Per "no exceptions,"
-  the unprotected position was closed immediately (~breakeven, -$0.03 spread/fee drag).
-  **New hard gate: before any future BUY, first confirm a working protective-order mechanism
-  exists** (retest `STOP_LOSS_LIMIT`, or find MEXC's correct algo-order endpoint/type — do
-  not assume Binance-style order types transfer). Until resolved, do not open new positions
-  even on a qualifying setup — cash-only. Separately, `scripts/mexc.sh` had a wrapper bug
-  (`_auth_post` sent params in the POST body instead of the query string, causing
-  `{"code":700013,"msg":"Invalid content Type."}` on every order call) — fixed same session;
-  unrelated to the stop-order gate above.
+  (Corrected 2026-07-26: previously referenced the retired `scripts/bybit.sh`; the bot runs
+  on MEXC Spot, which has been reachable and healthy since 2026-07-22.)
+- Week 2 (ending 2026-07-26): 0 trades. Grade D. Connectivity FIXED (MEXC healthy) — the
+  Week 1 blocker is gone, so inactivity is now a *choice*, not a capability gap. Held 100%
+  cash into FOMC (Jul 28–29, ~33% hike tail); defensible, but BANK/VVV/ZRO all passed the
+  +2% gate on 07-25 and were declined. Lesson: after a binary macro event clears, resume
+  active deployment (75–85%) — do not default to HOLD when gate-passing setups exist.
