@@ -290,52 +290,44 @@ HOLD-biased into FOMC. Candidates now CONFIRMED green (BANK/VVV/ZRO pass the +2%
 
 Sources: [CFGI](https://cfgi.io/), [Milk Road F&G](https://milkroad.com/fear-greed/), [CoinGabbar Jul 25](https://www.coingabbar.com/en/crypto-currency-news/crypto-news-today-btc-drops-dexe-layerzero-beat-lead-gains), [CoinMarketCap BTC Dominance](https://coinmarketcap.com/charts/bitcoin-dominance/).
 
-## 2026-07-27 — Morning Research
+## 2026-07-26 — Morning Research (Sunday)
 
 ### Account Snapshot
-- Total portfolio value: $32.32 USDT (MEXC Spot API healthy — reachability gate PASS: `price`/`quote` responding, BTC $65,172)
-- Free USDT: $32.32 (100%)
-- Open positions: 0
-- Trades this week: 0/25
-- Perplexity key unset → WebSearch fallback (no live funding/OI print)
+- Total portfolio: $32.32 USDT · Free: $32.32 (100%) · Open positions: 0 · Trades this week: 0/25
+- MEXC Spot API healthy — `price`/`quote`/`ticker/24hr` all responding. Reachability gate **PASS**.
+- Perplexity key still unset → WebSearch fallback (no live funding/OI print).
 
 ### Market Context (live MEXC 24hr)
-- **Tape flipped GREEN** vs the red −1% pre-FOMC tape on Jul 25 — majors now bid.
-- BTC: $65,199 (**+1.08%** 24h · H $65,568 / L $64,291) — recovering, back near range highs
-- ETH: $1,943 (**+3.40%** 24h · H $1,967 / L $1,878) — **leading the majors on $165M vol**; clears +2% gate with deep liquidity
-- SOL: $76.41 (**+1.98%** 24h) — firming, just under the gate
-- BNB: $573 (+0.44%) — lagging
-- BTC Dominance: rolling off recent highs as ETH/alts catch a bid (ETH outperforming BTC 3:1 today = mild risk-on rotation)
-- Fear & Greed: **~44–50 (Neutral)** — up sharply from 27 (Fear) on Jul 25; sentiment thawing with the green tape
-- Macro: **FOMC Jul 28–29** (statement Wed 2pm ET Jul 29). Hold odds now **82–93%** — the hike tail collapsed from ~33% (Jul 25) after a cooler mid-July CPI print. July framed as a communication event (no dot plot); statement/presser language carries the repricing risk. Binary event still 1–2 sessions out.
+- BTC: $64,486 (**+0.67%** 24h · H $64,536 / L $63,806) — grinding, tight range
+- ETH: $1,879 (+1.03%) · SOL: $74.86 (+0.98%) · BNB: $570 (+0.71%) — all green but **all FAIL +2% momentum gate**
+- BTC Dominance: ~56.5% — steady, no clear alt rotation
+- Fear & Greed: **45 Neutral (CFGI)** / 27 Fear (alt.me) — mixed, Neutral-leaning; sentiment still cautious
+- Total tape: fragmented; narratives = Solana ecosystem, AI-native, stablecoin infra, RWA/on-chain insurance rotation
+- Macro: **FOMC Jul 28–29** (Chair Warsh, statement Wed 2pm ET) — 2–3 sessions out. Consensus hold 3.50–3.75% but BofA flags risk of 3 consecutive H2 hikes; live hike tail (~33% prior print). PCE in focus. **Binary event risk elevated into midweek.**
 
 ### On-Chain / Derivatives
-- No live funding/OI print (Perplexity unavailable; would need CoinGlass direct).
-- ETH leadership + DeFi/staking strength (ETHFI +5.55%) + AI (TAO +4.68%) firing together = constructive breadth vs Jul 25's narrow, defensive tape.
-
-### Sector Momentum (MEXC gainers, >$1M 24h vol)
-- **Majors/L1:** ETH +3.40% (leader), SOL +1.98%, BTC +1.08%
-- **DeFi/staking:** ETHFI +5.55%, BANK +6.21% (extended)
-- **AI/data:** TAO +4.68%
-- **PoW/privacy:** ZEC +3.58%, BCH +2.62%
-- **Mean-reversion warning:** DEXE **−13.76%** today — a Jul 25 top-gainer that has now round-tripped hard. Confirms the don't-chase-extended-parabolics rule; DEXE and thin prior movers (VVV vol only ~$150k, ZRO ~$205k) are illiquid traps at this account size.
+- No live funding/OI (Perplexity unset). Steady BTC dominance + Neutral F&G = coiling ahead of FOMC, not a directional signal.
 
 ### News on Held Positions
 - None — 0 open positions.
 
-### Trade Ideas (research only — execution owns the decision; re-validate ≥+2% at 9AM)
-1. **ETH** — px $1,943, **+3.40% 24h** (gate PASS). Cleanest qualifier on the board: trend-leading major, $165M vol (no slippage/min-notional worry), broad DeFi tailwind. Entry ~live, stop-limit −10% ~$1,749 (hard cut −7% ~$1,807), target +7% ~$2,079. Sector: L1/majors. Highest-quality entry vs thin alts.
-2. **SOL** — px $76.41, +1.98% (just under gate). Watch: a break/hold >$77.1 with +2% 24h qualifies. Entry ~live, stop −10% ~$68.8, target +7% ~$81.8. Sector L1. ETF inflows + on-chain strength backdrop.
-3. **ETHFI** — px $0.429, +5.55% (gate PASS) but only $2.1M vol. Liquid-staking/DeFi beta on ETH's lead. Speculative starter only, tiny size; stop −10% ~$0.386, target +7% ~$0.459.
-- **Avoid:** BANK (+6% but extended, $1.3M vol), VVV/ZRO (thin), DEXE (rolling over).
+### Confirmed Relative-Strength Movers (pass +2% gate)
+- **BANK (Lorenzo Protocol)**: $0.3636 (**+20.84%** 24h · H $0.3896 / L $0.2968) — day 2 of the ramp, faded from yesterday's +28%. DeFi/RWA yield. Extended, mean-reversion risk high.
+- **VVV (Venice)**: $13.19 (**+6.14%** 24h · H $13.73 / L $12.39) — AI narrative, cleaner/less-extended structure than BANK.
+- ZRO (LayerZero): $0.851 (**−1.59%** 24h) — faded from +5% yesterday; **no longer qualifies**.
+
+### Trade Ideas (research only — execution owns the decision)
+1. **VVV** — px $13.19, +6.14% (gate PASS). Cleanest qualifying setup. Entry ~live, stop-limit −10% ~$11.87, target +7% ~$14.11. Sector AI. *Re-confirm ≥+2% at execution.*
+2. **BANK** — px $0.3636, +20.84% (gate PASS but 2nd day extended). Entry ~live, stop −10% ~$0.327, target +7% ~$0.389. DeFi/RWA. Chasing an extended mover into FOMC = high whipsaw risk; tiny size only if taken.
+3. Majors (BTC/ETH/SOL/BNB) — all green but sub-+2%; **no qualifying entry**.
 
 ### Risk Factors
-- **FOMC Jul 28–29** — binary event 1–2 sessions out. Even with hike odds low (~10–18%), a hawkish hold/presser can whipsaw risk assets fast. Prefer waiting or a tiny starter, not size, ahead of it.
-- Green day is one session — could be pre-FOMC positioning that unwinds on the statement.
-- Tiny account ($32.32): 20% cap ≈ $6.46/position. Fee/slippage is a larger % drag — favor liquid names (ETH/SOL) over thin alts; avoid over-trading.
-- F&G Neutral, not Greed — improving but not a confirmed risk-on regime.
+- **FOMC Jul 28–29 with live hike tail** — binary event 2–3 sessions out; avoid size before it.
+- Majors fail momentum gate market-wide; only extended alt movers qualify → chase risk.
+- Tiny account ($32.32): 20% cap ≈ $6.46/position; MEXC min-notional viable but fee/slippage a large % drag.
+- F&G Neutral-but-mixed; no strong directional edge.
 
 ### Decision
-HOLD-biased into FOMC, but conditions materially improved vs Jul 25 (green tape, F&G Neutral, hike tail gone). **ETH is now the highest-quality qualifier** — liquid, trend-leading, passes the +2% gate cleanly. If 9AM execution confirms ETH still ≥+2% 24h with clean structure, ONE small starter (~$6, ≤20%) with immediate −10% stop-limit is defensible; ETH strongly preferred over thin/extended alts. Otherwise stay 100% cash into the Jul 29 statement. No broad deployment pre-FOMC.
+**HOLD-biased into FOMC.** No high-conviction entry — majors sub-gate, qualifying names (BANK extended, VVV) are single-name momentum plays with elevated pre-FOMC whipsaw risk. If 9AM execution still confirms **VVV ≥+2%** with clean structure, at most ONE small starter (~$6, ≤20%) with immediate −10% stop-limit is acceptable; VVV preferred over extended BANK. Otherwise stay 100% cash into Jul 29. No broad deployment pre-FOMC.
 
-Sources: [CFGI](https://cfgi.io/crypto-fear-greed-index/), [AltIndex F&G](https://altindex.com/fear-and-greed-index-crypto), [CoinGape FOMC July 2026](https://coingape.com/prediction-markets/fomc-meeting-next-week-will-the-fed-cut-raise-or-hold-interest-rates/), MEXC live 24hr ticker.
+Sources: [CFGI](https://cfgi.io/), [Milk Road F&G](https://milkroad.com/fear-greed/), [CoinGape FOMC Jul 2026](https://coingape.com/trending/fomc-meeting-july-2026-date-schedule-how-to-add-watch-and-exceptions/), [CoinGape BTC pre-FOMC](https://coingape.com/markets/bitcoin-price-prediction-ahead-of-july-28-29-fomc-meeting/).
