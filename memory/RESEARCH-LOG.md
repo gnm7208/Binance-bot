@@ -290,44 +290,17 @@ HOLD-biased into FOMC. Candidates now CONFIRMED green (BANK/VVV/ZRO pass the +2%
 
 Sources: [CFGI](https://cfgi.io/), [Milk Road F&G](https://milkroad.com/fear-greed/), [CoinGabbar Jul 25](https://www.coingabbar.com/en/crypto-currency-news/crypto-news-today-btc-drops-dexe-layerzero-beat-lead-gains), [CoinMarketCap BTC Dominance](https://coinmarketcap.com/charts/bitcoin-dominance/).
 
-## 2026-07-26 — Morning Research (Sunday)
+## 2026-07-27 — Morning Execution (validation only)
 
 ### Account Snapshot
-- Total portfolio: $32.32 USDT · Free: $32.32 (100%) · Open positions: 0 · Trades this week: 0/25
-- MEXC Spot API healthy — `price`/`quote`/`ticker/24hr` all responding. Reachability gate **PASS**.
-- Perplexity key still unset → WebSearch fallback (no live funding/OI print).
+- Total portfolio: $32.29 USDT · Free: $32.29 (100%) · Open positions: 0 · Trades this week: 0/25
+- MEXC Spot API healthy — reachability gate PASS (`price`/`account`/`positions`/`quote` all responding, canTrade=true).
 
-### Market Context (live MEXC 24hr)
-- BTC: $64,486 (**+0.67%** 24h · H $64,536 / L $63,806) — grinding, tight range
-- ETH: $1,879 (+1.03%) · SOL: $74.86 (+0.98%) · BNB: $570 (+0.71%) — all green but **all FAIL +2% momentum gate**
-- BTC Dominance: ~56.5% — steady, no clear alt rotation
-- Fear & Greed: **45 Neutral (CFGI)** / 27 Fear (alt.me) — mixed, Neutral-leaning; sentiment still cautious
-- Total tape: fragmented; narratives = Solana ecosystem, AI-native, stablecoin infra, RWA/on-chain insurance rotation
-- Macro: **FOMC Jul 28–29** (Chair Warsh, statement Wed 2pm ET) — 2–3 sessions out. Consensus hold 3.50–3.75% but BofA flags risk of 3 consecutive H2 hikes; live hike tail (~33% prior print). PCE in focus. **Binary event risk elevated into midweek.**
-
-### On-Chain / Derivatives
-- No live funding/OI (Perplexity unset). Steady BTC dominance + Neutral F&G = coiling ahead of FOMC, not a directional signal.
-
-### News on Held Positions
-- None — 0 open positions.
-
-### Confirmed Relative-Strength Movers (pass +2% gate)
-- **BANK (Lorenzo Protocol)**: $0.3636 (**+20.84%** 24h · H $0.3896 / L $0.2968) — day 2 of the ramp, faded from yesterday's +28%. DeFi/RWA yield. Extended, mean-reversion risk high.
-- **VVV (Venice)**: $13.19 (**+6.14%** 24h · H $13.73 / L $12.39) — AI narrative, cleaner/less-extended structure than BANK.
-- ZRO (LayerZero): $0.851 (**−1.59%** 24h) — faded from +5% yesterday; **no longer qualifies**.
-
-### Trade Ideas (research only — execution owns the decision)
-1. **VVV** — px $13.19, +6.14% (gate PASS). Cleanest qualifying setup. Entry ~live, stop-limit −10% ~$11.87, target +7% ~$14.11. Sector AI. *Re-confirm ≥+2% at execution.*
-2. **BANK** — px $0.3636, +20.84% (gate PASS but 2nd day extended). Entry ~live, stop −10% ~$0.327, target +7% ~$0.389. DeFi/RWA. Chasing an extended mover into FOMC = high whipsaw risk; tiny size only if taken.
-3. Majors (BTC/ETH/SOL/BNB) — all green but sub-+2%; **no qualifying entry**.
-
-### Risk Factors
-- **FOMC Jul 28–29 with live hike tail** — binary event 2–3 sessions out; avoid size before it.
-- Majors fail momentum gate market-wide; only extended alt movers qualify → chase risk.
-- Tiny account ($32.32): 20% cap ≈ $6.46/position; MEXC min-notional viable but fee/slippage a large % drag.
-- F&G Neutral-but-mixed; no strong directional edge.
+### Candidate Re-Validation (live MEXC 24hr)
+- **BANK**: $0.3967, **+6.37% 24h** — momentum gate PASS, but Jul 25 flagged extended (chasing ATH into FOMC = high whipsaw).
+- **ZRO**: $0.8989, **+6.47% 24h** — momentum gate PASS.
+- **VVV**: $13.83, **−0.28% 24h** — momentum gate FAIL. This was the *preferred* pre-FOMC starter; it has lost qualification.
+- BTC: $65,524 (+1.74% 24h).
 
 ### Decision
-**HOLD-biased into FOMC.** No high-conviction entry — majors sub-gate, qualifying names (BANK extended, VVV) are single-name momentum plays with elevated pre-FOMC whipsaw risk. If 9AM execution still confirms **VVV ≥+2%** with clean structure, at most ONE small starter (~$6, ≤20%) with immediate −10% stop-limit is acceptable; VVV preferred over extended BANK. Otherwise stay 100% cash into Jul 29. No broad deployment pre-FOMC.
-
-Sources: [CFGI](https://cfgi.io/), [Milk Road F&G](https://milkroad.com/fear-greed/), [CoinGape FOMC Jul 2026](https://coingape.com/trending/fomc-meeting-july-2026-date-schedule-how-to-add-watch-and-exceptions/), [CoinGape BTC pre-FOMC](https://coingape.com/markets/bitcoin-price-prediction-ahead-of-july-28-29-fomc-meeting/).
+HOLD — no trade fires. No fresh research entry exists for today; the only standing plan (Jul 25) is "stay 100% cash into Jul 29, no deployment pre-FOMC," which left a door open for ONE tiny starter with **VVV preferred**. VVV now fails the momentum gate; the two candidates that pass (BANK, ZRO) are both extended movers running into the binary **FOMC Jul 28–29** event tomorrow, validated only against 2-day-stale research. Discipline over activity: stay 100% cash into FOMC. Re-run full morning-research post-FOMC before any entry. No ClickUp alert (no trade fired).
