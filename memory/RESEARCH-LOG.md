@@ -290,18 +290,17 @@ HOLD-biased into FOMC. Candidates now CONFIRMED green (BANK/VVV/ZRO pass the +2%
 
 Sources: [CFGI](https://cfgi.io/), [Milk Road F&G](https://milkroad.com/fear-greed/), [CoinGabbar Jul 25](https://www.coingabbar.com/en/crypto-currency-news/crypto-news-today-btc-drops-dexe-layerzero-beat-lead-gains), [CoinMarketCap BTC Dominance](https://coinmarketcap.com/charts/bitcoin-dominance/).
 
-## 2026-07-26 — Morning Execution (validation of 2026-07-25 plan)
+## 2026-07-25 — Morning Execution (09:00 CT)
 
-- Reachability gate: **PASS** — MEXC Spot API healthy (`price`/`quote`/`account`/`positions` all responding).
-- Account: $32.29 USDT · 100% cash · 0 positions · 0/25 trades this week · 0 today. BTC $64,415 (+0.60% 24h).
-- No dedicated 2026-07-26 research entry; executed against most-recent plan (2026-07-25 intraday: HOLD-biased into FOMC, ≤1 small ~$6 starter only on ≥+2% **and** clean structure, VVV preferred).
+### Buy-Side Gate — validated live
+- Account: $32.32 USDT free, 0 positions, 0/25 trades. Portfolio/daily/weekly gates all PASS.
+- Momentum gate re-confirmed live (MEXC 24hr, % is a fraction): **VVV +5.55%**, **ZRO +4.81%**, **BANK +24.89%**, BTC −1.92%. All three candidates still ≥ +2%.
+- Per research: at most ONE small starter, VVV preferred (BANK extended +24%).
 
-### Candidate re-validation (live MEXC 24hr)
-| Sym | 24h chg | Live px | Verdict |
-|-----|---------|---------|---------|
-| VVV | +13.55% | 14.25 (= 24h high) | Momentum PASS, structure FAIL — at exact 24h high, extended/chasing |
-| BANK | +15.73% | 0.371 | PASS but de-prioritized — extended (+28% two days prior, +16% more) |
-| ZRO | −1.97% | 0.844 | Momentum FAIL — rolled over, dropped out |
+### BLOCKER — no stop-limit support on MEXC spot API
+- `exchangeInfo.orderTypes` for VVV/BANK/ZRO **and BTCUSDT** = `[LIMIT, MARKET, LIMIT_MAKER]`. **No `STOP_LOSS_LIMIT`.** MEXC spot exposes stop orders only in its web UI, not the REST API our wrapper uses.
+- Rule 4 (mandatory stop-limit GTC immediately after every fill, no exceptions) is **unexecutable** on MEXC via API. Buying would leave an unprotected position into a live-FOMC week — a hard rule violation.
+- Analogous to prior Binance-451 / Bybit-403 operational blockers: the venue cannot support the risk framework. Reachability-gate protocol → HALT, alert, place no orders.
 
 ### Decision
-**HOLD — no trade fired.** ZRO fails the +2% gate; VVV/BANK pass momentum but are extended, chasing 24h highs, and the "clean structure" execution condition is not met (VVV at exact 24h high). FOMC Jul 28–29 binary risk (~33% hike tail) is 2–3 sessions out — the dominant risk the plan was built to avoid. Stay 100% cash into FOMC. No ClickUp alert (trade did not fire). Re-evaluate at midday / post-FOMC.
+**NO TRADE.** Setups qualified (VVV/ZRO/BANK green), but the mandatory protective stop cannot be placed on MEXC spot via API → HALT. 100% cash ($32.32) into FOMC. Escalated. Needs resolution before any entry: (a) confirm a MEXC endpoint/param that accepts spot stops, or (b) migrate to a venue whose API supports resting stop-limit GTC orders and is reachable from this IP.
