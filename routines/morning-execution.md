@@ -80,19 +80,17 @@ STEP 5 — Execute approved buys (market orders, spend USDT amount):
 
 Capture the fill price and filled qty from the order response before proceeding to STEP 6.
 
-STEP 6 — Immediately place stop-limit GTC at 10% below fill price for each new position.
-Compute: stop_price = fill_price * 0.90 (round to tick size).
-Limit price = stop_price * 0.999:
-  bash scripts/mexc.sh order \
-    '{"symbol":"XYZUSDT","side":"SELL","type":"STOP_LOSS_LIMIT","quantity":"<qty>","price":"<limit_price>","stopPrice":"<stop_price>","timeInForce":"GTC"}'
+STEP 6 — Record stop and target prices for each new position in TRADE-LOG.
+  stop_price = fill_price * 0.90 (monitored by midday + afternoon scans — no resting order)
+  target_price = fill_price * 1.07
 
-If MEXC rejects the stop order, retry with price = stop_price * 0.995.
-If still rejected, log "STOP BLOCKED — set manually ASAP" in TRADE-LOG and send ClickUp alert.
+NOTE: MEXC spot API does not support STOP_LOSS_LIMIT orders (orderTypes = LIMIT, MARKET,
+LIMIT_MAKER only). Stops are enforced by the midday and afternoon-execution monitoring
+routines, which market-sell any position where price ≤ stop_price or P&L ≤ -7%.
 
 STEP 7 — Append each trade to memory/TRADE-LOG.md:
   ## YYYY-MM-DD — Trade Entry
   **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (+7%)
-  Stop order ID: XXXXXXXXXX
   **Thesis:** ...
   **Catalyst:** ...
   **Sector:** ...

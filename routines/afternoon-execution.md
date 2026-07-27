@@ -99,15 +99,12 @@ STEP 6 — Execute approved buys:
   bash scripts/mexc.sh order \
     '{"symbol":"XYZUSDT","side":"BUY","type":"MARKET","quoteOrderQty":"<usdt_amount>"}'
 
-  Immediately place stop-limit at 10% below fill:
-  stop_price = fill_price * 0.90; limit_price = stop_price * 0.999
-  bash scripts/mexc.sh order \
-    '{"symbol":"XYZUSDT","side":"SELL","type":"STOP_LOSS_LIMIT","quantity":"<qty>","price":"<limit_price>","stopPrice":"<stop_price>","timeInForce":"GTC"}'
+  Record stop and target in TRADE-LOG (MEXC has no stop-limit API — monitored by scans):
+  stop_price = fill_price * 0.90; target_price = fill_price * 1.07
 
   Append to memory/TRADE-LOG.md:
     ## YYYY-MM-DD — Trade Entry (afternoon)
     **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (+7%)
-    Stop order ID: XXXXXXXXXX
     **Thesis:** ...
     **Catalyst:** ...
     **Sector:** ...

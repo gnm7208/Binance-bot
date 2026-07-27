@@ -22,49 +22,42 @@ IMPORTANT — PERSISTENCE:
 
 STEP 1 — Read memory for context:
 - memory/TRADING-STRATEGY.md (exit rules, stop-tightening thresholds)
-- tail of memory/TRADE-LOG.md (entries, original thesis per position, stop order IDs)
+- tail of memory/TRADE-LOG.md (entries, original thesis, stop price per position)
 - today's memory/RESEARCH-LOG.md entry (original thesis for each position)
+
+NOTE: MEXC spot API has no stop-limit orders. Stops are enforced here by comparing
+current price to the stop price recorded in TRADE-LOG at entry.
 
 STEP 2 — Pull current state:
   bash scripts/mexc.sh positions
-  bash scripts/mexc.sh orders
   bash scripts/mexc.sh price <each held ticker>USDT
 
-STEP 3 — Cut losers. For every position where unrealized P&L % ≤ -7%:
-  bash scripts/mexc.sh cancel <SYMBOL>USDT <orderID>  # cancel stop order first
-  bash scripts/mexc.sh close <SYMBOL>USDT             # market sell full position
+STEP 3 — Cut losers. For every position where current price ≤ stop price (from TRADE-LOG)
+OR unrealized P&L % ≤ -7%:
+  bash scripts/mexc.sh close <SYMBOL>USDT
 
 Append to memory/TRADE-LOG.md:
   ## YYYY-MM-DD — Trade Exit (midday cut)
-  **SELL** SYMBOL | Exit: $X.XX | Realized P&L: -$X (-X%) | Reason: cut at -7% per rule
-  Stop order <ID> cancelled.
+  **SELL** SYMBOL | Exit: $X.XX | Realized P&L: -$X (-X%) | Reason: hit stop / -7% rule
 
 STEP 4 — Take profit on winners. For every position where unrealized P&L % ≥ +7%:
-  bash scripts/mexc.sh cancel <SYMBOL>USDT <orderID>  # cancel stop order first
-  bash scripts/mexc.sh close <SYMBOL>USDT             # market sell full position
+  bash scripts/mexc.sh close <SYMBOL>USDT
 
 Append to memory/TRADE-LOG.md:
   ## YYYY-MM-DD — Trade Exit (take profit)
   **SELL** SYMBOL | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: +7% take-profit rule
-  Stop order <ID> cancelled.
 
 STEP 5 — Tighten trailing stops on remaining positions (up +3% to +6%). For each:
-- Up +3% or more AND not yet at +7% → cancel old stop, place new stop-limit at 7% below current price
-- NEVER tighten within 3% of current price
-- NEVER move a stop down
+- Up +3% or more AND not yet at +7% → update stop in TRADE-LOG to 7% below current price
+- NEVER tighten within 3% of current price; NEVER move a stop down
 
-To tighten:
-  bash scripts/mexc.sh cancel <SYMBOL>USDT <old_orderID>
-  bash scripts/mexc.sh order \
-    '{"symbol":"XYZUSDT","side":"SELL","type":"STOP_LOSS_LIMIT","quantity":"<qty>","price":"<limit_price>","stopPrice":"<stop_price>","timeInForce":"GTC"}'
+Update TRADE-LOG entry:
+  Stop tightened: $X.XX → $X.XX (7% below $X.XX current price)
 
-Log new stop order ID in TRADE-LOG.
-
-STEP 5 — Thesis check. For each remaining position, check current price action and any
+STEP 6 — Thesis check. For each remaining position, check current price action and any
 midday news. If the thesis has broken (catalyst invalidated, sector rolling over hard,
 negative news event), close the position even if not at -7%:
   bash scripts/mexc.sh close <SYMBOL>USDT
-  bash scripts/mexc.sh cancel <SYMBOL>USDT <orderID>
 
 Log the exit and reason in TRADE-LOG.
 

@@ -14,12 +14,14 @@ MEXC Spot. Spot only — no margin, no futures, no leverage, ever.
 1. SPOT ONLY — no margin, no futures, no leverage, ever
 2. 75-85% deployed; hold 15-25% USDT as dry powder
 3. 5-6 positions max; 20% of total portfolio per position
-4. Every position gets a stop-limit GTC order immediately after fill — no exceptions
-5. Cut losers at -7% from entry: cancel stop order, market sell
-6. Take profit at +7%: cancel stop order, market sell — no exceptions
-7. Trailing stop (manual — MEXC has no native trailing stop):
-   - Entry: stop at -10% below fill price
-   - At +3% gain: tighten stop to 7% below current price (locks in near-breakeven)
+4. Every position gets a stop price recorded in TRADE-LOG immediately after fill (MEXC spot
+   API does not support resting stop-limit orders — monitored stops enforce the same rule).
+   Stop = entry price × 0.90 (-10%). Enforced at every midday and afternoon scan.
+5. Cut losers at -7% from entry: market sell immediately when price ≤ stop level
+6. Take profit at +7%: market sell immediately — no exceptions
+7. Trailing stop (manual — enforced by monitoring routines):
+   - Entry: stop at -10% below fill price (recorded in TRADE-LOG)
+   - At +3% gain: tighten stop to 7% below current price (update TRADE-LOG)
    - At +7% gain: close for take profit
    - Never tighten within 3% of current price; never move a stop down
 8. Max 25 new trades per week; max 5 new trades per day
@@ -54,25 +56,20 @@ MEXC Spot. Spot only — no margin, no futures, no leverage, ever.
 bash scripts/mexc.sh order \
   '{"symbol":"BTCUSDT","side":"BUY","type":"MARKET","quoteOrderQty":"2000"}'
 
-# Stop-limit GTC (10% below fill price — place immediately after fill)
-bash scripts/mexc.sh order \
-  '{"symbol":"BTCUSDT","side":"SELL","type":"STOP_LOSS_LIMIT","quantity":"0.001","price":"89900","stopPrice":"90000","timeInForce":"GTC"}'
-
-# Take-profit at +10% (cancel stop first, then market sell)
-bash scripts/mexc.sh cancel BTCUSDT <stop_order_id>
+# Take-profit / cut loser (market sell full position)
 bash scripts/mexc.sh close BTCUSDT
 
-# Tightened stop-limit (cancel old stop first, then place new at 7% or 5% below current price)
-bash scripts/mexc.sh cancel BTCUSDT <old_order_id>
-bash scripts/mexc.sh order \
-  '{"symbol":"BTCUSDT","side":"SELL","type":"STOP_LOSS_LIMIT","quantity":"0.001","price":"94905","stopPrice":"95000","timeInForce":"GTC"}'
+# NOTE: MEXC spot API only supports LIMIT, MARKET, LIMIT_MAKER — no STOP_LOSS_LIMIT.
+# Stops are enforced by monitoring routines (midday + afternoon scans).
+# After every buy, record in TRADE-LOG: entry price, stop price (-10%), target (+7%).
 ```
 
-## Sell-Side Rules (evaluated at midday scan)
-- Unrealized loss ≤ -7%: close immediately (cancel stop, market sell)
-- Up +7% or more: close immediately — take profit (cancel stop, market sell)
-- Up +3% to +6%: tighten stop to 7% below current price (trailing stop adjustment)
-- Thesis broken (catalyst invalidated, sector rolling over): close even if not at -7%
+## Sell-Side Rules (evaluated at EVERY midday and afternoon scan)
+
+- Unrealized loss ≤ -7% OR price ≤ stop price in TRADE-LOG: market sell immediately
+- Up +7% or more: market sell immediately — take profit
+- Up +3% to +6%: update stop in TRADE-LOG to 7% below current price (trailing adjustment)
+- Thesis broken (catalyst invalidated, sector rolling over): market sell even if not at -7%
 - Sector has 2 consecutive failed trades: exit all positions in that sector
 
 ## Research Priorities (morning-research workflow)

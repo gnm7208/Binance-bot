@@ -33,7 +33,7 @@ Cloud routines live in `routines/`. Local slash commands in `.claude/commands/`.
 - Max 5-6 open positions at a time
 - Max 20% of portfolio per position
 - 75-85% capital deployed; hold 15-25% USDT as dry powder
-- **Every position gets a stop-limit GTC order immediately after fill** — no exceptions
+- **Every position gets a stop price recorded in TRADE-LOG immediately after fill** — MEXC API has no stop-limit orders; stops enforced by midday + afternoon monitoring routines
 - Cut losers at -7% from entry (cancel stop, market sell)
 - **Trailing stop (manual)**: stop at -10% on entry → tighten to 7% below current at +3% gain → close at +7%
 - Never tighten within 3% of current price; never move a stop down
