@@ -59,3 +59,15 @@ No positions. Starting capital: 4,500 KES → 34.32 USDT via Remitano M-Pesa P2P
 | — | — | — | — | — | — | — |
 
 **Notes:** No positions; 100% cash. USDT free $32.2946 / locked $0 (canTrade=true). 0 open orders. 0 trades today, 0/25 this week. Deployment 0% vs 75-85% target — still no qualifying entry taken. Day P&L measured vs last snapshot (Jul 24 $32.32); no Jul 25 EOD snapshot was logged. Balance drift -$0.03 from baseline is dust/rounding, no fills. BTC ref $64,694.29. Research log stance: HOLD into FOMC — movers parabolic, waiting for cleaner setup.
+
+---
+
+## Jul 27 — EOD Snapshot (Day 5, Monday)
+
+**Portfolio:** $32.29 | **Cash:** $32.29 (100%) | **Day P&L:** $0.00 (0.00%) | **Phase P&L:** -$0.03 (-0.09%)
+
+| Ticker | Qty | Entry | Price | Day Chg | Unrealized P&L | Stop |
+|--------|-----|-------|-------|---------|----------------|------|
+| — | — | — | — | — | — | — |
+
+**Notes:** No positions; 100% cash. USDT free $32.2946 / locked $0 (canTrade=true). 0 open orders. 0 trades today, 0/25 this week. Day P&L $0.00 vs Jul 26 ($32.2946, identical). Phase P&L -$0.03 vs baseline $32.32 = dust/rounding, no fills ever. BTC ref $64,622.08 (morning $65,127 → afternoon $65,054 → EOD $64,622). Deployment 0% vs 75-85% target. **Blocker unchanged (hard):** MEXC spot API has no `STOP_LOSS_LIMIT` (`orderTypes` = LIMIT/MARKET/LIMIT_MAKER) → Rule 4 protective stop unexecutable → NO TRADE all day (morning + afternoon both HALT). Research candidates AAVE +8.5% / ETH +4.1% / BANK +8.8% passed +2% gate but blocker applies regardless. FOMC Jul 28–29 binary event also argues against size. Escalated; needs a working spot-stop mechanism or a reachable venue whose API supports resting stop-limit GTC before any entry.
