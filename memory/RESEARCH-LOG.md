@@ -290,6 +290,51 @@ HOLD-biased into FOMC. Candidates now CONFIRMED green (BANK/VVV/ZRO pass the +2%
 
 Sources: [CFGI](https://cfgi.io/), [Milk Road F&G](https://milkroad.com/fear-greed/), [CoinGabbar Jul 25](https://www.coingabbar.com/en/crypto-currency-news/crypto-news-today-btc-drops-dexe-layerzero-beat-lead-gains), [CoinMarketCap BTC Dominance](https://coinmarketcap.com/charts/bitcoin-dominance/).
 
+## 2026-07-27 — Morning Research
+
+### Account Snapshot
+- Total portfolio value: $32.29 USDT (MEXC Spot API healthy — reachability gate PASS, `price BTCUSDT` = $65,105)
+- Free USDT: $32.29 (100%) · locked $0 · canTrade=true
+- Open positions: 0 · Open orders: 0
+- Trades this week: 0/25 · today: 0/5
+
+### Market Context (live MEXC 24hr)
+- BTC: $65,100 (**+0.94%** 24h · H $65,729 / L $64,407) — reclaimed $65k, quiet recovery
+- ETH: $1,959 (**+4.14%** 24h) — strongest major, passes +2% gate
+- SOL: $76.15 (+1.54% 24h) · BNB: $572.65 (+0.14%)
+- BTC Dominance: ~56.4% (flat-to-easing; alts catching a modest bid today)
+- Fear & Greed: 27 (Fear) on alt.me / 44 (Neutral) on CFGI — Fear-to-Neutral, improving vs last week
+- DXY: ~100.6–101 (range-bound)
+- Tape has turned **green** vs the red pre-FOMC tape of Jul 25 — risk-on tilt into the meeting
+- Sector leaders: **DeFi** (AAVE +8.5%, catalyst: Mastercard Agent Pay w/ Aave as launch partner), **DeFi/RWA** (BANK pressing ATH), **interop** (ZRO), **AI/data** (Bittensor cited +24% off-venue though MEXC TAO flat +0.1% — divergent, treat with caution). Narrative: SpaceX tokenized shares live on Solana (bStocks) — RWA momentum.
+
+### On-Chain / Derivatives
+- Perplexity key unset in cloud env → WebSearch fallback; no live funding/OI print
+- Context: BTC ETFs saw ~$225M outflow into Jul 25 (confidence knock), but spot tape firming since
+- BTC dominance flat while alts green = early, selective rotation attempt — not confirmed altseason
+
+### News on Held Positions
+- None — 0 open positions.
+
+### Confirmed Relative-Strength Movers (pass +2% gate)
+- **AAVE** $101.15 (**+8.51%**) · **BANK** $0.4064 (**+8.76%**) · **ZRO** $0.9177 (**+7.04%**) · **LINK** $8.78 (**+4.39%**) · **ETH** $1,959 (**+4.14%**)
+
+### Trade Ideas (research only — execution BLOCKED, see below)
+1. **AAVE** — px $101.15, +8.51% 24h (gate PASS). Catalyst: Mastercard Agent Pay names Aave a launch partner — real DeFi infra tailwind. Entry ~$101, stop-limit −10% ~$91.0 (hard cut −7% ~$94.1), target +7% ~$108.2. Sector: DeFi (leading).
+2. **ETH** — px $1,959, +4.14% (gate PASS). Cleanest major, less extended than the small-caps. Entry ~$1,960, stop −10% ~$1,764, target +7% ~$2,097. Sector: L1/DeFi beta.
+3. **BANK (Lorenzo)** — px $0.4064, +8.76% (gate PASS). DeFi/RWA, pressing ATH again (was ~$0.32 on Jul 25). Momentum strong but extended/whippy — tiny size only if taken. Entry ~$0.406, stop −10% ~$0.366, target +7% ~$0.435.
+
+### Risk Factors
+- **HARD BLOCKER (unchanged): MEXC spot API does not support stop-limit orders** — `exchangeInfo.orderTypes` = `[LIMIT, MARKET, LIMIT_MAKER]` for every pair. Rule 4 (mandatory stop-limit GTC after every fill) is **unexecutable** → cannot open a protected position → NO BUY regardless of setup quality. Standing operational blocker (logged Jul 25); already escalated.
+- **FOMC Jul 28–29** (statement Wed Jul 29, 2pm ET) — consensus hold 3.50–3.75%, ~24% hike tail. Binary event tomorrow; avoid size ahead of it even if execution were possible.
+- Tiny account ($32.29): 20% cap ≈ $6.46/position; watch MEXC min-notional + fee/slippage drag.
+- Alt strength is early/selective, not confirmed rotation — momentum entries fragile pre-FOMC.
+
+### Decision
+**HOLD — NO TRADE.** Two independent blocks: (1) mandatory protective stop cannot be placed on MEXC spot via API (Rule 4 unexecutable); (2) live-FOMC binary event tomorrow argues against size regardless. Setups qualify (AAVE/ETH/BANK green, +2% gate PASS) and are logged for when execution capability exists. Stay 100% cash. Re-evaluate at midday / post-FOMC.
+
+Sources: [Milk Road F&G](https://milkroad.com/fear-greed/), [CFGI](https://cfgi.io/bitcoin-fear-greed-index/), [FOMC Jul 28-29 preview](https://www.tradingkey.com/analysis/stocks/us-stocks/262054021-july-fomc-fed-oil-us-oil-tradingkey), [Crypto gainers Jul 27](https://captainaltcoin.com/blockdag-solana-bittensor-chainlink-4-top-crypto-gainers-today-turning-heads-across-the-market/).
+
 ## 2026-07-25 — Morning Execution (09:00 CT)
 
 ### Buy-Side Gate — validated live
