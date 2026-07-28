@@ -413,3 +413,17 @@ Sources: [Milk Road F&G](https://milkroad.com/fear-greed/), [CFGI](https://cfgi.
 **HOLD — NO TRADE.** Momentum gate fails market-wide (all liquid names red; only an illiquid microcap pump is green), so nothing qualifies today anyway. Independently, the mandatory-stop blocker still makes any buy a Rule 4 violation, and the FOMC statement tomorrow argues against size regardless. Stay 100% cash. Re-evaluate post-FOMC (Thu Jul 30) for a clean ≥ +2% reclaim with a catalyst — AAVE/ETH on watch.
 
 Sources: [alt.me F&G](https://api.alternative.me/fng/), [CFGI](https://cfgi.io/bitcoin-fear-greed-index/), [Milk Road F&G](https://milkroad.com/fear-greed/), live MEXC `/api/v3/ticker/24hr`.
+
+## 2026-07-28 — Morning Execution (09:00 CT)
+
+### Gates — validated live
+- **Reachability gate PASS:** `price BTCUSDT` = $63,411.09.
+- **Stop-order gate FAIL (hard blocker, unchanged):** live `STOP_LOSS_LIMIT` order test on BTCUSDT rejected (HTTP 400). MEXC spot API supports only LIMIT/MARKET/LIMIT_MAKER → Rule 4 (mandatory protective stop after every fill) unexecutable.
+- Account: $32.2946 free, 0 positions, 0 open orders, canTrade=true. 0/25 wk, 0/5 today — portfolio/daily/weekly gates all PASS.
+- No closed trades this week → circuit breaker N/A. No positions → no sell-side actions.
+
+### Momentum gate — re-confirmed live (MEXC 24hr)
+- BTC −3.19% · ETH −4.43% · SOL −4.61% · AAVE −3.72% · BANK −14.54%. Every liquid name RED. Momentum gate (24h ≥ +2%) **FAILS market-wide**. No candidate qualifies.
+
+### Decision
+**NO TRADE.** No trade idea passes the buy-side gate today — momentum fails on every liquid name (only illiquid AKE pump green, disqualified on quality). Independently, the stop-order blocker makes any buy a Rule 4 violation, and the FOMC statement tomorrow (Wed Jul 29) argues against size regardless. Stay 100% cash ($32.29). No ClickUp alert (no trade fired). Re-evaluate post-FOMC.
