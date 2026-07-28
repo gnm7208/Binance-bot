@@ -371,3 +371,45 @@ Sources: [Milk Road F&G](https://milkroad.com/fear-greed/), [CFGI](https://cfgi.
 
 ### Decision
 **NO TRADE.** Same hard blocker as this morning: any buy would leave an unprotected position, violating Rule 4 (no exceptions). Watchlist re-check skipped — blocker applies regardless of momentum/catalyst. HALT, 100% cash. No ClickUp alert (unchanged from morning, already escalated). Re-evaluate post-FOMC.
+
+## 2026-07-28 — Morning Research
+
+### Account Snapshot
+- Total portfolio value: $32.29 USDT (MEXC Spot API healthy — reachability gate PASS, `price BTCUSDT` = $63,200)
+- Free USDT: $32.29 (100%) · Open positions: 0 · Open orders: 0
+- Trades this week: 0/25 · today: 0/5
+
+### Market Context (live MEXC 24hr)
+- BTC: $63,218 (**−2.98%** 24h · H $65,729 / L $63,083) — broke back below $64k, risk-off
+- ETH: $1,876 (**−3.44%**) · SOL: $73.38 (**−3.95%**) · BNB: $565 (−1.33%)
+- AAVE: $97.46 (−2.31%) · LINK: $8.32 (−4.76%) · XRP: $1.057 (−4.34%) · DOGE (−3.50%)
+- BTC Dominance: ~57% (firm — capital defensive in BTC, alts underperforming into the event)
+- Fear & Greed: **29 (Fear)** on alt.me / ~44–53 (Neutral) on CFGI — Fear-to-Neutral, sentiment cooling vs Jul 27's green tape
+- DXY: ~100.6–101 (range-bound)
+- Tape flipped **red** overnight (Jul 27 was green) — de-risking ahead of the FOMC statement
+
+### On-Chain / Derivatives
+- Perplexity key unset in cloud env → WebSearch + direct MEXC/alt.me pulls; no live funding/OI print
+- Rising BTC dominance + broad −3% alt tape = defensive rotation into BTC ahead of the binary event
+
+### News on Held Positions
+- None — 0 open positions.
+
+### Confirmed Relative-Strength Movers (pass +2% gate)
+- **None with real liquidity.** Full USDT-market scan (quoteVol > $3M): only stablecoins flat and **AKE +35%** ($0.0046, vol $5.6M) — an illiquid microcap pump, not a tradeable setup. Every liquid major/alt is red. Momentum gate (24h ≥ +2%) FAILS market-wide.
+
+### Trade Ideas (research only — execution BLOCKED, see below)
+1. **No qualifying entry.** Momentum gate fails on every liquid name; the only green print (AKE) is an illiquid pump — disqualified on liquidity/quality.
+2. **Watchlist — AAVE** ($97.46): still the cleanest catalyst name (Mastercard Agent Pay launch partner) but red today; re-arm only on a post-FOMC ≥ +2% reclaim above ~$100. Entry ~live, stop −10%, target +7%.
+3. **Watchlist — ETH** ($1,876): major beta; wait for post-FOMC direction and a ≥ +2% day before any entry.
+
+### Risk Factors
+- **HARD BLOCKER (unchanged): MEXC spot API has no stop-limit** — `exchangeInfo.orderTypes` = `[LIMIT, MARKET, LIMIT_MAKER]` for every pair. Rule 4 (mandatory protective stop after every fill) is **unexecutable** → cannot open a protected position → NO BUY regardless of setup. Standing, already escalated.
+- **FOMC statement TOMORROW (Wed Jul 29, 2pm ET)** — consensus hold 3.50–3.75%, live hike tail. Binary event 1 session out; avoid size into it even if execution were possible. Today's red tape is the market de-risking ahead of it.
+- Tiny account ($32.29): 20% cap ≈ $6.46/position; MEXC min-notional + fee/slippage drag.
+- F&G back in Fear (29); broad −3% tape + rising BTC dominance → alt longs fighting the current.
+
+### Decision
+**HOLD — NO TRADE.** Momentum gate fails market-wide (all liquid names red; only an illiquid microcap pump is green), so nothing qualifies today anyway. Independently, the mandatory-stop blocker still makes any buy a Rule 4 violation, and the FOMC statement tomorrow argues against size regardless. Stay 100% cash. Re-evaluate post-FOMC (Thu Jul 30) for a clean ≥ +2% reclaim with a catalyst — AAVE/ETH on watch.
+
+Sources: [alt.me F&G](https://api.alternative.me/fng/), [CFGI](https://cfgi.io/bitcoin-fear-greed-index/), [Milk Road F&G](https://milkroad.com/fear-greed/), live MEXC `/api/v3/ticker/24hr`.
