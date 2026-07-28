@@ -427,3 +427,18 @@ Sources: [alt.me F&G](https://api.alternative.me/fng/), [CFGI](https://cfgi.io/b
 
 ### Decision
 **NO TRADE.** No trade idea passes the buy-side gate today — momentum fails on every liquid name (only illiquid AKE pump green, disqualified on quality). Independently, the stop-order blocker makes any buy a Rule 4 violation, and the FOMC statement tomorrow (Wed Jul 29) argues against size regardless. Stay 100% cash ($32.29). No ClickUp alert (no trade fired). Re-evaluate post-FOMC.
+
+## 2026-07-28 — Afternoon Execution
+
+### Gates — validated live
+- **Reachability gate PASS:** `price BTCUSDT` = $63,496.26.
+- **Stop-order gate FAIL (hard blocker, unchanged):** live `STOP_LOSS_LIMIT` test already confirmed rejected this morning; MEXC spot `exchangeInfo.orderTypes` = `[LIMIT, MARKET, LIMIT_MAKER]`. Rule 4 (mandatory protective stop after every fill) unexecutable on MEXC via API.
+- Account: $32.2946 free, 0 open positions, 0 open orders, 0/25 wk, 0/5 today.
+- No open positions → no take-profit/cut/trailing-stop actions needed.
+- No closed trades this week → circuit breaker N/A. 0 trades today → daily gate N/A.
+
+### Momentum gate — re-confirmed live (MEXC 24hr)
+- BTC −2.38% · ETH −3.35% · AAVE −2.58%. Watchlist names still red; no ≥ +2% qualifier surfaced this afternoon.
+
+### Decision
+**NO TRADE.** Same hard blocker as morning: any buy would leave an unprotected position, violating Rule 4 (no exceptions). Watchlist momentum also still red regardless. HALT, 100% cash ($32.29). No ClickUp alert (unchanged from morning, already escalated). Re-evaluate post-FOMC (Wed Jul 29 statement).
