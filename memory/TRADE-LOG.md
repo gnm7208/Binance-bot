@@ -71,3 +71,15 @@ No positions. Starting capital: 4,500 KES → 34.32 USDT via Remitano M-Pesa P2P
 | — | — | — | — | — | — | — |
 
 **Notes:** No positions; 100% cash. USDT free $32.2946 / locked $0 (canTrade=true). 0 open orders. 0 trades today, 0/25 this week. Day P&L $0.00 vs Jul 26 ($32.2946, identical). Phase P&L -$0.03 vs baseline $32.32 = dust/rounding, no fills ever. BTC ref $64,622.08 (morning $65,127 → afternoon $65,054 → EOD $64,622). Deployment 0% vs 75-85% target. **Blocker unchanged (hard):** MEXC spot API has no `STOP_LOSS_LIMIT` (`orderTypes` = LIMIT/MARKET/LIMIT_MAKER) → Rule 4 protective stop unexecutable → NO TRADE all day (morning + afternoon both HALT). Research candidates AAVE +8.5% / ETH +4.1% / BANK +8.8% passed +2% gate but blocker applies regardless. FOMC Jul 28–29 binary event also argues against size. Escalated; needs a working spot-stop mechanism or a reachable venue whose API supports resting stop-limit GTC before any entry.
+
+---
+
+## Jul 28 — EOD Snapshot (Day 6, Tuesday)
+
+**Portfolio:** $32.29 | **Cash:** $32.29 (100%) | **Day P&L:** $0.00 (0.00%) | **Phase P&L:** -$0.03 (-0.08%)
+
+| Ticker | Qty | Entry | Price | Day Chg | Unrealized P&L | Stop |
+|--------|-----|-------|-------|---------|----------------|------|
+| — | — | — | — | — | — | — |
+
+**Notes:** No positions; 100% cash. USDT free $32.2946 / locked $0 (canTrade=true). 0 open orders. 0 trades today, 0/25 this week. Day P&L $0.00 vs Jul 27 ($32.2946, identical). Phase P&L -$0.03 vs baseline $32.32 = dust/rounding, no fills ever. Reachability gate PASS (BTC $63,363.32). BTC ref $63,363 (morning $63,411 → afternoon $63,496 → EOD $63,363) — grinding lower as market de-risks into FOMC. Deployment 0% vs 75-85% target. Morning + afternoon both logged NO TRADE: momentum gate failed market-wide (BTC/ETH/SOL/AAVE all red) AND the hard blocker persists — MEXC spot API has no `STOP_LOSS_LIMIT` (`orderTypes` = LIMIT/MARKET/LIMIT_MAKER; live test rejected HTTP 400) → Rule 4 protective stop unexecutable → any buy is a Rule 4 violation. FOMC statement tomorrow (Wed Jul 29, 2pm ET) argues against size regardless. Re-evaluate post-FOMC (Thu Jul 30).
