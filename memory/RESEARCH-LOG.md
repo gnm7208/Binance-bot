@@ -486,3 +486,17 @@ Sources: [alt.me F&G](https://api.alternative.me/fng/), [CFGI](https://cfgi.io/b
 **HOLD — NO TRADE.** Two independent blocks stand: (1) the mandatory protective stop cannot be placed on MEXC spot via API (Rule 4 unexecutable); (2) the FOMC statement this afternoon is a binary event that argues against size regardless. Qualifying momentum is thin anyway — only ADA (liquid) and AAVE (thin book) clear the +2% gate on a coiled pre-event tape. Stay 100% cash. Re-evaluate post-statement / Thu Jul 30 for a clean ≥ +2% reclaim with a catalyst — ADA/AAVE/ETH on watch.
 
 Sources: live MEXC `/api/v3/ticker/24hr`, [alt.me F&G](https://api.alternative.me/fng/), CoinGecko `/global` (BTC.D, total mcap).
+
+## 2026-07-29 — Morning Execution (09:00 CT) — FIRST TRADE FIRED
+
+### Gates — validated live
+- **Reachability gate PASS:** `price BTCUSDT` = $64,065.86.
+- **Stop-order gate — RESOLVED (no longer a blocker):** rulebook updated 2026-07-27 (commit `bbb3a87`, landed after this morning's research) — MEXC spot has no resting stop-limit, so stops are recorded in TRADE-LOG at entry and enforced by midday/afternoon monitoring via market sell. Per strategy: "do NOT skip trades because of missing stop-limit orders." The standing reason for every prior HOLD is gone.
+- **Account:** $32.2946 free, 0 positions, 0 open orders, canTrade=true. 0/25 wk, 0/5 today → portfolio/daily/weekly buy-side gates all PASS.
+
+### Momentum gate — re-confirmed live (MEXC 24hr, 9AM)
+- **ADA +4.87%** (vol $4.96M) — PASS, best liquid mover. **XRP +2.59%** (vol $19M) — PASS. AAVE **+0.82%** (was +2.35% at research; thin $0.36M book) — **FAIL**. ETH +1.53% — FAIL. SOL +0.57%, BTC +1.02% — FAIL.
+- Research idea #1 (ADA) still qualifies live and is the cleanest liquid setup; idea #2 (AAVE) fell below gate → disqualified; idea #3 (ETH) still under gate.
+
+### Decision
+**TRADE — BUY ADA.** Bought 39.14 ADA @ ~$0.16358 for $6.40 (19.8%, one 20% starter). Stop $0.1472 (−10%) recorded + monitored; target $0.1751 (+7%). All buy-side gates PASS. First trade after 6 days at 100% cash — enabled by the resolved stop mechanism. Single starter only: FOMC statement 2pm ET today argues against broad deployment, so no additional entries into the event. Remaining $25.89 USDT (80%) dry powder. ClickUp alerted (trade fired). Midday scan to enforce stop / evaluate post-FOMC.

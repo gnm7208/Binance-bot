@@ -74,6 +74,17 @@ No positions. Starting capital: 4,500 KES → 34.32 USDT via Remitano M-Pesa P2P
 
 ---
 
+## 2026-07-29 — Trade Entry (Morning Execution, first-ever trade)
+**BUY** ADAUSDT | Qty: 39.14 | Entry: $0.16358 | Stop: $0.1472 (−10%) | Target: $0.1751 (+7%)
+**Cost:** $6.40 (19.8% of $32.29 portfolio) | **OrderId:** C02__711030883699601408046
+**Thesis:** Best liquid relative-strength momentum on the board — +4.87% 24h on $4.96M MEXC vol while majors flat (+1% BTC/ETH). Clean L1 momentum entry.
+**Catalyst:** None specific — pure momentum (24h ≥ +2% is a sufficient entry signal per Rule 11/buy-side gate).
+**Sector:** L1.
+**Stop mechanism:** Recorded −10% stop $0.1472, monitored (MEXC spot API has no resting stop-limit; midday + afternoon scans enforce −7% cut via market sell). Blocker resolved 2026-07-27, confirmed live this run.
+**Notes:** First trade after 6 days at 100% cash — stop-order blocker (the standing reason for prior HOLDs) resolved; monitored stops now active per rulebook. Buy-side gate all PASS (0 positions→1, 1/25 wk, 1/5 today, size ≤20%). AAVE dropped to +0.82% (gate FAIL) and ETH +1.53% (FAIL) at execution → disqualified; ADA the only clean liquid qualifier. Single starter only — FOMC statement 2pm ET today, no broad deployment into the event.
+
+---
+
 ## Jul 28 — EOD Snapshot (Day 6, Tuesday)
 
 **Portfolio:** $32.29 | **Cash:** $32.29 (100%) | **Day P&L:** $0.00 (0.00%) | **Phase P&L:** -$0.03 (-0.08%)
