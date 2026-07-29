@@ -442,3 +442,47 @@ Sources: [alt.me F&G](https://api.alternative.me/fng/), [CFGI](https://cfgi.io/b
 
 ### Decision
 **NO TRADE.** Same hard blocker as morning: any buy would leave an unprotected position, violating Rule 4 (no exceptions). Watchlist momentum also still red regardless. HALT, 100% cash ($32.29). No ClickUp alert (unchanged from morning, already escalated). Re-evaluate post-FOMC (Wed Jul 29 statement).
+
+## 2026-07-29 — Morning Research (FOMC statement day)
+
+### Account Snapshot
+- Total portfolio value: $32.29 USDT (MEXC Spot API healthy — reachability gate PASS, `price BTCUSDT` = $63,896)
+- Free USDT: $32.29 (100%) · Open positions: 0 · Open orders: 0
+- Trades this week: 0/25 · today: 0/5
+
+### Market Context (live MEXC 24hr + CoinGecko global)
+- BTC: $63,896 (**+1.09%** 24h) — modest bounce off yesterday's $63k low; tape stabilizing pre-FOMC
+- ETH: $1,908 (**+1.74%**) · SOL: $73.56 (+0.27%) · BNB: $570 (+0.89%) · XRP: $1.078 (**+1.92%**)
+- BTC Dominance: ~56.5% · ETH.D ~10.1% · Total crypto mcap ~$2.27T (**+0.93%** 24h) — broad tape flipped modestly **green** vs Jul 28's −3% red day
+- Fear & Greed: **29 (Fear)** on alt.me (flat vs yesterday) — sentiment still cautious
+- DXY: ~100.6–101 (range-bound; not re-pulled — Perplexity key unset)
+- **FOMC statement TODAY (Wed Jul 29, 2pm ET)** — consensus hold 3.50–3.75%, live hike tail; no dot plot. Binary event this afternoon; today's mild green is a relief bounce, not a resolved trend.
+
+### On-Chain / Derivatives
+- Perplexity key unset in cloud env → WebSearch + direct MEXC/alt.me/CoinGecko pulls; no live funding/OI print
+- BTC.D flat ~56.5% while alts tick green = shallow, selective bid — not confirmed rotation; market coiled ahead of the event
+
+### News on Held Positions
+- None — 0 open positions.
+
+### Confirmed Relative-Strength Movers (24h ≥ +2% gate)
+- **AAVE** $99.72 (**+2.35%**) — passes gate but MEXC vol thin (~$0.3M) → liquidity/slippage risk on this venue
+- **ADA** $0.165 (**+6.58%**, vol $4.7M) — top *liquid* mover on the board
+- **XRP** $1.078 (+1.92%, vol $17M) — just under gate; deepest liquidity of the movers
+- **BANK (Lorenzo)**: $0.167 (**−46.18%**) — the parabolic ATH name we never chased fully round-tripped. Validates the "don't chase extended small-caps into FOMC" discipline.
+
+### Trade Ideas (research only — execution BLOCKED, see below)
+1. **ADA** — px $0.165, +6.58% 24h (gate PASS, best liquid momentum). *Watch-only into FOMC:* if reached, entry ~live, stop −10% ~$0.1485 (hard cut −7% ~$0.1535), target +7% ~$0.1766. Sector: L1. Re-validate ≥ +2% post-statement.
+2. **AAVE** — px $99.72, +2.35% (gate PASS, cleanest catalyst name: Mastercard Agent Pay launch partner). Thin MEXC book is a caveat. Entry ~live, stop −10% ~$89.7, target +7% ~$106.7. Sector: DeFi. Re-validate post-FOMC.
+3. **ETH** — px $1,908, +1.74% (just under gate). Major beta; wants a ≥ +2% day + post-FOMC direction before any entry. Watch a reclaim of ~$1,950.
+
+### Risk Factors
+- **HARD BLOCKER (unchanged): MEXC spot API has no stop-limit** — `exchangeInfo.orderTypes` = `[LIMIT, MARKET, LIMIT_MAKER]` for BTCUSDT (re-verified this run). Rule 4 (mandatory protective stop after every fill) **unexecutable** → cannot open a protected position → NO BUY regardless of setup. Standing, already escalated.
+- **FOMC statement 2pm ET today** — binary event this afternoon; today's mild green is de-risking relief, not a trend. Avoid size into it even if execution were possible.
+- Tiny account ($32.29): 20% cap ≈ $6.46/position; MEXC min-notional + fee/slippage drag (esp. thin-book names like AAVE).
+- F&G in Fear (29); shallow alt bid on flat BTC.D — momentum fragile, whipsaw risk high around the event.
+
+### Decision
+**HOLD — NO TRADE.** Two independent blocks stand: (1) the mandatory protective stop cannot be placed on MEXC spot via API (Rule 4 unexecutable); (2) the FOMC statement this afternoon is a binary event that argues against size regardless. Qualifying momentum is thin anyway — only ADA (liquid) and AAVE (thin book) clear the +2% gate on a coiled pre-event tape. Stay 100% cash. Re-evaluate post-statement / Thu Jul 30 for a clean ≥ +2% reclaim with a catalyst — ADA/AAVE/ETH on watch.
+
+Sources: live MEXC `/api/v3/ticker/24hr`, [alt.me F&G](https://api.alternative.me/fng/), CoinGecko `/global` (BTC.D, total mcap).
