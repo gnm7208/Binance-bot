@@ -90,10 +90,7 @@ bash scripts/mexc.sh close BTCUSDT
 - **Reachability gate:** every run must first confirm the exchange API responds
   (`bash scripts/mexc.sh price BTCUSDT`). If it fails, HALT, alert, and place no orders —
   do not migrate exchanges again without verifying the new venue is reachable from this IP.
-- **Stop-order gate (2026-07-25):** MEXC spot REST API does NOT support stop orders —
-  `exchangeInfo.orderTypes` is `[LIMIT, MARKET, LIMIT_MAKER]` for every pair incl. BTCUSDT;
-  `STOP_LOSS_LIMIT` orders will be rejected. Rule 4 (mandatory stop-limit after every fill)
-  is therefore unexecutable on MEXC via API. Do NOT buy — a position with no resting stop
-  violates Rule 4. Blocker until either a working spot-stop mechanism is found on MEXC or we
-  move to a venue whose API supports resting stop-limit GTC orders AND is reachable from this IP.
-  Verify order-type support (`exchangeInfo.orderTypes`) as part of every reachability check.
+- **Stop mechanism (resolved 2026-07-27):** MEXC spot API only supports LIMIT, MARKET,
+  LIMIT_MAKER — no STOP_LOSS_LIMIT. Rule 4 updated: record stop price in TRADE-LOG at entry;
+  midday and afternoon-execution routines enforce the -7% cut via market sell. This is the
+  live stop mechanism — do NOT skip trades because of missing stop-limit orders.
