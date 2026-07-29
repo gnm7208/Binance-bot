@@ -120,3 +120,15 @@ No other positions. 1/25 trades this week, 1/5 today. No closed trades → circu
 **Watchlist re-check (live 24h %, corrected for MEXC's decimal-fraction field):** ADA +3.73% (held), XRP +2.18% (vol $19M, gate PASS — CLARITY Act Senate vote + Ripple EU CASP license catalysts), AAVE -0.15% (FAIL), ETH +0.66% (FAIL), SOL +0.34% (FAIL), BTC +1.23% (FAIL), BNB +0.16% (FAIL).
 
 **Decision: NO NEW ENTRY.** XRP clears the +2% momentum gate, but FOMC statement is a pending binary event (~30-38% hike odds, well above typical pre-meeting levels) 5 hours out — opening a new position ahead of it contradicts this morning's explicit "no additional entries into the event" call and general prudence around binary-event risk. Staying at 1 open position (ADA), $25.89 USDT dry powder. Re-evaluate for a genuine afternoon session (post-FOMC, ~3-4 PM CT) if the routine fires again today.
+
+---
+
+## Jul 29 — EOD Snapshot (Day 7, Wednesday)
+
+**Portfolio:** $32.27 | **Cash:** $25.89 (80.2%) | **Day P&L:** -$0.03 (-0.08%) | **Phase P&L:** -$0.05 (-0.16%)
+
+| Ticker | Qty   | Entry     | Price    | Day Chg | Unrealized P&L    | Stop     |
+|--------|-------|-----------|----------|---------|-------------------|----------|
+| ADA    | 39.14 | $0.16358  | $0.1629  | -0.42%  | -$0.03 (-0.42%)   | $0.1472  |
+
+**Notes:** First position live — ADA (39.14 @ $0.16358, entered this morning). Reachability gate PASS (BTC $64,167.23, ADA $0.1629). USDT free $25.8920 / locked $0. 1 trade today, 1/25 this week; 0 closed trades → circuit breaker N/A, daily gate N/A. Deployment 19.8% vs 75-85% target — single starter only, held size small through FOMC. ADA -0.42% vs entry, well above the -7% cut and the $0.1472 monitored stop; no tighten (needs +3%), no take-profit (needs +7%). Thesis (relative-strength L1 momentum) intact. Day P&L -$0.03 = ADA drift only (yesterday $32.2946 all-cash → today $32.2680). Phase P&L -$0.05 vs $32.32 baseline. FOMC statement released 2pm ET today; BTC $63,363 (Jul 28 EOD) → $64,167 now (+1.3%), no risk-off shock — market absorbed the event. Post-FOMC re-eval Thu Jul 30 for broader deployment (XRP watchlist candidate cleared +2% gate pre-event; re-check momentum tomorrow).
