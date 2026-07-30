@@ -546,3 +546,23 @@ Sources: live MEXC `/api/v3/ticker/24hr`, [alt.me F&G](https://api.alternative.m
 **HOLD — NO NEW TRADE (research posture).** FOMC is cleared (no shock), which removes the week-long event overhang — but the momentum gate fails market-wide for quality names (only a crashed BANK bounce and marginal XMR clear +2%). Keep the single ADA position (−0.35%, healthy, monitor at midday), hold $25.89 dry powder, and deploy on the next clean liquid ≥ +2% mover with a catalyst. SUI/XMR on watch. Re-evaluate at morning-execution / midday.
 
 Sources: live MEXC `/api/v3/ticker/24hr`, [alt.me F&G](https://api.alternative.me/fng/), CoinGecko `/global`, [CoinDesk FOMC](https://www.coindesk.com/daybook-us/2026/07/29/3-reasons-wednesday-s-fed-meeting-is-pivotal-for-btc), [CryptoTimes FOMC live](https://www.cryptotimes.io/2026/07/29/fomc-live-updates-fed-rate-decision-kevin-warsh-speech-and-bitcoin-reaction/), [Altcoin sector Jul 2026](https://www.spotedcrypto.com/altcoin-sector-breakout-july-2026/).
+
+## 2026-07-30 — Morning Execution (09:00 CT)
+
+### Gates — validated live
+- **Reachability gate PASS:** `price BTCUSDT` = $64,031.07.
+- **Account:** $25.8920 USDT free, 1 position (ADA 39.14), 0 open orders, canTrade=true. 1/25 wk, 0/5 today → portfolio/daily/weekly buy-side gates all PASS.
+- No closed trades this week → circuit breaker N/A. 0 trades today → daily gate N/A.
+
+### Momentum gate — re-confirmed live (MEXC 24hr, full liquid USDT board, vol > $3M)
+- **FAILS market-wide.** No liquid name clears the +2% gate. Top liquid mover **XMR +1.67%** (vol $3.1M, borderline liquidity, no fresh catalyst) — below gate. BNB +0.59%, SOL +0.01%, BTC −0.09%, ETH −0.37%, **ADA −0.79%**, XRP −0.94%.
+- Research watchlist names: **SUI −0.11%** (vol $0.6M — illiquid, FAIL) · **XMR +1.67%** (below +2% gate, FAIL) · **AAVE −2.07%** (thin $0.3M book, FAIL). None qualify.
+- No fresh catalyst documented in today's research (research posture was HOLD) → catalyst-alone path also does not apply.
+
+### Held position — ADA
+- Entry $0.16358 → live $0.1625, **−0.66%**. Well above the −7% cut ($0.1521) and the monitored $0.1472 stop; below +3% trailing-tighten ($0.1685) and +7% target ($0.1751). Thesis (relative-strength L1 momentum) softened (ADA −0.79% 24h, no longer leading) but not invalidated, not near stop. **Hold; monitor at midday.**
+
+### Decision
+**NO NEW TRADE.** Momentum gate fails market-wide for quality/liquid names; the only names near the gate are a borderline-liquidity privacy coin (XMR, below +2%) and illiquid watchlist names — none pass the buy-side gate, and no same-day catalyst applies. Keep the single ADA position (−0.66%, healthy), hold $25.89 (80%) dry powder, deploy on the next clean liquid ≥ +2% mover with a catalyst. No ClickUp alert (no trade fired). Re-evaluate at midday.
+
+Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price`.
