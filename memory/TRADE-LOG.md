@@ -159,3 +159,15 @@ No other positions. 1/25 trades this week, 0/5 today. No closed trades → circu
 - **BNB** +2.96% (vol $13.9M) — clears gate with strong liquidity but not on today's watchlist and no fresh same-day catalyst (token burn Jul 17, T. Rowe ETF Jul 16 — both stale/priced in; active EU MiCA authorization miss + UK lawsuit are headwinds, not tailwinds). **Disqualified — no watchlist hit, no clear new catalyst.**
 
 **Decision: NO NEW ENTRY.** No liquid mover clears both the momentum gate and the watchlist-or-catalyst requirement with real conviction. Hold ADA (+1.42%, healthy), $25.89 (80%) dry powder. Re-evaluate at daily-summary / next session.
+
+---
+
+## Jul 30 — EOD Snapshot (Day 8, Thursday)
+
+**Portfolio:** $32.73 | **Cash:** $25.89 (79.1%) | **Day P&L:** +$0.47 (+1.44%) | **Phase P&L:** +$0.41 (+1.28%)
+
+| Ticker | Qty   | Entry    | Price   | Day Chg | Unrealized P&L   | Stop     |
+|--------|-------|----------|---------|---------|------------------|----------|
+| ADA    | 39.14 | $0.16358 | $0.1748 | +7.3%   | +$0.44 (+6.86%)  | $0.1626  |
+
+**Notes:** ADA rallied hard into the close — $0.1659 (afternoon scan) → $0.1748 now (+6.86% from entry, one tick under the +7% take-profit target of $0.1751; bid $0.1750 = +6.98% realizable). **Trailing stop tightened per Rule 7:** position past +3% gain → stop moved $0.1472 → $0.1626 (7% below current $0.1748), locking a floor near breakeven and protecting the run-up; never moved down, 7% clearance vs current. **Take-profit NOT yet triggered** (last $0.1748 < target $0.1751) — flagged for next execution scan: sell at market the instant ADA prints ≥ $0.1751 (+7%), no exceptions. Reachability gate PASS (BTC $64,733; ADA $0.1748). USDT free $25.8920 / locked $0 (canTrade=true). 0 open orders. 0 trades today, 1/25 this week; 0 closed trades → circuit breaker N/A, daily gate N/A. Deployment 20.9% ($6.84 ADA) vs 75-85% target — single position, dry powder held. Day P&L +$0.47 = ADA appreciation (Jul 29 EOD $32.2680 → $32.7337). Phase P&L flips positive: +$0.41 (+1.28%) vs $32.32 baseline — first green phase print, driven entirely by the ADA momentum entry. BTC $63,363 (Jul 28) → $64,167 (Jul 29) → $64,733 now, grinding up post-FOMC; ADA outperforming majors (+7.3% day vs BTC ~flat), relative-strength L1 thesis validated.
