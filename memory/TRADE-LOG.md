@@ -142,3 +142,20 @@ No other positions. 1/25 trades this week, 1/5 today. No closed trades → circu
 **ADA position:** Entry $0.16358 → live $0.164 (+0.26%). Stop unchanged $0.1472 (−10%). No cut (-7%), no tighten (+3%/+15%/+20%), no take-profit (+7%) triggered. Thesis (relative-strength L1 momentum) softened but not broken — no invalidating news since morning-execution. **No action.**
 
 No other positions. 1/25 trades this week, 0/5 today. No closed trades → circuit breaker N/A.
+
+---
+
+## 2026-07-30 — Afternoon Scan
+
+**Reachability gate PASS:** `price ADAUSDT` = $0.1659.
+
+**ADA position:** Entry $0.16358 → live $0.1659 (+1.42%). Stop unchanged $0.1472 (−10%). No cut (-7%), no tighten (+3%), no take-profit (+7%) triggered. Thesis (relative-strength L1 momentum) intact. **No action.**
+
+**Gates:** 0 closed trades this week → circuit breaker N/A. 0 trades today → daily gate N/A.
+
+**Watchlist re-check (live 24h %, MEXC 24hr ticker):**
+- **SUI** +0.61% (vol $0.67M) — FAIL, below gate and illiquid.
+- **XMR** +2.98% (vol $2.13M) — clears +2% gate but volume down from this morning's $3.2M (declining, not confirmed) and no fresh catalyst (news check: persistent bearish trend, −60% off Jan peak, only long-horizon items — THORChain integration Q3, FCMP++ upgrade 2026-27). Reads as a fade bounce, not a volume-confirmed continuation per morning research's own caveat. **Disqualified — quality filter.**
+- **BNB** +2.96% (vol $13.9M) — clears gate with strong liquidity but not on today's watchlist and no fresh same-day catalyst (token burn Jul 17, T. Rowe ETF Jul 16 — both stale/priced in; active EU MiCA authorization miss + UK lawsuit are headwinds, not tailwinds). **Disqualified — no watchlist hit, no clear new catalyst.**
+
+**Decision: NO NEW ENTRY.** No liquid mover clears both the momentum gate and the watchlist-or-catalyst requirement with real conviction. Hold ADA (+1.42%, healthy), $25.89 (80%) dry powder. Re-evaluate at daily-summary / next session.
