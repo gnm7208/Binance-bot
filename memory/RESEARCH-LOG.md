@@ -500,3 +500,49 @@ Sources: live MEXC `/api/v3/ticker/24hr`, [alt.me F&G](https://api.alternative.m
 
 ### Decision
 **TRADE — BUY ADA.** Bought 39.14 ADA @ ~$0.16358 for $6.40 (19.8%, one 20% starter). Stop $0.1472 (−10%) recorded + monitored; target $0.1751 (+7%). All buy-side gates PASS. First trade after 6 days at 100% cash — enabled by the resolved stop mechanism. Single starter only: FOMC statement 2pm ET today argues against broad deployment, so no additional entries into the event. Remaining $25.89 USDT (80%) dry powder. ClickUp alerted (trade fired). Midday scan to enforce stop / evaluate post-FOMC.
+
+## 2026-07-30 — Morning Research (first session post-FOMC)
+
+### Account Snapshot
+- Total portfolio value: ~$32.27 USDT (MEXC Spot API healthy — reachability gate PASS, `price BTCUSDT` = $64,221)
+- Free USDT: $25.89 (80.2%) · Open positions: 1 (ADA) · Open orders: 0
+- Trades this week: 1/25 · today: 0/5
+
+### Market Context (live MEXC 24hr + CoinGecko global)
+- BTC: $64,224 (**+0.51%** 24h) — steady above $64k; absorbed FOMC with no risk-off shock
+- ETH: $1,912 (**+0.26%**) · SOL: $73.94 (+0.53%) · BNB: $574 (+0.70%) · XRP: $1.076 (−0.12%) · DOGE $0.0706 (−0.22%)
+- BTC Dominance: **56.53%** · ETH.D 10.13% · Total crypto mcap **+0.65%** 24h — flat, mildly-green coil
+- Fear & Greed: **28 (Fear)** on alt.me (29→28, flat-to-softer) — sentiment still cautious despite the event clearing
+- DXY: ~101 (range-bound; 10Y yield ~4.60%). Note the inverse BTC/DXY correlation (~−0.6 to −0.8) — dollar firm is a mild headwind.
+- **FOMC (Jul 29) resolved:** Fed **held** 3.50–3.75% for a 5th meeting, **9–3 vote** (Hammack/Kashkari/Logan dissented *for a hike*). BTC dipped ~0.3% intra-hour then steadied — no shock. The binary event that gated deployment all week is now behind us.
+- Macro risk: WTI crude **+~20% on the month**, US–Iran talks stalled → renewed inflation tail risk into H2.
+
+### On-Chain / Derivatives
+- Perplexity key unset in cloud env → WebSearch + direct MEXC/alt.me/CoinGecko pulls; no live funding/OI print.
+- Flat BTC.D (~56.5%) + Altcoin Season Index ~53 (< 75 threshold) = **selective rotation, not broad altseason**. Leading narratives per research: AI infra, RWA (ONDO, VeChain AgentSuite), DeFi (HYPE/Hyperliquid), high-perf L1 (SUI) — but **none printing ≥ +2% on MEXC today**.
+
+### News on Held Positions
+- **ADA** (39.14 @ $0.16358): live $0.1630, **−0.35%** vs entry. Above the −7% cut ($0.1521) and the monitored $0.1472 stop; below the +3% trailing-tighten trigger ($0.1685) and +7% target ($0.1751). Thesis (relative-strength L1 momentum) softened — ADA is −1.21% on 24h today, no longer leading — but not invalidated and not near stop. **Hold; monitor at midday.** If ADA keeps fading with no bounce, it becomes a thesis-decay watch (momentum entry losing its momentum).
+
+### Confirmed Relative-Strength Movers (24h ≥ +2% gate, full liquid USDT-board scan, vol > $3M)
+- Only **2 liquid names** clear +2% out of ~17 liquid USDT pairs on MEXC:
+  - **BANK (Lorenzo)** $0.1849 (**+12.83%**, vol $3.7M) — the parabolic ATH name that round-tripped **−46%** on Jul 29. A dead-cat bounce off the crash on thin volume; we correctly never chased it. **Disqualified — whipsaw/quality.**
+  - **XMR (Monero)** $353.12 (**+2.52%**, vol $3.2M) — privacy coin, borderline liquidity, no fresh same-day catalyst. Marginal qualifier.
+- Every liquid major/alt is within ±1.3% on 24h. **Momentum gate (24h ≥ +2%) effectively FAILS market-wide** for quality setups.
+
+### Trade Ideas (research only — execution owns the decision)
+1. **No qualifying fresh entry.** The only liquid +2% names are a crashed dead-cat (BANK) and a marginal borderline-liquidity privacy coin (XMR) — neither is a clean momentum setup. Forcing an entry here violates the spirit of Rule 11.
+2. **Watchlist — SUI** $0.689 (+0.13% today): leading L1 narrative (DeFi/stablecoin liquidity growth). Arm on a ≥ +2% breakout with volume. Entry ~live, stop −10%, target +7%. Sector: L1.
+3. **Watchlist — XMR** $353.12 (+2.52%): technically passes the gate but marginal liquidity ($3.2M) and no catalyst — only take on a *volume-confirmed* continuation, not a fade. Sector: privacy.
+4. **Watchlist — hold ADA**; deploy the $25.89 dry powder only when a clean liquid ≥ +2% mover with a real catalyst appears now that the FOMC gate is cleared.
+
+### Risk Factors
+- Thin MEXC board — only ~17 liquid USDT pairs > $3M vol; genuine momentum setups are scarce and the top gainer is a crash-bounce. Quality filter matters more than the raw gate here.
+- F&G in Fear (28) + firm DXY (~101) + oil +20%/mo inflation tail → risk-on is fragile; alt bids shallow and prone to fade (ADA already fading off yesterday's +4.9%).
+- Tiny account (~$32.27): 20% cap ≈ $6.45/position; MEXC min-notional + fee/slippage drag on any new entry.
+- Deployment only 19.8% vs 75–85% target — but forcing size into a flat, catalyst-light tape is worse than patient dry powder.
+
+### Decision
+**HOLD — NO NEW TRADE (research posture).** FOMC is cleared (no shock), which removes the week-long event overhang — but the momentum gate fails market-wide for quality names (only a crashed BANK bounce and marginal XMR clear +2%). Keep the single ADA position (−0.35%, healthy, monitor at midday), hold $25.89 dry powder, and deploy on the next clean liquid ≥ +2% mover with a catalyst. SUI/XMR on watch. Re-evaluate at morning-execution / midday.
+
+Sources: live MEXC `/api/v3/ticker/24hr`, [alt.me F&G](https://api.alternative.me/fng/), CoinGecko `/global`, [CoinDesk FOMC](https://www.coindesk.com/daybook-us/2026/07/29/3-reasons-wednesday-s-fed-meeting-is-pivotal-for-btc), [CryptoTimes FOMC live](https://www.cryptotimes.io/2026/07/29/fomc-live-updates-fed-rate-decision-kevin-warsh-speech-and-bitcoin-reaction/), [Altcoin sector Jul 2026](https://www.spotedcrypto.com/altcoin-sector-breakout-july-2026/).
