@@ -195,3 +195,15 @@ No other positions. 1/25 trades this week, 0/5 today. No closed trades → circu
 - Perplexity unavailable (key not set) → WebSearch fallback for afternoon catalysts surfaced UNI +3.74% (vol $0.52M), ENA +2.10% (vol $0.55M), PUMP +5.14% (vol $0.26M), NEAR +0.81%, ONDO -4.21% — none on today's watchlist, all thin liquidity (<$1M, well below the ~$3M liquid-book threshold used all week) or negative. **All disqualified — liquidity/quality filter.**
 
 **Decision: NO NEW ENTRY.** No liquid mover clears the +2% momentum gate with real volume and a watchlist hit or fresh catalyst. Hold ADA (+3.80%, healthy, stop $0.1626), $25.89 (79.5%) dry powder. Re-evaluate at daily-summary.
+
+---
+
+## Jul 31 — EOD Snapshot (Day 9, Friday)
+
+**Portfolio:** $32.47 | **Cash:** $25.89 (79.7%) | **Day P&L:** -$0.27 (-0.81%) | **Phase P&L:** +$0.15 (+0.46%)
+
+| Ticker | Qty   | Entry    | Price   | Day Chg | Unrealized P&L   | Stop     |
+|--------|-------|----------|---------|---------|------------------|----------|
+| ADA    | 39.14 | $0.16358 | $0.168  | -3.89%  | +$0.17 (+2.70%)  | $0.1626  |
+
+**Notes:** ADA gave back part of yesterday's spike — Jul 30 EOD $0.1748 → $0.168 now (-3.89% on the day), still +2.70% above entry and well clear of the -7% cut ($0.1521) and monitored stop $0.1626. Bid $0.1676 realizable. **Stop unchanged $0.1626** (set Jul 30, 7% below that day's $0.1748 peak): +2.70% gain is under the +3% trailing trigger, and 7%-below-current ($0.1562) is lower than the existing stop → never move a stop down. **Take-profit NOT triggered** (last $0.168 < target $0.1751) — TP flag stays live for next scan: sell at market the instant ADA prints ≥ $0.1751 (+7%). Reachability gate PASS (BTC $62,621; ADA $0.168). USDT free $25.8920 / locked $0 (canTrade=true). 0 open orders. 0 trades today, 1/25 this week; 0 closed trades → circuit breaker N/A, daily gate N/A. Deployment 20.3% ($6.58 ADA) vs 75-85% target — single position held small, dry powder preserved through Extreme-Fear tape (F&G 25). Day P&L -$0.27 = ADA pullback (Jul 30 EOD $32.7337 → today $32.4675). Phase P&L +$0.15 (+0.46%) vs $32.32 baseline — still green but narrower than yesterday's +$0.41. BTC $64,733 (Jul 30) → $62,621 now (-3.3%), risk-off grind lower; ADA outperformed majors on the day (-3.89% vs BTC -3.3% roughly matched, but held above entry). Thesis (relative-strength L1 momentum + Voltaire decentralization catalyst) intact; watchlist showed no liquid qualifier all day.
