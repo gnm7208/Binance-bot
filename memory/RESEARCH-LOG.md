@@ -612,3 +612,24 @@ Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price`.
 **HOLD — NO NEW TRADE (research posture).** Manage the working ADA position (+4.05%, has a fresh decentralization catalyst; take profit at ≥ $0.1751, trailing stop $0.1626 in place). No fresh liquid setup qualifies with conviction — the only +2% movers are a +168% pump, the held ADA, and catalyst-less BNB drift — into an Extreme-Fear, options-expiry tape. Hold $25.89 (79.5%) dry powder; deploy on the next clean liquid ≥ +2% mover with a real catalyst, ideally after today's expiry volatility clears. Re-evaluate at morning-execution / midday.
 
 Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price`, [alt.me F&G](https://api.alternative.me/fng/), CoinGecko `/global` (BTC.D, mcap), [KuCoin — final-week July 2026 catalysts](https://www.kucoin.com/news/flash/crypto-market-faces-three-major-catalysts-in-final-week-of-july-2026), [CryptoRank — ADA rebound](https://cryptorank.io/news/feed/d10fb-bitcoin-btc-starts-july-under-60k-cardano-ada-finally-rebounds-market-watch).
+
+## 2026-07-31 — Morning Execution (09:00 CT)
+
+### Gates — validated live
+- **Reachability gate PASS:** `price BTCUSDT` = $64,340.12.
+- **Account:** $25.8920 USDT free, 1 position (ADA 39.14), 0 open orders, canTrade=true. 1/25 wk, 0/5 today → portfolio/daily/weekly buy-side gates all PASS.
+- No closed trades this week → circuit breaker N/A. 0 trades today → daily gate N/A.
+
+### Momentum gate — re-confirmed live (MEXC 24hr, full liquid USDT board)
+- **BNB +2.94%** (vol $17.7M) — clears the raw +2% gate with deep liquidity, but no fresh same-day catalyst (burn/ETF stale; MiCA/UK headwinds). Reads as drift, not a catalyst breakout — same setup was disqualified Jul 30 afternoon on the quality/catalyst filter. Research called it watch-only pending a *volume-confirmed continuation above ~$590 WITH a fresh catalyst* (catalyst absent). **Disqualified — quality filter.**
+- **ADA +3.74%** (vol $5.5M) — held position, not a fresh entry.
+- **XRP +0.33%**, ETH/SOL/BTC all < +2% — FAIL.
+- GRVT (+168% new-listing pump) — disqualified on whipsaw/quality.
+
+### Held position — ADA
+- Entry $0.16358 → live $0.1688 (bid), **+3.19%**. Pulled back from Jul 30 EOD $0.1748. Above trailing stop **$0.1626** (Rule 7, set at EOD); below +7% target **$0.1751**. No cut (−7% = $0.1521), no take-profit trigger. Trailing check: 7% below current ($0.1570) < existing stop $0.1626 → **never move a stop down**, keep $0.1626. Thesis (relative-strength L1 momentum + Voltaire decentralization catalyst) intact. **Hold; take profit at market the instant ADA prints ≥ $0.1751, no exceptions.**
+
+### Decision
+**NO NEW TRADE.** No fresh liquid ≥ +2% mover with a real catalyst qualifies — BNB clears the raw gate but is catalyst-less drift (disqualified, consistent with Jul 30), and today is a monthly + options-expiry day with pin/whipsaw risk near $66k. Keep the single ADA position (+3.19%, healthy, trailing stop $0.1626), hold $25.89 (79.5%) dry powder. No ClickUp alert (no trade fired). Re-evaluate at midday.
+
+Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price`.
