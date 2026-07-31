@@ -566,3 +566,49 @@ Sources: live MEXC `/api/v3/ticker/24hr`, [alt.me F&G](https://api.alternative.m
 **NO NEW TRADE.** Momentum gate fails market-wide for quality/liquid names; the only names near the gate are a borderline-liquidity privacy coin (XMR, below +2%) and illiquid watchlist names — none pass the buy-side gate, and no same-day catalyst applies. Keep the single ADA position (−0.66%, healthy), hold $25.89 (80%) dry powder, deploy on the next clean liquid ≥ +2% mover with a catalyst. No ClickUp alert (no trade fired). Re-evaluate at midday.
 
 Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price`.
+
+## 2026-07-31 — Morning Research (Day 9, Friday)
+
+### Account Snapshot
+- Total portfolio value: ~$32.55 USDT (MEXC Spot API healthy — reachability gate PASS, `price BTCUSDT` = $64,262)
+- Free USDT: $25.89 (79.5%) · Open positions: 1 (ADA) · Open orders: 0
+- Trades this week: 1/25 · today: 0/5
+
+### Market Context (live MEXC 24hr + CoinGecko global)
+- BTC: $64,252 (**+0.04%** 24h) — flat, coiled under $65k
+- ETH: $1,903 (**−0.50%**) · SOL: $74.06 (+0.16%) · XRP: $1.081 (+0.40%) · BNB: $587.18 (**+2.27%**, vol $17.1M)
+- BTC Dominance: **56.5%** · ETH.D 10.06% · Total crypto mcap **+0.22%** 24h — flat/directionless
+- Fear & Greed: **25 (Extreme Fear)** on alt.me — slipped 28→25, sentiment cooling despite green ADA/BNB prints
+- DXY: ~101 (range-bound; not re-pulled, Perplexity key unset). Firm dollar = mild risk headwind.
+- **Macro catalyst TODAY:** July 31 monthly derivatives + Deribit BTC options expiry — large open interest clustered near $66k; expect elevated intraday volatility / pin risk around the expiry. Not directional, but whipsaw risk is real into the settlement.
+
+### On-Chain / Derivatives
+- Perplexity key unset → WebSearch + direct MEXC/alt.me/CoinGecko pulls; no live funding/OI print.
+- Flat BTC.D (~56.5%) + Extreme Fear (25) + flat total mcap = risk-off/coiled tape; alt bids shallow and selective, not broad rotation.
+
+### News on Held Positions
+- **ADA** (39.14 @ $0.16358): live $0.1703, **+4.05%** vs entry, **+4.47%** 24h — still a relative-strength leader (top liquid gainer ex-pump). Pulled back from yesterday's EOD $0.1748 (+6.86%) but holding the run. Above tightened trailing stop **$0.1626** (Rule 7, set at EOD); below +7% target **$0.1751**. **Fresh catalyst:** IOG handed Cardano node control to the community — Hoskinson calls it "the final stage of the Voltaire era" (decentralization milestone), supporting the L1 momentum thesis. **Hold; flag for execution — take profit at market the instant ADA prints ≥ $0.1751 (+7%), no exceptions.**
+
+### Confirmed Relative-Strength Movers (24h ≥ +2% gate, full liquid USDT board, vol > $3M)
+- **GRVT** $0.2679 (**+167.90%**, vol $21.8M) — parabolic new-listing pump. **Disqualified — whipsaw/quality; never chase a +168% vertical.**
+- **ADA** $0.1703 (**+4.47%**, vol $5.4M) — held; leader, has a fresh catalyst (see above).
+- **BNB** $587.18 (**+2.27%**, vol $17.1M) — clears gate with deep liquidity, but no fresh same-day catalyst (burn/ETF items stale; MiCA/UK headwinds). Reads as drift, not a catalyst breakout. **Marginal — watch only.**
+- **AAVE** $99.44 (+2.87%) but vol only **$0.3M** — thin book, **FAIL liquidity**.
+
+### Trade Ideas (research only — execution owns the decision)
+1. **No clean fresh entry.** Only three liquid names clear +2%: a +168% pump (GRVT, disqualified), the already-held ADA, and BNB (no fresh catalyst, drift). Nothing new qualifies with conviction on a flat, Extreme-Fear tape into an options-expiry day.
+2. **Hold + manage ADA** — the one working position. Primary action today is take-profit discipline: sell at market on ≥ $0.1751 (+7%); trailing stop $0.1626 protects the run if it fades.
+3. **Watchlist — BNB** $587.18 (+2.27%): re-arm only on a volume-confirmed continuation above ~$590 with a fresh catalyst; not a chase today. Sector: L1/exchange.
+4. **Dry powder** — hold $25.89 (79.5%) cash. Deploy on the next clean liquid ≥ +2% mover with a real catalyst; the expiry-driven volatility today may create a cleaner entry than a flat pre-expiry tape.
+
+### Risk Factors
+- **July 31 monthly + options expiry** — pin/whipsaw risk clustered near $66k; avoid initiating fresh size into the settlement, prefer letting it clear.
+- F&G **25 (Extreme Fear)** + firm DXY (~101) + flat mcap → fragile risk appetite; alt momentum shallow and prone to fade (ADA already gave back part of its +6.86% run).
+- Thin MEXC board — ex-pump, only ADA/BNB clear +2% with real volume; genuine setups scarce, quality filter dominates the raw gate.
+- Tiny account (~$32.55): 20% cap ≈ $6.51/position; MEXC min-notional + fee/slippage drag on any new entry.
+- Deployment 20.9% vs 75–85% target — but forcing size into a flat, Extreme-Fear, expiry-day tape is worse than patient dry powder.
+
+### Decision
+**HOLD — NO NEW TRADE (research posture).** Manage the working ADA position (+4.05%, has a fresh decentralization catalyst; take profit at ≥ $0.1751, trailing stop $0.1626 in place). No fresh liquid setup qualifies with conviction — the only +2% movers are a +168% pump, the held ADA, and catalyst-less BNB drift — into an Extreme-Fear, options-expiry tape. Hold $25.89 (79.5%) dry powder; deploy on the next clean liquid ≥ +2% mover with a real catalyst, ideally after today's expiry volatility clears. Re-evaluate at morning-execution / midday.
+
+Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price`, [alt.me F&G](https://api.alternative.me/fng/), CoinGecko `/global` (BTC.D, mcap), [KuCoin — final-week July 2026 catalysts](https://www.kucoin.com/news/flash/crypto-market-faces-three-major-catalysts-in-final-week-of-july-2026), [CryptoRank — ADA rebound](https://cryptorank.io/news/feed/d10fb-bitcoin-btc-starts-july-under-60k-cardano-ada-finally-rebounds-market-watch).
