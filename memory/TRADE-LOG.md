@@ -180,3 +180,18 @@ No other positions. 1/25 trades this week, 0/5 today. No closed trades → circu
 **ADA position:** Entry $0.16358 → live $0.1707 (+4.35%). Stop unchanged $0.1626 (set EOD Jul 30, 7% below that day's peak $0.1748; 7% below today's current $0.1707 = $0.1588, lower than existing stop → never move a stop down, kept $0.1626). No cut (-7% = $0.1521), no tighten (already past +3% and stop already tighter than the 7%-below-current floor), no take-profit (+7% = $0.1751) triggered. Thesis (relative-strength L1 momentum + Voltaire decentralization catalyst) intact — no invalidating news. **No action.**
 
 No other positions. 1/25 trades this week, 0/5 today. No closed trades → circuit breaker N/A.
+
+## 2026-07-31 — Afternoon Scan
+
+**Reachability gate PASS:** `price BTCUSDT` = $63,748.75.
+
+**ADA position:** Entry $0.16358 → live $0.1698 (+3.80%). Stop unchanged $0.1626 (set EOD Jul 30; 7% below current $0.1698 = $0.1579, lower than existing stop → never move a stop down, kept $0.1626). No cut (-7% = $0.1521), no additional tighten needed, no take-profit (+7% = $0.1751) triggered. Thesis (relative-strength L1 momentum + Voltaire decentralization catalyst) intact. **No action.**
+
+**Gates:** 0 closed trades this week → circuit breaker N/A. 0 trades today → daily gate N/A.
+
+**Watchlist re-check (live 24h %, MEXC 24hr ticker, corrected decimal-fraction field):**
+- BNB +1.31% (vol $16.2M) — below +2% gate, FAIL.
+- XRP -0.82%, BTC -1.73%, ETH -2.17%, SOL -0.87% — all red, FAIL.
+- Perplexity unavailable (key not set) → WebSearch fallback for afternoon catalysts surfaced UNI +3.74% (vol $0.52M), ENA +2.10% (vol $0.55M), PUMP +5.14% (vol $0.26M), NEAR +0.81%, ONDO -4.21% — none on today's watchlist, all thin liquidity (<$1M, well below the ~$3M liquid-book threshold used all week) or negative. **All disqualified — liquidity/quality filter.**
+
+**Decision: NO NEW ENTRY.** No liquid mover clears the +2% momentum gate with real volume and a watchlist hit or fresh catalyst. Hold ADA (+3.80%, healthy, stop $0.1626), $25.89 (79.5%) dry powder. Re-evaluate at daily-summary.
