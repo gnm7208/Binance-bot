@@ -217,3 +217,28 @@ No other positions (1 total: ADA). 1/25 trades this week, 0/5 today. No closed t
 | ADA    | 39.14 | $0.16358 | $0.168  | -3.89%  | +$0.17 (+2.70%)  | $0.1626  |
 
 **Notes:** ADA gave back part of yesterday's spike — Jul 30 EOD $0.1748 → $0.168 now (-3.89% on the day), still +2.70% above entry and well clear of the -7% cut ($0.1521) and monitored stop $0.1626. Bid $0.1676 realizable. **Stop unchanged $0.1626** (set Jul 30, 7% below that day's $0.1748 peak): +2.70% gain is under the +3% trailing trigger, and 7%-below-current ($0.1562) is lower than the existing stop → never move a stop down. **Take-profit NOT triggered** (last $0.168 < target $0.1751) — TP flag stays live for next scan: sell at market the instant ADA prints ≥ $0.1751 (+7%). Reachability gate PASS (BTC $62,621; ADA $0.168). USDT free $25.8920 / locked $0 (canTrade=true). 0 open orders. 0 trades today, 1/25 this week; 0 closed trades → circuit breaker N/A, daily gate N/A. Deployment 20.3% ($6.58 ADA) vs 75-85% target — single position held small, dry powder preserved through Extreme-Fear tape (F&G 25). Day P&L -$0.27 = ADA pullback (Jul 30 EOD $32.7337 → today $32.4675). Phase P&L +$0.15 (+0.46%) vs $32.32 baseline — still green but narrower than yesterday's +$0.41. BTC $64,733 (Jul 30) → $62,621 now (-3.3%), risk-off grind lower; ADA outperformed majors on the day (-3.89% vs BTC -3.3% roughly matched, but held above entry). Thesis (relative-strength L1 momentum + Voltaire decentralization catalyst) intact; watchlist showed no liquid qualifier all day.
+
+---
+
+## 2026-08-01 — Trade Exit (afternoon take-profit)
+**SELL** ADAUSDT | Qty: 39.14 | Exit: $0.17502 (avg, market) | Entry: $0.16358 | Realized P&L: +$0.45 (+7.0%) | Reason: +7% take-profit rule
+**OrderId:** C02__712224387847139328046
+**Notes:** Live price at scan $0.1752 (+7.10% vs entry) tripped the +7% target ($0.1751) first time all week. No on-exchange stop to cancel (virtual/monitored only, 0 open orders confirmed). Closed via `mexc.sh close ADAUSDT`. USDT free $25.8920 → $32.7420 (proceeds $6.8500 vs $6.40 cost basis). Portfolio now 100% cash, 0 open positions. 2/25 trades this week, 1/5 today (1 win, 0 losses → daily win rate 100%). Thesis (relative-strength L1 momentum + Voltaire catalyst) played out exactly as planned — full cycle from Jul 29 entry to Aug 1 target.
+
+---
+
+## 2026-08-01 — Afternoon Scan
+
+**Reachability gate PASS:** `price BTCUSDT` = $63,109.28.
+
+**Take-profit executed this run:** ADA closed at +7.0% (see Trade Exit above). Portfolio now 100% cash ($32.7420), 0 open positions.
+
+**Gates:** 1 closed trade this week (win) → circuit breaker N/A (needs ≥5 closed). 1 trade today (the ADA exit, a win) → daily gate N/A (needs ≥3).
+
+**Watchlist re-check (live 24h %, MEXC 24hr ticker, corrected decimal-fraction field):**
+- ADA +3.11% (vol $3.46M) — clears +2% gate but this is the position just exited at the +7% target; no fresh same-day catalyst (Cardano Catalyst Pilot Fund is a scheduled governance item, not a price catalyst). **Disqualified — no chasing a just-closed take-profit without a fresh reason.**
+- XMR +3.13% (vol $3.37M) — clears gate on liquidity but same fade-bounce profile disqualified all week; news check found **negative** regulatory catalysts (Philippines delisting ban, EU AMLR anonymity-coin restrictions), no positive trigger. **Disqualified — quality filter, worse than before.**
+- BNB -2.63%, BTC -1.0%, ETH -0.8%, SOL -0.99%, XRP -0.79% — all red. **FAIL momentum.**
+- Perplexity unavailable (key not set) → WebSearch fallback used for catalyst check.
+
+**Decision: NO NEW ENTRY.** Locked in the first realized win of the phase (ADA +7.0%); no liquid mover clears both the momentum gate and a genuine catalyst/quality bar this session. Holding 100% cash ($32.7420, 79.7%→100%) as dry powder. Re-evaluate at daily-summary / next session.
