@@ -198,6 +198,16 @@ No other positions. 1/25 trades this week, 0/5 today. No closed trades → circu
 
 ---
 
+## 2026-08-01 — Midday Scan
+
+**Reachability gate PASS:** `price BTCUSDT` = $63,042.57.
+
+**ADA position:** Entry $0.16358 → live $0.1732 (+5.88%). Stop unchanged $0.1626 (set EOD Jul 30, 7% below that day's $0.1748 peak; 7% below today's current $0.1732 = $0.1611, lower than existing stop → never move a stop down, kept $0.1626). No cut (-7% = $0.1521), no take-profit (+7% = $0.1751) triggered. Not yet at +15%/+20% tighten thresholds. Thesis (relative-strength L1 momentum + Voltaire decentralization catalyst) intact — no invalidating news. **No action.**
+
+No other positions (1 total: ADA). 1/25 trades this week, 0/5 today. No closed trades → circuit breaker N/A.
+
+---
+
 ## Jul 31 — EOD Snapshot (Day 9, Friday)
 
 **Portfolio:** $32.47 | **Cash:** $25.89 (79.7%) | **Day P&L:** -$0.27 (-0.81%) | **Phase P&L:** +$0.15 (+0.46%)
