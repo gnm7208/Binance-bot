@@ -633,3 +633,46 @@ Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price`, [alt.me F&G](
 **NO NEW TRADE.** No fresh liquid ≥ +2% mover with a real catalyst qualifies — BNB clears the raw gate but is catalyst-less drift (disqualified, consistent with Jul 30), and today is a monthly + options-expiry day with pin/whipsaw risk near $66k. Keep the single ADA position (+3.19%, healthy, trailing stop $0.1626), hold $25.89 (79.5%) dry powder. No ClickUp alert (no trade fired). Re-evaluate at midday.
 
 Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price`.
+
+## 2026-08-01 — Morning Research (Day 10, Saturday)
+
+### Account Snapshot
+- Total portfolio value: ~$32.55 USDT (MEXC Spot API healthy — reachability gate PASS, `price BTCUSDT` = $63,061)
+- Free USDT: $25.89 (79.5%) · Open positions: 1 (ADA) · Open orders: 0
+- Trades this week: 1/25 · today: 0/5
+
+### Market Context (live MEXC 24hr + CoinGecko global)
+- BTC: $63,061 (**−1.88%** 24h · vol $537M) — leaked back under $63.5k, weekend risk-off drift
+- ETH: $1,868 (**−1.84%**) · SOL: $73.08 (−1.34%) · XRP: $1.066 (−1.37%) · BNB: $590.70 (+0.57%, below gate)
+- BTC Dominance: **56.2%** · ETH.D 10.0% · Total crypto mcap **−1.42%** 24h — broad red tape, capital defensive
+- Fear & Greed: **27 (Fear)** on alt.me — 25→27, still Fear, sentiment unchanged/cautious
+- DXY: ~101 (range-bound; not re-pulled, Perplexity key unset). Firm dollar = mild risk headwind.
+- Weekend/thin-liquidity tape post July-expiry; no major scheduled macro catalyst today.
+
+### On-Chain / Derivatives
+- Perplexity key unset → WebSearch + direct MEXC/alt.me/CoinGecko pulls; no live funding/OI print.
+- Flat BTC.D (~56.2%) + Fear (27) + broad −1.4% mcap = risk-off/coiled tape; alt bids shallow, no rotation.
+
+### News on Held Positions
+- **ADA** (39.14 @ $0.16358): live $0.1702, **+4.05%** vs entry, +0.17% 24h — still holding the run, outperforming the red majors. Above trailing stop **$0.1626** (Rule 7); below +7% target **$0.1751**. 7%-below-current ($0.1583) < existing stop → never move down, keep $0.1626. Thesis (relative-strength L1 momentum + Voltaire decentralization catalyst) intact, no invalidating news. **Hold; take profit at market the instant ADA prints ≥ $0.1751 (+7%), no exceptions.**
+
+### Confirmed Relative-Strength Movers (24h ≥ +2% gate, full liquid USDT board, vol > $3M)
+- **XMR (Monero)** $364.58 (**+2.04%**, vol $3.2M) — only liquid name clearing the gate; borderline liquidity, privacy coin, no fresh same-day catalyst (bearish trend, long-horizon items only). Same fade-bounce profile disqualified all week. **Disqualified — quality filter.**
+- Every other liquid major/alt is red. **Momentum gate (24h ≥ +2%) effectively FAILS market-wide** for quality setups (only 1 marginal qualifier on the entire board).
+
+### Trade Ideas (research only — execution owns the decision)
+1. **No clean fresh entry.** Only XMR clears +2% (marginal liquidity, no catalyst, disqualified). Every liquid major is red on a weekend Fear tape. Forcing an entry here violates the spirit of Rule 11.
+2. **Hold + manage ADA** — the one working position. Primary action: take-profit discipline (sell at ≥ $0.1751); trailing stop $0.1626 protects the run.
+3. **Watchlist — BNB** $590.70 (+0.57%): back below the +2% gate today; re-arm only on a volume-confirmed ≥ +2% break above ~$595 WITH a fresh catalyst (none present). Sector: L1/exchange.
+4. **Dry powder** — hold $25.89 (79.5%) cash. Deploy on the next clean liquid ≥ +2% mover with a real catalyst; a weekend Fear tape is not the place to force size.
+
+### Risk Factors
+- F&G **27 (Fear)** + firm DXY (~101) + broad −1.4% red tape → fragile risk appetite; alt momentum shallow, weekend liquidity thin.
+- Thin MEXC board — only 1 liquid name clears +2% and it's a marginal fade; genuine setups scarce, quality filter dominates the raw gate.
+- Tiny account (~$32.55): 20% cap ≈ $6.51/position; MEXC min-notional + fee/slippage drag on any new entry.
+- Deployment 20.9% vs 75–85% target — but forcing size into a flat, Fear, weekend tape is worse than patient dry powder.
+
+### Decision
+**HOLD — NO NEW TRADE (research posture).** Manage the working ADA position (+4.05%, thesis intact; take profit at ≥ $0.1751, trailing stop $0.1626 in place). No fresh liquid setup qualifies — the entire board shows just one marginal +2% mover (XMR, disqualified) against a broad red weekend Fear tape. Hold $25.89 (79.5%) dry powder; deploy on the next clean liquid ≥ +2% mover with a real catalyst. Re-evaluate at next session.
+
+Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price`, [alt.me F&G](https://api.alternative.me/fng/), CoinGecko `/global` (BTC.D, ETH.D, mcap).
