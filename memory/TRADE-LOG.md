@@ -245,6 +245,17 @@ No other positions (1 total: ADA). 1/25 trades this week, 0/5 today. No closed t
 
 ---
 
+## 2026-08-02 — Trade Entry (Morning Execution, ADA re-entry — ETF catalyst)
+**BUY** ADAUSDT | Qty: 35.1 | Entry: $0.18639 | Stop: $0.1678 (−10%) | Target: $0.1994 (+7%)
+**Cost:** $6.5424 (19.98% of $32.74 portfolio) | **OrderId:** C02__712479924023111682046
+**Thesis:** Fresh L1 re-entry on a confirmed breakout above the $0.1809 pivot (last $0.186, near session high $0.1866). +9.09% 24h on $6.13M MEXC vol — best liquid relative-strength mover on the board while majors flat (BTC +0.55%). Distinct from the prior Voltaire trade closed Aug 1.
+**Catalyst:** Aug-9 SEC spot-ADA-ETF eligibility milestone (CME ADA futures complete mandatory 6-month history → meets SEC review criterion; Grayscale/VanEck/21Shares/Canary filings pending, decision window to Oct 23) + ADA whales ~70% of circulating supply (accumulation) + descending-trendline breakout.
+**Sector:** L1.
+**Stop mechanism:** Recorded −10% stop $0.1678, monitored (MEXC spot API has no resting stop-limit; midday + afternoon scans enforce −7% cut $0.1733 via market sell). Confirmed live: 0 open orders on-exchange.
+**Notes:** Buy-side gate all PASS (0 positions→1, 2/25 wk→3/25, 0/5 today→1/5, size ≤20%, momentum +9.09% ≥ +2%, catalyst documented). Required confirmed close ≥ $0.1809 before entry — satisfied (price holding $0.186 above pivot, not a failed wick). Actual fill $0.18639 ~2.9% above research's modeled $0.180 entry (bought the confirmation, per plan). Remaining $26.20 USDT (80%) dry powder — single starter into a weekend Fear tape (F&G 27), no additional entries. ClickUp alerted (trade fired). Midday scan to enforce stop / manage.
+
+---
+
 ## Aug 1 — EOD Snapshot (Day 10, Saturday)
 
 **Portfolio:** $32.74 | **Cash:** $32.74 (100%) | **Day P&L:** +$0.27 (+0.85%) | **Phase P&L:** +$0.42 (+1.31%)

@@ -743,3 +743,25 @@ Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price`.
 **Research posture — one qualifying idea (ADA re-entry) staged for morning-execution.** ADA clears the +2% momentum gate (+5.87%) AND carries a fresh, documented catalyst (Aug-9 SEC ETF-eligibility milestone + ~70% whale accumulation + trendline breakout) distinct from the prior Voltaire trade. Execution should validate the full buy-side gate live and **require a confirmed close ≥ $0.1809** before entering (entry ~$0.180, stop $0.162, TP $0.1926, size ~$6.55). No other liquid mover qualifies. Hold $32.74 dry powder pending that confirmation.
 
 Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price`, [alt.me F&G](https://api.alternative.me/fng/), CoinGecko `/global`; ADA catalyst — [CoinGape: ADA ETF eligibility Aug 9](https://coingape.com/markets/cardano-price-prediction-can-ada-rally-as-etf-eligibility-nears-august-9/); BTC macro — [CoinDesk: Bitcoin above \$64k awaits Fed](https://www.coindesk.com/markets/2026/07/29/bitcoin-steadies-above-usd64-000-as-crypto-looks-to-fed-interest-rate-decision).
+
+## 2026-08-02 — Morning Execution (Day 11, Sunday) — TRADE FIRED
+
+### Gates — validated live
+- **Reachability gate PASS:** `price BTCUSDT` = $63,470.05.
+- **Account:** $32.7420 USDT free, 0 positions, 0 open orders, canTrade=true. 2/25 wk, 0/5 today → portfolio/daily/weekly buy-side gates all PASS. 1 closed trade this week (1W/0L) → circuit breaker N/A; daily gate N/A.
+
+### Trade-idea validation vs buy-side gate — ADA re-entry (staged idea #1)
+- **Momentum gate PASS:** ADA live 24hr = **+9.09%** (lastPrice $0.186, open $0.1705, high $0.1866, low $0.1694), vol **$6.13M** (≥ $3M liquid threshold). Strongest liquid mover on the board; majors flat (BTC +0.55%).
+- **Breakout confirmation — SATISFIED:** research required a confirmed close ≥ **$0.1809** pivot before entry (avoid a failed wick). Live price holding **$0.186** / bid $0.1863, near the session high $0.1866 — confirmed above the pivot, not a rejection.
+- **Catalyst PASS (documented):** Aug-9 SEC spot-ADA-ETF eligibility milestone + ~70% whale accumulation + descending-trendline break — a fresh thesis distinct from the prior Voltaire trade (closed Aug 1), so not chasing the just-closed TP.
+- Other board movers all disqualified (AKE/ULTIMA/GRVT — pump/liquidity/quality). ADA the sole qualifier.
+
+### Order — FILLED
+- **BUY 35.1 ADA** market, avg fill **$0.18639**, cost **$6.5424** (19.98% of portfolio). OrderId `C02__712479924023111682046`. USDT $32.7420 → $26.1996.
+- Recorded stop **$0.1678** (−10%, monitored; hard cut −7% $0.1733), target **$0.1994** (+7%). 0 open orders on-exchange (virtual stop per rulebook).
+- Actual fill ~2.9% above the research's modeled $0.180 entry — bought the confirmation above the pivot, per plan; stop/TP recomputed off the live fill.
+
+### Decision
+**TRADE — BUY ADA (re-entry).** Single 20% starter on the sole qualifying setup; all buy-side gates PASS. Remaining $26.20 USDT (80%) held as dry powder into a weekend Fear tape (F&G 27) — no additional entries. ClickUp alerted (trade fired). Midday scan to enforce the $0.1678 stop / $0.1994 target.
+
+Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price` (ADAUSDT), MEXC `account`/`balance`.
