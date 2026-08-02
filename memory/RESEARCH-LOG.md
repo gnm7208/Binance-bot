@@ -697,3 +697,49 @@ Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price`, 
 **NO NEW TRADE.** No trade idea passes the buy-side gate — the only liquid +2% mover is a parabolic pump (GRVT, disqualified); XMR fell just under the liquidity threshold with no catalyst; BNB and all majors fail momentum on a weekend Fear tape. No market buys placed. Keep the single ADA position (+4.2%, healthy, trailing stop $0.1626), hold $25.89 (79.5%) dry powder. No ClickUp alert (no trade fired). Re-evaluate at next session.
 
 Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price`.
+
+## 2026-08-02 — Morning Research (Day 11, Sunday)
+
+### Account Snapshot
+- **Reachability gate PASS** — MEXC `price BTCUSDT` = $63,410.85; account healthy (canTrade=true).
+- Total portfolio value: ~$32.74 USDT (100% cash) · Free USDT: $32.74 (100%) · Open positions: 0 · Open orders: 0
+- Trades this week: 2/25 · today: 0/5 · Closed this week: 1 (1W/0L) → circuit breaker N/A (needs ≥5), daily gate N/A.
+
+### Market Context (live MEXC 24hr + CoinGecko global)
+- BTC: **$63,411** (**+0.55%** 24h · vol $252M) — stabilizing inside a descending channel, upper-boundary rejection near $64.3k; needs a trendline break to turn bullish.
+- ETH: $1,875.64 (**+0.41%**) · SOL: $73.13 (+0.05%) · XRP: $1.075 (+0.84%) · BNB: $581.33 (−1.57%) · DOGE $0.07001 (−0.25%)
+- BTC Dominance: **56.36%** · ETH.D 10.02% · Total crypto mcap **+0.37%** 24h — mild green, tape firming vs yesterday's broad red.
+- Fear & Greed: **27 (Fear)** on alt.me — flat 27→27, sentiment unchanged/cautious.
+- DXY: ~101 (range-bound; Perplexity key unset, not re-pulled). Firm dollar = mild risk headwind.
+- Macro: Fed hawkish hold + Fitch credit-outlook downgrade capping upside; US spot-BTC-ETF net outflows on the week; seasonal August weakness, some models project $58–62k BTC bottom. No major scheduled catalyst today (weekend/thin tape).
+- Security note (not a trade driver): Coldcard hardware-wallet firmware flaw → ~$38.3M theft.
+
+### On-Chain / Derivatives
+- Perplexity key unset → WebSearch + direct MEXC/alt.me/CoinGecko pulls; no live funding/OI print.
+- ADA whales now hold **~70% of circulating supply** (accumulation signal, source below).
+- Flat BTC.D (56.4%) + Fear (27) + slightly-green mcap (+0.37%) = risk-off base firming; alt bids selective, no broad rotation.
+
+### News on Held Positions
+- None — 100% cash, 0 open positions (ADA closed at +7% take-profit Aug 1).
+
+### Confirmed Relative-Strength Movers (24h ≥ +2% gate, liquid USDT board, vol > $3M)
+- **ADA (Cardano)** $0.1799 (**+5.87%**, vol $4.9M · high $0.1808 / low $0.1694) — **QUALIFIES on momentum AND fresh catalyst.** New catalyst distinct from the prior Voltaire trade: **SEC spot-ADA-ETF eligibility milestone Aug 9** (CME ADA futures complete mandatory 6-month history → meets SEC review criterion; Grayscale/VanEck/21Shares/Canary filings pending, SEC decision window to Oct 23) + **whale accumulation ~70% of supply** + technical breakout of descending trendline. Sits right at the **$0.1809 breakout pivot** — a confirmed close above targets $0.22.
+- **AKE** $0.0046 (+10.98%, $5.7M) — micro-cap parabolic pump. **Disqualified — whipsaw/quality.**
+- **ULTIMA** $2,368 (+6.79%, $3.2M) — obscure, marginal liquidity, no catalyst. **Disqualified — quality.**
+- **GRVT** $0.277 (+2.78%, $4.9M) — cooling parabolic new-listing (was +168% Jul 31). **Disqualified — whipsaw/quality.**
+
+### Trade Ideas (research only — execution owns the decision)
+1. **ADA re-entry — L1 / ETF catalyst.** Entry ~$0.180 (best confirmed on a close ≥ **$0.1809** pivot; avoid buying a failed breakout wick). Stop −10% = **$0.162** (recorded at fill; hard cut −7% = $0.1674). Take-profit +7% = **$0.1926**. Catalyst: Aug-9 ETF-eligibility milestone + ~70% whale accumulation + trendline break. Size 20% cap ≈ **$6.55**. Note: this is a *fresh* thesis (near-term ETF catalyst), not chasing the just-closed TP — but only if it clears the pivot; a rejection at $0.1809 back below ~$0.175 invalidates the setup for the session.
+2. **Hold dry powder otherwise.** No other liquid name clears both the +2% gate and a quality/catalyst bar (AKE/ULTIMA/GRVT all disqualified). Deployment 0% vs 75–85% target — ADA is the only qualifying deploy candidate; forcing additional size into a weekend Fear tape is worse than patience.
+3. **Watchlist — BNB** $581.33 (−1.57%): below gate; re-arm only on a volume-confirmed ≥ +2% reclaim of ~$595 with a fresh catalyst (none). Sector L1/exchange.
+
+### Risk Factors
+- F&G **27 (Fear)** + hawkish Fed + Fitch downgrade + firm DXY + seasonal August weakness ($58–62k BTC bottom models) → fragile risk appetite; a breakout can fail on the thin weekend tape.
+- ADA sits *exactly* at the $0.1809 pivot — high false-breakout risk; require a confirmed close above, not an intraday wick. ETF *eligibility* ≠ approval (SEC decision not until Oct 23) — headline risk both ways.
+- Tiny account (~$32.74): 20% cap ≈ $6.55/position; MEXC min-notional + fee/slippage drag on any entry.
+- BTC still inside a descending channel — a breakdown of channel support pulls alts (incl. ADA) down with it regardless of the ETF narrative.
+
+### Decision
+**Research posture — one qualifying idea (ADA re-entry) staged for morning-execution.** ADA clears the +2% momentum gate (+5.87%) AND carries a fresh, documented catalyst (Aug-9 SEC ETF-eligibility milestone + ~70% whale accumulation + trendline breakout) distinct from the prior Voltaire trade. Execution should validate the full buy-side gate live and **require a confirmed close ≥ $0.1809** before entering (entry ~$0.180, stop $0.162, TP $0.1926, size ~$6.55). No other liquid mover qualifies. Hold $32.74 dry powder pending that confirmation.
+
+Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price`, [alt.me F&G](https://api.alternative.me/fng/), CoinGecko `/global`; ADA catalyst — [CoinGape: ADA ETF eligibility Aug 9](https://coingape.com/markets/cardano-price-prediction-can-ada-rally-as-etf-eligibility-nears-august-9/); BTC macro — [CoinDesk: Bitcoin above \$64k awaits Fed](https://www.coindesk.com/markets/2026/07/29/bitcoin-steadies-above-usd64-000-as-crypto-looks-to-fed-interest-rate-decision).
