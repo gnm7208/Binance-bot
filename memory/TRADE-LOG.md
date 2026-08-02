@@ -275,3 +275,24 @@ No other positions (1 total: ADA). 1/25 trades this week, 0/5 today. No closed t
 **ADA position:** Entry $0.18639 → live $0.1866 (+0.11%). Stop unchanged $0.1678 (−10%, set at fill this morning). No cut (-7% = $0.1733), no tighten (+3% trigger not reached, gain only +0.11%), no take-profit (+7% = $0.1994) triggered. Thesis (Aug-9 SEC spot-ADA-ETF eligibility milestone + whale accumulation + trendline breakout) intact — no invalidating news, price move too small (<5%) to warrant intraday research check. **No action.**
 
 No other positions (1 total: ADA). 3/25 trades this week, 1/5 today. No closed trades this week → circuit breaker N/A.
+
+---
+
+## 2026-08-02 — Afternoon Scan
+
+**Reachability gate PASS:** `price BTCUSDT` = $63,112.89.
+
+**ADA position:** Entry $0.18639 → live $0.1902 (+2.04%). Stop unchanged $0.1678 (−10%, set at fill this morning). No cut (-7% = $0.1733), no tighten (+3% trigger not reached, gain +2.04%), no take-profit (+7% = $0.1994) triggered. Thesis (Aug-9 SEC spot-ADA-ETF eligibility milestone + whale accumulation + trendline breakout) intact — no invalidating news. **No action.**
+
+No other positions (1 total: ADA). Note: `openOrders` endpoint returned `{"code":700007,"msg":"No permission to access the endpoint."}` (API key permission gap, not a connectivity failure — `account`/`positions`/`price` all healthy). Not a blocker: USDT and ADA balances both show `locked: 0`, confirming no resting on-exchange orders exist (consistent with the rulebook's virtual/monitored-stop mechanism, not on-exchange stop-limit orders).
+
+**Gates:** 0 closed trades this week → circuit breaker N/A (needs ≥5). 1 trade today → daily gate N/A (needs ≥3).
+
+**Watchlist re-check (live 24h %, MEXC 24hr ticker, decimal-fraction field):**
+- ADA +8.62% (vol $8.07M) — clears gate but this is the held position, already at 20% cap; not a new-entry candidate.
+- BNB +0.55% (vol $11.23M) — below +2% gate. **FAIL.**
+- LINK +2.29% (vol $0.45M) — clears momentum gate but volume well below the ~$3M liquid threshold used all week, and the only "catalyst" found (Chainlink/Dept. of Commerce on-chain GDP data) is a generic monthly-outlook mention, not a same-day trigger. **Disqualified — liquidity/quality filter.**
+- TAO -0.66%, SUI +0.43%, HYPE -1.26% — all fail momentum gate.
+- Perplexity unavailable (key not set) → WebSearch fallback for afternoon catalysts surfaced only generic "best altcoins for August" listicle content, nothing ticker-specific or same-day.
+
+**Decision: NO NEW ENTRY.** Hold ADA (+2.04%, healthy, stop $0.1678), $26.20 (80%) dry powder. Re-evaluate at daily-summary.
