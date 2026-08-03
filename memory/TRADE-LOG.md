@@ -338,3 +338,15 @@ No other positions (1 total: ADA). `orders` endpoint still returns HTTP 400 (per
 - HYPE +2.67% (vol $0.77M) — clears +2% gate but volume well below the ~$3M liquid threshold used all week; WebSearch fallback (Perplexity key unset) found only generic "best altcoins for August" listicle mentions, no same-day catalyst. **Disqualified — liquidity/quality filter.**
 
 **Decision: NO NEW ENTRY.** No liquid mover clears both the momentum gate and a genuine liquidity/catalyst bar this session — consistent with the morning and midday scans (0 qualifiers all day). Hold ADA (+2.10%, healthy, stop $0.1678), $26.20 (80%) dry powder. Re-evaluate at daily-summary.
+
+---
+
+## Aug 3 — EOD Snapshot (Day 12, Monday)
+
+**Portfolio:** $32.93 | **Cash:** $26.20 (79.6%) | **Day P&L:** +$0.08 (+0.24%) | **Phase P&L:** +$0.61 (+1.89%)
+
+| Ticker | Qty  | Entry    | Price   | Day Chg | Unrealized P&L  | Stop     |
+|--------|------|----------|---------|---------|-----------------|----------|
+| ADA    | 35.1 | $0.18639 | $0.1918 | +1.31%  | +$0.19 (+2.90%) | $0.1678  |
+
+**Notes:** ADA continues to grind higher — afternoon $0.1903 → EOD $0.1918 (bid $0.1916 realizable), now +2.90% above entry, well clear of the -7% cut ($0.1733) and monitored stop $0.1678. **Stop unchanged $0.1678** (-10%, set at fill 2026-08-02): +2.90% gain is still just under the +3% trailing trigger; no tighten this scan (watch for a +3% print → tighten to 7% below current). **Take-profit NOT triggered** (last $0.1918 < target $0.1994, +7%) — TP flag stays live: sell at market the instant ADA prints ≥ $0.1994. Reachability gate PASS (BTC $63,894; ADA $0.1918). USDT free $26.1996 / locked $0 (canTrade=true). 0 open orders (`orders`/`openOrders` endpoint returns permission-gap error code 700007, but USDT+ADA both locked=0 confirms no resting orders — consistent with virtual/monitored stops). **Trades:** 0 today, 3/25 this week; 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed), daily gate N/A (needs ≥5 trades). Day P&L +$0.08 = ADA intraday appreciation only (35.1 × ($0.1918−$0.1896) = +$0.077; USDT unchanged). Phase P&L +$0.61 (+1.89%) vs $32.32 baseline — new phase high (up from Aug 2's +$0.53). ADA 24h +1.31% ($7.45M vol), best liquid relative-strength L1 mover on the day vs a flat/soft majors tape (BTC $63,104 Aug 2 EOD → $63,894 now, +1.3%) — Aug-9 SEC spot-ADA-ETF eligibility milestone + whale-accumulation + trendline-breakout thesis intact, no invalidating news. Deployment 20.4% ($6.732 ADA) vs 75-85% target — single starter held through Fear tape; 0 watchlist qualifiers cleared both the +2% momentum gate and the liquidity/catalyst bar across all three scans today, so dry powder ($26.20) preserved for a clean re-entry. **BTC buy-and-hold benchmark:** phase baseline BTC ~$63,500 (Jul 22 funding) → $63,894 now (~+0.6%); bot +1.89% phase — outperforming buy-and-hold.
