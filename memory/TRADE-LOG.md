@@ -320,3 +320,21 @@ No other positions (1 total: ADA). Note: `openOrders` endpoint returned `{"code"
 No other positions (1 total: ADA). `openOrders` still returns permission-gap error (code 700007); USDT+ADA both `locked: 0` confirms no resting orders. 3/25 trades this week, 0/5 today. 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed).
 
 **Decision: NO ACTION.** Hold ADA (~flat, stop $0.1678), $26.20 (~80%) dry powder.
+
+---
+
+## 2026-08-03 — Afternoon Scan
+
+**Reachability gate PASS:** `price BTCUSDT` = $62,778.49.
+
+**ADA position:** Entry $0.18639 → live $0.1903 (+2.10%). Stop unchanged $0.1678 (−10%, set at fill 2026-08-02). No cut (-7% = $0.1733), no tighten (+3% trigger not yet reached), no take-profit (+7% = $0.1994) triggered. Thesis (Aug-9 SEC spot-ADA-ETF eligibility milestone + whale accumulation + trendline breakout) intact — no invalidating news. **No action.**
+
+No other positions (1 total: ADA). `orders` endpoint still returns HTTP 400 (permission gap, code 700007 pattern); USDT+ADA both `locked: 0` confirms no resting orders. 3/25 trades this week, 0/5 today. 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed). 0 trades today → daily gate N/A.
+
+**Watchlist re-check (live 24h %, MEXC 24hr ticker, decimal-fraction field corrected):**
+- BNB +0.68% (vol $8.58M) — below +2% gate. **FAIL.**
+- BTC -0.52%, ETH -0.63%, SOL -0.72%, XRP -1.23%, DOGE -0.71%, LINK -1.30% (thin $0.24M), TAO -2.42% — all red/FAIL.
+- SUI -0.13%, NEAR +0.42% — FAIL, below gate.
+- HYPE +2.67% (vol $0.77M) — clears +2% gate but volume well below the ~$3M liquid threshold used all week; WebSearch fallback (Perplexity key unset) found only generic "best altcoins for August" listicle mentions, no same-day catalyst. **Disqualified — liquidity/quality filter.**
+
+**Decision: NO NEW ENTRY.** No liquid mover clears both the momentum gate and a genuine liquidity/catalyst bar this session — consistent with the morning and midday scans (0 qualifiers all day). Hold ADA (+2.10%, healthy, stop $0.1678), $26.20 (80%) dry powder. Re-evaluate at daily-summary.
