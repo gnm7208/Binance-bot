@@ -308,3 +308,15 @@ No other positions (1 total: ADA). Note: `openOrders` endpoint returned `{"code"
 | ADA    | 35.1 | $0.18639 | $0.1896 | +9.46%  | +$0.11 (+1.72%) | $0.1678  |
 
 **Notes:** ADA re-entry (entered this morning $0.18639 on the Aug-9 SEC spot-ADA-ETF eligibility catalyst + trendline breakout) grinding higher — afternoon $0.1902 → EOD $0.1896, +1.72% above entry, well clear of the -7% cut ($0.1733) and monitored stop $0.1678. Bid $0.1895 realizable. **Stop unchanged $0.1678** (-10%, set at fill): +1.72% gain is under the +3% trailing trigger; no tighten. **Take-profit NOT triggered** (last $0.1896 < target $0.1994, +7%) — TP flag stays live: sell at market the instant ADA prints ≥ $0.1994. Reachability gate PASS (BTC $63,104; ADA $0.1896). USDT free $26.1996 / locked $0 (canTrade=true). 0 open orders (openOrders endpoint returns code 700007 permission gap, but USDT+ADA both locked=0 confirms no resting orders — consistent with virtual/monitored stops). **Trades:** 1 today (ADA re-buy), 3/25 this week; 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed), daily gate N/A (needs ≥5 trades). Day P&L +$0.11 = ADA intraday appreciation since entry (Aug 1 EOD $32.7420 all-cash → $6.5424 deployed to ADA, now worth $6.655). Phase P&L +$0.53 (+1.65%) vs $32.32 baseline — new phase high (up from Aug 1's +$0.42). ADA 24h +9.46% ($9.3M vol), best liquid relative-strength mover, outperforming majors (BTC $63,129 Aug 1 → $63,104 now, flat) — L1 momentum + ETF-eligibility thesis intact. Deployment 20.3% ($6.655 ADA) vs 75-85% target — single starter into weekend Fear tape (F&G 27), dry powder held. **BTC buy-and-hold benchmark:** bot +1.65% phase vs roughly flat BTC over the window — outperforming.
+
+---
+
+## 2026-08-03 — Midday Scan
+
+**Reachability gate PASS:** `price BTCUSDT` = $62,600.91.
+
+**ADA position:** Entry $0.18639 → live $0.1863 (bid $0.1862 / ask $0.1863), -0.05%. Stop unchanged $0.1678 (-10%, set at fill 2026-08-02). No cut (-7% = $0.1733), no tighten (+3% trigger not reached, gain ~flat), no take-profit (+7% = $0.1994) triggered. Thesis (Aug-9 SEC spot-ADA-ETF eligibility milestone + whale accumulation + trendline breakout) intact — no invalidating news, price move negligible (<5%), no intraday research check warranted. **No action.**
+
+No other positions (1 total: ADA). `openOrders` still returns permission-gap error (code 700007); USDT+ADA both `locked: 0` confirms no resting orders. 3/25 trades this week, 0/5 today. 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed).
+
+**Decision: NO ACTION.** Hold ADA (~flat, stop $0.1678), $26.20 (~80%) dry powder.
