@@ -810,3 +810,22 @@ Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price` (ADAUSDT), MEX
 **HOLD — NO NEW TRADE (research posture).** Manage the working ADA position (≈ flat vs entry, +3.89% 24h, thesis intact into the Aug-9 ETF-eligibility milestone; TP ≥ $0.1994, monitored stop $0.1678). No fresh liquid setup qualifies — ADA is the only +2% mover on the whole board and it's already held at the 20% cap; every other liquid name is flat-to-red. Hold $26.20 (80%) dry powder; deploy on the next clean liquid ≥ +2% mover with a real catalyst. Respect the Fri Aug-7 NFP event risk. Re-evaluate at morning-execution / midday.
 
 Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price`, [alt.me F&G](https://api.alternative.me/fng/), CoinGecko `/global` (BTC.D, ETH.D, mcap); [CoinGape: ADA ETF eligibility Aug 9](https://coingape.com/markets/cardano-price-prediction-can-ada-rally-as-etf-eligibility-nears-august-9/); [CryptoTicker: hawkish Fed, shaky August start](https://cryptoticker.io/en/crypto-news-today-weekly-wrap-august-2026/).
+
+## 2026-08-03 — Morning Execution (Day 12, Monday)
+
+### Gates — validated live
+- **Reachability gate PASS:** `price BTCUSDT` = $62,846.59.
+- **Account:** $26.1996 USDT free, 1 position (ADA 35.1), 0 locked / 0 open orders, canTrade=true. 3/25 wk, 0/5 today → portfolio/daily/weekly buy-side gates all PASS. 1 closed trade this week (1W/0L) → circuit breaker N/A; daily gate N/A.
+
+### Trade-idea validation vs buy-side gate (full liquid USDT board, live 24hr)
+- **Momentum gate FAILS market-wide.** Full-board scan (vol > $3M): **0 liquid USDT pairs clear +2% 24h** — none. Tape softened since research: ADA **−0.64%** (was +3.89% at research; vol $8.3M) · BNB −0.23% · ETH −0.87% · SOL −0.81% · XRP −1.03% · BTC −0.98% · LINK −1.21% (thin $0.3M). Every liquid name flat-to-red.
+- Research's sole +2% name (ADA) has faded below the gate AND is the held position at the 20% cap → not a new-entry candidate regardless.
+- No catalyst-alone entry documented for any fresh name today → catalyst path does not apply.
+
+### Held position — ADA
+- Entry $0.18639 → live $0.1846 (bid $0.1845), **−0.95%** vs entry. Above monitored stop **$0.1678** (−10%) and the −7% cut **$0.1733**; below +3% trailing-tighten trigger (~$0.192) and +7% target **$0.1994**. No cut, no tighten, no take-profit triggered. Thesis (Aug-9 SEC spot-ADA-ETF eligibility milestone + ~70% whale accumulation + trendline breakout) intact — 6 days out, no invalidating news. **Hold; TP at market the instant ADA prints ≥ $0.1994; stop $0.1678 unchanged (gain <+3%, no tighten).**
+
+### Decision
+**NO NEW TRADE.** No trade idea passes the buy-side gate — the momentum gate fails on every liquid name (0 movers ≥ +2% on the whole board), and no fresh same-day catalyst applies. Keep the single ADA position (−0.95%, healthy, monitored stop $0.1678), hold $26.20 (80%) dry powder into the pre-NFP (Fri Aug 7) Fear tape. No ClickUp alert (no trade fired). Re-evaluate at midday.
+
+Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price` + `account`.
