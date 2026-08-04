@@ -391,3 +391,15 @@ No other positions (1 total: ADA). `orders` endpoint still returns HTTP 400 (per
 - Perplexity key unset → WebSearch fallback for afternoon catalysts surfaced only generic "best altcoins for August" listicle content (LINK/Commerce-Dept GDP data, HYPE, XLM, ALGO mentions) — nothing same-day or ticker-specific.
 
 **Decision: NO NEW ENTRY.** No liquid mover clears both the momentum gate and a genuine same-day catalyst this session. Hold ADA (+4.73%, healthy, stop $0.1822), $26.20 (79%) dry powder. Re-evaluate at daily-summary.
+
+---
+
+## Aug 4 — EOD Snapshot (Day 13, Tuesday)
+
+**Portfolio:** $32.96 | **Cash:** $26.20 (79.5%) | **Day P&L:** +$0.03 (+0.10%) | **Phase P&L:** +$0.64 (+1.99%)
+
+| Ticker | Qty  | Entry    | Price   | Day Chg | Unrealized P&L  | Stop     |
+|--------|------|----------|---------|---------|-----------------|----------|
+| ADA    | 35.1 | $0.18639 | $0.1927 | +0.47%  | +$0.22 (+3.39%) | $0.1822  |
+
+**Notes:** ADA gave back the intraday high — morning tagged $0.1959 (+5.16%), afternoon $0.1952, EOD $0.1927 (bid $0.1926 realizable), now +3.39% above entry, still well clear of the -7% cut ($0.1733) and monitored stop $0.1822. **Stop unchanged $0.1822** (tightened this morning to 7% below the $0.1959 print that first cleared the +3% trigger): current +3.39% is below the morning high, so retightening to 7% below $0.1927 ($0.1792) would move the stop down — prohibited; existing $0.1822 stands (locks profit above $0.18639 entry). **Take-profit NOT triggered** (last $0.1927 < target $0.1994, +7%) — TP flag stays live: sell at market the instant ADA prints ≥ $0.1994. Reachability gate PASS (BTC $64,003.65; ADA $0.1927). USDT free $26.1996 / locked $0 (canTrade), ADA 35.1 free / locked $0 — both locked=0 confirms no resting orders (virtual/monitored stop; MEXC spot has no stop-limit). **Trades:** 0 today, 3/25 this week; 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed), daily gate N/A (0 trades today). Day P&L +$0.03 = ADA intraday drift only ($0.1918 → $0.1927; 35.1 × $0.0009 = +$0.032; USDT unchanged). Phase P&L +$0.64 (+1.99%) vs $32.32 baseline — new phase high (up from Aug 3's +$0.61). Deployment 20.5% ($6.76 ADA) vs 75-85% target — single ADA starter held through a soft Fear tape; momentum cooled market-wide across all three scans (BNB, SOL, ETH, XRP, DOGE, LINK all failed the +2% gate at afternoon), so 0 fresh qualifiers cleared both the momentum gate and the liquidity/catalyst bar → dry powder ($26.20) preserved for a clean re-entry, and into Fri Aug-7 NFP event risk. ADA thesis (Aug-9 SEC spot-ADA-ETF eligibility milestone + ~70% whale accumulation + trendline breakout, 5 days out) intact — no invalidating news. **BTC buy-and-hold benchmark:** phase baseline BTC ~$63,500 (Jul 22 funding) → $64,003.65 now (~+0.79%); bot +1.99% phase — outperforming buy-and-hold.
