@@ -362,3 +362,15 @@ No other positions (1 total: ADA). `orders` endpoint still returns HTTP 400 (per
 **ADA position — trailing tighten EXECUTED.** Entry $0.18639 → live $0.1959 (bid $0.1961/ask $0.1962), **+5.16%** — gain has cleared the +3% trailing-tighten trigger for the first time. **Stop raised $0.1678 → $0.1822** (7% below current $0.1959, locks profit above entry; higher than prior stop so no down-move; 7% clearance satisfies the "never tighten within 3% of current" rule). Monitored/virtual stop (MEXC spot API has no resting stop-limit; USDT+ADA both locked=0 confirms no on-exchange orders) — midday/afternoon scans enforce. **Take-profit NOT triggered** (last $0.1959 < target $0.1994, +7%; day high tagged $0.1994 exactly but current below) — TP flag live: sell at market the instant ADA prints ≥ $0.1994. Thesis (Aug-9 SEC spot-ADA-ETF eligibility milestone + ~70% whale accumulation + trendline breakout) intact, no invalidating news.
 
 **Gates:** 3/25 trades this week, 0/5 today. 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed), daily gate N/A. Holding $26.20 (79%) dry powder into Fri Aug-7 NFP event risk.
+
+---
+
+## 2026-08-04 — Midday Scan
+
+**Reachability gate PASS:** `price BTCUSDT` = $63,731.87.
+
+**ADA position:** Entry $0.18639 → live $0.1947 (bid $0.1947/ask $0.1948), +4.46%. Stop $0.1822 (tightened this morning from $0.1678, 7% below the $0.1959 print that first cleared the +3% trigger). No cut (-7% = $0.1733), no take-profit (+7% = $0.1994) triggered. No further tighten: current +4.46% is below this morning's +5.16% high — retightening to 7% below $0.1947 ($0.1811) would move the stop down, which is prohibited; existing $0.1822 stop stands. Thesis (Aug-9 SEC spot-ADA-ETF eligibility milestone + ~70% whale accumulation + trendline breakout, 5 days out) intact — no invalidating news, price move <5% since morning, no intraday research check warranted. **No action.**
+
+No other positions (1 total: ADA). 3/25 trades this week, 0/5 today. 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed).
+
+**Decision: NO ACTION.** Hold ADA (+4.46%, healthy, stop $0.1822), $26.20 (~79%) dry powder.
