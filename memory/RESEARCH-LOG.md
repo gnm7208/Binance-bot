@@ -873,3 +873,24 @@ Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price` +
 **HOLD — NO NEW TRADE (research posture).** Manage the working ADA position (+4.6% vs entry, +4.50% 24h, thesis intact into the Aug-9 ETF-eligibility milestone). **New this session: the +3% trailing-tighten trigger is live** — execution should raise the monitored stop to ≈$0.1814 (7% below current, locks profit above entry); TP unchanged at ≥$0.1994. No fresh liquid setup qualifies — ADA is the only +2% mover on the whole board and it's already held at the 20% cap; every other liquid name is under the gate. Hold $26.20 (79%) dry powder into the Fri Aug-7 NFP event risk; deploy on the next clean liquid ≥ +2% mover with a real catalyst. Re-evaluate at morning-execution / midday.
 
 Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price`, [alt.me F&G](https://api.alternative.me/fng/), CoinGecko `/global` (BTC.D, ETH.D, mcap); [CoinGape: ADA ETF eligibility Aug 9](https://coingape.com/markets/cardano-price-prediction-can-ada-rally-as-etf-eligibility-nears-august-9/); [Crypto.com: best crypto to watch August 2026](https://crypto.com/us/market-updates/best-crypto-august-2026).
+
+## 2026-08-04 — Morning Execution (Day 13, Tuesday)
+
+### Gates — validated live
+- **Reachability gate PASS:** `price BTCUSDT` = $63,846.73.
+- **Account:** USDT free $26.1996 / locked $0 (canTrade=true); ADA 35.1 / locked $0 (no resting orders). 1 open position, 0 open orders. 3/25 trades this week, 0/5 today. 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed), daily gate N/A. Portfolio/daily/weekly buy-side gates all PASS.
+
+### Momentum gate — re-confirmed live (MEXC 24hr, full liquid board)
+- **ADA +6.12%** (vol $9.95M) — PASS, but it is the held position **already at the 20% cap** → not a new-entry candidate.
+- **BNB +1.22%** ($10.0M) · **SOL +1.13%** ($30.7M) · **ETH +0.22%** · **XRP +0.35%** · **DOGE +0.70%** · **LINK −1.01%** (thin $0.27M) — **all FAIL** the +2% gate. Momentum gate fails market-wide for every fresh liquid name.
+
+### Trade-idea validation (vs buy-side rules)
+1. Research idea #1 "no qualifying fresh entry" — **confirmed.** No liquid name clears +2% except the capped ADA. No buy.
+2. Idea #2 "manage ADA (trailing action live)" — **executed:** +5.16% vs entry cleared the +3% trigger → stop raised $0.1678 → $0.1822 (7% below current $0.1959, locks profit above the $0.18639 entry; never below prior stop; ≥3% off current). TP unchanged at ≥$0.1994 (day high tagged $0.1994 but last $0.1959 < target → no TP).
+3. Idea #3 "watchlist BNB" — $590.59, **+1.22% FAILS +2% gate**, no fresh catalyst → disqualified.
+4. Idea #4 "hold dry powder" — **confirmed:** $26.20 (79%) held into Fri Aug-7 NFP event risk.
+
+### Decision
+**NO NEW TRADE.** No idea passes the buy-side gate — momentum fails market-wide for any fresh name; ADA is the sole +2% mover and already at the 20% cap. Managed the held ADA (trailing stop tightened to $0.1822, locking profit; TP live at ≥$0.1994). Stay 1 position / $26.20 dry powder. No ClickUp alert (no trade fired). Re-evaluate at midday.
+
+Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price`, `scripts/mexc.sh` (`price`, `quote`, `balance`).
