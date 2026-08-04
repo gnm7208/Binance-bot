@@ -374,3 +374,20 @@ No other positions (1 total: ADA). `orders` endpoint still returns HTTP 400 (per
 No other positions (1 total: ADA). 3/25 trades this week, 0/5 today. 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed).
 
 **Decision: NO ACTION.** Hold ADA (+4.46%, healthy, stop $0.1822), $26.20 (~79%) dry powder.
+
+---
+
+## 2026-08-04 — Afternoon Scan
+
+**Reachability gate PASS:** `price BTCUSDT` = $63,965.15.
+
+**ADA position:** Entry $0.18639 → live $0.1952 (+4.73%). Stop unchanged $0.1822 (tightened this morning, 7% below the $0.1959 high that first cleared the +3% trigger). No cut (-7% = $0.1733), no take-profit (+7% = $0.1994) triggered. No further tighten: current +4.73% is below this morning's +5.16% high — retightening to 7% below $0.1952 ($0.1815) would move the stop down, which is prohibited; existing $0.1822 stop stands. Thesis (Aug-9 SEC spot-ADA-ETF eligibility milestone + ~70% whale accumulation + trendline breakout, 5 days out) intact — no invalidating news. **No action.**
+
+No other positions (1 total: ADA). `orders` endpoint still returns HTTP 400 (permission gap, code 700007 pattern); USDT+ADA both `locked: 0` confirms no resting orders. 3/25 trades this week, 0/5 today. 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed). 0 trades today → daily gate N/A.
+
+**Watchlist re-check (live 24h %, MEXC 24hr ticker, decimal-fraction field):**
+- ADA +2.57% (vol $9.62M) — clears gate but held position already at 20% cap; not a new-entry candidate.
+- BNB +0.92% ($9.05M), SOL +1.97% ($31.68M), ETH +1.69% ($175.46M), XRP +0.99% ($11.59M), DOGE +1.13% ($3.79M), LINK +0.26% ($0.29M), BTC +1.87% ($497.43M) — all **FAIL** the +2% gate. Momentum has cooled market-wide vs. this morning's reading (BNB was +1.22%, ADA +6.12%).
+- Perplexity key unset → WebSearch fallback for afternoon catalysts surfaced only generic "best altcoins for August" listicle content (LINK/Commerce-Dept GDP data, HYPE, XLM, ALGO mentions) — nothing same-day or ticker-specific.
+
+**Decision: NO NEW ENTRY.** No liquid mover clears both the momentum gate and a genuine same-day catalyst this session. Hold ADA (+4.73%, healthy, stop $0.1822), $26.20 (79%) dry powder. Re-evaluate at daily-summary.
