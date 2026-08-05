@@ -45,10 +45,13 @@ Every candidate coin gets a score 0-14 built from these signals:
 | CoinGecko trending top 5 | +1 |
 | 24h price >= +5% on MEXC | +2 |
 | MEXC volume >= $3M USD | +1 |
+| Price within 5% of prev-day low (near support) | +1 |
+| Price within 2% of prev-day high (near resistance) | -2 |
 
 Entry eligibility:
 - SCORE >= 5: ELIGIBLE (proceed to Layer 3 review)
 - SCORE < 5: watchlist only — do NOT enter
+- If near prev-day high (-2 pts applied) AND SCORE < 7: SKIP — low conviction into resistance
 - OPTION_B override: strong catalyst (ETF filing, protocol upgrade, exchange listing) = eligible regardless of score
 
 Position sizing by signal score (before macro multiplier):

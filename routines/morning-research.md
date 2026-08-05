@@ -166,11 +166,32 @@ print(d.get('symbol'), '| price:', d.get('lastPrice'),
       '| +mom:', mom_pts, '| +vol:', vol_pts)
 " 2>/dev/null
 
-  Finalize SCORE = SCORE_PRE + mom_pts + vol_pts.
+  Also fetch previous day OHLC for each candidate to apply level scoring:
+  curl -s "https://api.mexc.com/api/v3/klines?symbol=<TICKER>USDT&interval=1d&limit=2" \
+    | python3 -c "
+import json,sys
+data=json.load(sys.stdin)
+prev_high=float(data[0][2]); prev_low=float(data[0][3])
+live=float(data[1][4])
+dist_high=(prev_high-live)/prev_high*100
+dist_low=(live-prev_low)/live*100
+level_pts=0
+if dist_high < 2:
+    level_pts=-2; note='NEAR PREV-DAY HIGH (resistance) -2pts'
+elif dist_low < 5:
+    level_pts=1; note='NEAR PREV-DAY LOW (support) +1pt'
+else:
+    note='neutral zone'
+print(f'Level: prev_high \${prev_high:.5f} prev_low \${prev_low:.5f} | {dist_high:.1f}% from high, {dist_low:.1f}% from low | {note} ({level_pts:+d})')
+" 2>/dev/null
+
+  Finalize SCORE = SCORE_PRE + mom_pts + vol_pts + level_pts.
+  (level_pts = +1 near prev-day low within 5%, -2 near prev-day high within 2%, else 0)
 
   Entry eligibility:
   - SCORE >= 5: ELIGIBLE — proceed to execution
   - SCORE < 5: watchlist only
+  - If level_pts = -2 AND SCORE < 7: SKIP regardless (entering near resistance with low conviction)
   - Also flag if: strong catalyst present (ETF filing, protocol upgrade, exchange listing) → OPTION_B = true
   - If OPTION_B = true: eligible regardless of score
 

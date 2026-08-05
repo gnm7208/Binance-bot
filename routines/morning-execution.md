@@ -105,7 +105,15 @@ STEP 5 — Validate live data for each planned entry:
      curl -s "https://api.mexc.com/api/v3/ticker/24hr?symbol=<TICKER>USDT" \
        | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['priceChangePercent'], d['quoteVolume'])"
      If momentum score would change signal score materially, update the score.
-  4. Remaining buy-side checks:
+  4. Previous-day level check (fetch daily kline, limit=2):
+     prev_day_high = klines[0][2]; prev_day_low = klines[0][3]
+     dist_from_high = (prev_day_high - live_price) / prev_day_high * 100
+     dist_from_low  = (live_price - prev_day_low)  / live_price  * 100
+     If dist_from_high < 2.0: apply -2 to score (near resistance)
+     If dist_from_low  < 5.0: apply +1 to score (near support)
+     If level_pts == -2 AND adjusted_score < 7: SKIP this ticker — low conviction into ceiling.
+
+  5. Remaining buy-side checks:
      - Total positions after fill <= 3
      - Trades today (including this) <= 5
      - Trades this week (including this) <= 20

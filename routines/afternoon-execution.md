@@ -140,9 +140,11 @@ except Exception as e:
 
   Compute signal score for candidates using same rubric as morning-research (max 14 pts):
   +3 Whale exchange->wallet, +3 VC accumulation, +2 trader call, +2 DeFiLlama TVL >10%,
-  +1 CoinGecko top 5, +2 price >= +5%, +1 volume >= $3M
+  +1 CoinGecko top 5, +2 price >= +5%, +1 volume >= $3M,
+  +1 near prev-day low (within 5%), -2 near prev-day high (within 2%)
 
-  Entry threshold: score >= 5 OR Option B strong catalyst.
+  Entry threshold: adjusted score >= 5 OR Option B strong catalyst.
+  If level_pts == -2 AND score < 7: SKIP — low conviction into resistance.
   Skip any ticker in SECTOR_BLOCKED sector.
   Also include any ladder buys flagged in STEP 3D.
 
