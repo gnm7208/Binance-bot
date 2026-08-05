@@ -80,6 +80,7 @@ STEP 3 — Compute macro gate. Run these queries, then score each signal 0-100:
   If SIZE_MULTIPLIER = 0.0: skip STEP 5-6 for new entries. Still check open positions.
 
 LAYER 2 — WEIGHTED SIGNAL SCORING (find and rank candidates)
+Max score 0-16 (theoretical max if all positive signals fire; -2 for resistance applies).
 
 STEP 4 — Collect smart money signals:
 
@@ -143,6 +144,7 @@ STEP 5 — Build weighted signal table. For every coin that appeared in ANY sour
   +1 pt:  CoinGecko trending top 5
   +2 pts: 24h price >= +5% on MEXC (check in STEP 6)
   +1 pt:  MEXC volume >= $3M USD (check in STEP 6)
+  +1 pt:  ATR manipulation flush — largest 15m candle in last 2h >= 25% of 14-day ATR AND bearish (check in STEP 6)
 
   Provisional table (before MEXC price check):
   | Ticker | Whale | VC | Trader | DeFiLlama | CoinGecko | Mom(TBD) | Vol(TBD) | SCORE_PRE |
@@ -185,8 +187,38 @@ else:
 print(f'Level: prev_high \${prev_high:.5f} prev_low \${prev_low:.5f} | {dist_high:.1f}% from high, {dist_low:.1f}% from low | {note} ({level_pts:+d})')
 " 2>/dev/null
 
-  Finalize SCORE = SCORE_PRE + mom_pts + vol_pts + level_pts.
+  Also check for ATR manipulation flush (institutional accumulation signal):
+  python3 - <<'PYEOF'
+import json, urllib.request, sys
+TICKER = 'TICKERUSDT'  # replace with each candidate ticker
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r:
+        return json.loads(r.read())
+try:
+    daily = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1d&limit=15')
+    ranges = [float(d[2])-float(d[3]) for d in daily[:-1]]
+    daily_atr = sum(ranges)/len(ranges)
+    klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=15m&limit=8')
+    largest = max(klines, key=lambda k: float(k[2])-float(k[3]))
+    lg_range = float(largest[2]) - float(largest[3])
+    is_bearish = float(largest[4]) < float(largest[1])
+    pct = lg_range / daily_atr * 100
+    manip_pts = 1 if pct >= 25 and is_bearish else 0
+    if pct >= 25 and is_bearish:
+        note = f'BEARISH FLUSH {pct:.0f}% of ATR — institutional accumulation setup +1pt'
+    elif pct >= 25:
+        note = f'BULLISH PUMP {pct:.0f}% of ATR — watch for reversal/distribution (0pts for long)'
+    else:
+        note = f'normal ({pct:.0f}% of ATR)'
+    print(f'Manip: ATR={daily_atr:.5f} | 15m max={lg_range:.5f} ({pct:.0f}%) | {note} ({manip_pts:+d}pts)')
+except Exception as e:
+    print(f'Manip check unavailable: {e}')
+    manip_pts = 0
+PYEOF
+
+  Finalize SCORE = SCORE_PRE + mom_pts + vol_pts + level_pts + manip_pts.
   (level_pts = +1 near prev-day low within 5%, -2 near prev-day high within 2%, else 0)
+  (manip_pts = +1 if largest 15m candle in last 2h >= 25% of 14-day ATR AND bearish — institutional flush)
 
   Entry eligibility:
   - SCORE >= 5: ELIGIBLE — proceed to execution
@@ -233,9 +265,9 @@ STEP 7 — Write dated entry to memory/RESEARCH-LOG.md:
   - DeFiLlama gainers: (protocols + underlying token)
 
   ### Weighted Signal Table (Layer 2)
-  | Ticker | Whale(+3) | VC(+3) | Trader(+2) | DeFiLlama(+2) | CoinGecko(+1) | Mom(+2) | Vol(+1) | SCORE |
-  |--------|-----------|--------|------------|---------------|---------------|---------|---------|-------|
-  | ...    |           |        |            |               |               |         |         |       |
+  | Ticker | Whale(+3) | VC(+3) | Trader(+2) | DeFiLlama(+2) | CoinGecko(+1) | Mom(+2) | Vol(+1) | Level | Manip(+1) | SCORE |
+  |--------|-----------|--------|------------|---------------|---------------|---------|---------|-------|-----------|-------|
+  | ...    |           |        |            |               |               |         |         |       |           |       |
 
   ### MEXC Live Prices (eligible candidates only)
   | Ticker | Price | 24h % | Volume | Score | Base Size | Final Size | Option B? |

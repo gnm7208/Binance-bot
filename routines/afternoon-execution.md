@@ -138,10 +138,27 @@ except Exception as e:
     | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['symbol'], d['priceChangePercent'],'%', 'vol:', d['quoteVolume'])"
   (replace SYMBOL with each candidate ticker)
 
-  Compute signal score for candidates using same rubric as morning-research (max 14 pts):
+  Compute signal score for candidates using same rubric as morning-research (max 16 pts):
   +3 Whale exchange->wallet, +3 VC accumulation, +2 trader call, +2 DeFiLlama TVL >10%,
   +1 CoinGecko top 5, +2 price >= +5%, +1 volume >= $3M,
-  +1 near prev-day low (within 5%), -2 near prev-day high (within 2%)
+  +1 near prev-day low (within 5%), -2 near prev-day high (within 2%),
+  +1 ATR flush: largest 15m candle in last 2h >= 25% of 14-day ATR AND bearish
+
+  For ATR flush check per candidate:
+  python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+daily = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1d&limit=15')
+daily_atr = sum(float(d[2])-float(d[3]) for d in daily[:-1]) / 14
+klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=15m&limit=8')
+lg = max(klines, key=lambda k: float(k[2])-float(k[3]))
+lg_range = float(lg[2])-float(lg[3]); is_bearish = float(lg[4]) < float(lg[1])
+pct = lg_range/daily_atr*100; manip_pts = 1 if pct>=25 and is_bearish else 0
+note = f'FLUSH {pct:.0f}% ATR +1pt' if (pct>=25 and is_bearish) else f'normal ({pct:.0f}%)'
+print(f'Manip: {note} ({manip_pts:+d}pts)')
+PYEOF
 
   Entry threshold: adjusted score >= 5 OR Option B strong catalyst.
   If level_pts == -2 AND score < 7: SKIP — low conviction into resistance.
@@ -195,7 +212,7 @@ STEP 8 — Calculate stop, target, ladder:
 STEP 9 — Append each trade to memory/TRADE-LOG.md:
   ## YYYY-MM-DD — Trade Entry (afternoon)
   **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (+12%) | Ladder: $X.XX (-7%)
-  **Signal Score:** X/14 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * SIZE_MULTIPLIER)
+  **Signal Score:** X/16 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * SIZE_MULTIPLIER)
   **Thesis:** ...
   **Catalyst:** ... (source: CoinGecko gainer / Whale Alert / Perplexity / trader call)
   **Sector:** ... (L1 / DeFi / AI / Gaming / Other)

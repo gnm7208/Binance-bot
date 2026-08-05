@@ -34,7 +34,7 @@ SIZE_MULTIPLIER from MACRO_SCORE:
 
 ### Layer 2 — Weighted Signal Scoring (morning-research STEPS 4-6)
 
-Every candidate coin gets a score 0-14 built from these signals:
+Every candidate coin gets a score 0-16 built from these signals:
 
 | Signal | Points |
 |---|---|
@@ -47,6 +47,7 @@ Every candidate coin gets a score 0-14 built from these signals:
 | MEXC volume >= $3M USD | +1 |
 | Price within 5% of prev-day low (near support) | +1 |
 | Price within 2% of prev-day high (near resistance) | -2 |
+| ATR manipulation flush: largest 15m candle in last 2h >= 25% of 14-day ATR AND bearish | +1 |
 
 Entry eligibility:
 - SCORE >= 5: ELIGIBLE (proceed to Layer 3 review)

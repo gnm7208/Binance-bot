@@ -113,6 +113,23 @@ STEP 5 — Validate live data for each planned entry:
      If dist_from_low  < 5.0: apply +1 to score (near support)
      If level_pts == -2 AND adjusted_score < 7: SKIP this ticker — low conviction into ceiling.
 
+  4b. ATR manipulation flush check (re-run if >= 3h since morning-research):
+     python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+daily = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1d&limit=15')
+daily_atr = sum(float(d[2])-float(d[3]) for d in daily[:-1]) / 14
+klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=15m&limit=8')
+lg = max(klines, key=lambda k: float(k[2])-float(k[3]))
+lg_range = float(lg[2])-float(lg[3]); is_bearish = float(lg[4]) < float(lg[1])
+pct = lg_range/daily_atr*100; manip_pts = 1 if pct>=25 and is_bearish else 0
+note = f'FLUSH {pct:.0f}% ATR +1pt' if (pct>=25 and is_bearish) else f'normal ({pct:.0f}%)'
+print(f'Manip: {note} ({manip_pts:+d}pts)')
+PYEOF
+     If manip_pts = +1 and not captured in research score: add to final score.
+
   5. Remaining buy-side checks:
      - Total positions after fill <= 3
      - Trades today (including this) <= 5
@@ -167,7 +184,7 @@ STEP 9 — Append each trade to memory/TRADE-LOG.md:
 
   ## YYYY-MM-DD — Trade Entry
   **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (+12%) | Ladder: $X.XX (-7%)
-  **Signal Score:** X/14 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * SIZE_MULTIPLIER)
+  **Signal Score:** X/16 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * SIZE_MULTIPLIER)
   **Thesis:** ...
   **Catalyst:** ... (Option A/B, signal sources listed)
   **Sector:** ... (L1 / DeFi / AI / Gaming / Other)
