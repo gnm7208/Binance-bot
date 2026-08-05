@@ -427,3 +427,15 @@ No other positions (1 total: ADA). `orders` endpoint still returns HTTP 400 (per
 No other positions (1 total: ADA). USDT $26.20 (locked $0), ADA 35.1 (locked $0) — no resting orders. 3/25 trades this week, 0/5 today.
 
 **Decision: NO ACTION.** Stop unchanged $0.1822. No ClickUp alert (no action taken).
+
+---
+
+## 2026-08-05 — Position Scan #2 (Ad Hoc)
+
+**Reachability gate PASS:** `price BTCUSDT` = $64,068.35.
+
+**ADA position:** Entry $0.18639 → live bid $0.1953/ask $0.1954, **+4.78%**. No cut (-7% = $0.1733, not close). No tighten (task thresholds +15%/+20% not reached, current gain only +4.78%; strategy-file 7%-below-current retighten would move stop DOWN from $0.1822 to ~$0.1816 — prohibited, current gain below the Aug-4 $0.1959 high that set the existing stop). No take-profit triggered. Thesis (Aug-9 SEC spot-ADA-ETF eligibility milestone, 4 days out + ~70% whale accumulation + trendline breakout) intact — no invalidating news since morning-execution. **No action.**
+
+No other positions (1 total: ADA). USDT $26.20 (locked $0), ADA 35.1 (locked $0) — no resting orders. 3/25 trades this week, 0/5 today.
+
+**Decision: NO ACTION.** Stop unchanged $0.1822. No ClickUp alert (no action taken).
