@@ -103,8 +103,18 @@ STEP 5 — Validate live data for each planned entry:
   2. Skip if ticker is in SECTOR_BLOCKED sector.
   3. Re-confirm 24h momentum live:
      curl -s "https://api.mexc.com/api/v3/ticker/24hr?symbol=<TICKER>USDT" \
-       | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['priceChangePercent'], d['quoteVolume'])"
+       | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['lastPrice'], d['priceChangePercent'], d['quoteVolume'])"
      If momentum score would change signal score materially, update the score.
+
+  3b. Price staleness check (live price vs RESEARCH-LOG entry price):
+     RESEARCH_PRICE = entry price recorded in RESEARCH-LOG Trade Ideas for this ticker
+     LIVE_PRICE     = lastPrice from step 3 above
+     drift_pct      = (LIVE_PRICE - RESEARCH_PRICE) / RESEARCH_PRICE * 100
+     Rules:
+     - drift_pct > +7%: SKIP — price ran away since research, chasing risk. Log: "SKIP: +X.X% drift"
+     - drift_pct +3% to +7%: CAUTION — if 24h change still >= +5% proceed, else re-score momentum pts
+     - drift_pct < -7%: re-run ATR flush check (large down move may have triggered +1 flush pts); re-score
+     - |drift_pct| <= 3%: staleness OK — proceed
   4. Previous-day level check (fetch daily kline, limit=2):
      prev_day_high = klines[0][2]; prev_day_low = klines[0][3]
      dist_from_high = (prev_day_high - live_price) / prev_day_high * 100

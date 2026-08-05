@@ -87,7 +87,7 @@ STEP 4 — Collect smart money signals:
   A) Whale Alert — large on-chain transactions:
   curl -s "https://api.whale-alert.io/v1/transactions?api_key=free&min_value=1000000&limit=20" \
     | python3 -c "
-import json, sys
+import json, sys, time
 try:
     data = json.load(sys.stdin)
     for t in data.get('result', [])[:10]:
@@ -95,11 +95,14 @@ try:
         amt = t.get('amount_usd', 0)
         frm = t.get('from',{}).get('owner_type','?')
         to  = t.get('to',{}).get('owner_type','?')
-        print(f'{sym}: \${amt:,.0f} | {frm} -> {to}')
+        age_h = (time.time() - t.get('timestamp', time.time())) / 3600
+        pts = 3 if age_h <= 24 else (2 if age_h <= 48 else 0)
+        print(f'{sym}: \${amt:,.0f} | {frm} -> {to} | {age_h:.1f}h ago | signal_pts={pts}')
 except Exception as e:
     print('Whale Alert unavailable:', e)
 " 2>/dev/null || echo "Whale Alert unavailable"
-  Note coins with exchange->wallet flows (accumulation). These score +3 points.
+  Note coins with exchange->wallet flows (accumulation).
+  Freshness: < 24h → +3 pts | 24-48h → +2 pts | > 48h → 0 pts (signal stale, skip).
 
   B) CoinGecko trending:
   curl -s "https://api.coingecko.com/api/v3/search/trending" \
@@ -137,9 +140,9 @@ for g in gainers[:8]:
 STEP 5 — Build weighted signal table. For every coin that appeared in ANY source above:
 
   Scoring rubric (max 14 points):
-  +3 pts: Whale Alert exchange->wallet flow (accumulation)
-  +3 pts: VC/fund wallet accumulation (a16z/Paradigm/Multicoin)
-  +2 pts: Top trader call (Kaleo/pentoshi/Bluntz named the ticker)
+  +3 pts: Whale Alert exchange->wallet flow (accumulation) [>24h old: +2 pts | >48h: 0 pts]
+  +3 pts: VC/fund wallet accumulation (a16z/Paradigm/Multicoin)  [>48h old: +2 pts]
+  +2 pts: Top trader call (Kaleo/pentoshi/Bluntz named the ticker) [>48h old: +1 pt]
   +2 pts: DeFiLlama TVL gaining >10% 24h (underlying token)
   +1 pt:  CoinGecko trending top 5
   +2 pts: 24h price >= +5% on MEXC (check in STEP 6)

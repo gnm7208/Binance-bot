@@ -38,9 +38,9 @@ Every candidate coin gets a score 0-16 built from these signals:
 
 | Signal | Points |
 |---|---|
-| Whale Alert exchange->wallet flow (accumulation) | +3 |
-| VC/fund accumulation (a16z, Paradigm, Multicoin) | +3 |
-| Top trader call (Kaleo, pentoshi, Bluntz named ticker) | +2 |
+| Whale Alert exchange->wallet flow (accumulation) — <24h: +3 \| 24-48h: +2 \| >48h: 0 | +3 |
+| VC/fund accumulation (a16z, Paradigm, Multicoin) — <48h: +3 \| >48h: +2 | +3 |
+| Top trader call (Kaleo, pentoshi, Bluntz named ticker) — <48h: +2 \| >48h: +1 | +2 |
 | DeFiLlama TVL gaining >10% 24h (underlying token) | +2 |
 | CoinGecko trending top 5 | +1 |
 | 24h price >= +5% on MEXC | +2 |
