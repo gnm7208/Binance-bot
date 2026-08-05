@@ -937,3 +937,24 @@ Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price`, `scripts/mexc
 **HOLD — NO NEW TRADE (research posture).** Manage the working ADA position (+3.01% vs entry, thesis intact into the Aug-9 ETF-eligibility milestone, 4 days out; TP ≥ $0.1994, monitored stop $0.1822). No fresh liquid setup qualifies — the only ≥ +2% mover is an illiquid microcap pump (SKYAI, disqualified); every liquid name fails the gate. Hold $26.20 (79%) dry powder into the Fri Aug-7 NFP event risk; deploy on the next clean liquid ≥ +2% mover with a real catalyst. Re-evaluate at morning-execution / midday.
 
 Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price` + `account`, [alt.me F&G](https://api.alternative.me/fng/), CoinGecko `/global` (BTC.D, ETH.D, mcap); ADA Aug-9 ETF-eligibility thesis carried from prior sessions.
+
+## 2026-08-05 — Morning Execution (Day 14, Wednesday)
+
+### Gates — validated live
+- **Reachability gate PASS:** `price BTCUSDT` = $64,315.82.
+- **Account:** USDT free $26.1996 / locked $0 (canTrade=true); ADA 35.1 / locked $0 (no resting orders). 1 open position, 0 open orders. 3/25 trades this week, 0/5 today. 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed), daily gate N/A. Portfolio/daily/weekly buy-side gates all PASS.
+
+### Momentum gate — re-confirmed live (MEXC 24hr, full liquid board)
+- Full-board scan (vol ≥ $3M) shows only **3** names clearing +2%, all disqualified: **XPLK +700%** ($3.03M — parabolic new-listing pump), **SKYAI +18.81%** ($3.64M — microcap pump, cooling from +39% at research), **PAXG/GOLD +2.28%** ($3.06M — catalyst-less tokenized-gold proxy, borderline liquidity, not a crypto momentum name). All **disqualified — whipsaw/quality/no-catalyst**.
+- Liquid tradeable names all FAIL the +2% gate: **ADA −2.55%** (held, at cap), **BNB +1.98%** ($11.8M), **LTC +1.07%** ($3.7M), BTC +0.76%, ETH +0.41%, SOL +0.39%, XRP −0.62%. Momentum gate fails market-wide for every fresh liquid name.
+
+### Trade-idea validation (vs buy-side rules)
+1. Research idea #1 "no qualifying fresh entry" — **confirmed.** No liquid tradeable name clears +2%; the 3 movers are pumps/gold-proxy. No buy.
+2. Idea #2 "manage ADA" — **no action needed.** Entry $0.18639 → live $0.1907 (+2.31%). No cut (−7% = $0.1733), no TP (+7% = $0.1994), stop $0.1822 unchanged (gain +2.31% below yesterday's high; 7%-below-live $0.1774 < existing stop → retighten would move DOWN, prohibited). Thesis intact (Aug-9 SEC spot-ADA-ETF eligibility milestone, 4 days out).
+3. Idea #3 "watchlist BNB" — $601.52, **+1.98% FAILS +2% gate**, below the $605 reclaim trigger, no fresh catalyst → disqualified.
+4. Idea #4 "hold dry powder" — **confirmed:** $26.20 (79%) held into Fri Aug-7 NFP event risk.
+
+### Decision
+**NO NEW TRADE.** No idea passes the buy-side gate — momentum fails market-wide for any fresh liquid name; the only +2% movers are parabolic pumps (XPLK/SKYAI) and a catalyst-less gold proxy (PAXG). ADA held (+2.31%, healthy, stop $0.1822, TP ≥$0.1994) needs no action. Stay 1 position / $26.20 dry powder into NFP. No ClickUp alert (no trade fired). Re-evaluate at midday.
+
+Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price` + `account`/`quote`.
