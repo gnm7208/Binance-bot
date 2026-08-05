@@ -439,3 +439,19 @@ No other positions (1 total: ADA). USDT $26.20 (locked $0), ADA 35.1 (locked $0)
 No other positions (1 total: ADA). USDT $26.20 (locked $0), ADA 35.1 (locked $0) — no resting orders. 3/25 trades this week, 0/5 today.
 
 **Decision: NO ACTION.** Stop unchanged $0.1822. No ClickUp alert (no action taken).
+
+---
+
+## 2026-08-05 — Afternoon Execution (Day 14, Wednesday)
+
+**Reachability gate PASS:** `price BTCUSDT` = $64,613.37.
+
+**ADA position:** Entry $0.18639 → live bid $0.1913/ask $0.1915 (last $0.1916), **+2.63%** (bid-basis). No cut (-7% = $0.1733, not close). No take-profit (+7% = $0.1994, not close). No tighten: +2.63% is below the +3% trailing trigger (and below the Aug-4 $0.1959 high that set the existing $0.1822 stop — retightening would move it down, prohibited). Thesis (Aug-9 SEC spot-ADA-ETF eligibility milestone, 4 days out + ~70% whale accumulation + trendline breakout) intact — no invalidating news. **No action.**
+
+No other positions (1 total: ADA). `orders` endpoint still returns HTTP 400 (permission gap, code 700007 pattern); USDT+ADA both `locked: 0` confirms no resting orders. 3/25 trades this week, 0/5 today. 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed), daily gate N/A (0 trades today).
+
+**Watchlist re-check (today's RESEARCH-LOG watchlist ticker):**
+- BNB $601.88, **+0.0145%** (vol $13.3M) — flat, well below the +2% gate and below the $605 reclaim trigger set this morning. **FAIL.**
+- Perplexity key unset → WebSearch fallback for afternoon catalysts surfaced only generic "best altcoins for August 2026" listicle content (Chainlink, Solana, Hyperliquid, Sui, Stellar mentions) — nothing same-day or ticker-specific.
+
+**Decision: NO NEW ENTRY.** BNB (the only watchlist name) is flat and fails the gate; no fresh catalyst found. Hold ADA (+2.63%, healthy, stop $0.1822), $26.20 (79%) dry powder. No ClickUp alert (no trade fired). Re-evaluate at daily-summary.
