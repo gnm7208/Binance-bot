@@ -46,6 +46,29 @@ STEP 3 — Compute the week's metrics:
 - Worst trade (ticker + %)
 - Profit factor = sum(winning_P&Ls) / |sum(losing_P&Ls)| (use 0 if no losses)
 
+STEP 3B — Signal accuracy retrospective (runs after STEP 3, before writing the review):
+
+  From ALL closed trades in TRADE-LOG (not just this week — use all available history):
+  Group closed trades by signal score tier recorded at entry:
+    Tier A: score 5-7  | Tier B: score 8-10 | Tier C: score 11+
+    Unscored: trades before scoring system (pre-Aug 4) — list separately, don't mix
+
+  For each tier with >= 1 closed trade, compute:
+    - Trade count
+    - Win count (P&L > 0)
+    - Win rate %
+    - Avg P&L %
+    - Best trade, worst trade
+
+  Threshold check (only if >= 5 scored closed trades total):
+    If Tier A (5-7) win rate < 50%: note "consider raising entry threshold to 6 or 7"
+    If Tier B (8-10) win rate > 75%: note "score 8+ entries consistently strong"
+    If Tier C (11+) has any trades: highlight them — these are highest-conviction entries
+
+  Record this as a subsection in STEP 4's review output under "### Signal Score Retrospective".
+  If threshold adjustment is warranted AND >= 5 trades support it, update
+  memory/TRADING-STRATEGY.md entry threshold note and flag in "Adjustments for Next Week".
+
 STEP 4 — Append full review section to memory/WEEKLY-REVIEW.md:
   ## Week ending YYYY-MM-DD
 

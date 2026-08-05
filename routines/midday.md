@@ -67,6 +67,13 @@ STEP 6 — Tighten trailing stops on remaining positions (P&L +4% to +11%). For 
   Update TRADE-LOG entry:
   Stop tightened: $X.XX -> $X.XX (7% below $X.XX current price)
 
+STEP 6B — Near-stop pre-alert (runs after STEP 6 tightening, on all REMAINING open positions):
+  For each position still open where live price > stop_price (from TRADE-LOG):
+    stop_dist_pct = (live_price - stop_price) / live_price * 100
+    If stop_dist_pct < 3.0:
+      bash scripts/clickup.sh "NEAR-STOP WARNING (midday): TICKER @ $X.XXXXX | stop $X.XXXX | only X.X% away — next check ~2h"
+  (Alert fires even when no action is needed — early warning before afternoon scan.)
+
 STEP 7 — Thesis check. For each remaining position, check current price action and midday news.
 If thesis is broken (catalyst invalidated, sector rolling over, negative news event):
   bash scripts/mexc.sh close <SYMBOL>USDT

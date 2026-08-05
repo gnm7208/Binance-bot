@@ -241,8 +241,19 @@ STEP 7 — Write dated entry to memory/RESEARCH-LOG.md:
   (HOLD only if no coin scores >= 5 and no Option B catalyst)
   (MACRO_HALTED if SIZE_MULTIPLIER = 0.0)
 
-STEP 8 — Notification: only if held position near stop OR extreme macro event (MACRO_SCORE < 30).
-  bash scripts/clickup.sh "<alert>"
+STEP 8 — Notifications (send any that apply):
+
+  A) Held position near stop (stop_dist < 3%):
+  bash scripts/clickup.sh "NEAR-STOP WARNING (research): TICKER @ $X.XXXXX | stop $X.XXXX | only X.X% away"
+
+  B) Extreme macro event (MACRO_SCORE < 30):
+  bash scripts/clickup.sh "MACRO ALERT: score XX — no new entries today. F&G XX, BTC X.X%, dominance XX%"
+
+  C) Under-deployment (fires when MACRO_SCORE >= 70 AND deployed_pct < 50% AND Decision = HOLD):
+  Compute deployed_pct = position_cost / portfolio_value * 100
+  If MACRO_SCORE >= 70 AND deployed_pct < 50 AND no eligible candidates today:
+    bash scripts/clickup.sh "UNDER-DEPLOYED: only X% deployed vs 80% target — macro is FULL (score XX) but no qualifying entry found. Review watchlist."
+  (This mirrors the problem from weeks 1-2 where we sat at 20% deployed in a good macro environment.)
 
 STEP 9 — COMMIT AND PUSH (mandatory):
   git add memory/RESEARCH-LOG.md

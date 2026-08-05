@@ -44,6 +44,13 @@ STEP 3 — Protect open positions (emergency stop check):
     ## YYYY-MM-DD — Trade Exit (evening take-profit)
     **SELL** SYMBOL | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: +12% target hit overnight
 
+STEP 3B — Near-stop pre-alert (runs after STEP 3, on all REMAINING open positions):
+  For each position still open where live price > stop_price (from TRADE-LOG):
+    stop_dist_pct = (live_price - stop_price) / live_price * 100
+    If stop_dist_pct < 3.0:
+      bash scripts/clickup.sh "NEAR-STOP WARNING (evening): TICKER @ $X.XXXXX | stop $X.XXXX | only X.X% away — next check ~5h (overnight)"
+  (Especially important here — 5h gap until overnight-monitor fires at 08:00 UTC.)
+
 STEP 4 — Overnight catalyst and Asian session scan:
   bash scripts/perplexity.sh "crypto market overnight moves Asian session $DATE any major catalysts"
   bash scripts/perplexity.sh "crypto news last 6 hours ETF approvals hacks protocol upgrades $DATE"

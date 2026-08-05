@@ -62,6 +62,13 @@ STEP 4 — Emergency stop check. For each position:
     (Never tighten within 3% of current price. Never move a stop down.)
     No ClickUp notification for tighten-only — logged silently.
 
+STEP 4B — Near-stop pre-alert (runs after STEP 4 actions, on all REMAINING open positions):
+  For each position still open where live_price > stop_price:
+    stop_dist_pct = (live_price - stop_price) / live_price * 100
+    If stop_dist_pct < 3.0:
+      bash scripts/clickup.sh "NEAR-STOP WARNING (overnight): TICKER @ $X.XXXXX | stop $X.XXXX | only X.X% away — monitor closely"
+  (This fires even if no close was triggered — gives early warning before the next routine check.)
+
 STEP 5 — COMMIT AND PUSH (only if any action was taken in STEP 4):
   git add memory/TRADE-LOG.md
   git commit -m "overnight-monitor $DATE"

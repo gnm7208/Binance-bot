@@ -71,6 +71,12 @@ STEP 3 — Monitor open positions (always runs, even on MACRO_HALTED days):
   For each position where P&L is between -6% and -9% AND thesis intact AND no ladder placed yet:
     -> Eligible for ladder buy — handle in STEP 5 alongside new entries.
 
+  E) Near-stop pre-alert (on all REMAINING open positions after A/B/C actions):
+  For each position still open where live_price > stop_price:
+    stop_dist_pct = (live_price - stop_price) / live_price * 100
+    If stop_dist_pct < 3.0:
+      bash scripts/clickup.sh "NEAR-STOP WARNING (morning): TICKER @ $X.XXXXX | stop $X.XXXX | only X.X% away — next check ~5h (midday)"
+
 STEP 4 — Circuit breaker and daily gate:
 
   A) Weekly circuit breaker:
