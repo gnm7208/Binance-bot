@@ -483,3 +483,19 @@ No other positions (1 total: ADA). USDT $26.1996 (locked $0), ADA 35.1 (locked $
 - Perplexity key unset → WebSearch fallback: no fresh same-day liquid catalyst found; general "top altcoins" content only (Chainlink, Solana, Hyperliquid, Sui, Stellar) plus one outlet noting ADA's own triangle breakout toward $0.195 — already the held position, not a new-entry idea.
 
 **Decision: NO NEW ENTRY.** BNB flat, fails gate; no fresh catalyst on any other name. Hold ADA (+1.83%, healthy, stop $0.1822), $26.1996 (79.6%) dry powder. No ClickUp alert (no trade fired, no state change from the earlier afternoon-execution run today). Re-evaluate at evening-scan.
+
+---
+
+## 2026-08-05 — Afternoon Execution Re-Check #2 (Ad Hoc, post-EOD)
+
+**Reachability gate PASS:** `price BTCUSDT` = $64,740.94.
+
+**ADA position:** Entry $0.18639 → live bid $0.1909/ask $0.1910, **+2.42%** (bid-basis). No cut (−7% = $0.1733, not close). No take-profit (+7% flag $0.1994 / +12% target $0.2088, not close). No tighten: +2.42% below the +3% trailing trigger and below the Aug-4 $0.1959 high that set the existing $0.1822 stop — retightening would move it down, prohibited. Thesis (Aug-9 SEC spot-ADA-ETF eligibility milestone, 4 days out + ~70% whale accumulation + trendline breakout) intact — no invalidating news. **No action.**
+
+No other positions (1 total: ADA). USDT $26.1996 (locked $0), ADA 35.1 (locked $0) — no resting orders (`orders` endpoint still HTTP 400 permission gap). 3/25 trades this week, 0/5 today. 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed), daily gate N/A (0 trades today).
+
+**Watchlist re-check (BNB, today's only RESEARCH-LOG watchlist ticker):**
+- BNB $-, +0.0032% (vol $14.1M) — still flat, well below the +2% gate and the $605 reclaim trigger. **FAIL.**
+- Perplexity key unset → WebSearch fallback surfaced PUMP/HYPE as generic-listicle "top gainers" (12%/4% off-exchange), but live MEXC 24hr data shows both flat and thin: HYPE +0.03% (vol $1.63M), PUMP −0.02% (vol $0.53M) — well below both the +2% gate and the ~$3M liquidity threshold. **Disqualified — liquidity/quality filter.**
+
+**Decision: NO NEW ENTRY.** BNB flat, fails gate; PUMP/HYPE disqualified on liquidity. Hold ADA (+2.42%, healthy, stop $0.1822), $26.1996 (79.6%) dry powder. No ClickUp alert (no trade fired, no state change from earlier runs today). Re-evaluate at evening-scan.
