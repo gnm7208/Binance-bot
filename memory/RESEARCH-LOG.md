@@ -894,3 +894,46 @@ Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price`, 
 **NO NEW TRADE.** No idea passes the buy-side gate — momentum fails market-wide for any fresh name; ADA is the sole +2% mover and already at the 20% cap. Managed the held ADA (trailing stop tightened to $0.1822, locking profit; TP live at ≥$0.1994). Stay 1 position / $26.20 dry powder. No ClickUp alert (no trade fired). Re-evaluate at midday.
 
 Sources: live MEXC `/api/v3/ticker/24hr` + `/api/v3/ticker/price`, `scripts/mexc.sh` (`price`, `quote`, `balance`).
+
+## 2026-08-05 — Morning Research (Day 14, Wednesday)
+
+### Account Snapshot
+- **Reachability gate PASS** — MEXC `price BTCUSDT` = $64,377.84; account healthy (canTrade=true).
+- Total portfolio value: ~$32.94 USDT · Free USDT: $26.1996 (79.5%) · Open positions: 1 (ADA 35.1, ~$6.74) · Open orders: 0
+- Trades this week: 3/25 · today: 0/5 · Closed this week: 1 (1W/0L) → circuit breaker N/A (needs ≥5), daily gate N/A.
+
+### Market Context (live MEXC 24hr + CoinGecko global)
+- BTC: **$64,378** (**+0.90%** 24h · vol $445M) — grinding the low-$64k shelf, still coiled inside the descending channel; no break either way.
+- ETH: $1,873.46 (**+0.40%**) · SOL: $74.15 (+0.40%) · XRP: $1.072 (−0.60%) · BNB: $601.50 (**+1.74%**) · DOGE $0.07015 (−0.45%) · LINK $8.16 (−0.56%, thin $0.4M) · LTC $45.22 (+1.91%).
+- BTC Dominance: **56.60%** · ETH.D 9.91% · Total crypto mcap **+0.65%** 24h — mildly green, directionless coil holding.
+- Fear & Greed: **27 (Fear)** on alt.me — 25→27, still Fear, sentiment marginally firmer but fragile.
+- DXY: ~101 (range-bound; Perplexity key unset, not re-pulled). Firm dollar = mild risk headwind.
+- **Macro:** **Fri Aug 7 US NFP (July) is the week's primary binary catalyst** — 2 sessions out. Hot print → higher Sept-hike odds → risk-off; weak → risk-on. Senate summer recess (~Aug 7) effectively closes the CLARITY Act's 2026 window. August seasonal weakness backdrop intact.
+
+### On-Chain / Derivatives
+- Perplexity key unset → WebSearch + direct MEXC/alt.me/CoinGecko pulls; no live funding/OI print.
+- Flat BTC.D (56.6%) + Fear (27) + mildly-green mcap (+0.65%) = risk-off base with a thin, selective bid; no broad alt rotation. ADA whale-accumulation (~70% of supply) thesis unchanged.
+
+### News on Held Positions
+- **ADA** (35.1 @ $0.18639): live bid **$0.1920** / last $0.1921, **+3.01% vs entry**, but **−1.73% 24h** (vol $5.5M) — gave back yesterday's +5.16% intraday high, now grinding sideways. Well above monitored stop **$0.1822** (~5.1% below live) and the −7% cut ($0.1733); below +7% target **$0.1994** and below the morning-Aug-4 high, so no further tighten (retighten to 7% below live = $0.1786 would move the stop DOWN, prohibited). Thesis intact: **Aug-9 SEC spot-ADA-ETF eligibility milestone** (CME ADA futures at the mandatory 6-month mark → streamlined 75-day generic-listing review; Grayscale + others' filings pending, decision window to Oct 23) + ~70% whale accumulation + trendline breakout — **now 4 days out**, no invalidating news. **Hold; TP at market the instant ADA prints ≥ $0.1994; stop $0.1822 unchanged.**
+
+### Confirmed Relative-Strength Movers (24h ≥ +2% gate, full liquid USDT board, vol > $3M)
+- **None qualifying.** Full-board scan: the only ≥ +2% liquid print is **SKYAI +39.03%** ($3.1M vol, $0.063) — a parabolic microcap pump with no documented catalyst → **disqualified on quality/whipsaw risk**. Next-best liquid names all fail the gate: **BNB +1.74%** ($11.1M), **LTC +1.91%** ($3.5M), BTC +0.90%, ETH/SOL +0.40%, XRP −0.60%. **Momentum gate (24h ≥ +2%) FAILS market-wide for every liquid, tradeable name.**
+
+### Trade Ideas (research only — execution owns the decision)
+1. **No qualifying fresh entry.** No liquid name clears +2% except an illiquid microcap pump (SKYAI, disqualified). Forcing size into a Fear, pre-NFP, directionless tape violates the spirit of Rule 11.
+2. **Hold + manage ADA** — the one working position (+3.01% vs entry, thesis intact, 4 days to the Aug-9 ETF-eligibility milestone). Primary action: TP discipline (sell ≥ $0.1994); monitored stop $0.1822 protects it (locks profit above entry). No tighten (gain below the Aug-4 high; would move stop down).
+3. **Watchlist — BNB** $601.50 (+1.74%, vol $11.1M): best-positioned liquid name under the gate, pressing $600. Re-arm only on a volume-confirmed ≥ +2% reclaim/hold above ~$605 with a fresh catalyst (none present). Sector L1/exchange.
+4. **Dry powder** — hold $26.20 (79%) cash into the Fri Aug-7 NFP event risk. Deploy on the next clean liquid ≥ +2% mover with a real catalyst; a pre-NFP Fear tape is not the place to force a second position.
+
+### Risk Factors
+- **Fri Aug 7 NFP** — binary macro catalyst 2 sessions out; a hot print lifts Sept-hike odds and pressures risk assets (incl. ADA) regardless of the ETF narrative. Avoid over-deploying into it.
+- F&G **27 (Fear)** + firm DXY (~101) + coiled BTC channel + seasonal August weakness → fragile risk appetite; thin-conviction breakouts fail easily.
+- ADA ETF *eligibility* (Aug 9) ≠ approval (SEC decision not until Oct 23) — headline/whipsaw risk both ways; a BTC channel breakdown drags ADA down irrespective of the narrative. ADA already round-tripped from +5% to +3% since yesterday — momentum cooling.
+- Tiny account (~$32.94): 20% cap ≈ $6.59/position; MEXC min-notional + fee/slippage drag on any entry.
+- Deployment ~20% vs 75–85% target — but a single clean, in-profit position beats forcing a second into a directionless Fear tape with no qualifying setup.
+
+### Decision
+**HOLD — NO NEW TRADE (research posture).** Manage the working ADA position (+3.01% vs entry, thesis intact into the Aug-9 ETF-eligibility milestone, 4 days out; TP ≥ $0.1994, monitored stop $0.1822). No fresh liquid setup qualifies — the only ≥ +2% mover is an illiquid microcap pump (SKYAI, disqualified); every liquid name fails the gate. Hold $26.20 (79%) dry powder into the Fri Aug-7 NFP event risk; deploy on the next clean liquid ≥ +2% mover with a real catalyst. Re-evaluate at morning-execution / midday.
+
+Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price` + `account`, [alt.me F&G](https://api.alternative.me/fng/), CoinGecko `/global` (BTC.D, ETH.D, mcap); ADA Aug-9 ETF-eligibility thesis carried from prior sessions.
