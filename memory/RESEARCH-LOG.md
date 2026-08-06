@@ -1030,3 +1030,19 @@ Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/ticker/price` + `accou
 **HOLD — NO NEW TRADE (research posture).** Manage the working ADA position (+1.99% vs entry, thesis strengthening into the Aug-9 ETF-eligibility milestone, 3 days out; TP ≥ $0.1994, monitored stop $0.1822). No fresh liquid setup qualifies — the only ≥ +5% movers are illiquid microcap pumps (disqualified); every liquid name fails the gate. Hold $26.20 (79.7%) dry powder through tomorrow's NFP print. Re-evaluate at morning-execution / midday.
 
 Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/ticker/price` + `/ticker/bookTicker` + `account`; [alt.me F&G](https://api.alternative.me/fng/); CoinGecko `/global` (BTC.D, ETH.D, mcap); [Continuum Economics NFP Aug 7 preview](https://continuumeconomics.com/a/6815e0e3/preview-due-august-7-us-july-employment-non-farm-payrolls-stronger-than-june-but-with-a-rise-in-unemployment); [MEXC News: ADA ETF eligibility Aug 9](https://www.mexc.com/news/1142312); [Coingape ADA ETF Aug-9](https://coingape.com/markets/cardano-price-prediction-can-ada-rally-as-etf-eligibility-nears-august-9/).
+
+## 2026-08-06 — Morning Execution (Day 15, Thursday)
+
+### Gates — validated live
+- **Reachability gate PASS:** `price BTCUSDT` = $64,854.97; account canTrade=true.
+- Account: USDT free $26.1996 / locked $0; ADA 35.1 / locked $0. 1 position, 0 resting orders. 3/25 wk, 0/5 today. 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed), daily gate N/A. Portfolio/daily/weekly buy-side gates PASS.
+
+### Momentum gate — re-confirmed live (MEXC 24hr)
+- **No qualifying entry.** Liquid ≥ +5% (vol ≥ $3M): **HEI +128.3%** ($5.4M), **CYS +59.8%** ($3.2M), **CASHCAT +35.9%** ($3.9M), **SKYAI +26.9%** ($3.9M) — all parabolic microcap/memecoin pumps, **disqualified on quality/whipsaw**. **ETH +2.18%** ($229.8M, $1913) is the only liquid legit name up but **below the +5% OPTION-A gate** with no fresh catalyst. BNB −0.85% ($12.5M, $596.56, below $605 trigger). SOL +0.17%, XRP −1.62%, ADA −1.1%. Momentum gate **FAILS market-wide** for every liquid, tradeable name.
+
+### Position Management — ADA (35.1 @ $0.18639)
+- Live bid **$0.1882 = +0.97% vs entry** (−1.1% 24h · vol $5.1M). No cut (−7% $0.1733, not close). No take-profit (+7% flag $0.1994 / +12% target $0.2088, not close). No tighten: +0.97% below the +3% trailing trigger and below the Aug-4 $0.1959 high that set the $0.1822 stop — retighten to 7%-below-live ($0.1750) would move stop DOWN, prohibited. **Hold; stop $0.1822 unchanged; TP at market ≥ $0.1994.**
+- Thesis intact into the **Aug-9 SEC spot-ADA-ETF eligibility milestone (3 days out)** + ~70% whale accumulation + PV11 upgrade + Cardano–Injective IBC testnet. No invalidating news.
+
+### Decision
+**NO TRADE.** No fresh liquid setup passes the buy-side gate — every liquid name fails the +5% momentum gate; only illiquid microcap pumps clear it (disqualified). Hold + manage ADA (+0.97%, thesis strengthening into Aug-9; stop $0.1822, TP ≥ $0.1994). Preserve $26.20 (79.7%) dry powder through tomorrow's Fri Aug-7 NFP print. No ClickUp alert (no trade fired). Re-evaluate at midday.
