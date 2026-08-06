@@ -61,11 +61,14 @@ STEP 5 — LADDER BUY check. For each open position where TRADE-LOG shows no lad
   - Max 1 ladder per position
 
 STEP 6 — Tighten trailing stops on remaining positions (P&L +4% to +11%). For each:
-  - P&L >= +4% AND NOT yet at +12% -> update stop in TRADE-LOG to 7% below current price
+  - P&L >= +4% AND NOT yet at +12%:
+    new_stop = live_price * 0.93
+    new_stop = max(new_stop, entry_price)  # break-even floor: stop never below entry once profitable
+    If new_stop > existing_stop: update stop in TRADE-LOG
   - NEVER tighten within 3% of current price; NEVER move a stop down
 
   Update TRADE-LOG entry:
-  Stop tightened: $X.XX -> $X.XX (7% below $X.XX current price)
+  Stop tightened: $X.XX -> $X.XX (7% below $X.XX current, floor: entry $X.XXXXX)
 
 STEP 6B — Near-stop pre-alert (runs after STEP 6 tightening, on all REMAINING open positions):
   For each position still open where live price > stop_price (from TRADE-LOG):

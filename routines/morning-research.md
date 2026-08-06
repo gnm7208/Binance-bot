@@ -80,7 +80,7 @@ STEP 3 — Compute macro gate. Run these queries, then score each signal 0-100:
   If SIZE_MULTIPLIER = 0.0: skip STEP 5-6 for new entries. Still check open positions.
 
 LAYER 2 — WEIGHTED SIGNAL SCORING (find and rank candidates)
-Max score 0-16 (theoretical max if all positive signals fire; -2 for resistance applies).
+Max score 0-17 (theoretical max if all positive signals fire; -2 for resistance applies).
 
 STEP 4 — Collect smart money signals:
 
@@ -139,7 +139,7 @@ for g in gainers[:8]:
 
 STEP 5 — Build weighted signal table. For every coin that appeared in ANY source above:
 
-  Scoring rubric (max 14 points):
+  Scoring rubric (max 17 pts total; smart-money/catalyst pre-scored, MEXC signals in STEP 6):
   +3 pts: Whale Alert exchange->wallet flow (accumulation) [>24h old: +2 pts | >48h: 0 pts]
   +3 pts: VC/fund wallet accumulation (a16z/Paradigm/Multicoin)  [>48h old: +2 pts]
   +2 pts: Top trader call (Kaleo/pentoshi/Bluntz named the ticker) [>48h old: +1 pt]
@@ -148,6 +148,7 @@ STEP 5 — Build weighted signal table. For every coin that appeared in ANY sour
   +2 pts: 24h price >= +5% on MEXC (check in STEP 6)
   +1 pt:  MEXC volume >= $3M USD (check in STEP 6)
   +1 pt:  ATR manipulation flush — largest 15m candle in last 2h >= 25% of 14-day ATR AND bearish (check in STEP 6)
+  +1 pt:  1h market structure bullish — last 3h highs/lows > prior 3h highs/lows (HH/HL, check in STEP 6)
 
   Provisional table (before MEXC price check):
   | Ticker | Whale | VC | Trader | DeFiLlama | CoinGecko | Mom(TBD) | Vol(TBD) | SCORE_PRE |
@@ -219,13 +220,34 @@ except Exception as e:
     manip_pts = 0
 PYEOF
 
-  Finalize SCORE = SCORE_PRE + mom_pts + vol_pts + level_pts + manip_pts.
+  Also check 1h market structure (bullish HH/HL = price trending up on intraday timeframe):
+  python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'  # replace with each candidate ticker
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+try:
+    klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1h&limit=6')
+    highs = [float(k[2]) for k in klines]
+    lows  = [float(k[3]) for k in klines]
+    hh = max(highs[3:]) > max(highs[:3])  # last 3h highs > prior 3h highs
+    hl = min(lows[3:])  > min(lows[:3])   # last 3h lows > prior 3h lows
+    struct_pts = 1 if (hh and hl) else 0
+    note = 'HH/HL bullish +1pt' if struct_pts else 'no bullish structure 0pt'
+    print(f'Market structure (1h): {note} ({struct_pts:+d}pts)')
+except Exception as e:
+    struct_pts = 0; print(f'Market structure unavailable: {e}')
+PYEOF
+
+  Finalize SCORE = SCORE_PRE + mom_pts + vol_pts + level_pts + manip_pts + struct_pts.
   (level_pts = +1 near prev-day low within 5%, -2 near prev-day high within 2%, else 0)
   (manip_pts = +1 if largest 15m candle in last 2h >= 25% of 14-day ATR AND bearish — institutional flush)
+  (struct_pts = +1 if 1h klines show HH/HL: last 3h highs/lows both exceed prior 3h highs/lows)
 
   Entry eligibility:
-  - SCORE >= 5: ELIGIBLE — proceed to execution
-  - SCORE < 5: watchlist only
+  - MACRO_SCORE >= 60: SCORE >= 5 → ELIGIBLE — proceed to execution
+  - MACRO_SCORE < 60 (weaker macro): SCORE >= 8 → ELIGIBLE; SCORE < 8 → watchlist only (quality gate)
+  - SCORE < 5 regardless of macro: watchlist only — do NOT proceed
   - If level_pts = -2 AND SCORE < 7: SKIP regardless (entering near resistance with low conviction)
   - Also flag if: strong catalyst present (ETF filing, protocol upgrade, exchange listing) → OPTION_B = true
   - If OPTION_B = true: eligible regardless of score
@@ -268,9 +290,9 @@ STEP 7 — Write dated entry to memory/RESEARCH-LOG.md:
   - DeFiLlama gainers: (protocols + underlying token)
 
   ### Weighted Signal Table (Layer 2)
-  | Ticker | Whale(+3) | VC(+3) | Trader(+2) | DeFiLlama(+2) | CoinGecko(+1) | Mom(+2) | Vol(+1) | Level | Manip(+1) | SCORE |
-  |--------|-----------|--------|------------|---------------|---------------|---------|---------|-------|-----------|-------|
-  | ...    |           |        |            |               |               |         |         |       |           |       |
+  | Ticker | Whale(+3) | VC(+3) | Trader(+2) | DeFiLlama(+2) | CoinGecko(+1) | Mom(+2) | Vol(+1) | Level | Manip(+1) | MktStr(+1) | SCORE |
+  |--------|-----------|--------|------------|---------------|---------------|---------|---------|-------|-----------|------------|-------|
+  | ...    |           |        |            |               |               |         |         |       |           |            |       |
 
   ### MEXC Live Prices (eligible candidates only)
   | Ticker | Price | 24h % | Volume | Score | Base Size | Final Size | Option B? |
@@ -280,7 +302,7 @@ STEP 7 — Write dated entry to memory/RESEARCH-LOG.md:
   (thesis intact / broken? catalyst update? ladder opportunity?)
 
   ### Trade Ideas (Layer 3 review fires at execution time)
-  1. TICKER — Score: X/14 | Final size: $X | Entry ~$X | Stop $X (-10%) | Ladder $X (-7%) | Target $X (+12%)
+  1. TICKER — Score: X/17 | Final size: $X | Entry ~$X | Stop $X (-10%) | Ladder $X (-7%) | Target $X (+12%)
      Signals: (list which sources)
      Catalyst: ...
      Sector: ...

@@ -64,6 +64,7 @@ STEP 3 — Monitor open positions (always runs, even on MACRO_HALTED days):
   C) Trailing stop tighten:
   For each position where P&L >= +4% and not yet at +12%:
     new_stop = current_price * 0.93
+    new_stop = max(new_stop, entry_price)  # break-even floor: stop never below entry once profitable
     If new_stop > existing_stop: update stop in TRADE-LOG
     Never tighten within 3% of current price. Never move a stop down.
 
@@ -156,7 +157,7 @@ PYEOF
      - Trades today (including this) <= 5
      - Trades this week (including this) <= 20
      - FINAL_SIZE <= free USDT balance (keep >= 10% dry powder)
-     - Entry signal: score >= 5 OR Option B catalyst (strong catalyst documented)
+     - Entry signal: (MACRO_SCORE >= 60 → score >= 5) OR (MACRO_SCORE < 60 → score >= 8) OR Option B catalyst
   5. Compute final position size:
      BASE_SIZE = 25% if score 5-7, 30% if score 8-10, 35% if score >= 11
      FINAL_SIZE_USDT = portfolio_value * BASE_SIZE * SIZE_MULTIPLIER
@@ -205,7 +206,7 @@ STEP 9 — Append each trade to memory/TRADE-LOG.md:
 
   ## YYYY-MM-DD — Trade Entry
   **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (+12%) | Ladder: $X.XX (-7%)
-  **Signal Score:** X/16 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * SIZE_MULTIPLIER)
+  **Signal Score:** X/17 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * SIZE_MULTIPLIER)
   **Thesis:** ...
   **Catalyst:** ... (Option A/B, signal sources listed)
   **Sector:** ... (L1 / DeFi / AI / Gaming / Other)
@@ -215,7 +216,7 @@ STEP 9 — Append each trade to memory/TRADE-LOG.md:
   **LADDER BUY** SYMBOL | Price: $X.XX | Avg cost: $X.XX | New stop: $X.XX | New target: $X.XX
 
 STEP 10 — Notify only if trade placed:
-  bash scripts/clickup.sh "Bought TICKER x qty @ $X.XX | score X/14 | macro XX | stop $X.XX | target +12%"
+  bash scripts/clickup.sh "Bought TICKER x qty @ $X.XX | score X/17 | macro XX | stop $X.XX | target +12%"
 
 STEP 11 — COMMIT AND PUSH (mandatory if any trades or stop updates):
   git add memory/TRADE-LOG.md memory/RESEARCH-LOG.md

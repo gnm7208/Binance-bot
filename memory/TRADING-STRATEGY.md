@@ -34,7 +34,7 @@ SIZE_MULTIPLIER from MACRO_SCORE:
 
 ### Layer 2 — Weighted Signal Scoring (morning-research STEPS 4-6)
 
-Every candidate coin gets a score 0-16 built from these signals:
+Every candidate coin gets a score 0-17 built from these signals:
 
 | Signal | Points |
 |---|---|
@@ -48,10 +48,12 @@ Every candidate coin gets a score 0-16 built from these signals:
 | Price within 5% of prev-day low (near support) | +1 |
 | Price within 2% of prev-day high (near resistance) | -2 |
 | ATR manipulation flush: largest 15m candle in last 2h >= 25% of 14-day ATR AND bearish | +1 |
+| 1h market structure bullish: last 3h highs/lows > prior 3h highs/lows (HH/HL on 1h chart) | +1 |
 
 Entry eligibility:
-- SCORE >= 5: ELIGIBLE (proceed to Layer 3 review)
-- SCORE < 5: watchlist only — do NOT enter
+- MACRO_SCORE >= 60: SCORE >= 5 → ELIGIBLE (proceed to Layer 3 review)
+- MACRO_SCORE < 60 (weaker macro): SCORE >= 8 → ELIGIBLE; SCORE < 8 → watchlist only (quality gate)
+- SCORE < 5 regardless of macro: watchlist only — do NOT enter
 - If near prev-day high (-2 pts applied) AND SCORE < 7: SKIP — low conviction into resistance
 - OPTION_B override: strong catalyst (ETF filing, protocol upgrade, exchange listing) = eligible regardless of score
 
@@ -89,7 +91,8 @@ Log outcome in TRADE-LOG: "Review: [Proceed/Skip/Size down] - reason"
 6. Take profit at +12%: market sell - no exceptions
 7. Trailing stop (manual - enforced by monitoring routines):
    - Entry: stop at -10% below fill price (in TRADE-LOG)
-   - At +4% gain: tighten stop to 7% below current price (update TRADE-LOG)
+   - At +4% gain: new_stop = max(current_price * 0.93, entry_price) — break-even floor ensures
+     stop never drops below entry price once a trade has proven itself
    - At +12%: close for take profit
    - Never tighten within 3% of current price; never move a stop down
 8. LADDER BUY: if open position drops -6% to -9% AND thesis still intact:
@@ -146,7 +149,7 @@ bash scripts/mexc.sh close SYMBOLUSDT
 ## Sell-Side Rules (evaluated at EVERY midday and afternoon scan)
 - Price <= stop price in TRADE-LOG OR P&L <= -7%: market sell immediately
 - P&L >= +12%: market sell immediately - take profit, no exceptions
-- P&L +4% to +11%: update stop in TRADE-LOG to 7% below current price
+- P&L +4% to +11%: new_stop = max(current_price × 0.93, entry_price) — break-even floor applied
 - Thesis broken (catalyst invalidated, sector rolling over): sell even if not at -7%
 - SECTOR_BLOCKED: exit all positions in blocked sector
 - Ladder buy check: if -6% to -9% AND thesis intact -> execute ladder buy

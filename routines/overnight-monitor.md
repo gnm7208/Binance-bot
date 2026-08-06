@@ -56,9 +56,10 @@ STEP 4 — Emergency stop check. For each position:
 
   C) TRAILING STOP TIGHTEN: if P&L >= +4% and not yet at +12%:
     new_stop = live_price * 0.93
+    new_stop = max(new_stop, entry_price)  # break-even floor
     If new_stop > existing_stop:
       Update stop_price in memory/TRADE-LOG.md (one line):
-      Stop tightened overnight: $OLD -> $NEW (7% below $LIVE current)
+      Stop tightened overnight: $OLD -> $NEW (floor: entry $X.XXXXX)
     (Never tighten within 3% of current price. Never move a stop down.)
     No ClickUp notification for tighten-only — logged silently.
 

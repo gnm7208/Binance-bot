@@ -64,6 +64,7 @@ STEP 3 — Monitor open positions (always runs, even on MACRO_HALTED days):
   C) Trailing stop tighten:
   For each position where P&L >= +4% and not yet at +12%:
     new_stop = current_price * 0.93
+    new_stop = max(new_stop, entry_price)  # break-even floor: stop never below entry once profitable
     If new_stop > existing_stop: update stop in TRADE-LOG
     Never tighten within 3% of current price. Never move a stop down.
 
@@ -149,11 +150,12 @@ except Exception as e:
     | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['symbol'], d['priceChangePercent'],'%', 'vol:', d['quoteVolume'])"
   (replace SYMBOL with each candidate ticker)
 
-  Compute signal score for candidates using same rubric as morning-research (max 16 pts):
+  Compute signal score for candidates using same rubric as morning-research (max 17 pts):
   +3 Whale exchange->wallet, +3 VC accumulation, +2 trader call, +2 DeFiLlama TVL >10%,
   +1 CoinGecko top 5, +2 price >= +5%, +1 volume >= $3M,
   +1 near prev-day low (within 5%), -2 near prev-day high (within 2%),
-  +1 ATR flush: largest 15m candle in last 2h >= 25% of 14-day ATR AND bearish
+  +1 ATR flush: largest 15m candle in last 2h >= 25% of 14-day ATR AND bearish,
+  +1 market structure: 1h HH/HL bullish (last 3h highs/lows > prior 3h — same Python block as morning-research STEP 6)
 
   For ATR flush check per candidate:
   python3 - <<'PYEOF'
@@ -171,7 +173,7 @@ note = f'FLUSH {pct:.0f}% ATR +1pt' if (pct>=25 and is_bearish) else f'normal ({
 print(f'Manip: {note} ({manip_pts:+d}pts)')
 PYEOF
 
-  Entry threshold: adjusted score >= 5 OR Option B strong catalyst.
+  Entry threshold: MACRO_SCORE >= 60 → score >= 5 | MACRO_SCORE < 60 → score >= 8 (quality gate). OR Option B strong catalyst.
   If level_pts == -2 AND score < 7: SKIP — low conviction into resistance.
   Skip any ticker in SECTOR_BLOCKED sector.
   Also include any ladder buys flagged in STEP 3E.
@@ -223,7 +225,7 @@ STEP 8 — Calculate stop, target, ladder:
 STEP 9 — Append each trade to memory/TRADE-LOG.md:
   ## YYYY-MM-DD — Trade Entry (afternoon)
   **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (+12%) | Ladder: $X.XX (-7%)
-  **Signal Score:** X/16 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * SIZE_MULTIPLIER)
+  **Signal Score:** X/17 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * SIZE_MULTIPLIER)
   **Thesis:** ...
   **Catalyst:** ... (source: CoinGecko gainer / Whale Alert / Perplexity / trader call)
   **Sector:** ... (L1 / DeFi / AI / Gaming / Other)
@@ -233,7 +235,7 @@ STEP 9 — Append each trade to memory/TRADE-LOG.md:
   **LADDER BUY** SYMBOL | Price: $X.XX | Avg cost: $X.XX | New stop: $X.XX | New target: $X.XX
 
 STEP 10 — Notify only if trade placed or emergency stop hit:
-  bash scripts/clickup.sh "Bought TICKER x qty @ $X.XX | score X/14 | macro XX | stop $X.XX | +12% target"
+  bash scripts/clickup.sh "Bought TICKER x qty @ $X.XX | score X/17 | macro XX | stop $X.XX | +12% target"
 
 STEP 11 — COMMIT AND PUSH (mandatory if any trades or stop updates):
   git add memory/TRADE-LOG.md memory/RESEARCH-LOG.md
