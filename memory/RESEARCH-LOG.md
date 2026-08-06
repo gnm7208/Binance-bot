@@ -958,3 +958,31 @@ Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price` +
 **NO NEW TRADE.** No idea passes the buy-side gate — momentum fails market-wide for any fresh liquid name; the only +2% movers are parabolic pumps (XPLK/SKYAI) and a catalyst-less gold proxy (PAXG). ADA held (+2.31%, healthy, stop $0.1822, TP ≥$0.1994) needs no action. Stay 1 position / $26.20 dry powder into NFP. No ClickUp alert (no trade fired). Re-evaluate at midday.
 
 Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price` + `account`/`quote`.
+
+## 2026-08-06 — Evening Scan (Day 15, Thursday, Asian open ~03:00 UTC)
+
+### Live State
+- **Reachability PASS:** BTC $64,547.82; ADA $0.1919 (bid $0.1917 / ask $0.1918).
+- Account: USDT free $26.1996 / locked $0 (canTrade); ADA 35.1 / locked $0. 1 position, 0 resting orders. 3/25 trades this week, 0/5 today. 1 closed trade this week (1W/0L) → circuit breaker N/A (needs ≥5 closed), daily gate N/A.
+
+### Position Management — ADA (35.1 @ $0.18639)
+- Bid $0.1917 = **+2.85% vs entry**. No emergency stop (stop $0.1822, ~5% below live). No take-profit (+7% flag $0.1994 / +12% target $0.2088 — not close). No tighten: +2.85% below the +3% trailing trigger and below the Aug-4 $0.1959 high that set the $0.1822 stop → retighten to 7%-below-live ($0.1782) would move stop DOWN, prohibited. **Hold; stop $0.1822 unchanged; TP at market ≥ $0.1994.**
+- **Thesis intact / strengthening:** Aug-9 SEC spot-ADA-ETF eligibility milestone now **3 days out** (CME ADA futures hit 6-month mark → streamlined generic-listing review; Grayscale ADA ETF under SEC review, decision window to ~Oct 23) + ~70% whale accumulation + PV11 protocol upgrade + Cardano–Injective IBC testnet (Aug 4). No invalidating news.
+
+### Overnight / Asian Session Catalysts
+- **Macro (risk-off base):** F&G **25 (Extreme Fear)**; BTC compressed $62–64k under the descending trendline capping every rally since Jul 21; BTC ETF flows flipped +$170.1M Aug 3 (first inflow after 7-day outflow streak, still modest vs 30-day −$1.90B). **Fri Aug 7 US NFP (July) = the week's primary binary catalyst, 1 session out** (June printed 57k vs 110k est — soft; hot print lifts Sept-hike odds → risk-off, weak = risk-on). CLARITY Act 2026 window effectively closed by Senate recess. BTC.D 56.57%, mcap 24h +0.36% — flat, no broad alt rotation.
+- Whale Alert: unavailable (free key). CoinGecko trending (retail): PENGU, BLESS, PI, UNI, CASHCAT, LIT, GRVT, HEI — memecoin/microcap-led, no tradeable signal.
+
+### Momentum Gate — full liquid MEXC board (vol > $3M)
+- **No qualifying entry.** Names clearing +2%: **HEI +77.95%** ($3.4M), **CASHCAT +18.53%** ($4.0M), **SKYAI +14.45%** ($3.8M) — all parabolic microcap/memecoin pumps, **disqualified on quality/whipsaw**; **PAXG +4.72% / XAUT +4.53%** ($6.8M/$3.1M) — catalyst-less tokenized-gold proxies, not crypto momentum, disqualified. **ETH +2.12%** ($220.7M, $1907) is the only liquid legit name up, but **below the +5% OPTION-A entry gate** with no fresh catalyst. **BNB −0.62%** ($13.5M, $595) — soft, fails gate and below the $605 reclaim trigger.
+
+### Tomorrow's Watchlist (Fri Aug 7 — NFP day)
+1. **ADA (hold)** — manage the working position into the Aug-9 ETF-eligibility milestone (2 days out tomorrow). TP at market ≥ $0.1994; monitored stop $0.1822.
+2. **ETH** $1907 (+2.12%, vol $220M) — closest liquid name to a real breakout; re-arm only on a volume-confirmed **≥ +5%** clear ($2003+) OR a fresh catalyst. Post-NFP direction dependent.
+3. **BNB** $595 — dormant; re-arm on a volume-confirmed ≥ +2% reclaim/hold above **$605** with a catalyst (none present).
+4. **Dry powder** — hold $26.20 (79%) cash **through the Fri NFP print**; do not force a second position into an Extreme-Fear, pre-NFP, directionless tape. Deploy on the first clean liquid ≥ +5% mover with a real catalyst after the print clears.
+
+### Decision
+**HOLD — NO NEW TRADE.** ADA (+2.85%, thesis strengthening into Aug-9, stop $0.1822, TP ≥ $0.1994) needs no action. No fresh liquid setup qualifies — only microcap pumps and gold proxies clear the gate; ETH is below the +5% entry bar. Preserve $26.20 (79%) dry powder through tomorrow's NFP. No ClickUp alert (no trade fired, no state change). Re-evaluate at morning-research.
+
+Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/ticker/price` + `account`/`quote`; [alt.me F&G](https://api.alternative.me/fng/); CoinGecko `/global` + `/search/trending`; [CoinDesk BTC/ETH/SOL](https://www.coindesk.com/markets/2026/08/04/bitcoin-nears-usd64-000-as-traders-look-past-the-fourth-coldcard-sweep); [Coingape ADA ETF Aug-9](https://coingape.com/markets/cardano-price-prediction-can-ada-rally-as-etf-eligibility-nears-august-9/); [Cryptonews ADA upgrade era](https://cryptonews.net/news/altcoins/33239527/).
