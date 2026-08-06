@@ -502,3 +502,22 @@ No other positions (1 total: ADA). USDT $26.1996 (locked $0), ADA 35.1 (locked $
 - Perplexity key unset → WebSearch fallback surfaced PUMP/HYPE as generic-listicle "top gainers" (12%/4% off-exchange), but live MEXC 24hr data shows both flat and thin: HYPE +0.03% (vol $1.63M), PUMP −0.02% (vol $0.53M) — well below both the +2% gate and the ~$3M liquidity threshold. **Disqualified — liquidity/quality filter.**
 
 **Decision: NO NEW ENTRY.** BNB flat, fails gate; PUMP/HYPE disqualified on liquidity. Hold ADA (+2.42%, healthy, stop $0.1822), $26.1996 (79.6%) dry powder. No ClickUp alert (no trade fired, no state change from earlier runs today). Re-evaluate at evening-scan.
+
+---
+
+## 2026-08-06 — Trade Exit (daily-summary take-profit)
+**SELL** ADAUSDT | Qty: 35.1 | Exit: ~$0.2110 avg (market, bid $0.2111) | Entry: $0.18639 | Realized P&L: +$0.84 (+12.9%) | Reason: +12% take-profit rule (no exceptions)
+**OrderId:** C02__714089952823910401046
+**Notes:** ADA ripped into the Aug-9 SEC spot-ADA-ETF eligibility milestone (3 days out) — Aug-5 EOD $0.1914 → this run bid $0.2111 (**+13.26% vs entry**), tripping the +12% target ($0.2088) decisively for the first time. Rulebook rule 6 / sell-side "P&L ≥ +12%: market sell immediately — no exceptions" fired; next routine (evening-scan) hours away and ADA volatile → executed at daily-summary. Closed via `mexc.sh close ADAUSDT`. No on-exchange stop to cancel (virtual/monitored $0.1822; USDT+ADA both locked=0 confirmed). USDT free $26.1996 → **$33.5845** (net proceeds $7.3849 vs $6.5424 cost basis). Portfolio now **100% cash, 0 open positions**. Thesis (Aug-9 ETF-eligibility + ~70% whale accumulation + trendline breakout + PV11 upgrade) played out in full — 2nd realized win of the phase. This week (Mon Aug 3–): 1 closed trade (win); phase closed record 2W/0L (ADA +7.0% Aug 1, ADA +12.9% Aug 6). Daily win rate 100% (1/1). ClickUp alerted.
+
+---
+
+## Aug 6 — EOD Snapshot (Day 15, Thursday)
+
+**Portfolio:** $33.58 | **Cash:** $33.58 (100%) | **Day P&L:** +$0.66 (+2.02%) | **Phase P&L:** +$1.26 (+3.91%)
+
+| Ticker | Qty | Entry | Price | Day Chg | Unrealized P&L | Stop |
+|--------|-----|-------|-------|---------|----------------|------|
+| — (100% cash) | — | — | — | — | — | — |
+
+**Notes:** Best day of the phase — ADA take-profit executed at +12.9% ($0.18639 → ~$0.2110 avg, +$0.84 realized) when the price tripped the +12% target ($0.2088) into the Aug-9 SEC spot-ADA-ETF eligibility milestone (3 days out). Full cycle Aug 2 re-entry → Aug 6 target; thesis (ETF-eligibility + ~70% whale accumulation + trendline breakout + PV11 upgrade) played out exactly as planned. Portfolio now 100% cash: USDT free $33.5845 / locked $0 (canTrade=true), 0 positions, 0 open orders. Reachability gate PASS (BTC $64,718.31; ADA last $0.2112 / bid $0.2111). **Trades:** 1 today (the ADA exit, a win → daily win rate 100%); this week (Mon Aug 3–) 1 closed trade (1W/0L) → circuit breaker N/A (needs ≥5 closed), daily gate N/A (needs ≥5 trades). Day P&L +$0.66 = ADA realized appreciation (Aug 5 EOD $32.92 → $33.5845). Phase P&L +$1.26 (+3.91%) vs $32.32 baseline — new phase high (up from Aug 5's +$0.60), driven by the second ADA win. Deployment 0% vs 75-85% target — fully in cash post-exit, holding dry powder through tomorrow's Fri Aug-7 US NFP print (the week's primary binary catalyst); do not force a re-entry into an Extreme-Fear (F&G 25), pre-NFP, directionless tape. Note: eligibility ≠ approval (SEC ADA-ETF decision to ~Oct 23) — took the +12% money into the milestone rather than hold through headline whipsaw risk. **BTC buy-and-hold benchmark:** phase baseline BTC ~$63,500 (Jul 22 funding) → $64,718 now (~+1.9%); bot +3.91% phase — outperforming buy-and-hold by ~2 pts. Phase closed record now 2W/0L (ADA +7.0% Aug 1, ADA +12.9% Aug 6).
