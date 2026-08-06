@@ -67,11 +67,22 @@ STEP 3 — Monitor open positions (always runs, even on MACRO_HALTED days):
     If new_stop > existing_stop: update stop in TRADE-LOG
     Never tighten within 3% of current price. Never move a stop down.
 
-  D) Ladder buy check:
+  D) Peak Decay Exit check:
+  For each position still above stop after C):
+    peak_pnl_pct    = value in TRADE-LOG "Peak P&L" field
+    current_pnl_pct = (live_price - entry_price) / entry_price * 100
+    stop_dist_pct   = (live_price - stop_price) / live_price * 100
+    If current_pnl_pct > peak_pnl_pct: update TRADE-LOG Peak P&L field (new high + date)
+    decay_pct = (peak_pnl_pct - current_pnl_pct) / peak_pnl_pct * 100
+    Trigger if: decay_pct >= 50 AND current_pnl_pct < 3.0 AND stop_dist_pct < 6.0 AND peak_pnl_pct > 0
+    If triggered: run 3 mini thesis checks (Q1 volume, Q2 catalyst date, Q3 sector — see midday STEP 6C).
+    2+ FAIL → close + log TRADE-LOG + ClickUp "PEAK DECAY EXIT". < 2 FAIL → log one line, no ClickUp.
+
+  E) Ladder buy check:
   For each position where P&L is between -6% and -9% AND thesis intact AND no ladder placed yet:
     -> Eligible for ladder buy — handle in STEP 5 alongside new entries.
 
-  E) Near-stop pre-alert (on all REMAINING open positions after A/B/C actions):
+  F) Near-stop pre-alert (on all REMAINING open positions after A/B/C actions):
   For each position still open where live_price > stop_price:
     stop_dist_pct = (live_price - stop_price) / live_price * 100
     If stop_dist_pct < 3.0:
@@ -151,7 +162,7 @@ PYEOF
      FINAL_SIZE_USDT = portfolio_value * BASE_SIZE * SIZE_MULTIPLIER
      Minimum: $3 USDT. If below: skip and log.
 
-  Also process any ladder buys from STEP 3D using same FINAL_SIZE_USDT as original tranche.
+  Also process any ladder buys from STEP 3E using same FINAL_SIZE_USDT as original tranche.
 
 LAYER 3 — STRUCTURED REVIEW GATE (runs for EVERY approved order before it fires)
 

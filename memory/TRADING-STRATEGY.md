@@ -150,6 +150,13 @@ bash scripts/mexc.sh close SYMBOLUSDT
 - Thesis broken (catalyst invalidated, sector rolling over): sell even if not at -7%
 - SECTOR_BLOCKED: exit all positions in blocked sector
 - Ladder buy check: if -6% to -9% AND thesis intact -> execute ladder buy
+- Peak Decay Exit: if P&L has declined >= 50% from its recorded peak AND current P&L < +3%
+  AND stop < 6% away -> run mini thesis check (3 questions):
+    Q1: current 24h volume >= 50% of entry volume? (FAIL if not)
+    Q2: catalyst event date still upcoming? (FAIL if date has passed)
+    Q3: sector not in SECTOR_BLOCKED? (FAIL if blocked)
+  If 2+ questions FAIL -> exit. Log in TRADE-LOG. ClickUp alert on exit only.
+  If < 2 fail -> hold, log "Peak decay flagged" in TRADE-LOG (silent, no ClickUp).
 
 ## Phase Parameter Validation (review before Aug 22 revert)
 Compare actual results against these assumptions:

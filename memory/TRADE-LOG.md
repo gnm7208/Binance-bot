@@ -23,10 +23,12 @@ No positions. Starting capital: 4,500 KES → 34.32 USDT via Remitano M-Pesa P2P
 <!-- New entries appended below. Format:
 
 ## YYYY-MM-DD — Trade Entry
-**BUY** SYMBOL | Shares: X | Entry: $X.XX | Stop: $X.XX (X%) | Target: $X.XX (X:1 R:R)
+**BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (+12%) | Ladder: $X.XX (-7%)
+**Signal Score:** X/16 | **Macro Score:** XX | **Size:** $X.XX
 **Thesis:** ...
 **Catalyst:** ...
 **Sector:** ...
+**Peak P&L:** X.XX% @ $X.XXXXX (YYYY-MM-DD) — updated by monitoring routines at each new high
 
 ## YYYY-MM-DD — Trade Exit
 **SELL** SYMBOL | Exit: $X.XX | Realized P&L: ±$X (±X%) | Reason: ...
@@ -253,6 +255,7 @@ No other positions (1 total: ADA). 1/25 trades this week, 0/5 today. No closed t
 **Sector:** L1.
 **Stop mechanism:** Recorded −10% stop $0.1678, monitored (MEXC spot API has no resting stop-limit; midday + afternoon scans enforce −7% cut $0.1733 via market sell). Confirmed live: 0 open orders on-exchange.
 **Notes:** Buy-side gate all PASS (0 positions→1, 2/25 wk→3/25, 0/5 today→1/5, size ≤20%, momentum +9.09% ≥ +2%, catalyst documented). Required confirmed close ≥ $0.1809 before entry — satisfied (price holding $0.186 above pivot, not a failed wick). Actual fill $0.18639 ~2.9% above research's modeled $0.180 entry (bought the confirmation, per plan). Remaining $26.20 USDT (80%) dry powder — single starter into a weekend Fear tape (F&G 27), no additional entries. ClickUp alerted (trade fired). Midday scan to enforce stop / manage.
+**Peak P&L:** +5.16% @ $0.1959 (2026-08-04) — trailing stop tightened to $0.1822 at this level
 
 ---
 

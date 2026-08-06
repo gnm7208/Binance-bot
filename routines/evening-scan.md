@@ -51,6 +51,24 @@ STEP 3B — Near-stop pre-alert (runs after STEP 3, on all REMAINING open positi
       bash scripts/clickup.sh "NEAR-STOP WARNING (evening): TICKER @ $X.XXXXX | stop $X.XXXX | only X.X% away — next check ~5h (overnight)"
   (Especially important here — 5h gap until overnight-monitor fires at 08:00 UTC.)
 
+STEP 3C — Peak Decay Exit check:
+
+  For each open position still above stop:
+    peak_pnl_pct    = value in TRADE-LOG "Peak P&L" field
+    current_pnl_pct = (live_price - entry_price) / entry_price * 100
+    stop_dist_pct   = (live_price - stop_price) / live_price * 100
+    If current_pnl_pct > peak_pnl_pct: update TRADE-LOG Peak P&L to new high + date
+    decay_pct = (peak_pnl_pct - current_pnl_pct) / peak_pnl_pct * 100
+
+  Trigger if: decay_pct >= 50 AND current_pnl_pct < 3.0 AND stop_dist_pct < 6.0 AND peak_pnl_pct > 0
+
+  If triggered, run mini thesis check:
+    Q1 — Volume: current 24h vol >= 50% of entry vol? (MEXC 24hr ticker vs TRADE-LOG entry vol)
+    Q2 — Catalyst: catalyst event date still upcoming? (FAIL if DATE > catalyst date in TRADE-LOG)
+    Q3 — Sector: sector NOT in SECTOR_BLOCKED? (FAIL if blocked in RESEARCH-LOG)
+  If 2+ FAIL → close + log + ClickUp (same format as midday STEP 6C).
+  If < 2 FAIL → log "Peak decay flagged" one line in TRADE-LOG. No ClickUp.
+
 STEP 4 — Overnight catalyst and Asian session scan:
   bash scripts/perplexity.sh "crypto market overnight moves Asian session $DATE any major catalysts"
   bash scripts/perplexity.sh "crypto news last 6 hours ETF approvals hacks protocol upgrades $DATE"

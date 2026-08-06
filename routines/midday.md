@@ -74,6 +74,38 @@ STEP 6B — Near-stop pre-alert (runs after STEP 6 tightening, on all REMAINING 
       bash scripts/clickup.sh "NEAR-STOP WARNING (midday): TICKER @ $X.XXXXX | stop $X.XXXX | only X.X% away — next check ~2h"
   (Alert fires even when no action is needed — early warning before afternoon scan.)
 
+STEP 6C — Peak Decay Exit check (catches slow-fade positions before mechanical stop fires):
+
+  For each open position still above stop:
+    peak_pnl_pct    = value in TRADE-LOG "Peak P&L" field
+    current_pnl_pct = (live_price - entry_price) / entry_price * 100
+    stop_dist_pct   = (live_price - stop_price) / live_price * 100
+    If current_pnl_pct > peak_pnl_pct: update TRADE-LOG Peak P&L to new high + date
+    decay_pct = (peak_pnl_pct - current_pnl_pct) / peak_pnl_pct * 100
+
+  Trigger if: decay_pct >= 50 AND current_pnl_pct < 3.0 AND stop_dist_pct < 6.0 AND peak_pnl_pct > 0
+
+  If triggered, run 3 mini thesis checks:
+    Q1 — Volume: is current 24h vol >= 50% of volume at entry (from TRADE-LOG notes)?
+         curl -s "https://api.mexc.com/api/v3/ticker/24hr?symbol=TICKERUSDT" \
+           | python3 -c "import json,sys; d=json.load(sys.stdin); print('vol:', d['quoteVolume'])"
+         FAIL if current vol < 50% of entry vol.
+    Q2 — Catalyst: has the catalyst event date already passed?
+         FAIL if today DATE > catalyst date from TRADE-LOG.
+    Q3 — Sector: is this position's sector in SECTOR_BLOCKED (from RESEARCH-LOG)?
+         FAIL if sector blocked.
+
+  If 2+ checks FAIL:
+    bash scripts/mexc.sh close SYMBOLUSDT
+    Append to TRADE-LOG:
+    ## YYYY-MM-DD — Trade Exit (peak decay)
+    **SELL** SYMBOL | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: peak decay exit
+    (Peak +X.X% DATE → now +X.X%; X% decay; checks failed: [Q1/Q2/Q3 as applicable])
+    bash scripts/clickup.sh "PEAK DECAY EXIT: TICKER @ $X.XX | peak +X.X% -> now +X.X% | X/3 checks failed"
+
+  If < 2 checks FAIL → hold. Log in TRADE-LOG (one line, no ClickUp):
+    Peak decay flagged [DATE]: peak +X.X% → now +X.X% (X% decay). X/3 checks failed. Hold.
+
 STEP 7 — Thesis check. For each remaining position, check current price action and midday news.
 If thesis is broken (catalyst invalidated, sector rolling over, negative news event):
   bash scripts/mexc.sh close <SYMBOL>USDT

@@ -67,11 +67,22 @@ STEP 3 — Monitor open positions (always runs, even on MACRO_HALTED days):
     If new_stop > existing_stop: update stop in TRADE-LOG
     Never tighten within 3% of current price. Never move a stop down.
 
-  D) Ladder buy eligibility:
+  D) Peak Decay Exit check:
+  For each position still above stop after C):
+    peak_pnl_pct    = value in TRADE-LOG "Peak P&L" field
+    current_pnl_pct = (live_price - entry_price) / entry_price * 100
+    stop_dist_pct   = (live_price - stop_price) / live_price * 100
+    If current_pnl_pct > peak_pnl_pct: update TRADE-LOG Peak P&L field (new high + date)
+    decay_pct = (peak_pnl_pct - current_pnl_pct) / peak_pnl_pct * 100
+    Trigger if: decay_pct >= 50 AND current_pnl_pct < 3.0 AND stop_dist_pct < 6.0 AND peak_pnl_pct > 0
+    If triggered: run 3 mini thesis checks (Q1 volume, Q2 catalyst date, Q3 sector — see midday STEP 6C).
+    2+ FAIL → close + log TRADE-LOG + ClickUp "PEAK DECAY EXIT". < 2 FAIL → log one line, no ClickUp.
+
+  E) Ladder buy eligibility:
   For each position where P&L is between -6% and -9% AND thesis intact AND no ladder yet:
     Flag for ladder buy in STEP 5.
 
-  E) Near-stop pre-alert (on all REMAINING open positions after A/B/C actions):
+  F) Near-stop pre-alert (on all REMAINING open positions after A/B/C actions):
   For each position still open where live_price > stop_price:
     stop_dist_pct = (live_price - stop_price) / live_price * 100
     If stop_dist_pct < 3.0:
@@ -163,7 +174,7 @@ PYEOF
   Entry threshold: adjusted score >= 5 OR Option B strong catalyst.
   If level_pts == -2 AND score < 7: SKIP — low conviction into resistance.
   Skip any ticker in SECTOR_BLOCKED sector.
-  Also include any ladder buys flagged in STEP 3D.
+  Also include any ladder buys flagged in STEP 3E.
 
   Position size (before macro multiplier):
   - Score 5-7:  BASE_SIZE = 25%

@@ -69,7 +69,26 @@ STEP 4B — Near-stop pre-alert (runs after STEP 4 actions, on all REMAINING ope
       bash scripts/clickup.sh "NEAR-STOP WARNING (overnight): TICKER @ $X.XXXXX | stop $X.XXXX | only X.X% away — monitor closely"
   (This fires even if no close was triggered — gives early warning before the next routine check.)
 
-STEP 5 — COMMIT AND PUSH (only if any action was taken in STEP 4):
+STEP 4C — Peak Decay Exit check (overnight simplified — 2 checks only, no Perplexity):
+
+  For each open position still above stop:
+    peak_pnl_pct    = value in TRADE-LOG "Peak P&L" field
+    current_pnl_pct = (live_price - entry_price) / entry_price * 100
+    stop_dist_pct   = (live_price - stop_price) / live_price * 100
+    If current_pnl_pct > peak_pnl_pct: update TRADE-LOG Peak P&L field (new high)
+    decay_pct = (peak_pnl_pct - current_pnl_pct) / peak_pnl_pct * 100
+
+  Trigger if: decay_pct >= 50 AND current_pnl_pct < 3.0 AND stop_dist_pct < 6.0 AND peak_pnl_pct > 0
+
+  If triggered, run 2 overnight checks (no Perplexity available):
+    Q1 — Volume: curl 24hr ticker → is vol >= 50% of entry vol? FAIL if not.
+    Q2 — Catalyst: has catalyst event date passed? (compare DATE to TRADE-LOG). FAIL if yes.
+  If 2/2 FAIL → close immediately (overnight is not a time to hold a fading thesis):
+    bash scripts/mexc.sh close TICKERUSDT
+    Log in TRADE-LOG + bash scripts/clickup.sh "OVERNIGHT PEAK DECAY: TICKER @ $X | peak +X% -> now +X% | both checks failed"
+  If < 2 FAIL → log one line in TRADE-LOG. No ClickUp.
+
+STEP 5 — COMMIT AND PUSH (only if any action was taken in STEP 4 or STEP 4C):
   git add memory/TRADE-LOG.md
   git commit -m "overnight-monitor $DATE"
   git push origin HEAD:main
