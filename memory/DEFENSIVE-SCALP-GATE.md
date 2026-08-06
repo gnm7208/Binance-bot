@@ -1,8 +1,9 @@
 # Defensive Scalp Gate — Future Feature (NOT YET ACTIVE)
 
 ## Status
-INACTIVE — documented for future activation. Do NOT apply this rule until explicitly
-enabled in TRADING-STRATEGY.md.
+INACTIVE — impact: 5 | bot_fit: 6 | effort: 6
+NOT implemented: impact below 7 threshold. Activate only if portfolio down ≥5% for 3+ days
+AND standard strategy producing 0 qualifying entries.
 
 ## When to activate
 Consider activating if ALL of the following are true:

@@ -1,8 +1,9 @@
 # Volatility-Adjusted Stops & Targets — Future Feature (NOT YET ACTIVE)
 
 ## Status
-INACTIVE — documented for future activation. Do NOT apply this rule until explicitly
-enabled in TRADING-STRATEGY.md. Requires ≥10 closed trades to calibrate first.
+INACTIVE — impact: 8 | bot_fit: 7 | effort: 7
+NOT implemented: requires ≥10 closed trades to calibrate 1x/2x ATR multipliers before
+changing core stop/TP logic. Check back at Aug 22 phase review.
 
 ## The Rule (when active)
 Instead of fixed -7% stop / +12% TP for all positions, compute per-coin stop and

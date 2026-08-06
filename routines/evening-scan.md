@@ -38,11 +38,12 @@ STEP 3 — Protect open positions (emergency stop check):
     ## YYYY-MM-DD — Trade Exit (evening emergency stop)
     **SELL** SYMBOL | Exit: $X.XX | Realized P&L: -$X (-X%) | Reason: stop hit overnight
 
-  - If P&L >= +12%: close for take-profit
+  - If live_price >= target_price (from TRADE-LOG) OR P&L >= +12%: close for take-profit
     bash scripts/mexc.sh close SYMBOLUSDT
     Append to TRADE-LOG:
     ## YYYY-MM-DD — Trade Exit (evening take-profit)
-    **SELL** SYMBOL | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: +12% target hit overnight
+    **SELL** SYMBOL | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: target hit
+    (target may be range TP prev-day high or +12% standard — read from TRADE-LOG entry)
 
 STEP 3B — Near-stop pre-alert (runs after STEP 3, on all REMAINING open positions):
   For each position still open where live price > stop_price (from TRADE-LOG):

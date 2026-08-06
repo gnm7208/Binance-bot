@@ -55,11 +55,12 @@ STEP 3 — Monitor open positions (always runs, even on MACRO_HALTED days):
     **SELL** TICKER | Exit: $X.XX | Realized P&L: -$X (-X%) | Reason: stop hit
 
   B) Take-profit check:
-  For each position where P&L >= +12%:
+  For each position where live_price >= target_price (from TRADE-LOG) OR P&L >= +12%:
     bash scripts/mexc.sh close SYMBOLUSDT
     Append to TRADE-LOG:
     ## YYYY-MM-DD — Trade Exit (afternoon take-profit)
-    **SELL** TICKER | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: +12% target
+    **SELL** TICKER | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: target hit
+  (target_price may be range TP prev-day high OR +12% standard — read from TRADE-LOG entry)
 
   C) Trailing stop tighten:
   For each position where P&L >= +4% and not yet at +12%:
@@ -94,7 +95,9 @@ STEP 4 — Circuit breaker and daily gate:
   A) Weekly circuit breaker:
   N_closed = closed trades Mon-today. N_loss = number of those that were losses.
   If N_closed >= 5 AND N_loss / N_closed >= 0.40:
-    bash scripts/perplexity.sh "Crypto Fear and Greed Index and Bitcoin 24h change right now"
+    curl -s "https://api.alternative.me/fng/?limit=1" | python3 -c "import json,sys; v=json.load(sys.stdin)['data'][0]; print('FG:', v['value'])" 2>/dev/null \
+      || bash scripts/perplexity.sh "Crypto Fear and Greed Index exact value right now"
+    curl -s "https://api.mexc.com/api/v3/ticker/24hr?symbol=BTCUSDT" | python3 -c "import json,sys; d=json.load(sys.stdin); print('BTC 24h:', d['priceChangePercent']+'%')"
     If F&G > 50 AND BTC 24h > 0%:
       Log "Circuit breaker triggered but market positive — resuming" in RESEARCH-LOG
     Else:
@@ -173,6 +176,59 @@ note = f'FLUSH {pct:.0f}% ATR +1pt' if (pct>=25 and is_bearish) else f'normal ({
 print(f'Manip: {note} ({manip_pts:+d}pts)')
 PYEOF
 
+  Range TP pre-check (fetch prev-day high — limit=2 daily klines):
+  python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'  # replace per candidate
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+daily2 = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1d&limit=2')
+prev_day_high = float(daily2[0][2])
+live_price = float(daily2[1][4])  # today's current close
+range_dist = (prev_day_high - live_price) / live_price * 100
+if prev_day_high > live_price and range_dist < 4.0:
+    print(f'SKIP RANGE-TP: prev-day high ${prev_day_high:.5f} only {range_dist:.1f}% above — insufficient room')
+elif prev_day_high > live_price and range_dist < 12.0:
+    print(f'USE_RANGE_TP=true: prev-day high ${prev_day_high:.5f} {range_dist:.1f}% above')
+else:
+    print(f'USE_RANGE_TP=false: standard +12% TP')
+PYEOF
+  If SKIP RANGE-TP: skip this ticker — not enough room for trade. Continue to next.
+  Note USE_RANGE_TP flag and prev_day_high for STEP 8.
+
+  3-Candle Confirmation Gate:
+  python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'  # replace per candidate
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+daily = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1d&limit=2')
+signal_level = float(daily[0][4])  # yesterday's close
+klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1h&limit=6')
+last3 = klines[2:5]
+confirmed = all(float(k[4]) > signal_level for k in last3)
+vols = [float(k[5]) for k in last3]
+vol_rising = vols[1] >= vols[0] and vols[2] >= vols[1]
+gate_pass = confirmed and vol_rising
+note = 'CONFIRMED' if gate_pass else f'NOT CONFIRMED (closes vs {signal_level:.5f}, vol_rising={vol_rising})'
+print(f'3CANDLE: {note} | pass={gate_pass}')
+PYEOF
+  If gate_pass = False: skip entry this window — will be re-evaluated at next scan.
+  Log: "3CANDLE NOT CONFIRMED [TICKER] — defer"
+
+  US open window check (run once; applies to all approved tickers this afternoon):
+  python3 -c "
+from datetime import datetime, timezone
+now = datetime.now(timezone.utc)
+h, m = now.hour, now.minute
+in_window = (h == 13 and m >= 30) or h == 14 or (h == 15 and m == 0)
+print(f'US_OPEN_WINDOW: {\"ACTIVE\" if in_window else \"inactive\"} (UTC {h}:{m:02d})')
+"
+  If US_OPEN_WINDOW = ACTIVE AND manip_pts = 1 (ATR flush detected for this ticker):
+    EFFECTIVE_SIZE_MULTIPLIER = SIZE_MULTIPLIER + 0.05
+    Log: "US Open window: +0.05 SIZE_MULTIPLIER bonus for ATR flush entry"
+  Else: EFFECTIVE_SIZE_MULTIPLIER = SIZE_MULTIPLIER
+
   Entry threshold: MACRO_SCORE >= 60 → score >= 5 | MACRO_SCORE < 60 → score >= 8 (quality gate). OR Option B strong catalyst.
   If level_pts == -2 AND score < 7: SKIP — low conviction into resistance.
   Skip any ticker in SECTOR_BLOCKED sector.
@@ -182,7 +238,7 @@ PYEOF
   - Score 5-7:  BASE_SIZE = 25%
   - Score 8-10: BASE_SIZE = 30%
   - Score >= 11: BASE_SIZE = 35%
-  FINAL_SIZE_USDT = portfolio_value * BASE_SIZE * SIZE_MULTIPLIER (from morning research)
+  FINAL_SIZE_USDT = portfolio_value * BASE_SIZE * EFFECTIVE_SIZE_MULTIPLIER
   Minimum: $3 USDT. If below: skip.
 
 LAYER 3 — STRUCTURED REVIEW GATE (runs for EVERY approved order before it fires)
@@ -219,8 +275,16 @@ STEP 7 — Execute approved buys (market orders, one at a time):
 
 STEP 8 — Calculate stop, target, ladder:
   stop_price   = fill_price * 0.90
-  target_price = fill_price * 1.12  (+12%)
   ladder_level = fill_price * 0.93  (-7%)
+
+  Range TP — uses prev_day_high from STEP 5 range TP pre-check:
+  range_dist = (prev_day_high - fill_price) / fill_price * 100
+  If prev_day_high > fill_price AND 4.0 <= range_dist < 12.0:
+    target_price = prev_day_high  (range TP: exit at prev-day high resistance)
+    tp_type = f"range TP prev-day high ${prev_day_high:.5f}"
+  Else:
+    target_price = fill_price * 1.12
+    tp_type = "standard +12%"
 
 STEP 9 — Append each trade to memory/TRADE-LOG.md:
   ## YYYY-MM-DD — Trade Entry (afternoon)
@@ -235,7 +299,7 @@ STEP 9 — Append each trade to memory/TRADE-LOG.md:
   **LADDER BUY** SYMBOL | Price: $X.XX | Avg cost: $X.XX | New stop: $X.XX | New target: $X.XX
 
 STEP 10 — Notify only if trade placed or emergency stop hit:
-  bash scripts/clickup.sh "Bought TICKER x qty @ $X.XX | score X/17 | macro XX | stop $X.XX | +12% target"
+  bash scripts/clickup.sh "Bought TICKER x qty @ $X.XX | score X/17 | macro XX | stop $X.XX | target $X.XX (range TP / +12%)"
 
 STEP 11 — COMMIT AND PUSH (mandatory if any trades or stop updates):
   git add memory/TRADE-LOG.md memory/RESEARCH-LOG.md

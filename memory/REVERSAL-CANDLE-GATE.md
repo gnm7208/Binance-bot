@@ -1,8 +1,9 @@
 # Reversal Candle Gate — Future Feature (NOT YET ACTIVE)
 
 ## Status
-INACTIVE — documented for future activation. Do NOT apply this rule until explicitly
-enabled in TRADING-STRATEGY.md.
+INACTIVE — impact: 6 | bot_fit: 5 | effort: 6
+NOT implemented: impact below 7 threshold. Timing mismatch (requires close monitoring
+of US open window our routines only partially cover). Activate if ATR flush win rate < 60%.
 
 ## The Rule (when active)
 Before entering any position, require a reversal candle to appear OUTSIDE the opening

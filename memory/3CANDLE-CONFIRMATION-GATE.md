@@ -1,8 +1,8 @@
-# 3-Candle Confirmation Gate — Future Feature (NOT YET ACTIVE)
+# 3-Candle Confirmation Gate
 
 ## Status
-INACTIVE — documented for future activation. Do NOT apply this rule until explicitly
-enabled in TRADING-STRATEGY.md.
+ACTIVE — implemented 2026-08-06. impact: 7 | bot_fit: 7 | effort: 5
+Applied in: morning-execution.md STEP 5 (step 4d), afternoon-execution.md STEP 5.
 
 ## The Rule (when active)
 Before entering any position, require 3 consecutive candles closing above the signal

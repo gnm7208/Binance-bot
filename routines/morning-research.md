@@ -31,18 +31,69 @@ STEP 1 — Read memory:
       Flag any sector with 2+ CONSECUTIVE losses as SECTOR_BLOCKED
   (d) Closed trades this week: count losses toward circuit breaker
 
+STEP 1E — Anomaly scan (uses TRADE-LOG and RESEARCH-LOG data from STEP 1 — no extra API calls):
+
+  A) Consecutive HOLD/HALTED check:
+  Count consecutive recent RESEARCH-LOG decisions of "HOLD" or "MACRO_HALTED" (newest first).
+  If N_skip_days >= 3 AND latest available MACRO_SCORE >= 40 (market was tradeable, not halted):
+    bash scripts/clickup.sh "ANOMALY A: ${N_skip_days} consecutive HOLD days with tradeable macro — review signal thresholds or watchlist quality"
+
+  D) Rolling 10-trade loss rate (skip if < 10 closed trades):
+  From TRADE-LOG, count losses in the last 10 closed trades (exits with "stop hit", "-7% rule", or "peak decay").
+  N_closed_10 = count of last 10 closed trades. N_loss_10 = losses among them.
+  If N_closed_10 >= 10 AND N_loss_10 / N_closed_10 > 0.50 AND weekly circuit breaker NOT already active:
+    bash scripts/clickup.sh "ANOMALY D: ${N_loss_10}/10 losses in last 10 trades — strategy drift, review signal scoring"
+
+  C) Stop-out time clustering: SKIP — exits do not record UTC time. Requires format update to enable.
+
+  Log in today's RESEARCH-LOG entry (below Sector Status):
+  Anomaly scan: [A: ${N_skip_days} skip days | D: ${N_loss_10}/10 or insufficient data]
+
+STEP 1E — Anomaly scan (uses TRADE-LOG data already read in STEP 1):
+
+  A) Consecutive skip check:
+     Count consecutive days of "Decision: HOLD" or "Decision: MACRO_HALTED" in RESEARCH-LOG tail.
+     If N_skip >= 3 AND most recent MACRO_SCORE from RESEARCH-LOG >= 40 (macro is tradeable):
+       bash scripts/clickup.sh "ANOMALY A: ${N_skip} consecutive HOLD/HALTED days with tradeable macro — review signal thresholds or watchlist quality"
+
+  C) Stop-out time clustering (skip if < 7 stop-outs in TRADE-LOG):
+     From last 7 stop-out exits in TRADE-LOG, extract the UTC hour of each exit.
+     If >= 3 occurred in the same 2h UTC window (e.g. all at 08:00-10:00 UTC):
+       bash scripts/clickup.sh "ANOMALY C: 3+ stop-outs clustered in UTC HH:00-HH:00 window — time-based risk pattern detected"
+
+  D) Rolling 10-trade loss rate (skip if < 10 closed trades in TRADE-LOG):
+     From the last 10 closed trades (not just this week): count losses.
+     If loss_rate_10 > 0.50 AND circuit breaker not already active:
+       bash scripts/clickup.sh "ANOMALY D: ${N_loss_10}/10 recent trades are losses (50%+) — strategy drift, review signal scoring"
+
+  Log in today's RESEARCH-LOG under "### Anomaly Scan":
+  "A: [detected/none] | C: [detected/insufficient data] | D: [detected/insufficient data]"
+  (Check B runs in STEP 2B after live prices are pulled.)
+
 STEP 2 — Pull live account state:
   bash scripts/mexc.sh account
   bash scripts/mexc.sh positions
+
+STEP 2B — Anomaly B (TP ghost check — uses live prices just pulled):
+  For each open position: bash scripts/mexc.sh price TICKERUSDT
+  If live_price >= target_price from TRADE-LOG AND entry_date < DATE (open > 1 day):
+    bash scripts/clickup.sh "ANOMALY B: TICKER above target $X.XX — TP not executing? Closing now."
+    bash scripts/mexc.sh close TICKERUSDT
+    Log in TRADE-LOG: ## DATE — Trade Exit (anomaly B: TP ghost auto-close)
 
 LAYER 1 — MACRO GATE (compute MACRO_SCORE and SIZE_MULTIPLIER)
 
 STEP 3 — Compute macro gate. Run these queries, then score each signal 0-100:
 
-  A) Fear & Greed:
-  bash scripts/perplexity.sh "Crypto Fear and Greed Index exact number today $DATE"
-  (If Perplexity exits 3, use WebSearch. Get the raw 0-100 number.)
-  SCORE_FG = raw F&G value (0-100). Weight = 30%.
+  A) Fear & Greed (direct API — faster and more reliable than Perplexity):
+  curl -s "https://api.alternative.me/fng/?limit=1" \
+    | python3 -c "
+import json,sys
+d=json.load(sys.stdin)
+v=d['data'][0]
+print('Fear & Greed:', v['value'], '('+v['value_classification']+')')
+" 2>/dev/null || bash scripts/perplexity.sh "Crypto Fear and Greed Index exact number today $DATE"
+  SCORE_FG = raw value 0-100. Weight = 30%.
 
   B) BTC 24h momentum:
   curl -s "https://api.mexc.com/api/v3/ticker/24hr?symbol=BTCUSDT" \
@@ -51,8 +102,14 @@ STEP 3 — Compute macro gate. Run these queries, then score each signal 0-100:
   SCORE_BTC = clamp((btc_24h + 5) * 10, 0, 100)
   Examples: -5% -> 0, 0% -> 50, +5% -> 100. Weight = 25%.
 
-  C) BTC dominance:
-  bash scripts/perplexity.sh "BTC dominance percentage right now $DATE"
+  C) BTC dominance (direct CoinGecko — no Perplexity needed):
+  curl -s "https://api.coingecko.com/api/v3/global" \
+    | python3 -c "
+import json,sys
+d=json.load(sys.stdin)['data']
+dom=d['market_cap_percentage']['btc']
+print(f'BTC dominance: {dom:.1f}%')
+" 2>/dev/null || bash scripts/perplexity.sh "BTC dominance percentage right now $DATE"
   btc_dom = the dominance % (e.g. 56.4).
   SCORE_DOM = clamp((65 - btc_dom) * 6.67, 0, 100)
   Examples: <50% -> 100, 57.5% -> 50, >65% -> 0. Weight = 20%.

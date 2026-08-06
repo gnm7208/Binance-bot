@@ -1,8 +1,10 @@
-# US Open 90-Minute Reversal Window — Future Feature (NOT YET ACTIVE)
+# US Open 90-Minute Reversal Window
 
 ## Status
-INACTIVE — documented for future activation. Do NOT apply this rule until explicitly
-enabled in TRADING-STRATEGY.md.
+ACTIVE (partial) — implemented 2026-08-06. impact: 7 | bot_fit: 6 | effort: 3
+Applied in: morning-execution.md STEP 5 and afternoon-execution.md STEP 5.
+Bonus: +0.05 SIZE_MULTIPLIER when ATR flush detected AND UTC time is 13:30-15:00 (US open window).
+Full coverage (new 11 AM CT routine) remains a future enhancement — see activation checklist below.
 
 ## The Concept
 The first 90 minutes of the US stock market open (9:30–11:00 AM ET = 13:30–15:00 UTC)

@@ -47,12 +47,13 @@ STEP 4 — Emergency stop check. For each position:
     **SELL** TICKER | Exit: $X.XX | Realized P&L: -$X (-X%) | Reason: stop hit overnight
     bash scripts/clickup.sh "OVERNIGHT STOP: Closed TICKER @ $X.XX | P&L: -X% | stop was $X.XX"
 
-  B) TAKE PROFIT: if P&L >= +12%:
+  B) TAKE PROFIT: if live_price >= target_price (from TRADE-LOG) OR P&L >= +12%:
     bash scripts/mexc.sh close TICKERUSDT
     Append to memory/TRADE-LOG.md:
     ## YYYY-MM-DD - Trade Exit (overnight take-profit)
-    **SELL** TICKER | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: +12% TP hit overnight
+    **SELL** TICKER | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: target hit overnight
     bash scripts/clickup.sh "OVERNIGHT TP: Closed TICKER @ $X.XX | P&L: +X% | target was $X.XX"
+    (target may be range TP prev-day high or +12% standard — read from TRADE-LOG entry)
 
   C) TRAILING STOP TIGHTEN: if P&L >= +4% and not yet at +12%:
     new_stop = live_price * 0.93

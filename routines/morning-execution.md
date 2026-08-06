@@ -56,10 +56,11 @@ STEP 3 — Monitor open positions (always runs, even on MACRO_HALTED days):
     **SELL** TICKER | Exit: $X.XX | Realized P&L: -$X (-X%) | Reason: stop hit
 
   B) Take-profit check:
-  For each position where P&L >= +12%:
+  For each position where live_price >= target_price (from TRADE-LOG) OR P&L >= +12%:
     bash scripts/mexc.sh close <TICKER>USDT
     Log in TRADE-LOG: ## YYYY-MM-DD — Trade Exit (morning take-profit)
-    **SELL** TICKER | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: +12% target
+    **SELL** TICKER | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: target hit
+  (target_price may be range TP prev-day high OR +12% standard — always read from TRADE-LOG entry)
 
   C) Trailing stop tighten:
   For each position where P&L >= +4% and not yet at +12%:
@@ -94,7 +95,9 @@ STEP 4 — Circuit breaker and daily gate:
   A) Weekly circuit breaker:
   Count closed trades Mon-today: N_closed. Count losses: N_loss.
   If N_closed >= 5 AND N_loss / N_closed >= 0.40:
-    bash scripts/perplexity.sh "Crypto Fear and Greed Index and Bitcoin 24h change right now"
+    curl -s "https://api.alternative.me/fng/?limit=1" | python3 -c "import json,sys; v=json.load(sys.stdin)['data'][0]; print('FG:', v['value'])" 2>/dev/null \
+      || bash scripts/perplexity.sh "Crypto Fear and Greed Index exact value right now"
+    curl -s "https://api.mexc.com/api/v3/ticker/24hr?symbol=BTCUSDT" | python3 -c "import json,sys; d=json.load(sys.stdin); print('BTC 24h:', d['priceChangePercent']+'%')"
     If F&G > 50 AND BTC 24h > 0%:
       Log "Circuit breaker triggered but market positive — resuming" in RESEARCH-LOG
     Else:
@@ -152,6 +155,48 @@ print(f'Manip: {note} ({manip_pts:+d}pts)')
 PYEOF
      If manip_pts = +1 and not captured in research score: add to final score.
 
+  4c. Range TP pre-check (using prev_day_high from step 4):
+     range_dist_pct = (prev_day_high - live_price) / live_price * 100
+     If prev_day_high > live_price AND range_dist_pct < 4.0:
+       SKIP this ticker — prev-day high only X.X% above entry (insufficient room).
+       Log: "SKIP RANGE-TP: prev-day high $X.XX only X.X% away — skip"
+       Continue to next ticker.
+     If prev_day_high > live_price AND 4.0 <= range_dist_pct < 12.0: USE_RANGE_TP = true
+     Else (already above prev-day high OR dist >= 12%): USE_RANGE_TP = false
+
+  4d. 3-Candle Confirmation Gate (reuses 1h klines, same fetch as market structure):
+     python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'  # replace per candidate
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+daily = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1d&limit=2')
+signal_level = float(daily[0][4])  # yesterday's close
+klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1h&limit=6')
+last3 = klines[2:5]  # 3 closed 1h candles; index 5 may be still forming
+confirmed = all(float(k[4]) > signal_level for k in last3)
+vols = [float(k[5]) for k in last3]
+vol_rising = vols[1] >= vols[0] and vols[2] >= vols[1]
+gate_pass = confirmed and vol_rising
+note = 'CONFIRMED' if gate_pass else f'NOT CONFIRMED (closes vs {signal_level:.5f}, vol_rising={vol_rising})'
+print(f'3CANDLE: {note} | pass={gate_pass}')
+PYEOF
+     If gate_pass = False: skip entry this window — coin re-evaluated naturally at next execution scan.
+     Log one line: "3CANDLE NOT CONFIRMED [TICKER] — defer to next window"
+
+  US open window check (time-based; run once per execution, applies to all approved tickers):
+  python3 -c "
+from datetime import datetime, timezone
+now = datetime.now(timezone.utc)
+h, m = now.hour, now.minute
+in_window = (h == 13 and m >= 30) or h == 14 or (h == 15 and m == 0)
+print(f'US_OPEN_WINDOW: {\"ACTIVE\" if in_window else \"inactive\"} (UTC {h}:{m:02d})')
+"
+  If US_OPEN_WINDOW = ACTIVE AND manip_pts = 1 for this ticker (ATR flush confirmed):
+    EFFECTIVE_SIZE_MULTIPLIER = SIZE_MULTIPLIER + 0.05
+    Log: "US Open window active: +0.05 SIZE_MULTIPLIER bonus for ATR flush entry"
+  Else: EFFECTIVE_SIZE_MULTIPLIER = SIZE_MULTIPLIER
+
   5. Remaining buy-side checks:
      - Total positions after fill <= 3
      - Trades today (including this) <= 5
@@ -160,7 +205,7 @@ PYEOF
      - Entry signal: (MACRO_SCORE >= 60 → score >= 5) OR (MACRO_SCORE < 60 → score >= 8) OR Option B catalyst
   5. Compute final position size:
      BASE_SIZE = 25% if score 5-7, 30% if score 8-10, 35% if score >= 11
-     FINAL_SIZE_USDT = portfolio_value * BASE_SIZE * SIZE_MULTIPLIER
+     FINAL_SIZE_USDT = portfolio_value * BASE_SIZE * EFFECTIVE_SIZE_MULTIPLIER
      Minimum: $3 USDT. If below: skip and log.
 
   Also process any ladder buys from STEP 3E using same FINAL_SIZE_USDT as original tranche.
@@ -199,14 +244,22 @@ STEP 7 — Execute approved buys (market orders, one at a time):
 
 STEP 8 — Calculate stop, target, ladder for each fill:
   stop_price   = fill_price * 0.90  (enforced by midday + afternoon scans)
-  target_price = fill_price * 1.12  (+12%)
   ladder_level = fill_price * 0.93  (-7%, trigger for second tranche)
+
+  Range TP — uses prev_day_high from STEP 5 level check:
+  range_dist = (prev_day_high - fill_price) / fill_price * 100
+  If prev_day_high > fill_price AND 4.0 <= range_dist < 12.0:
+    target_price = prev_day_high  (range TP: exit at prev-day high resistance)
+    tp_type = f"range TP prev-day high ${prev_day_high:.5f}"
+  Else:
+    target_price = fill_price * 1.12
+    tp_type = "standard +12%"
 
 STEP 9 — Append each trade to memory/TRADE-LOG.md:
 
   ## YYYY-MM-DD — Trade Entry
-  **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (+12%) | Ladder: $X.XX (-7%)
-  **Signal Score:** X/17 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * SIZE_MULTIPLIER)
+  **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (range TP prev-day high / +12% standard) | Ladder: $X.XX (-7%)
+  **Signal Score:** X/17 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * EFFECTIVE_SIZE_MULTIPLIER)
   **Thesis:** ...
   **Catalyst:** ... (Option A/B, signal sources listed)
   **Sector:** ... (L1 / DeFi / AI / Gaming / Other)

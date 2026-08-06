@@ -123,6 +123,8 @@ Log outcome in TRADE-LOG: "Review: [Proceed/Skip/Size down] - reason"
 - Ticker NOT in SECTOR_BLOCKED sector
 - Layer 3 review OUTCOME = Proceed (or Size down, not Skip)
 - Instrument is spot crypto (USDT pair on MEXC)
+- 3-Candle Confirmation Gate: last 3 closed 1h candles all above yesterday's close AND volume rising (each >= prior). If fails → defer to next scan window (no permanent skip).
+- Range TP pre-check: if prev-day high is above current price but < 4% away → SKIP (insufficient room). If 4-12% above → use prev-day high as target_price instead of +12%.
 
 ## Smart Money Signal Sources (priority order)
 1. Whale Alert - large on-chain transactions (exchange->wallet = accumulation)
@@ -148,7 +150,8 @@ bash scripts/mexc.sh close SYMBOLUSDT
 
 ## Sell-Side Rules (evaluated at EVERY midday and afternoon scan)
 - Price <= stop price in TRADE-LOG OR P&L <= -7%: market sell immediately
-- P&L >= +12%: market sell immediately - take profit, no exceptions
+- live_price >= target_price (from TRADE-LOG) OR P&L >= +12%: market sell immediately
+  (target_price may be range TP = prev-day high, or standard +12% — always read from TRADE-LOG)
 - P&L +4% to +11%: new_stop = max(current_price × 0.93, entry_price) — break-even floor applied
 - Thesis broken (catalyst invalidated, sector rolling over): sell even if not at -7%
 - SECTOR_BLOCKED: exit all positions in blocked sector

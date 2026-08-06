@@ -39,12 +39,13 @@ OR unrealized P&L% <= -7%:
   ## YYYY-MM-DD — Trade Exit (midday cut)
   **SELL** SYMBOL | Exit: $X.XX | Realized P&L: -$X (-X%) | Reason: hit stop / -7% rule
 
-STEP 4 — Take profit. For every position where unrealized P&L% >= +12% (aggressive target):
+STEP 4 — Take profit. For every position where live_price >= target_price (from TRADE-LOG) OR unrealized P&L% >= +12%:
   bash scripts/mexc.sh close <SYMBOL>USDT
 
   Append to memory/TRADE-LOG.md:
   ## YYYY-MM-DD — Trade Exit (take profit)
-  **SELL** SYMBOL | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: +12% take-profit rule
+  **SELL** SYMBOL | Exit: $X.XX | Realized P&L: +$X (+X%) | Reason: target hit
+  (target may be range TP prev-day high or +12% standard — read from TRADE-LOG entry)
 
 STEP 5 — LADDER BUY check. For each open position where TRADE-LOG shows no ladder placed yet:
   - Get current price and calculate P&L%

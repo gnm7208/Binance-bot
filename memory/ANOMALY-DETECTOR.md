@@ -1,8 +1,9 @@
-# Anomaly Detector — Future Feature (NOT YET ACTIVE)
+# Anomaly Detector
 
 ## Status
-INACTIVE — documented for future activation. Do NOT apply this rule until explicitly
-enabled in TRADING-STRATEGY.md. Meaningful only after >= 15 routine runs with data.
+ACTIVE — implemented 2026-08-06. impact: 7 | bot_fit: 9 | effort: 4
+Applied in: morning-research.md STEP 1E (checks A/C/D) and STEP 2B (check B).
+Note: checks C and D self-activate once enough trade history exists (7+ stop-outs / 10+ closed trades).
 
 ## The Rule (when active)
 At the start of morning-research STEP 1, after reading TRADE-LOG and RESEARCH-LOG,

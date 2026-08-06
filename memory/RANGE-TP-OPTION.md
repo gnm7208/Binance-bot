@@ -1,8 +1,9 @@
-# Range Take-Profit Option — Future Feature (NOT YET ACTIVE)
+# Range Take-Profit Option
 
 ## Status
-INACTIVE — documented for future activation. Do NOT apply this rule until explicitly
-enabled in TRADING-STRATEGY.md.
+ACTIVE — implemented 2026-08-06. impact: 8 | bot_fit: 8 | effort: 4
+Applied in: morning-execution.md STEP 5 (step 4c) + STEP 8, afternoon-execution.md STEP 5 + STEP 8.
+All monitoring routines updated to check target_price from TRADE-LOG instead of hard-coded +12%.
 
 ## The Rule (when active)
 Instead of a fixed +12% take-profit, use the previous-day high as the take-profit target
