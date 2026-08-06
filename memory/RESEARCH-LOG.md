@@ -986,3 +986,47 @@ Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/api/v3/ticker/price` +
 **HOLD — NO NEW TRADE.** ADA (+2.85%, thesis strengthening into Aug-9, stop $0.1822, TP ≥ $0.1994) needs no action. No fresh liquid setup qualifies — only microcap pumps and gold proxies clear the gate; ETH is below the +5% entry bar. Preserve $26.20 (79%) dry powder through tomorrow's NFP. No ClickUp alert (no trade fired, no state change). Re-evaluate at morning-research.
 
 Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/ticker/price` + `account`/`quote`; [alt.me F&G](https://api.alternative.me/fng/); CoinGecko `/global` + `/search/trending`; [CoinDesk BTC/ETH/SOL](https://www.coindesk.com/markets/2026/08/04/bitcoin-nears-usd64-000-as-traders-look-past-the-fourth-coldcard-sweep); [Coingape ADA ETF Aug-9](https://coingape.com/markets/cardano-price-prediction-can-ada-rally-as-etf-eligibility-nears-august-9/); [Cryptonews ADA upgrade era](https://cryptonews.net/news/altcoins/33239527/).
+
+## 2026-08-06 — Morning Research (Day 15, Thursday)
+
+### Account Snapshot
+- **Reachability gate PASS** — MEXC `price BTCUSDT` = $64,548; account healthy (canTrade=true).
+- Total portfolio value: ~$32.87 USDT · Free USDT: $26.1996 (79.7%) · Open positions: 1 (ADA 35.1, ~$6.67) · Open orders: 0
+- Trades this week: 3/25 · today: 0/5 · Closed this week: 1 (1W/0L) → circuit breaker N/A (needs ≥5), daily gate N/A.
+
+### Market Context (live MEXC 24hr + CoinGecko global)
+- BTC: **$64,548** (**+0.25%** 24h · vol $402M · H $65,000 / L $63,900) — still coiled in the $63.9–65k range under the descending trendline capping every rally since Jul 21; no break either way.
+- ETH: **$1,897.75** (**+1.24%**, vol $225M) — strongest major but below the +5% OPTION-A gate · SOL $73.52 (−0.88%) · XRP $1.047 (**−2.35%**) · BNB $593.29 (**−1.32%**, below $605 trigger) · ADA $0.1902 (−0.93%) · DOGE $0.0697 (−0.74%) · LTC $44.98 (−0.39%) · LINK $8.12 (−0.63%, thin $0.4M).
+- BTC Dominance: **56.66%** · ETH.D 10.02% · Total crypto mcap 24h **+0.44%** — flat, no broad alt rotation.
+- Fear & Greed: **25 (Extreme Fear)** on alt.me — 27→25, sentiment cooled further.
+- DXY: ~101 (range-bound; Perplexity key unset, not re-pulled). Firm dollar = mild risk headwind.
+- **Macro: Fri Aug 7 US NFP (July) = the week's primary binary catalyst — TOMORROW, 1 session out.** Consensus ~80–88k (vs soft June 57k), unemployment 4.2%, AHE +3.5% y/y. Hot print → higher Sept-hike odds → risk-off; weak/rising-unemployment → risk-on, dollar pressure. Senate summer recess effectively closes the CLARITY Act's 2026 window. August seasonal weakness backdrop intact.
+
+### On-Chain / Derivatives
+- Perplexity key unset → WebSearch + direct MEXC/alt.me/CoinGecko pulls; no live funding/OI print.
+- Flat BTC.D (56.66%) + Extreme Fear (25) + mildly-green mcap (+0.44%) = risk-off base with a thin, selective bid; no confirmed rotation. Whale Alert unavailable (free key). CoinGecko trending remains memecoin/microcap-led — no tradeable smart-money signal.
+
+### News on Held Positions
+- **ADA** (35.1 @ $0.18639): live bid **$0.1901** = **+1.99% vs entry** (−0.93% 24h · vol $4.9M · H $0.1989 / L $0.1887) — drifting the low-$0.19s, gave back the +2.85% evening-scan print. Well above monitored stop **$0.1822** (~4.2% below live) and the −7% cut ($0.1733); below +7% flag **$0.1994** and +12% target $0.2088; below the Aug-4 $0.1959 high that set the stop, so **no further tighten** (7%-below-live $0.1768 would move the stop DOWN, prohibited). **Thesis intact:** Aug-9 SEC spot-ADA-ETF eligibility milestone (CME ADA futures hit the mandatory 6-month mark → streamlined 75-day generic-listing review; Grayscale ADA Trust under SEC review, decision window to ~Oct 23) — **now 3 days out** — + ~70% whale accumulation + PV11 upgrade + Cardano–Injective IBC testnet. No invalidating news. Caveat: *eligibility ≠ approval* (Oct 23 SEC decision); headline whipsaw risk both ways. **Hold; stop $0.1822 unchanged; TP at market the instant ADA prints ≥ $0.1994.**
+
+### Confirmed Relative-Strength Movers (OPTION-A gate: 24h ≥ +5% AND vol ≥ $3M)
+- **None qualifying.** Full liquid USDT board scan (vol ≥ $3M): only ≥ +5% prints are **HEI +58.15%** ($3.4M), **CYS +36.31%** ($3.1M), **CASHCAT +30.36%** ($3.8M) — parabolic microcap/memecoin pumps, **disqualified on quality/whipsaw**. **PAXG +3.63% / XAUT +3.61%** ($6.7M/$3.0M) — catalyst-less tokenized-gold proxies, not crypto momentum, and below +5% regardless. ETH +1.24% is the best liquid legit name but well under the gate with no fresh catalyst. **Momentum gate FAILS market-wide for every liquid, tradeable name.**
+
+### Trade Ideas (research only — execution owns the decision)
+1. **No qualifying fresh entry.** No liquid name clears +5% except illiquid pumps (disqualified). Forcing size into an Extreme-Fear, pre-NFP, directionless tape violates the spirit of Rule 11.
+2. **Hold + manage ADA** — the one working position (+1.99% vs entry, thesis strengthening into the Aug-9 milestone, 3 days out). TP discipline (sell ≥ $0.1994); monitored stop $0.1822 protects it (locks profit above entry). No tighten.
+3. **Watchlist — ETH** $1,897.75: closest liquid name to a real breakout; re-arm only on a volume-confirmed **≥ +5%** clear (~$1,993+) OR a fresh catalyst. Post-NFP direction dependent. Sector L1.
+4. **Watchlist — BNB** $593.29: dormant, soft (−1.32%); re-arm on a volume-confirmed ≥ +2% reclaim/hold above **$605** with a catalyst (none present). Sector L1/exchange.
+5. **Dry powder** — hold $26.20 (79.7%) cash **through the Fri NFP print**; deploy on the first clean liquid ≥ +5% mover with a real catalyst after the print clears. A pre-NFP Extreme-Fear tape is not the place to force a second position.
+
+### Risk Factors
+- **Fri Aug 7 NFP (TOMORROW)** — binary macro catalyst 1 session out; a hot print lifts Sept-hike odds and pressures risk assets (incl. ADA) regardless of the ETF narrative. Avoid over-deploying into it.
+- F&G **25 (Extreme Fear)** + firm DXY (~101) + coiled BTC channel + seasonal August weakness → fragile risk appetite; thin-conviction breakouts fail easily.
+- ADA ETF *eligibility* (Aug 9) ≠ approval (SEC decision to ~Oct 23) — headline/whipsaw risk both ways; a BTC channel breakdown drags ADA down irrespective of the narrative.
+- Tiny account (~$32.87): 20% cap ≈ $6.57/position; MEXC min-notional + fee/slippage drag on any entry.
+- Deployment ~20% vs 75–85% target — but a single clean, in-profit position beats forcing a second into a directionless Fear tape with no qualifying setup.
+
+### Decision
+**HOLD — NO NEW TRADE (research posture).** Manage the working ADA position (+1.99% vs entry, thesis strengthening into the Aug-9 ETF-eligibility milestone, 3 days out; TP ≥ $0.1994, monitored stop $0.1822). No fresh liquid setup qualifies — the only ≥ +5% movers are illiquid microcap pumps (disqualified); every liquid name fails the gate. Hold $26.20 (79.7%) dry powder through tomorrow's NFP print. Re-evaluate at morning-execution / midday.
+
+Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/ticker/price` + `/ticker/bookTicker` + `account`; [alt.me F&G](https://api.alternative.me/fng/); CoinGecko `/global` (BTC.D, ETH.D, mcap); [Continuum Economics NFP Aug 7 preview](https://continuumeconomics.com/a/6815e0e3/preview-due-august-7-us-july-employment-non-farm-payrolls-stronger-than-june-but-with-a-rise-in-unemployment); [MEXC News: ADA ETF eligibility Aug 9](https://www.mexc.com/news/1142312); [Coingape ADA ETF Aug-9](https://coingape.com/markets/cardano-price-prediction-can-ada-rally-as-etf-eligibility-nears-august-9/).
