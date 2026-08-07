@@ -57,13 +57,19 @@ Seven cloud routines fire daily on a cron schedule. Each run:
 4. `memory/PROJECT-CONTEXT.md` — this file
 5. `memory/WEEKLY-REVIEW.md` — weekly grading and lessons
 
-## Inactive Future Features (documented, not yet active)
-- `memory/DEFENSIVE-SCALP-GATE.md` — recovery scalp mode for extended drawdowns
-- `memory/3CANDLE-CONFIRMATION-GATE.md` — 3-candle confirmation to filter false breakouts
-- `memory/RANGE-TP-OPTION.md` — use prev-day high as TP target in ranging markets
+## Active Features (implemented Aug 6)
+- `memory/3CANDLE-CONFIRMATION-GATE.md` — 3 consecutive hourly candles above yesterday's close with rising volume before any entry
+- `memory/RANGE-TP-OPTION.md` — prev-day high as take-profit when 4-12% above entry
+- `memory/ANOMALY-DETECTOR.md` — 4 anomaly checks per morning-research scan
+- `memory/US-OPEN-REVERSAL-WINDOW.md` — +0.05 size bonus when ATR flush fires 13:30-15:00 UTC
+
+## Inactive Future Features
+- `memory/DEFENSIVE-SCALP-GATE.md` — recovery scalp mode for extended drawdowns (impact 5, activate if needed)
+- `memory/VOLATILITY-ADJUSTED-STOPS.md` — ATR-based stop widths (impact 8, activate after ≥10 closed trades)
+- `memory/REVERSAL-CANDLE-GATE.md` — hammer/engulf confirmation (impact 6, activate if false-breakout losses increase)
 
 ## Progress
-- Week 1 (Jul 22-27): F — geo-blocked on Binance, migrated to MEXC
-- Week 2 (Jul 28-Aug 3): D — MEXC live, 0 trades (conservative mode under-deployed)
-- Week 3 (Aug 4-10): Aggressive mode live. ADA closed +7%, re-entry open. +$0.56 vs BTC
+- Week 1 (Jul 22-27): F — geo-blocked on Binance → Bybit → migrated to MEXC
+- Week 2 (Jul 28-Aug 3): D — MEXC live; stop-order blocker resolved Jul 29; ADA +7.0%
+- Week 3 (Aug 4-10): Aggressive mode live. ADA +12.9% Aug 6. Phase 2W/0L, +3.91% vs ~+1.9% BTC
 - Aggressive mode runs Aug 4–22, then revert to conservative (see TRADING-STRATEGY-CONSERVATIVE.md)

@@ -2,11 +2,11 @@
 
 ## What Is Built
 
-An autonomous crypto trading bot where **Claude IS the bot**. Five scheduled Claude Code
+An autonomous crypto trading bot where **Claude IS the bot**. Seven scheduled Claude Code
 cloud routines fire throughout the day, read git-committed markdown memory, make decisions,
-place real trades on Bybit Spot, and write memory back to the repo. No persistent Python process.
+place real trades on **MEXC Spot**, and write memory back to the repo. No persistent Python process.
 
-Repo: `github.com/gnm7208/Binance-bot` | Branch: `main`
+Repo: `github.com/gnm7208/MEXC-bot` | Branch: `main`
 
 ---
 
@@ -20,7 +20,7 @@ Repo: `github.com/gnm7208/Binance-bot` | Branch: `main`
 | `scripts/mexc.sh` | Done | MEXC Spot API wrapper with HMAC-SHA256 (X-MEXC-APIKEY header) |
 | `scripts/perplexity.sh` | Done | Research wrapper — exits code 3 if key unset (WebSearch fallback) |
 | `scripts/clickup.sh` | Done | ClickUp Chat v3 notifications — falls back to NOTIFICATIONS.md |
-| `memory/TRADING-STRATEGY.md` | Done | Bot rulebook — Bybit order shapes, rules, entry checklist |
+| `memory/TRADING-STRATEGY.md` | Done | Bot rulebook — MEXC order shapes, rules, entry checklist |
 | `memory/TRADE-LOG.md` | Done | Trade journal — seeded with $10k USDT baseline |
 | `memory/RESEARCH-LOG.md` | Done | Daily research log — running since 2026-07-03 |
 | `memory/WEEKLY-REVIEW.md` | Done | Weekly review template |
@@ -57,12 +57,13 @@ Repo: `github.com/gnm7208/Binance-bot` | Branch: `main`
 
 ## Trading Strategy Summary
 
-- Exchange: Bybit Spot
+- Exchange: **MEXC Spot** (0% maker fees, no cloud IP blocking)
 - Spot only — no margin, futures, leverage ever
-- Max 5-6 open positions; 20% of portfolio per position (~$2,000 on $10k)
-- Hold 15-25% USDT as dry powder
-- Every position gets a stop-limit GTC immediately after fill
-- Cut losers at -7%; tighten stop at +15% and +20%
-- Max 3 new trades per week
+- Max 3 open positions; 30-35% of portfolio per position (aggressive mode Aug 4-22)
+- Hold 10-20% USDT as dry powder
+- Stops enforced manually (MEXC spot API has no stop-limit orders) — monitored every scan
+- Cut losers at -7%; trailing stop tightens to 7% below current at +4% gain
+- Take profit at +12%; no exceptions
+- Max 20 new trades per week; max 5 per day
 - Benchmark: outperform BTC buy-and-hold
-- Current state: $10,000 USDT, 0 positions, 0 trades — idle since launch due to API blocks now resolved
+- Current state: $33.58 USDT | 2W/0L phase record | +3.91% vs ~+1.9% BTC

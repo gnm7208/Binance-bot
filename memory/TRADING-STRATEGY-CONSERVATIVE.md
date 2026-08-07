@@ -83,10 +83,9 @@ bash scripts/mexc.sh close BTCUSDT
 
 ## Notes from Experience
 (Updated weekly; see WEEKLY-REVIEW.md for context)
-- Week 1 (ending 2026-07-19): 0 trades. Grade F. Root cause is OPERATIONAL, not strategic —
-  exchange API geo-blocked from this environment. Binance = HTTP 451; migrated to Bybit,
-  which returns HTTP 403 (CloudFront geo-block) on both auth and public endpoints. Bot has
-  never traded. No trading rule is at fault; connectivity must be fixed before strategy matters.
+- Week 1 (ending 2026-07-19): 0 trades. Grade F. Root cause operational — Binance = HTTP 451
+  geo-block; Bybit = CloudFront 403 same issue; resolved by migrating to MEXC (no cloud IP
+  block, 0% maker fees). Now trading live on MEXC Spot.
 - **Reachability gate:** every run must first confirm the exchange API responds
   (`bash scripts/mexc.sh price BTCUSDT`). If it fails, HALT, alert, and place no orders —
   do not migrate exchanges again without verifying the new venue is reachable from this IP.
