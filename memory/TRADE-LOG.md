@@ -547,3 +547,15 @@ No other positions (1 total: ADA). USDT $26.1996 (locked $0), ADA 35.1 (locked $
 - **Perplexity afternoon catalyst check:** sources cite ADA "+7%" but those are stale/earlier-session snapshots contradicted by live MEXC data (ADA now flat +0.05%); no fresh same-day catalyst on any liquid name. No Option B/C override candidate found.
 
 **Decision: NO NEW ENTRY.** Both watchlist names and the full liquid board fail the momentum gate live; no fresh catalyst. Preserve $33.5845 (100%) dry powder. No ClickUp alert (no trade fired, no state change). Re-evaluate at evening-scan.
+
+---
+
+## Aug 7 — EOD Snapshot (Day 16, Friday)
+
+**Portfolio:** $33.58 | **Cash:** $33.58 (100%) | **Day P&L:** $0.00 (0.00%) | **Phase P&L:** +$1.26 (+3.91%)
+
+| Ticker | Qty | Entry | Price | Day Chg | Unrealized P&L | Stop |
+|--------|-----|-------|-------|---------|----------------|------|
+| — (100% cash) | — | — | — | — | — | — |
+
+**Notes:** Flat, no-trade day — held 100% cash through all four scan windows (morning-execution, midday, afternoon-execution, now EOD). USDT free $33.5844686955 / locked $0 (canTrade=true); 0 positions, 0 open orders (`orders` endpoint HTTP 400 known permission gap; balance locked=0 confirms no resting orders). Reachability gate PASS (BTC $65,021.89). **Trades:** 0 today, 3/25 this week; 1 closed trade this week (1W/0L, ADA +12.9% Aug 6) → circuit breaker N/A (needs ≥5 closed), daily gate N/A (0 trades today). Phase closed record 2W/0L. **Day P&L $0.00** — portfolio unchanged Aug-6 EOD $33.5845 → $33.5845 (100% cash both days, no fills today). **Phase P&L +$1.26 (+3.91%)** vs $32.32 baseline — held at Aug-6's phase high. Deployment 0% vs 75-85% target — disciplined cash hold: the only two liquid names clearing OPTION A were ADA (just-banked +12.9% winner, stalled sideways at $0.20, failed the 3-Candle Confirmation Gate at all four scans — volumes not rising, buy-the-rumor tail 2 days before the Aug-9 SEC spot-ADA-ETF eligibility milestone where eligibility ≠ approval) and SKYAI (parabolic +18-28% blow-off, disqualified as a chase); no rules-clean qualifier appeared, and F&G 29 (Fear) + coiled $64-65k BTC channel + NFP-day chop argued for capital preservation over a forced entry. **BTC buy-and-hold benchmark:** phase baseline BTC ~$63,500 (Jul 22 funding) → $65,021.89 now (~+2.40%); bot +3.91% phase — still outperforming buy-and-hold by ~1.5 pts. ADA remains PRIMARY re-entry candidate into Aug-9 *only* on a volume-confirmed 3-candle breakout holding ≥ $0.20 / ≥ +5%; otherwise stay cash. Re-evaluate at evening-scan.
