@@ -1121,3 +1121,22 @@ Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/ticker/price` + `/tick
 **HOLD — NO NEW TRADE (research posture).** No position to manage (100% cash). Two liquid names clear the momentum gate but both are disqualified for a disciplined entry now: SKYAI (parabolic chase), ADA (just-exited winner decelerating into a sell-the-news milestone). ADA is the primary execution-validated re-entry candidate *only if* it holds ≥ $0.20 / ≥ +5% into Aug-9; otherwise stay cash. Preserve $33.58 (100%) dry powder. No ClickUp alert (no trade fired, no state change). Re-evaluate at morning-execution / midday.
 
 Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/ticker/price` + `/ticker/bookTicker` + `account`; [alt.me F&G](https://api.alternative.me/fng/); CoinGecko `/global` + `/search/trending`.
+
+## 2026-08-07 — Morning Execution (Day 16, Friday)
+
+### Gates — validated live
+- **Reachability PASS:** `price BTCUSDT` = $64,347.27 (board BTC −0.01% 24h). Account canTrade=true.
+- **Account:** USDT free $33.5844686955 / locked $0. **0 open positions, 0 open orders (100% cash).** Trades 0/5 today, 3/25 week. 1 closed trade this week (1W/0L, ADA +12.9% Aug 6) → circuit breaker N/A (needs ≥5 closed), daily gate N/A (0 trades today). Phase closed record 2W/0L.
+- **Macro gate:** MACRO_SCORE ≈ 44 (F&G 29 · BTC 24h ~flat · BTC.D 56.6% · weak alt breadth · default loss-rate 75) → **SIZE_MULTIPLIER 0.6** (reduced, not halted). MACRO < 60 ⇒ eligibility needs SCORE ≥ 8 OR OPTION_B override.
+
+### Candidate validation — live MEXC
+- **ADA $0.202 (bid $0.2019) · +7.27% 24h · vol $11.46M · H $0.2115 / L $0.1878.** Clears OPTION A (≥+5%, ≥$3M) and holds ≥ $0.20 — the exact condition research set for a reduced-size re-entry. Signal score ≈ **3** (24h ≥+5% +2, vol ≥$3M +1; no Whale/VC/trader/TVL/trending signal — Whale Alert & Perplexity keys unset; not near prev-day low). Score 3 < 8 quality gate for MACRO<60 ⇒ eligible **only via OPTION_B** (Aug-9 SEC spot-ADA-ETF eligibility milestone, 2 days out).
+  - **3-Candle Confirmation Gate — FAIL.** Last 3 closed 1h candles: closes 0.1994 / 0.1998 / 0.2019 (all > yesterday's close $0.1883 ✓), but volumes **860k → 703k → 1018k** — volume did NOT rise each candle (dipped mid-sequence). Gate requires "each ≥ prior" ⇒ **FAIL → defer to next scan window** (no permanent skip).
+  - **Layer 3 review — Skip-leaning.** Bear case strong: just-exited winner (+12.9% banked Aug 6) re-accelerating into a binary milestone where *eligibility ≠ approval* (SEC decision ~Oct 23) = classic buy-the-rumor tail with sell-the-news risk; already ~4.5% off the $0.2115 24h high; NFP-day, F&G-29 Fear tape; Whale Alert/derivatives visibility degraded (blind spot). Exit liquidity OK ($11.5M). Correlation N/A (no open positions).
+- **SKYAI $0.0891 · +18.0% 24h · vol $5.5M** — decelerated hard from +57% intraday; still a parabolic/blow-off chase at elevated levels into a Fear tape. **Disqualified — do NOT chase** (pullback-only watch, ~$0.085–0.090 with volume + BNB-Chain/MCP catalyst).
+- **Full liquid board (vol ≥ $3M):** only SKYAI and ADA clear +5%. Every other liquid name fails the momentum gate. No new qualifier vs research.
+
+### Decision
+**NO NEW TRADE.** ADA — the only disciplined candidate — **fails the mandatory 3-Candle Confirmation Gate** (volume not rising) and is eligible only via a marginal OPTION_B into a sell-the-news milestone with a strong Layer 3 bear case; SKYAI is a parabolic chase. Deferral is rules-based, not discretionary. **Preserve $33.58 (100%) dry powder.** ADA stays the PRIMARY re-entry candidate for midday — re-check for a volume-confirmed hold ≥ $0.20 / ≥ +5% into Aug-9. No ClickUp alert (no trade fired, no state change). Re-evaluate at midday.
+
+Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/ticker/price` + `/ticker/bookTicker` + `/klines?interval=60m` + `account`/`positions`.
