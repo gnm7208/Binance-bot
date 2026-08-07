@@ -61,6 +61,14 @@ bash scripts/perplexity.sh "<query>"
 bash scripts/clickup.sh "<message>"
 ```
 
+**Perplexity IS configured and working. ALWAYS run `scripts/perplexity.sh` — do NOT
+assume it is unavailable.** Only fall back to WebSearch if the wrapper actually exits
+code 3 (key genuinely unset) on THIS run. Many older RESEARCH-LOG / TRADE-LOG entries
+say "Perplexity key unset → WebSearch fallback" — that was true only in July and is
+now stale. Never copy that claim forward without re-running the wrapper first; verify
+by execution, not by reading a prior log entry. Perplexity is the source for
+funding/OI, on-chain flows, and catalyst checks — skipping it degrades research.
+
 MEXC subcommands: `account`, `balance ASSET`, `positions`, `quote SYM`, `price SYM`,
 `orders [SYM]`, `order 'json'`, `cancel SYM OID`, `cancel-all SYM`, `close SYM`, `close-all`
 
