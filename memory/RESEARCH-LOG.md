@@ -1046,3 +1046,32 @@ Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/ticker/price` + `/tick
 
 ### Decision
 **NO TRADE.** No fresh liquid setup passes the buy-side gate — every liquid name fails the +5% momentum gate; only illiquid microcap pumps clear it (disqualified). Hold + manage ADA (+0.97%, thesis strengthening into Aug-9; stop $0.1822, TP ≥ $0.1994). Preserve $26.20 (79.7%) dry powder through tomorrow's Fri Aug-7 NFP print. No ClickUp alert (no trade fired). Re-evaluate at midday.
+
+---
+
+## 2026-08-07 — Evening Scan (Day 16, Friday, Asian open ~03:00 UTC)
+
+### Live State
+- **Reachability PASS:** BTC $64,276.57 (−0.55% 24h). Account canTrade=true.
+- **100% cash — 0 open positions.** USDT free $33.5844686955 / locked $0. 0 resting orders. 3/25 trades this week, 0/5 today. 1 closed trade this week (1W/0L, ADA +12.9% Aug 6) → circuit breaker N/A (needs ≥5 closed), daily gate N/A (0 trades today). Phase closed record 2W/0L.
+- No positions to protect (STEP 3 emergency-stop / take-profit check N/A).
+
+### Overnight / Asian Session Catalysts
+- **Macro:** F&G **29 (Fear)** (up from 25 Extreme Fear earlier this week). BTC.D 56.59%, total mcap 24h −0.57% — flat, no broad alt rotation. BTC compressed ~$64.3k, ETH −0.54% ($1897-ish), SOL −2.08%, XRP −2.80% — majors soft/red. **Fri Aug-7 US NFP (July) — the week's primary binary catalyst — released this morning**; BTC holding $64k with no risk-on breakout ⇒ contained/muted reaction, tape still fragile.
+- **News:** No fresh same-day ETF approval / hack / upgrade on a liquid name. Grayscale ADA ETF under SEC review (decision window ~Oct 23); Coldcard $114M sweep and H1-2026 $1B hack tally are prior-week backdrop, not new. Whale Alert unavailable (free key). CoinGecko trending (retail): CASHCAT, PLUME, HFT, BICO, STONKBROKER, ONDO, PENGU, XRP — microcap/memecoin-led, no tradeable signal (ONDO −0.05% / $0.35M vol, PENGU −0.06% / $0.21M — all thin/flat on MEXC).
+
+### Momentum Gate — full liquid MEXC board (vol ≥ $3M)
+- **Two names clear OPTION A (24h ≥ +5%, vol ≥ $3M):**
+  - **SKYAI +53.9%** ($5.45M, $0.1063; 24h low $0.0603 → high $0.1076, now near highs) — parabolic vertical AI-agent token. No fresh same-day catalyst (Bitget listing was Apr 30, MCP Hub testing May); BNB-Chain-Foundation backing + real MCP product = better than a pure memecoin, but a +54%/+76%-off-low move at highs into a Fear tape = **blow-off/whipsaw risk. Disqualified — do NOT chase.** Watchlist pullback-only.
+  - **ADA +5.53%** ($11.22M, $0.202; 24h low $0.1861 → high $0.2115, now faded ~4.5% off high). Clears Option A + Option B (Aug-9 SEC spot-ADA-ETF eligibility milestone, **2 days out**). **But this is the name we exited at +12.9% ($0.211) Aug 6** — now $0.202, buying back into the tail of a decelerating "buy-the-rumor" run, 2 days before a binary milestone where *eligibility ≠ approval* (SEC decision ~Oct 23) → elevated sell-the-news risk. Not a disciplined chase in a thin overnight Asian tape; validate at morning-execution with fresh data (still 1 day ahead of Aug-9).
+- Every other liquid name fails: ADA aside, no legit liquid name is even +1% (BNB −0.66%, TRX +0.00%, DOGE −1.45%). Microcaps only above +5% otherwise.
+
+### Tomorrow's Watchlist (Sat Aug 8)
+1. **ADA — PRIMARY re-entry candidate.** If it holds **≥ $0.20** with 24h **≥ +5%** and thesis intact (no invalidating headline) into the Aug-9 milestone, re-enter at morning-execution. Entry ~$0.20, stop −10% (~$0.182), target +12% (~$0.226), size 30–35% (~$11). Watch for sell-the-news / a failed hold below $0.198.
+2. **SKYAI — SECONDARY, PULLBACK ONLY.** Do NOT chase +54% at highs. Only on a controlled retrace that holds support (~$0.085–0.090) with sustained volume + BNB-Chain/MCP catalyst confirmation. High whipsaw risk.
+3. **Dry powder** — hold $33.58 (100%) cash overnight; deploy on the first clean qualifier at morning-execution once post-NFP direction resolves. Do not force an overnight entry into a thin, Fear-tape Asian session.
+
+### Decision
+**HOLD — NO NEW TRADE.** No position to manage (100% cash). Two liquid names clear the momentum gate but both are disqualified for tonight: SKYAI is a parabolic chase at highs; ADA is a just-exited winner re-accelerating into a binary milestone with sell-the-news risk — better validated at morning-execution than chased in a thin overnight tape. Preserve $33.58 (100%) dry powder; ADA is the primary watchlist re-entry for Sat Aug 8 ahead of the Aug-9 ETF-eligibility milestone. No ClickUp alert (no trade fired, no state change). Re-evaluate at morning-research/execution.
+
+Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/ticker/price` + `/ticker/bookTicker` + `account`/`positions`/`quote`; [alt.me F&G](https://api.alternative.me/fng/); CoinGecko `/global` + `/search/trending`; [Saxo Market Quick Take Aug 4](https://www.home.saxo/content/articles/macro/market-quick-take---wall-street-nears-a-record-as-asias-chip-jitters-linger---4-august-2026-04082026); [Kraken Economic Brief Aug 5 (NFP/CPI catalysts)](https://blog.kraken.com/economic-brief/august-5-2026); [Phemex SKYAI analysis](https://phemex.com/blogs/skyai-price-analysis-key-levels); [MEXC SkyAI listing](https://www.mexc.com/support/articles/17827791523456); [Coingape ADA ETF Aug-9](https://coingape.com/markets/cardano-price-prediction-can-ada-rally-as-etf-eligibility-nears-august-9/).
