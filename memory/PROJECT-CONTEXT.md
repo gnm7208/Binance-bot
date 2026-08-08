@@ -57,6 +57,9 @@ Seven cloud routines fire daily on a cron schedule. Each run:
 4. `memory/PROJECT-CONTEXT.md` — this file
 5. `memory/WEEKLY-REVIEW.md` — weekly grading and lessons
 
+## YouTube Sources
+See `memory/YOUTUBE-SOURCES.md` — full video list, feature attribution, and creator subscription recommendations.
+
 ## Active Features
 - `memory/3CANDLE-CONFIRMATION-GATE.md` — 3 consecutive hourly candles above yesterday's close with rising volume before any entry
 - `memory/RANGE-TP-OPTION.md` — prev-day high as take-profit when 4-12% above entry
