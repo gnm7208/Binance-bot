@@ -153,12 +153,15 @@ except Exception as e:
     | python3 -c "import json,sys; d=json.load(sys.stdin); print(d['symbol'], d['priceChangePercent'],'%', 'vol:', d['quoteVolume'])"
   (replace SYMBOL with each candidate ticker)
 
-  Compute signal score for candidates using same rubric as morning-research (max 17 pts):
+  Compute signal score for candidates using same rubric as morning-research (max 20 pts):
   +3 Whale exchange->wallet, +3 VC accumulation, +2 trader call, +2 DeFiLlama TVL >10%,
   +1 CoinGecko top 5, +2 price >= +5%, +1 volume >= $3M,
   +1 near prev-day low (within 5%), -2 near prev-day high (within 2%),
   +1 ATR flush: largest 15m candle in last 2h >= 25% of 14-day ATR AND bearish,
   +1 market structure: 1h HH/HL bullish (last 3h highs/lows > prior 3h — same Python block as morning-research STEP 6)
+  +1 Volume Surge: today vol >= 1.5x 20-day avg (computed in step 4f)
+  +1 VWAP: live price > session VWAP (computed in step 4g)
+  +1/-1 RSI(14): +1 if 30-60 (recovering), -1 if >70 (overbought) (computed in step 4h)
 
   For ATR flush check per candidate:
   python3 - <<'PYEOF'
@@ -216,6 +219,76 @@ PYEOF
   If gate_pass = False: skip entry this window — will be re-evaluated at next scan.
   Log: "3CANDLE NOT CONFIRMED [TICKER] — defer"
 
+  4e. EMA-200 Trend Filter:
+     python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1d&limit=210')
+closes = [float(k[4]) for k in klines]
+k_factor = 2 / (200 + 1)
+ema = closes[0]
+for c in closes[1:]: ema = c * k_factor + ema * (1 - k_factor)
+live_price = closes[-1]
+above_ema = live_price > ema
+print(f'EMA200: ${ema:.5f} | live: ${live_price:.5f} | above={above_ema}')
+PYEOF
+     If above_ema = False AND not OPTION_B with score >= 10: SKIP ticker.
+     Log: "SKIP EMA200: downtrend pump"
+
+  4f. Volume Surge (+1 if today vol >= 1.5x 20-day avg):
+     python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1d&limit=21')
+avg_vol = sum(float(k[7]) for k in klines[:-1]) / 20
+today_vol = float(klines[-1][7])
+surge_pts = 1 if today_vol >= avg_vol * 1.5 else 0
+print(f'VOL_SURGE: {today_vol/avg_vol:.1f}x avg | pts={surge_pts:+d}')
+PYEOF
+     Add surge_pts to running signal score.
+
+  4g. VWAP Confirmation (+1 if price > session VWAP):
+     python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1h&limit=24')
+tp_vol = sum((float(k[2])+float(k[3])+float(k[4]))/3 * float(k[5]) for k in klines)
+vol_sum = sum(float(k[5]) for k in klines)
+vwap = tp_vol / vol_sum if vol_sum > 0 else 0
+live_price = float(klines[-1][4])
+vwap_pts = 1 if live_price > vwap else 0
+print(f'VWAP: ${vwap:.5f} | live: ${live_price:.5f} | pts={vwap_pts:+d}')
+PYEOF
+     Add vwap_pts to running signal score.
+
+  4h. RSI Gate (+1 if RSI 30-60, -1 if RSI >70):
+     python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1h&limit=30')
+closes = [float(k[4]) for k in klines]
+gains, losses = [], []
+for i in range(1, len(closes)):
+    d = closes[i] - closes[i-1]
+    gains.append(max(d,0)); losses.append(max(-d,0))
+ag = sum(gains[:14])/14; al = sum(losses[:14])/14
+for i in range(14, len(gains)):
+    ag = (ag*13+gains[i])/14; al = (al*13+losses[i])/14
+rsi = 100 - (100/(1+ag/al)) if al > 0 else 100
+rsi_pts = 1 if 30 <= rsi <= 60 else (-1 if rsi > 70 else 0)
+print(f'RSI14: {rsi:.1f} | pts={rsi_pts:+d}')
+PYEOF
+     Add rsi_pts to running signal score.
+     Log: "SCORE after 4f/4g/4h: X/20"
+
   US open window check (run once; applies to all approved tickers this afternoon):
   python3 -c "
 from datetime import datetime, timezone
@@ -235,9 +308,9 @@ print(f'US_OPEN_WINDOW: {\"ACTIVE\" if in_window else \"inactive\"} (UTC {h}:{m:
   Also include any ladder buys flagged in STEP 3E.
 
   Position size (before macro multiplier):
-  - Score 5-7:  BASE_SIZE = 25%
-  - Score 8-10: BASE_SIZE = 30%
-  - Score >= 11: BASE_SIZE = 35%
+  - Score 5-8:  BASE_SIZE = 25%
+  - Score 9-12: BASE_SIZE = 30%
+  - Score >= 13: BASE_SIZE = 35%
   FINAL_SIZE_USDT = portfolio_value * BASE_SIZE * EFFECTIVE_SIZE_MULTIPLIER
   Minimum: $3 USDT. If below: skip.
 
@@ -289,7 +362,7 @@ STEP 8 — Calculate stop, target, ladder:
 STEP 9 — Append each trade to memory/TRADE-LOG.md:
   ## YYYY-MM-DD — Trade Entry (afternoon)
   **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (+12%) | Ladder: $X.XX (-7%)
-  **Signal Score:** X/17 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * SIZE_MULTIPLIER)
+  **Signal Score:** X/20 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * SIZE_MULTIPLIER)
   **Thesis:** ...
   **Catalyst:** ... (source: CoinGecko gainer / Whale Alert / Perplexity / trader call)
   **Sector:** ... (L1 / DeFi / AI / Gaming / Other)
@@ -299,7 +372,7 @@ STEP 9 — Append each trade to memory/TRADE-LOG.md:
   **LADDER BUY** SYMBOL | Price: $X.XX | Avg cost: $X.XX | New stop: $X.XX | New target: $X.XX
 
 STEP 10 — Notify only if trade placed or emergency stop hit:
-  bash scripts/clickup.sh "Bought TICKER x qty @ $X.XX | score X/17 | macro XX | stop $X.XX | target $X.XX (range TP / +12%)"
+  bash scripts/clickup.sh "Bought TICKER x qty @ $X.XX | score X/20 | macro XX | stop $X.XX | target $X.XX (range TP / +12%)"
 
 STEP 11 — COMMIT AND PUSH (mandatory if any trades or stop updates):
   git add memory/TRADE-LOG.md memory/RESEARCH-LOG.md

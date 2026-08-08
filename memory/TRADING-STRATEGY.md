@@ -34,7 +34,7 @@ SIZE_MULTIPLIER from MACRO_SCORE:
 
 ### Layer 2 — Weighted Signal Scoring (morning-research STEPS 4-6)
 
-Every candidate coin gets a score 0-17 built from these signals:
+Every candidate coin gets a score 0-20 built from these signals:
 
 | Signal | Points |
 |---|---|
@@ -45,10 +45,14 @@ Every candidate coin gets a score 0-17 built from these signals:
 | CoinGecko trending top 5 | +1 |
 | 24h price >= +5% on MEXC | +2 |
 | MEXC volume >= $3M USD | +1 |
+| Volume surge: today's USDT volume >= 1.5x 20-day average | +1 |
 | Price within 5% of prev-day low (near support) | +1 |
 | Price within 2% of prev-day high (near resistance) | -2 |
 | ATR manipulation flush: largest 15m candle in last 2h >= 25% of 14-day ATR AND bearish | +1 |
 | 1h market structure bullish: last 3h highs/lows > prior 3h highs/lows (HH/HL on 1h chart) | +1 |
+| VWAP confirmation: live price > session VWAP (computed from today's 1h klines) | +1 |
+| RSI(14) recovering: RSI on 1h chart in 30-60 zone (oversold recovery, momentum building) | +1 |
+| RSI(14) overbought: RSI on 1h chart > 70 (chasing extended move) | -1 |
 
 Entry eligibility:
 - MACRO_SCORE >= 60: SCORE >= 5 → ELIGIBLE (proceed to Layer 3 review)
@@ -58,9 +62,9 @@ Entry eligibility:
 - OPTION_B override: strong catalyst (ETF filing, protocol upgrade, exchange listing) = eligible regardless of score
 
 Position sizing by signal score (before macro multiplier):
-- Score 5-7:  BASE_SIZE = 25% of portfolio
-- Score 8-10: BASE_SIZE = 30%
-- Score >= 11: BASE_SIZE = 35%
+- Score 5-8:  BASE_SIZE = 25% of portfolio
+- Score 9-12: BASE_SIZE = 30%
+- Score >= 13: BASE_SIZE = 35%
 
 FINAL_SIZE_USDT = portfolio_value * BASE_SIZE * SIZE_MULTIPLIER
 Minimum position: $3 USDT (MEXC min-notional). Below minimum: skip.
@@ -125,6 +129,7 @@ Log outcome in TRADE-LOG: "Review: [Proceed/Skip/Size down] - reason"
 - Instrument is spot crypto (USDT pair on MEXC)
 - 3-Candle Confirmation Gate: last 3 closed 1h candles all above yesterday's close AND volume rising (each >= prior). If fails → defer to next scan window (no permanent skip).
 - Range TP pre-check: if prev-day high is above current price but < 4% away → SKIP (insufficient room). If 4-12% above → use prev-day high as target_price instead of +12%.
+- EMA-200 Trend Filter: daily price must be above the 200-day EMA. If price < EMA-200 → SKIP (downtrend pump). Exception: OPTION_B catalyst with score >= 10 may override with explicit Layer 3 justification.
 
 ## Smart Money Signal Sources (priority order)
 1. Whale Alert - large on-chain transactions (exchange->wallet = accumulation)

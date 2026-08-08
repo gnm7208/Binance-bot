@@ -184,6 +184,76 @@ PYEOF
      If gate_pass = False: skip entry this window — coin re-evaluated naturally at next execution scan.
      Log one line: "3CANDLE NOT CONFIRMED [TICKER] — defer to next window"
 
+  4e. EMA-200 Trend Filter (uses daily klines already fetched; fetch 210 if not yet done):
+     python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1d&limit=210')
+closes = [float(k[4]) for k in klines]
+k_factor = 2 / (200 + 1)
+ema = closes[0]
+for c in closes[1:]: ema = c * k_factor + ema * (1 - k_factor)
+live_price = closes[-1]
+above_ema = live_price > ema
+print(f'EMA200: ${ema:.5f} | live: ${live_price:.5f} | above={above_ema}')
+PYEOF
+     If above_ema = False AND not OPTION_B with score >= 10: SKIP ticker.
+     Log: "SKIP EMA200: ${live_price:.5f} < EMA200 ${ema:.5f} — downtrend pump"
+
+  4f. Volume Surge check (+1 signal pts if today vol >= 1.5x 20-day avg):
+     python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1d&limit=21')
+avg_vol = sum(float(k[7]) for k in klines[:-1]) / 20
+today_vol = float(klines[-1][7])
+surge_pts = 1 if today_vol >= avg_vol * 1.5 else 0
+print(f'VOL_SURGE: today={today_vol:.0f} vs 20d_avg={avg_vol:.0f} ({today_vol/avg_vol:.1f}x) pts={surge_pts:+d}')
+PYEOF
+     Add surge_pts to running signal score.
+
+  4g. VWAP Confirmation (+1 signal pts if live price > session VWAP):
+     python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1h&limit=24')
+tp_vol = sum((float(k[2])+float(k[3])+float(k[4]))/3 * float(k[5]) for k in klines)
+vol_sum = sum(float(k[5]) for k in klines)
+vwap = tp_vol / vol_sum if vol_sum > 0 else 0
+live_price = float(klines[-1][4])
+vwap_pts = 1 if live_price > vwap else 0
+print(f'VWAP: ${vwap:.5f} | live: ${live_price:.5f} | above={live_price > vwap} pts={vwap_pts:+d}')
+PYEOF
+     Add vwap_pts to running signal score.
+
+  4h. RSI Signal Gate (+1 if recovering 30-60, -1 if overbought >70; reuses 1h klines):
+     python3 - <<'PYEOF'
+import json, urllib.request
+TICKER = 'TICKERUSDT'
+def fetch(url):
+    with urllib.request.urlopen(url, timeout=10) as r: return json.loads(r.read())
+klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1h&limit=30')
+closes = [float(k[4]) for k in klines]
+gains, losses = [], []
+for i in range(1, len(closes)):
+    d = closes[i] - closes[i-1]
+    gains.append(max(d,0)); losses.append(max(-d,0))
+ag = sum(gains[:14])/14; al = sum(losses[:14])/14
+for i in range(14, len(gains)):
+    ag = (ag*13+gains[i])/14; al = (al*13+losses[i])/14
+rsi = 100 - (100/(1+ag/al)) if al > 0 else 100
+rsi_pts = 1 if 30 <= rsi <= 60 else (-1 if rsi > 70 else 0)
+print(f'RSI14: {rsi:.1f} | pts={rsi_pts:+d}')
+PYEOF
+     Add rsi_pts to running signal score.
+     Log final adjusted score: "SCORE after 4f/4g/4h adjustments: X/20 (was Y from research)"
+
   US open window check (time-based; run once per execution, applies to all approved tickers):
   python3 -c "
 from datetime import datetime, timezone
@@ -203,8 +273,8 @@ print(f'US_OPEN_WINDOW: {\"ACTIVE\" if in_window else \"inactive\"} (UTC {h}:{m:
      - Trades this week (including this) <= 20
      - FINAL_SIZE <= free USDT balance (keep >= 10% dry powder)
      - Entry signal: (MACRO_SCORE >= 60 → score >= 5) OR (MACRO_SCORE < 60 → score >= 8) OR Option B catalyst
-  5. Compute final position size:
-     BASE_SIZE = 25% if score 5-7, 30% if score 8-10, 35% if score >= 11
+  5. Compute final position size (use adjusted score from 4f/4g/4h):
+     BASE_SIZE = 25% if score 5-8, 30% if score 9-12, 35% if score >= 13
      FINAL_SIZE_USDT = portfolio_value * BASE_SIZE * EFFECTIVE_SIZE_MULTIPLIER
      Minimum: $3 USDT. If below: skip and log.
 
@@ -259,7 +329,7 @@ STEP 9 — Append each trade to memory/TRADE-LOG.md:
 
   ## YYYY-MM-DD — Trade Entry
   **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (range TP prev-day high / +12% standard) | Ladder: $X.XX (-7%)
-  **Signal Score:** X/17 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * EFFECTIVE_SIZE_MULTIPLIER)
+  **Signal Score:** X/20 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * EFFECTIVE_SIZE_MULTIPLIER)
   **Thesis:** ...
   **Catalyst:** ... (Option A/B, signal sources listed)
   **Sector:** ... (L1 / DeFi / AI / Gaming / Other)
@@ -269,7 +339,7 @@ STEP 9 — Append each trade to memory/TRADE-LOG.md:
   **LADDER BUY** SYMBOL | Price: $X.XX | Avg cost: $X.XX | New stop: $X.XX | New target: $X.XX
 
 STEP 10 — Notify only if trade placed:
-  bash scripts/clickup.sh "Bought TICKER x qty @ $X.XX | score X/17 | macro XX | stop $X.XX | target +12%"
+  bash scripts/clickup.sh "Bought TICKER x qty @ $X.XX | score X/20 | macro XX | stop $X.XX | target +12%"
 
 STEP 11 — COMMIT AND PUSH (mandatory if any trades or stop updates):
   git add memory/TRADE-LOG.md memory/RESEARCH-LOG.md

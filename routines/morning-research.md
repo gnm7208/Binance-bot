@@ -31,6 +31,31 @@ STEP 1 — Read memory:
       Flag any sector with 2+ CONSECUTIVE losses as SECTOR_BLOCKED
   (d) Closed trades this week: count losses toward circuit breaker
 
+STEP 1B — Self-Learning Trade Review (uses TRADE-LOG data from STEP 1 — no extra API calls):
+
+  From all closed trades in TRADE-LOG (last 30 days), compute win rate by signal score band:
+  - Score 5-8  (low band):  N_trades, N_wins → win_rate_low
+  - Score 9-12 (mid band):  N_trades, N_wins → win_rate_mid
+  - Score >= 13 (high band): N_trades, N_wins → win_rate_high
+  Win = closed with P&L >= 0 (TP hit or tightened stop). Loss = stop hit, -7% cut, peak decay.
+
+  Flag underperforming bands (minimum 3 trades to qualify):
+  - If win_rate_low < 40%:  flag LOW_BAND_UNDERPERFORMING
+  - If win_rate_mid < 50%:  flag MID_BAND_UNDERPERFORMING
+  - If win_rate_high < 60%: flag HIGH_BAND_UNDERPERFORMING
+
+  From TRADE-LOG, also compute win rate by sector (L1 / DeFi / AI / Gaming / Other):
+  - For each sector with >= 3 closed trades: compute win_rate_sector
+  - If win_rate_sector < 40%: flag SECTOR_WEAK: [name]
+
+  Log in today's RESEARCH-LOG entry (under Sector Status, after SECTOR_BLOCKED):
+  Self-learning: [low X/Y wins | mid X/Y wins | high X/Y wins | sector flags]
+
+  Adjust watchlist priority for today (no hard gates — inform research only):
+  - If LOW_BAND_UNDERPERFORMING: prefer candidates scoring >= 9 before considering 5-8 band
+  - If a sector is SECTOR_WEAK (not BLOCKED): note in watchlist entry, require score >= 9 to enter
+  - If HIGH_BAND_UNDERPERFORMING: no change — unusual; note it for weekly review
+
 STEP 1E — Anomaly scan (uses TRADE-LOG and RESEARCH-LOG data from STEP 1 — no extra API calls):
 
   A) Consecutive HOLD/HALTED check:
