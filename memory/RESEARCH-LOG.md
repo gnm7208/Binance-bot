@@ -1181,3 +1181,44 @@ Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/ticker/price` + `/tick
 **HOLD — NO NEW TRADE (research posture).** No position to manage (100% cash). Two liquid names clear the momentum gate but both are disqualified for a disciplined entry: SKYAI (parabolic chase), ADA (just-exited winner stalled sideways, still fails the 3-Candle Gate). ADA stays the PRIMARY execution-validated re-entry candidate *only* on a volume-confirmed 3-candle breakout holding ≥ $0.20 / ≥ +5% into Aug-9; otherwise stay cash. Preserve $33.58 (100%) dry powder. No ClickUp alert (no trade fired, no state change). Re-evaluate at next execution window.
 
 Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/ticker/price` + `/ticker/bookTicker` + `/klines?interval=60m` + `account`; [alt.me F&G](https://api.alternative.me/fng/); CoinGecko `/global`; **Perplexity (sonar)** for BTC funding/OI (Coinalyze) + ADA ETF catalyst check.
+
+## 2026-08-08 — Evening Scan (Day 17, Saturday, Asian open ~03:00 UTC)
+
+### Account Snapshot
+- **$33.58 USDT, 100% cash, 0 positions, 0 open orders** (USDT free $33.5844686955 / locked $0; canTrade=true). Reachability gate PASS (BTC $64,888).
+- Trades 3/25 wk · 0/5 today · 1 closed trade this week (1W/0L, ADA +12.9% Aug 6) → circuit breaker N/A (needs ≥5 closed), daily gate N/A. Phase closed record 2W/0L.
+
+### Market Context (live MEXC 24hr)
+- BTC **$64,888** (+0.92% 24h, vol $372.8M) — firm within the $64–65k coil, small overnight bid; no breakout.
+- ETH $1,914 (+0.69%, $197M) · SOL $73.65 (+1.39%, $35.5M) · BNB $592 (−0.06%, below $605 trigger) · XRP $1.024 (−0.86%) · DOGE $0.0697 (+0.92%) · **ADA $0.2003 (−0.59%, $5.28M)** — momentum fully decayed, back below flat; fails +5% gate outright.
+- Majors all well below the +5% OPTION-A gate. **Fear & Greed 30 (Fear)** — up 1 from Aug-7's 29, still Fear.
+
+### Overnight Catalysts (Perplexity sonar)
+- **Macro (dovish-ish):** July NFP −23k jobs (vs +83k exp), unemployment 4.1% → reinforces Fed hold at 3.50–3.75% in Sept. Some stale July risk-off Kospi headlines resurfaced in feeds (not fresh).
+- **Regulatory overhang:** Senate postponed the Clarity Act vote until after August recess — market-structure clarity pushed out.
+- **Flows (modestly bullish):** Bitcoin ETFs +$244M (3-day inflow streak $626M); BlackRock IBIT +$170M single session.
+- **Hacks:** Zeus Wallet offline post-cyberattack (no customer funds at risk claimed); Grinex halted after ~$13.1M theft.
+- **Upgrades:** XRP Ledger 3.3.0 (privacy/batching/sponsorship) — pending validator approval, not live.
+- No fresh ETF *approval* in the last 6h. No same-day catalyst on any liquid, tradeable name.
+
+### Confirmed Relative-Strength Movers (OPTION-A gate: 24h ≥ +5% AND vol ≥ $3M)
+Live MEXC full-board scan → **2 qualifiers, both disqualified:**
+- **EPIC +24.55%** ($3.41M, $1.1464) — parabolic blow-off. 1h candles choppy (dn/UP/dn/UP/**dn**), last candle rolling over $1.19→$1.1425; hourly vol drying up ($0.01–0.03M/hr → 24h just clears $3M). **FAILS 3-Candle Gate.** Perplexity: **no coin-specific catalyst** — thin-liquidity technical/speculative pop; sources even conflate Epic Cash vs Epic Chain. **Disqualified — do NOT chase.**
+- **SKYAI +10.06%** ($3.69M, $0.11526) — off an earlier spike, now stalled ~$0.113. 1h candles dn/UP/dn/UP/UP but last is flat ($0.11296→$0.1132) on declining vol. **FAILS 3-Candle Gate.** Also re-accelerated ABOVE the prior pullback-buy zone ($0.085–0.090) → chasing at highs, not a pullback setup. **Disqualified.**
+- Every other liquid name fails the +5% gate. CoinGecko trending memecoin/microcap-led (PONS, PENGU, PUMP) — no tradeable smart-money signal. Whale Alert on free key (unavailable).
+
+### Tomorrow's Watchlist
+1. **ADA — PRIMARY re-entry candidate, execution-validated only.** Aug-9 SEC spot-ADA-ETF eligibility milestone is TOMORROW. Momentum fully decayed ($0.2003, −0.59%). Re-enter (reduced size, MACRO ×0.6 ≈ $10–12) *only if* it prints a volume-confirmed 3-candle breakout holding ≥ $0.20 with 24h ≥ +5% into the milestone. Entry ~$0.20, stop −10% (~$0.180), target +12% (~$0.224). **Eligibility ≠ approval** (SEC decision ~Oct 23) → sell-the-news risk; do not chase a stalled pump into the binary.
+2. **SKYAI — SECONDARY, PULLBACK ONLY.** No chasing at $0.115 highs; controlled retrace to ~$0.085–0.090 holding volume + BNB-Chain/MCP catalyst.
+3. **ETH $1,914 / BNB $592** — re-arm ETH on volume-confirmed ≥ +5% clear (~$2,010+); BNB on ≥ +2% reclaim/hold above $605 with catalyst. Neither present.
+4. **Dry powder** — hold $33.58 (100%) cash; deploy on first clean qualifier (3-candle gate PASS).
+
+### Risk Factors
+- F&G 30 (Fear) + coiled $64–65k BTC channel + Clarity Act delay + August seasonal weakness → fragile risk appetite; thin breakouts fail easily.
+- Both tonight's qualifiers are illiquid microcaps ($3–3.7M 24h, ~$0.02M/hr live) — min-notional + slippage prohibitive for a ~$33 account.
+- **ADA sell-the-news:** eligibility (Aug 9) ≠ approval; +12.9% already banked Aug 6.
+
+### Decision
+**HOLD — NO NEW TRADE.** No position to manage (100% cash). Two liquid names clear the momentum gate but both fail the 3-Candle Gate and are disqualified (EPIC parabolic/no-catalyst chase, SKYAI stalled above pullback zone); ADA fails the gate outright. Preserve $33.58 (100%) dry powder. ADA stays PRIMARY execution-validated re-entry into tomorrow's Aug-9 eligibility milestone *only* on a volume-confirmed 3-candle breakout. No ClickUp alert (no trade fired, no state change). Re-evaluate at morning-research.
+
+Sources: live MEXC `/ticker/24hr` (full board) + `/ticker/price` + `/klines?interval=60m`; [alt.me F&G](https://api.alternative.me/fng/); CoinGecko `/search/trending`; **Perplexity (sonar)** ×3 (overnight/Asian, 6h news, gainers) + EPIC catalyst check.
