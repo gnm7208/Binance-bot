@@ -33,16 +33,16 @@ Cloud routines live in `routines/`. Local slash commands in `.claude/commands/`.
 ## Conservative rules saved in memory/TRADING-STRATEGY-CONSERVATIVE.md; revert after Aug 22.
 
 - **SPOT ONLY** — no margin, no futures, no leverage, ever
-- Max **3** open positions at a time; **30-35%** of portfolio per position
+- Max **5** open positions at a time; **virtual capital model** — size = 4.5-6% of $154 ref = $6.93-$9.24/bet
 - **80-90%** capital deployed; hold only 10-20% USDT as dry powder
 - **Every position gets a stop price recorded in TRADE-LOG immediately after fill** — MEXC API has no stop-limit orders; stops enforced by midday + afternoon monitoring routines
-- Cut losers at -7% from entry (market sell immediately)
-- **Trailing stop (manual)**: stop at -10% on entry → tighten to 7% below current at **+4%** gain → close at **+12%**
+- Cut losers at **-6%** from entry (market sell immediately)
+- **Trailing stop (manual)**: stop at **-8%** on entry → tighten to 7% below current at **+3%** gain → close at **+12%**
 - Never tighten within 3% of current price; never move a stop down
-- **LADDER BUY**: if position drops -6% to -9% AND thesis intact → buy second equal tranche; new stop = avg cost × 0.90; new target = avg cost × 1.12; max 1 ladder per position
-- Max **20** new trades per week; max 5 trades per day
+- **LADDER BUY**: if position drops **-5% to -8%** AND thesis intact → buy second equal tranche; new stop = avg cost × 0.92; new target = avg cost × 1.12; max 1 ladder per position
+- Max **30** new trades per week; max **8** trades per day
 - **Weekly circuit breaker**: if ≥ 40% of this week's closed trades are losses (min 5 trades) → halt; resume when F&G > 50 AND BTC 24h > 0%
-- **Daily gate**: if ≥ 5 trades today AND win rate < 60% → halt until tomorrow
+- **Daily gate**: if ≥ **8** trades today AND win rate < 60% → halt until tomorrow
 - **Take-profit**: close at **+12%** gain — no exceptions
 - **Entry signal** — any ONE is sufficient:
   - OPTION A: 24h price change ≥ +5% AND volume ≥ $3M

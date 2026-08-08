@@ -20,7 +20,7 @@ IMPORTANT — PERSISTENCE:
 - Fresh clone. File changes VANISH unless committed and pushed. Commit at STEP 8 if anything changed.
 
 STEP 1 — Read memory for context:
-- memory/TRADING-STRATEGY.md (exit rules, stop-tightening thresholds — aggressive mode: +12% target, +4% tighten trigger)
+- memory/TRADING-STRATEGY.md (exit rules, stop-tightening thresholds — aggressive mode: +12% target, +3% tighten trigger)
 - tail of memory/TRADE-LOG.md (entries, stop price per position, ladder status, thesis per position)
 - today's memory/RESEARCH-LOG.md entry (original thesis for each position)
 
@@ -32,12 +32,12 @@ STEP 2 — Pull current state:
   bash scripts/mexc.sh price <each held ticker>USDT
 
 STEP 3 — Cut losers. For every position where current price <= stop_price (from TRADE-LOG)
-OR unrealized P&L% <= -7%:
+OR unrealized P&L% <= -6%:
   bash scripts/mexc.sh close <SYMBOL>USDT
 
   Append to memory/TRADE-LOG.md:
   ## YYYY-MM-DD — Trade Exit (midday cut)
-  **SELL** SYMBOL | Exit: $X.XX | Realized P&L: -$X (-X%) | Reason: hit stop / -7% rule
+  **SELL** SYMBOL | Exit: $X.XX | Realized P&L: -$X (-X%) | Reason: hit stop / -6% rule
 
 STEP 4 — Take profit. For every position where live_price >= target_price (from TRADE-LOG) OR unrealized P&L% >= +12%:
   bash scripts/mexc.sh close <SYMBOL>USDT
@@ -49,20 +49,20 @@ STEP 4 — Take profit. For every position where live_price >= target_price (fro
 
 STEP 5 — LADDER BUY check. For each open position where TRADE-LOG shows no ladder placed yet:
   - Get current price and calculate P&L%
-  - If P&L% is between -6% and -9% AND thesis still intact (check RESEARCH-LOG and any midday news):
+  - If P&L% is between -5% and -8% AND thesis still intact (check RESEARCH-LOG and any midday news):
     -> Calculate ladder buy amount (same USDT size as original tranche)
-    -> Check daily gate: trades today < 5 AND trades this week < 20
+    -> Check daily gate: trades today < 8 AND trades this week < 30
     -> Execute: bash scripts/mexc.sh order '{"symbol":"XYZUSDT","side":"BUY","type":"MARKET","quoteOrderQty":"<amount>"}'
     -> avg_cost = (entry1 + ladder_price) / 2
-    -> new_stop = avg_cost * 0.90
+    -> new_stop = avg_cost * 0.92
     -> new_target = avg_cost * 1.12
     -> Update TRADE-LOG:
        **LADDER BUY** SYMBOL | Price: $X.XX | Avg cost: $X.XX | New stop: $X.XX | New target: $X.XX
-  - If thesis is broken, sector rolling over, or P&L% < -9%: DO NOT ladder — cut instead (STEP 3)
+  - If thesis is broken, sector rolling over, or P&L% < -8%: DO NOT ladder — cut instead (STEP 3)
   - Max 1 ladder per position
 
-STEP 6 — Tighten trailing stops on remaining positions (P&L +4% to +11%). For each:
-  - P&L >= +4% AND NOT yet at +12%:
+STEP 6 — Tighten trailing stops on remaining positions (P&L +3% to +11%). For each:
+  - P&L >= +3% AND NOT yet at +12%:
     new_stop = live_price * 0.93
     new_stop = max(new_stop, entry_price)  # break-even floor: stop never below entry once profitable
     If new_stop > existing_stop: update stop in TRADE-LOG

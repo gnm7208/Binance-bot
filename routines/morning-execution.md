@@ -50,7 +50,7 @@ STEP 2 — Pull live account state:
 STEP 3 — Monitor open positions (always runs, even on MACRO_HALTED days):
 
   A) Emergency stop check:
-  For each position where live price <= stop_price (from TRADE-LOG) OR P&L <= -7%:
+  For each position where live price <= stop_price (from TRADE-LOG) OR P&L <= -6%:
     bash scripts/mexc.sh close <TICKER>USDT
     Log in TRADE-LOG: ## YYYY-MM-DD — Trade Exit (morning emergency stop)
     **SELL** TICKER | Exit: $X.XX | Realized P&L: -$X (-X%) | Reason: stop hit
@@ -63,7 +63,7 @@ STEP 3 — Monitor open positions (always runs, even on MACRO_HALTED days):
   (target_price may be range TP prev-day high OR +12% standard — always read from TRADE-LOG entry)
 
   C) Trailing stop tighten:
-  For each position where P&L >= +4% and not yet at +12%:
+  For each position where P&L >= +3% and not yet at +12%:
     new_stop = current_price * 0.93
     new_stop = max(new_stop, entry_price)  # break-even floor: stop never below entry once profitable
     If new_stop > existing_stop: update stop in TRADE-LOG
@@ -81,7 +81,7 @@ STEP 3 — Monitor open positions (always runs, even on MACRO_HALTED days):
     2+ FAIL → close + log TRADE-LOG + ClickUp "PEAK DECAY EXIT". < 2 FAIL → log one line, no ClickUp.
 
   E) Ladder buy check:
-  For each position where P&L is between -6% and -9% AND thesis intact AND no ladder placed yet:
+  For each position where P&L is between -5% and -8% AND thesis intact AND no ladder placed yet:
     -> Eligible for ladder buy — handle in STEP 5 alongside new entries.
 
   F) Near-stop pre-alert (on all REMAINING open positions after A/B/C actions):
@@ -106,7 +106,7 @@ STEP 4 — Circuit breaker and daily gate:
 
   B) Daily gate:
   Count trades placed today: N_today. Count wins: N_win_today.
-  If N_today >= 5: EXIT (max 5 trades/day)
+  If N_today >= 8: EXIT (max 8 trades/day)
   If N_today >= 3 AND N_win_today / N_today < 0.60:
     bash scripts/clickup.sh "DAILY GATE: ${N_win_today}/${N_today} wins — halted"
     Log halt, COMMIT AND PUSH, EXIT (skip STEPS 5-10)
@@ -268,14 +268,15 @@ print(f'US_OPEN_WINDOW: {\"ACTIVE\" if in_window else \"inactive\"} (UTC {h}:{m:
   Else: EFFECTIVE_SIZE_MULTIPLIER = SIZE_MULTIPLIER
 
   5. Remaining buy-side checks:
-     - Total positions after fill <= 3
+     - Total positions after fill <= 5
      - Trades today (including this) <= 5
      - Trades this week (including this) <= 20
      - FINAL_SIZE <= free USDT balance (keep >= 10% dry powder)
      - Entry signal: (MACRO_SCORE >= 60 → score >= 5) OR (MACRO_SCORE < 60 → score >= 8) OR Option B catalyst
   5. Compute final position size (use adjusted score from 4f/4g/4h):
-     BASE_SIZE = 25% if score 5-8, 30% if score 9-12, 35% if score >= 13
-     FINAL_SIZE_USDT = portfolio_value * BASE_SIZE * EFFECTIVE_SIZE_MULTIPLIER
+     VIRTUAL_CAPITAL = 154.0  # 20,000 KES reference; keeps bets stable as real balance grows
+     BASE_PCT = 4.5% if score 5-8, 5.0% if score 9-12, 6.0% if score >= 13
+     FINAL_SIZE_USDT = min(VIRTUAL_CAPITAL * BASE_PCT * EFFECTIVE_SIZE_MULTIPLIER, available_usdt * 0.90)
      Minimum: $3 USDT. If below: skip and log.
 
   Also process any ladder buys from STEP 3E using same FINAL_SIZE_USDT as original tranche.
@@ -301,7 +302,7 @@ STEP 6 — For each ticker that passed STEP 5, answer all 5 questions before pla
 
   REVIEW OUTCOME: Proceed / Skip / Size down
   - If bear case is overwhelming OR blind spot is a confirmed blocker OR exit liquidity fails: SKIP
-  - If 2+ questions raise soft concerns: size down (drop one tier: 35%->30%, 30%->25%, 25%->skip)
+  - If 2+ questions raise soft concerns: size down (drop one tier: 6%->5%->4.5%->skip of virtual cap)
   - Otherwise: proceed at planned size
 
   Log review outcome in TRADE-LOG entry (one line: "Review: [Proceed/Skip/Size down] — reason")
@@ -313,8 +314,8 @@ STEP 7 — Execute approved buys (market orders, one at a time):
   Capture fill price and filled qty from the order response before STEP 8.
 
 STEP 8 — Calculate stop, target, ladder for each fill:
-  stop_price   = fill_price * 0.90  (enforced by midday + afternoon scans)
-  ladder_level = fill_price * 0.93  (-7%, trigger for second tranche)
+  stop_price   = fill_price * 0.92  (enforced by midday + afternoon scans)
+  ladder_level = fill_price * 0.95  (-5%, trigger for second tranche)
 
   Range TP — uses prev_day_high from STEP 5 level check:
   range_dist = (prev_day_high - fill_price) / fill_price * 100
@@ -328,7 +329,7 @@ STEP 8 — Calculate stop, target, ladder for each fill:
 STEP 9 — Append each trade to memory/TRADE-LOG.md:
 
   ## YYYY-MM-DD — Trade Entry
-  **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (range TP prev-day high / +12% standard) | Ladder: $X.XX (-7%)
+  **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-8%) | Target: $X.XX (range TP prev-day high / +12% standard) | Ladder: $X.XX (-5%)
   **Signal Score:** X/20 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * EFFECTIVE_SIZE_MULTIPLIER)
   **Thesis:** ...
   **Catalyst:** ... (Option A/B, signal sources listed)

@@ -48,7 +48,7 @@ STEP 2 — Pull live account state:
 STEP 3 — Monitor open positions (always runs, even on MACRO_HALTED days):
 
   A) Emergency stop check:
-  For each position where live price <= stop_price (from TRADE-LOG) OR P&L <= -7%:
+  For each position where live price <= stop_price (from TRADE-LOG) OR P&L <= -6%:
     bash scripts/mexc.sh close SYMBOLUSDT
     Append to TRADE-LOG:
     ## YYYY-MM-DD — Trade Exit (afternoon emergency stop)
@@ -63,7 +63,7 @@ STEP 3 — Monitor open positions (always runs, even on MACRO_HALTED days):
   (target_price may be range TP prev-day high OR +12% standard — read from TRADE-LOG entry)
 
   C) Trailing stop tighten:
-  For each position where P&L >= +4% and not yet at +12%:
+  For each position where P&L >= +3% and not yet at +12%:
     new_stop = current_price * 0.93
     new_stop = max(new_stop, entry_price)  # break-even floor: stop never below entry once profitable
     If new_stop > existing_stop: update stop in TRADE-LOG
@@ -81,7 +81,7 @@ STEP 3 — Monitor open positions (always runs, even on MACRO_HALTED days):
     2+ FAIL → close + log TRADE-LOG + ClickUp "PEAK DECAY EXIT". < 2 FAIL → log one line, no ClickUp.
 
   E) Ladder buy eligibility:
-  For each position where P&L is between -6% and -9% AND thesis intact AND no ladder yet:
+  For each position where P&L is between -5% and -8% AND thesis intact AND no ladder yet:
     Flag for ladder buy in STEP 5.
 
   F) Near-stop pre-alert (on all REMAINING open positions after A/B/C actions):
@@ -106,7 +106,7 @@ STEP 4 — Circuit breaker and daily gate:
 
   B) Daily gate:
   N_today = trades placed today. N_win_today = wins today.
-  If N_today >= 5: EXIT (max 5 trades/day)
+  If N_today >= 8: EXIT (max 8 trades/day)
   If N_today >= 3 AND N_win_today / N_today < 0.60:
     bash scripts/clickup.sh "DAILY GATE: ${N_win_today}/${N_today} wins today — halted"
     COMMIT AND PUSH, EXIT (skip STEPS 5-10)
@@ -307,11 +307,12 @@ print(f'US_OPEN_WINDOW: {\"ACTIVE\" if in_window else \"inactive\"} (UTC {h}:{m:
   Skip any ticker in SECTOR_BLOCKED sector.
   Also include any ladder buys flagged in STEP 3E.
 
-  Position size (before macro multiplier):
-  - Score 5-8:  BASE_SIZE = 25%
-  - Score 9-12: BASE_SIZE = 30%
-  - Score >= 13: BASE_SIZE = 35%
-  FINAL_SIZE_USDT = portfolio_value * BASE_SIZE * EFFECTIVE_SIZE_MULTIPLIER
+  Position size — virtual capital model:
+  VIRTUAL_CAPITAL = 154.0  # 20,000 KES reference; keeps bets stable as real balance grows
+  - Score 5-8:  BASE_PCT = 4.5% → ~$6.93
+  - Score 9-12: BASE_PCT = 5.0% → ~$7.70
+  - Score >= 13: BASE_PCT = 6.0% → ~$9.24
+  FINAL_SIZE_USDT = min(VIRTUAL_CAPITAL * BASE_PCT * EFFECTIVE_SIZE_MULTIPLIER, available_usdt * 0.90)
   Minimum: $3 USDT. If below: skip.
 
 LAYER 3 — STRUCTURED REVIEW GATE (runs for EVERY approved order before it fires)
@@ -335,7 +336,7 @@ STEP 6 — For each ticker that passed STEP 5, answer all 5 questions before pla
 
   REVIEW OUTCOME: Proceed / Skip / Size down
   - If bear case is overwhelming OR blind spot is confirmed blocker OR exit liquidity fails: SKIP
-  - If 2+ questions raise soft concerns: size down one tier (35%->30%, 30%->25%, 25%->skip)
+  - If 2+ questions raise soft concerns: size down one tier (6%->5%->4.5%->skip of virtual cap)
   - Otherwise: proceed at planned size
 
   Log review outcome in TRADE-LOG entry: "Review: [Proceed/Skip/Size down] — reason"
@@ -347,8 +348,8 @@ STEP 7 — Execute approved buys (market orders, one at a time):
   Capture fill price and filled qty from the order response before STEP 8.
 
 STEP 8 — Calculate stop, target, ladder:
-  stop_price   = fill_price * 0.90
-  ladder_level = fill_price * 0.93  (-7%)
+  stop_price   = fill_price * 0.92
+  ladder_level = fill_price * 0.95  (-5%)
 
   Range TP — uses prev_day_high from STEP 5 range TP pre-check:
   range_dist = (prev_day_high - fill_price) / fill_price * 100
@@ -361,7 +362,7 @@ STEP 8 — Calculate stop, target, ladder:
 
 STEP 9 — Append each trade to memory/TRADE-LOG.md:
   ## YYYY-MM-DD — Trade Entry (afternoon)
-  **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-10%) | Target: $X.XX (+12%) | Ladder: $X.XX (-7%)
+  **BUY** SYMBOL | Qty: X | Entry: $X.XX | Stop: $X.XX (-8%) | Target: $X.XX (+12%) | Ladder: $X.XX (-5%)
   **Signal Score:** X/20 | **Macro Score:** XX | **Size:** $X.XX (BASE_SIZE * SIZE_MULTIPLIER)
   **Thesis:** ...
   **Catalyst:** ... (source: CoinGecko gainer / Whale Alert / Perplexity / trader call)

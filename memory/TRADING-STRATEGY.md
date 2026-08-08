@@ -9,7 +9,7 @@ Spot only - no margin, no futures, no leverage, ever.
 ## Capital & Constraints
 - Platform: MEXC Spot | Instruments: Spot USDT pairs
 - Target deployment: 80-90% (hold 10-20% USDT dry powder only)
-- Max 3 simultaneous positions at 30-35% each
+- Max 5 simultaneous positions — virtual capital model (see sizing below)
 
 ## 3-Layer Architecture
 
@@ -61,12 +61,13 @@ Entry eligibility:
 - If near prev-day high (-2 pts applied) AND SCORE < 7: SKIP — low conviction into resistance
 - OPTION_B override: strong catalyst (ETF filing, protocol upgrade, exchange listing) = eligible regardless of score
 
-Position sizing by signal score (before macro multiplier):
-- Score 5-8:  BASE_SIZE = 25% of portfolio
-- Score 9-12: BASE_SIZE = 30%
-- Score >= 13: BASE_SIZE = 35%
+Position sizing — virtual capital model (20,000 KES reference = $154 USDT):
+VIRTUAL_CAPITAL = 154.0  # fixed reference, independent of real balance growth
+- Score 5-8:  BASE_PCT = 4.5% → ~$6.93/bet
+- Score 9-12: BASE_PCT = 5.0% → ~$7.70/bet
+- Score >= 13: BASE_PCT = 6.0% → ~$9.24/bet
 
-FINAL_SIZE_USDT = portfolio_value * BASE_SIZE * SIZE_MULTIPLIER
+FINAL_SIZE_USDT = min(VIRTUAL_CAPITAL * BASE_PCT * SIZE_MULTIPLIER, available_usdt * 0.90)
 Minimum position: $3 USDT (MEXC min-notional). Below minimum: skip.
 
 ### Layer 3 — Structured Review Gate (execution routines STEP 6)
@@ -81,7 +82,7 @@ Run before EVERY order fires. Answer all 5 questions:
 
 REVIEW OUTCOME rules:
 - Bear case overwhelming OR blind spot is confirmed blocker OR exit liquidity fails: SKIP
-- 2+ questions raise soft concerns: size down one tier (35%->30%, 30%->25%, 25%->skip)
+- 2+ questions raise soft concerns: size down one tier (6%->5%->4.5%->skip of virtual cap)
 - Otherwise: proceed at planned size
 
 Log outcome in TRADE-LOG: "Review: [Proceed/Skip/Size down] - reason"
@@ -89,26 +90,26 @@ Log outcome in TRADE-LOG: "Review: [Proceed/Skip/Size down] - reason"
 ## Core Rules
 1. SPOT ONLY - no margin, no futures, no leverage, ever
 2. 80-90% deployed; only 10-20% USDT dry powder
-3. Max 3 open positions; 30-35% of portfolio per position
+3. Max 5 open positions; virtual capital model ($154 ref, 4.5-6% per position = $6.93-$9.24/bet)
 4. Every position: stop price recorded in TRADE-LOG immediately after fill
-5. Cut losers at -7% from entry: market sell immediately
+5. Cut losers at -6% from entry: market sell immediately
 6. Take profit at +12%: market sell - no exceptions
 7. Trailing stop (manual - enforced by monitoring routines):
-   - Entry: stop at -10% below fill price (in TRADE-LOG)
-   - At +4% gain: new_stop = max(current_price * 0.93, entry_price) — break-even floor ensures
+   - Entry: stop at -8% below fill price (in TRADE-LOG)
+   - At +3% gain: new_stop = max(current_price * 0.93, entry_price) — break-even floor ensures
      stop never drops below entry price once a trade has proven itself
    - At +12%: close for take profit
    - Never tighten within 3% of current price; never move a stop down
-8. LADDER BUY: if open position drops -6% to -9% AND thesis still intact:
+8. LADDER BUY: if open position drops -5% to -8% AND thesis still intact:
    - Buy a second tranche (same USDT size as first)
-   - New stop = avg cost * 0.90 | New target = avg cost * 1.12
+   - New stop = avg cost * 0.92 | New target = avg cost * 1.12
    - Log in TRADE-LOG: "Ladder buy at $X, avg cost now $X"
    - Never ladder if thesis broken or sector rolling over
    - Max 1 ladder per position
-9. Max 20 new trades per week; max 5 new trades per day
+9. Max 30 new trades per week; max 8 new trades per day
 10. Weekly circuit breaker: if >= 40% of closed trades this week are losses
     (min 5 trades) -> halt; resume when F&G > 50 AND BTC 24h > 0%
-11. Daily gate: if >= 5 trades today AND win rate < 60% -> halt until tomorrow
+11. Daily gate: if >= 8 trades today AND win rate < 60% -> halt until tomorrow
 
 ## Sector P&L Tracking
 - Record sector in every TRADE-LOG entry: L1 / DeFi / AI / Gaming / Other
@@ -120,8 +121,8 @@ Log outcome in TRADE-LOG: "Review: [Proceed/Skip/Size down] - reason"
 - Macro gate NOT halted (SIZE_MULTIPLIER > 0)
 - Weekly circuit breaker NOT active
 - Daily gate NOT active
-- Total positions after fill <= 3
-- Trades today + 1 <= 5 | Trades this week + 1 <= 20
+- Total positions after fill <= 5
+- Trades today + 1 <= 8 | Trades this week + 1 <= 30
 - FINAL_SIZE_USDT <= available USDT balance (keep >= 10% dry powder)
 - Entry signal: score >= 5 OR OPTION_B catalyst
 - Ticker NOT in SECTOR_BLOCKED sector
@@ -154,13 +155,13 @@ bash scripts/mexc.sh close SYMBOLUSDT
 ```
 
 ## Sell-Side Rules (evaluated at EVERY midday and afternoon scan)
-- Price <= stop price in TRADE-LOG OR P&L <= -7%: market sell immediately
+- Price <= stop price in TRADE-LOG OR P&L <= -6%: market sell immediately
 - live_price >= target_price (from TRADE-LOG) OR P&L >= +12%: market sell immediately
   (target_price may be range TP = prev-day high, or standard +12% — always read from TRADE-LOG)
-- P&L +4% to +11%: new_stop = max(current_price × 0.93, entry_price) — break-even floor applied
-- Thesis broken (catalyst invalidated, sector rolling over): sell even if not at -7%
+- P&L +3% to +11%: new_stop = max(current_price × 0.93, entry_price) — break-even floor applied
+- Thesis broken (catalyst invalidated, sector rolling over): sell even if not at -6%
 - SECTOR_BLOCKED: exit all positions in blocked sector
-- Ladder buy check: if -6% to -9% AND thesis intact -> execute ladder buy
+- Ladder buy check: if -5% to -8% AND thesis intact -> execute ladder buy
 - Peak Decay Exit: if P&L has declined >= 50% from its recorded peak AND current P&L < +3%
   AND stop < 6% away -> run mini thesis check (3 questions):
     Q1: current 24h volume >= 50% of entry volume? (FAIL if not)
