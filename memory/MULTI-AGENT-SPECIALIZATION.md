@@ -1,34 +1,26 @@
 # Multi-Agent Specialization
 
-**Status: INACTIVE**
-**Source: YouTube research — Nate Herk advanced architecture video**
-**Impact: 5 | Bot fit: 4 | Effort: 8**
-**Activation alert: enable when managing >= 5 positions simultaneously or >= $10K portfolio**
+**Status:** INACTIVE | **Impact:** 5 | **Bot Fit:** 3 | **Effort:** 9
 
-## Concept
+## What It Does
 
-Split the bot into specialized sub-agents:
-- Research agent: macro gate + watchlist scoring
-- Execution agent: order placement + position sizing
-- Risk agent: stop monitoring + exit decisions
-- Review agent: weekly stats + strategy updates
+Splits the bot into specialized sub-agents: a Research Agent (finds setups),
+a Risk Agent (sizes positions, manages stops), an Execution Agent (places orders),
+and a Review Agent (audits decisions). Each agent has a focused prompt and
+independent git branch.
 
-Each runs independently; master agent orchestrates via shared memory files.
+## Why Inactive
 
-## Why INACTIVE
+Bot_fit: 3 — the current architecture is intentionally single-Claude stateless.
+Multi-agent coordination requires message passing, conflict resolution, and
+shared-state management that is significantly more complex than the current design.
+Overkill for a $30-50 portfolio with max 3 open positions.
 
-- Current portfolio size ($33 USDT) doesn't justify complexity
-- Single-agent stateless architecture works well at current scale
-- Multi-agent coordination overhead would slow execution
-- Shared state via TRADE-LOG already provides inter-routine communication
-- Additional API costs (each agent = separate Claude call)
+## Activation Alert
 
-## Implementation Notes (if activated)
+Activate when: portfolio exceeds $500 and trade frequency exceeds 10 trades/day.
+At that scale, specialized agents justify the coordination overhead.
 
-Would require:
-1. Separate routine files per agent (already partly there: morning-research, morning-execution, etc.)
-2. Handoff protocol: structured JSON blocks in RESEARCH-LOG for execution agent to consume
-3. Conflict resolution when agents disagree (e.g. research says buy, risk agent says sector blocked)
-4. Master orchestrator routine that sequences agents
-Current structure is already moving this direction — routines ARE specialized agents.
-The main gap is the handoff format between research and execution.
+## Source
+
+YouTube video research (advanced bot architecture / multi-agent content), Aug 2026.

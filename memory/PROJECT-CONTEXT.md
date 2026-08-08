@@ -24,9 +24,9 @@ Seven cloud routines fire daily on a cron schedule. Each run:
 - **Layer 1 — Macro Gate**: Composite score 0-100 from F&G (30%), BTC 24h (25%),
   BTC dominance (20%), alt breadth (15%), loss rate (10%). Produces SIZE_MULTIPLIER
   (1.0 / 0.6 / 0.0 = full / reduced / halted).
-- **Layer 2 — Signal Scoring**: 0-14 pts per candidate (whale +3, VC +3, trader +2,
-  DeFiLlama +2, CoinGecko +1, momentum +2, volume +1, prev-day support +1,
-  prev-day resistance -2). Min 5 pts to enter.
+- **Layer 2 — Signal Scoring**: 0-20 pts per candidate (whale +3, VC +3, trader +2,
+  DeFiLlama +2, CoinGecko +1, momentum +2, volume +1, vol surge +1, prev-day support +1,
+  VWAP +1, RSI recovery +1, RSI overbought -1, prev-day resistance -2). Min 5 pts to enter.
 - **Layer 3 — Review Gate**: 5 structured questions (bear case, blind spots, exit
   liquidity, sector momentum, correlation) answered before EVERY order fires.
 
@@ -57,16 +57,26 @@ Seven cloud routines fire daily on a cron schedule. Each run:
 4. `memory/PROJECT-CONTEXT.md` — this file
 5. `memory/WEEKLY-REVIEW.md` — weekly grading and lessons
 
-## Active Features (implemented Aug 6)
+## Active Features
 - `memory/3CANDLE-CONFIRMATION-GATE.md` — 3 consecutive hourly candles above yesterday's close with rising volume before any entry
 - `memory/RANGE-TP-OPTION.md` — prev-day high as take-profit when 4-12% above entry
 - `memory/ANOMALY-DETECTOR.md` — 4 anomaly checks per morning-research scan
 - `memory/US-OPEN-REVERSAL-WINDOW.md` — +0.05 size bonus when ATR flush fires 13:30-15:00 UTC
+- `memory/EMA-200-TREND-FILTER.md` — skip entries where daily price < 200-day EMA (downtrend filter)
+- `memory/VOLUME-SURGE-GATE.md` — +1 signal pt when today's vol >= 1.5x 20-day average
+- `memory/RSI-SIGNAL-GATE.md` — +1 if RSI(14) 1h in 30-60 zone; -1 if RSI > 70
+- `memory/VWAP-CONFIRMATION.md` — +1 signal pt when live price > session VWAP
+- `memory/SELF-LEARNING-TRADE-REVIEW.md` — win-rate by score band + sector; adjusts watchlist priority each session
 
 ## Inactive Future Features
 - `memory/DEFENSIVE-SCALP-GATE.md` — recovery scalp mode for extended drawdowns (impact 5, activate if needed)
 - `memory/VOLATILITY-ADJUSTED-STOPS.md` — ATR-based stop widths (impact 8, activate after ≥10 closed trades)
 - `memory/REVERSAL-CANDLE-GATE.md` — hammer/engulf confirmation (impact 6, activate if false-breakout losses increase)
+- `memory/PULLBACK-ENTRY-MODE.md` — wait for pullback to support before entry (impact 6, activate with hourly scan frequency)
+- `memory/HMM-MARKET-REGIME.md` — Hidden Markov Model regime classifier (impact 5, activate with persistent model endpoint)
+- `memory/TRADINGVIEW-WEBHOOKS.md` — Pine Script alert webhooks (impact 7, activate with hosted endpoint + TradingView Pro+)
+- `memory/MULTI-AGENT-SPECIALIZATION.md` — specialized sub-agents (impact 5, activate when portfolio > $500)
+- `memory/WALK-FORWARD-BACKTESTING.md` — rolling in/out-of-sample backtest (impact 5, activate after ≥30 closed trades)
 
 ## Progress
 - Week 1 (Jul 22-27): F — geo-blocked on Binance → Bybit → migrated to MEXC

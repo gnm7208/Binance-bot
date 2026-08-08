@@ -1,34 +1,28 @@
 # Walk-Forward Backtesting
 
-**Status: INACTIVE**
-**Source: YouTube research — quantitative trading channels**
-**Impact: 6 | Bot fit: 4 | Effort: 9**
-**Activation alert: enable post-Aug 22 during conservative mode for strategy tuning**
+**Status:** INACTIVE | **Impact:** 5 | **Bot Fit:** 3 | **Effort:** 10
 
-## Concept
+## What It Does
 
-Test strategy rule changes on historical data using walk-forward validation:
-1. Train on 60-day window
-2. Test on subsequent 15-day out-of-sample window
-3. Roll forward 15 days and repeat
-4. Compare parameter sets (e.g. stop at -7% vs -8%, TP at +10% vs +12%) across windows
+Splits historical price data into rolling in-sample / out-of-sample windows.
+Optimizes strategy parameters (stop %, TP target, signal score threshold) on the
+in-sample period, then validates on unseen out-of-sample data. Repeats the roll
+forward to avoid curve-fitting.
 
-## Why INACTIVE
+## Why Inactive
 
-- Very high effort: requires historical OHLCV data pipeline, backtesting engine,
-  parameter grid search, results analysis
-- MEXC API provides klines but not historical order fills at the precision needed
-- Current live trade history (3 trades as of Aug 8) is too small to validate on
-- Risk of overfitting: with only ~20 trades/week, parameter tuning on small samples
-  produces misleading results
-- Better to accumulate 60+ live trades first, then backtest off the actual equity curve
+Effort: 10 — requires a full backtesting harness with historical MEXC OHLCV data,
+parameter optimization loop, and evaluation metrics. The current strategy was
+designed from first principles and is still in live calibration (< 10 closed trades).
+Backtesting is most valuable after >= 30 live trades to validate against real slippage
+and spread data specific to MEXC's liquidity profile.
 
-## Implementation Notes (if activated)
+## Activation Alert
 
-Would need:
-1. Historical klines downloader (store in data/ directory, gitignored for size)
-2. Signal scoring simulator (replicate Python blocks from execution routines)
-3. P&L calculator with realistic slippage model
-4. Walk-forward harness: configurable train/test split and parameter grid
-5. Results committed to memory/BACKTEST-RESULTS.md for weekly review context
-Minimum viable version: ~200 lines Python, 2-3 days work.
+Activate when: >= 30 closed trades in TRADE-LOG. Use live fills as ground truth
+to calibrate backtest assumptions (fill price vs mid, slippage). Review parameter
+assumptions per TRADING-STRATEGY.md "Phase Parameter Validation" section.
+
+## Source
+
+YouTube video research (quantitative finance / backtesting content), Aug 2026.

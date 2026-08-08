@@ -1,26 +1,17 @@
 # RSI Signal Gate
 
-**Status: ACTIVE**
-**Source: YouTube research — swing trading channel analysis**
-**Impact: 7 | Bot fit: 7 | Effort: 4**
-**Implemented: 2026-08-08**
+**Status:** ACTIVE | **Impact:** 7 | **Bot Fit:** 7 | **Effort:** 4
 
 ## What It Does
 
-Signal scoring adjustment in Layer 2 based on RSI-14 on the 1h chart.
-
-- RSI 30–60 (oversold recovery / momentum building) → +1 pt
-- RSI > 70 (overbought / chasing extended move) → -1 pt
-- RSI 60–70 → 0 pts
-
-Prevents chasing already-extended moves and rewards entries at momentum build phase.
+Adds +1 if 1h RSI(14) is in the 30-60 zone (recovering momentum, not overbought).
+Adds -1 if 1h RSI(14) > 70 (overbought — chasing an extended move).
+RSI computed via Wilder's smoothing on 30 x 1h klines.
 
 ## Implementation
 
-Execution routines: step 4h in `routines/morning-execution.md` and `routines/afternoon-execution.md`
-Signal table: `memory/TRADING-STRATEGY.md` — two RSI rows (+1 recovering, -1 overbought)
-
-Uses Wilder's smoothing (not simple average) over 30 hourly klines, 14-period:
+Inserted in morning-execution.md and afternoon-execution.md as Step 4h.
+Also added as two signal rows in TRADING-STRATEGY.md Layer 2 signal table.
 
 ```python
 klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1h&limit=30')
@@ -35,3 +26,12 @@ for i in range(14, len(gains)):
 rsi = 100 - (100/(1+ag/al)) if al > 0 else 100
 rsi_pts = 1 if 30 <= rsi <= 60 else (-1 if rsi > 70 else 0)
 ```
+
+## Why
+
+RSI in 30-60 = momentum building from oversold, highest risk-reward zone.
+RSI > 70 = already extended; entries here statistically underperform (chasing the move).
+
+## Source
+
+YouTube video research (technical analysis / momentum trading content), Aug 2026.

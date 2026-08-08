@@ -1,32 +1,25 @@
 # TradingView Webhooks
 
-**Status: INACTIVE**
-**Source: YouTube research — bot automation channels**
-**Impact: 5 | Bot fit: 3 | Effort: 7**
-**Activation alert: not recommended — conflicts with stateless architecture**
+**Status:** INACTIVE | **Impact:** 7 | **Bot Fit:** 4 | **Effort:** 8
 
-## Concept
+## What It Does
 
-TradingView Pine Script alerts firing webhooks to trigger entries in real-time,
-replacing scheduled Claude cloud routines. Would enable sub-minute entry timing
-on technical signals.
+TradingView Pine Script alerts fire webhooks to a hosted endpoint when technical
+signals trigger (e.g. EMA cross, RSI threshold, volume spike). The endpoint queues
+the signal and the bot executes on the next routine run.
 
-## Why INACTIVE
+## Why Inactive
 
-- Fundamentally conflicts with Nate Herk stateless architecture — Claude IS the bot;
-  webhooks require always-on server or serverless function to receive payloads
-- No persistent server in current setup; cloud routines are ephemeral
-- Adding a webhook receiver introduces new infrastructure (Lambda, Render, Railway, etc.)
-  with cost, maintenance, and additional failure modes
-- TradingView premium required for webhook alerts ($15-60/month)
-- Scheduled 5-scan-per-day cadence is sufficient for current strategy
-- Real-time entries would increase trade frequency beyond the 20/week cap anyway
+Bot_fit: 4 — requires: (1) a persistent webhook receiver (server or serverless
+function), (2) TradingView Pro+ subscription for webhook alerts, (3) signal queue
+storage between the webhook receipt and routine execution. Conflicts with the
+stateless git-as-memory architecture.
 
-## Implementation Notes (if activated)
+## Activation Alert
 
-Would require major architecture change:
-1. Persistent webhook receiver (serverless function or always-on container)
-2. Authentication/signature verification on webhook payloads
-3. Stateful position tracking (can't rely on fresh TRADE-LOG read each time)
-4. Pine Script alerts configured per signal
-Not compatible with current design. Consider only if moving to persistent bot architecture.
+Activate when: a persistent signal queue (Redis, Supabase, or simple S3/git file)
+is added and a webhook endpoint is hosted. TradingView Pro+ subscription required.
+
+## Source
+
+YouTube video research (TradingView automation content), Aug 2026.

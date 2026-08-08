@@ -1,27 +1,18 @@
 # EMA-200 Trend Filter
 
-**Status: ACTIVE**
-**Source: YouTube research — Nate Herk / swing trading channels**
-**Impact: 8 | Bot fit: 8 | Effort: 4**
-**Implemented: 2026-08-08**
+**Status:** ACTIVE | **Impact:** 8 | **Bot Fit:** 8 | **Effort:** 4
 
 ## What It Does
 
-Hard gate in the Buy-Side Gate checklist and execution routines (steps 4e).
-Before entering any position, computes the 200-day EMA from daily klines and compares to live price.
-
-- Price **above** EMA-200 → trend is bullish → proceed with normal scoring
-- Price **below** EMA-200 → downtrend pump → SKIP
-
-## Override
-
-OPTION_B catalyst (ETF filing, protocol upgrade, exchange listing) with signal score >= 10
-may override with explicit Layer 3 justification logged in TRADE-LOG.
+Before any buy, verify the coin's daily price is above its 200-day EMA.
+If price < EMA-200 → SKIP (downtrend pump). Exception: OPTION_B catalyst with signal
+score >= 10 may override with explicit Layer 3 justification.
 
 ## Implementation
 
-Execution routines: step 4e in `routines/morning-execution.md` and `routines/afternoon-execution.md`
-Buy-Side Gate checklist: `memory/TRADING-STRATEGY.md` — EMA-200 entry in Buy-Side Gate section
+Inserted in morning-execution.md and afternoon-execution.md as Step 4e (after 3-candle gate).
+Fetches 210 daily klines, computes EMA with Wilder's exponential smoothing (k = 2/201),
+compares live close to EMA. Also in TRADING-STRATEGY.md Buy-Side Gate.
 
 ```python
 klines = fetch(f'https://api.mexc.com/api/v3/klines?symbol={TICKER}&interval=1d&limit=210')
@@ -31,3 +22,12 @@ ema = closes[0]
 for c in closes[1:]: ema = c * k_factor + ema * (1 - k_factor)
 above_ema = closes[-1] > ema
 ```
+
+## Why
+
+Avoids buying dead-cat bounces in confirmed downtrends. EMA-200 is the most widely
+watched institutional trend line — price below it signals bears in control.
+
+## Source
+
+YouTube video research (Algo Trading / MEXC bot strategy content), Aug 2026.
