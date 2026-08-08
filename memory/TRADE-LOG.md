@@ -587,3 +587,13 @@ No other positions (1 total: ADA). USDT $26.1996 (locked $0), ADA 35.1 (locked $
 Full-board OPTION-A scan (chg ≥ +5% AND quoteVol ≥ $3M): **1 raw qualifier (EPIC), disqualified on quality/gate.** No liquid rules-clean setup.
 
 **Decision: NO NEW ENTRY — no trade fires.** No candidate passes the buy-side gate (ADA momentum decayed / no breakout; EPIC parabolic-thin fails 3-candle + Layer 3; SKYAI below gate; ETH/BNB no trigger). Preserve $33.58 (100%) dry powder into a Fear-tape (F&G 30), coiled $64–65k BTC channel, weekend. ADA stays PRIMARY execution-validated re-entry into tomorrow's Aug-9 eligibility milestone *only* on a volume-confirmed 3-candle breakout ≥ $0.20 / ≥ +5%. No ClickUp alert (no trade fired, no state change). Re-evaluate at next scan window.
+
+---
+
+## 2026-08-08 — Position Scan (Ad Hoc, cut/tighten/thesis sweep)
+
+**Reachability gate PASS:** `price BTCUSDT` = $65,004.19.
+
+**Positions:** 0 open (100% cash). USDT free $33.5844686955 / locked $0 (canTrade=true) — confirmed live. Nothing to cut (-7%), nothing to tighten (+15%/+20% winners), no thesis to re-check — no positions held since the Aug-6 ADA take-profit exit.
+
+**Decision: NO ACTION.** No ClickUp alert (no action taken).
