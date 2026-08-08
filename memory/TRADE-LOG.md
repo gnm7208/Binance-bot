@@ -569,3 +569,21 @@ No other positions (1 total: ADA). USDT $26.1996 (locked $0), ADA 35.1 (locked $
 **Overnight scan:** BTC +0.92% ($64.9k, coiled). F&G 30 (Fear). Live MEXC full-board OPTION-A scan → 2 qualifiers, both disqualified: **EPIC +24.55%** ($3.41M) parabolic blow-off, fails 3-candle gate, no coin-specific catalyst (thin-liquidity technical pop); **SKYAI +10.06%** ($3.69M) stalled ~$0.113, fails 3-candle gate, re-accelerated above its pullback-buy zone → chase. ADA $0.2003 (−0.59%) — momentum decayed, fails gate outright. Catalysts: NFP −23k (dovish, Fed hold), BTC ETF +$244M inflows (3-day $626M), Senate delayed Clarity Act, minor hacks (Zeus/Grinex), XRPL 3.3.0 pending validator approval — none tradeable.
 
 **Decision: NO NEW ENTRY.** Both liquid qualifiers disqualified (parabolic/thin, fail 3-candle gate); ADA fails momentum gate. Preserve $33.5845 (100%) dry powder. ADA remains PRIMARY execution-validated re-entry into tomorrow's Aug-9 SEC spot-ADA-ETF eligibility milestone *only* on a volume-confirmed 3-candle breakout ≥ $0.20 / ≥ +5%; otherwise stay cash. No ClickUp alert (no trade fired, no state change from prior runs). Re-evaluate at morning-research.
+
+---
+
+## 2026-08-08 — Morning Execution (Day 17, Saturday)
+
+**Reachability gate PASS:** `price BTCUSDT` = $64,986.33.
+
+**Account:** $33.5844686955 USDT free / locked $0 (canTrade=true). **0 positions, 100% cash** — nothing to protect (no cut/take-profit/tighten checks apply; nothing held since the Aug-6 ADA exit). Trades 3/25 wk · 0/5 today · 1 closed trade this week (1W/0L, ADA +12.9% Aug 6) → weekly circuit breaker N/A (needs ≥5 closed), daily gate N/A (0 trades today). Macro gate MACRO_SCORE ≈50 → SIZE_MULTIPLIER 0.6 (reduced, not halted); MACRO<60 ⇒ needs SCORE ≥8 OR OPTION_B.
+
+**Trade-idea validation vs buy-side rules (live at execution):**
+1. **ADA — PRIMARY conditional re-entry: FAIL.** Live ADA $0.2005, **−0.54% 24h** (H $0.204 / L $0.1966, vol $4.53M) — momentum decayed further from research's +0.75%. Re-entry required a volume-confirmed 3-candle breakout holding ≥ $0.20 / ≥ +5%; live print is flat-to-negative, no breakout. **3-Candle Gate FAIL, momentum gate FAIL → no entry.**
+2. **EPIC — full-board sole OPTION-A qualifier: SKIP.** +31.27% ($3.89M) clears raw momentum+vol, but decaying from this morning's +42% (parabolic blow-off), ~$0.03M/hr thin liquidity, no coin-specific catalyst (Epic Cash vs Epic Chain conflation). **Fails 3-Candle Gate; Layer 3 exit-liquidity/bear-case = SKIP. Disqualified — chase into a fading microcap.**
+3. **SKYAI — SECONDARY pullback-only: FAIL.** Live $0.10635, decayed below the +5% gate (off the qualifier list); not a pullback setup. Disqualified.
+4. **Watchlist ETH $1,917 (~+0.6%) / BNB $593.43 (below $605 trigger):** neither trigger present.
+
+Full-board OPTION-A scan (chg ≥ +5% AND quoteVol ≥ $3M): **1 raw qualifier (EPIC), disqualified on quality/gate.** No liquid rules-clean setup.
+
+**Decision: NO NEW ENTRY — no trade fires.** No candidate passes the buy-side gate (ADA momentum decayed / no breakout; EPIC parabolic-thin fails 3-candle + Layer 3; SKYAI below gate; ETH/BNB no trigger). Preserve $33.58 (100%) dry powder into a Fear-tape (F&G 30), coiled $64–65k BTC channel, weekend. ADA stays PRIMARY execution-validated re-entry into tomorrow's Aug-9 eligibility milestone *only* on a volume-confirmed 3-candle breakout ≥ $0.20 / ≥ +5%. No ClickUp alert (no trade fired, no state change). Re-evaluate at next scan window.
