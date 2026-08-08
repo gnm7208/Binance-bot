@@ -597,3 +597,15 @@ Full-board OPTION-A scan (chg ≥ +5% AND quoteVol ≥ $3M): **1 raw qualifier (
 **Positions:** 0 open (100% cash). USDT free $33.5844686955 / locked $0 (canTrade=true) — confirmed live. Nothing to cut (-7%), nothing to tighten (+15%/+20% winners), no thesis to re-check — no positions held since the Aug-6 ADA take-profit exit.
 
 **Decision: NO ACTION.** No ClickUp alert (no action taken).
+
+---
+
+## Aug 8 — EOD Snapshot (Day 17, Saturday)
+
+**Portfolio:** $33.58 | **Cash:** $33.58 (100%) | **Day P&L:** $0.00 (0.00%) | **Phase P&L:** +$1.26 (+3.91%)
+
+| Ticker | Qty | Entry | Price | Day Chg | Unrealized P&L | Stop |
+|--------|-----|-------|-------|---------|----------------|------|
+| — (100% cash) | — | — | — | — | — | — |
+
+**Notes:** Second consecutive flat, no-trade day — held 100% cash through all scan windows (evening-scan, morning-execution, position-scan, afternoon-execution, now EOD). USDT free $33.5844686955 / locked $0 (canTrade=true); 0 positions, 0 open orders (`orders` endpoint HTTP 400 known permission gap; balance locked=0 confirms no resting orders). Reachability gate PASS (BTC $65,083.10). **Trades:** 0 today, 3/25 this week; 1 closed trade this week (1W/0L, ADA +12.9% Aug 6) → circuit breaker N/A (needs ≥5 closed), daily gate N/A (0 trades today). Phase closed record 2W/0L. **Day P&L $0.00** — portfolio unchanged Aug-7 EOD $33.5845 → $33.5845 (100% cash both days, no fills today). **Phase P&L +$1.26 (+3.91%)** vs $32.32 baseline — held at Aug-6's phase high. Deployment 0% vs 75-85% target — disciplined cash hold: no rules-clean liquid qualifier appeared at any scan (ADA momentum decayed, no 3-candle breakout ≥$0.20/≥+5%; EPIC/SKYAI parabolic-thin blow-offs failing the 3-candle gate + Layer 3 exit-liquidity), and F&G 30 (Fear) + coiled $64-65k BTC channel + weekend chop argued for capital preservation over a forced entry. **BTC buy-and-hold benchmark:** phase baseline BTC ~$63,500 (Jul 22 funding) → $65,083.10 now (~+2.49%); bot +3.91% phase — still outperforming buy-and-hold by ~1.4 pts. **Aug-9 (tomorrow) SEC spot-ADA-ETF eligibility milestone:** ADA remains PRIMARY execution-validated re-entry candidate *only* on a volume-confirmed 3-candle breakout holding ≥ $0.20 / ≥ +5%; otherwise stay cash. Sunday weekly-review also due tomorrow. Re-evaluate at evening-scan.
