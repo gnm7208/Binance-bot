@@ -1267,3 +1267,23 @@ Live MEXC full-board scan → **2 qualifiers, both disqualified:**
 **HOLD — NO NEW TRADE (research posture).** No position to manage (100% cash). Two liquid names clear the momentum gate but both fail the 3-Candle Gate and are disqualified (EPIC parabolic/no-catalyst, SKYAI chasing above pullback zone); ADA fails the momentum gate outright. Preserve $33.58 (100%) dry powder. ADA stays the PRIMARY execution-validated re-entry into tomorrow's Aug-9 eligibility milestone *only* on a volume-confirmed 3-candle breakout holding ≥ $0.20 / ≥ +5%. No ClickUp alert (no trade fired, no state change). Re-evaluate at next execution window.
 
 Sources: live MEXC `/api/v3/ticker/24hr` (full board) + `/ticker/price` + `/klines?interval=60m` + `account`; [alt.me F&G](https://api.alternative.me/fng/); CoinGecko `/global` + `/search/trending`; **Perplexity (sonar)** ADA-ETF/catalyst check.
+
+## 2026-08-08 — Afternoon Execution (Day 17, Saturday, US market open)
+
+**Reachability gate PASS:** `price BTCUSDT` = $65,013.61.
+
+**Positions:** 0 open (100% cash). USDT free $33.5844686955 / locked $0 (canTrade=true). `orders` endpoint HTTP 400 (known permission-gap pattern); locked=0 on the only balance confirms no resting orders. Nothing to cut, tighten, or take-profit — no positions held since the Aug-6 ADA exit. Trades 3/25 wk, 0/5 today; 1 closed trade this week (1W/0L, ADA +12.9% Aug 6) → weekly circuit breaker N/A (needs ≥5 closed), daily gate N/A (0 trades today).
+
+**Watchlist re-check (today's RESEARCH-LOG watchlist — ADA primary, SKYAI secondary/pullback-only, ETH/BNB triggers):**
+- **ADA $0.1992, −0.64%** ($3.43M vol) — still flat/negative, fails the +2% gate outright. No breakout.
+- **SKYAI $0.11434, +4.90%** ($2.39M vol) — clears momentum but fails the $3M liquidity floor; also re-accelerated well above the $0.085–0.090 pullback-buy zone this thesis requires. **Disqualified.**
+- **ETH −0.52%, BNB +0.76%** — neither trigger present (ETH needs ≥+5% clear, BNB needs ≥+2% reclaim above $605; BNB $596.44 still below trigger).
+
+**Full-board scan** (chg ≥ +2% AND vol ≥ $3M, corrected for MEXC's fractional `priceChangePercent` field): **2 qualifiers, neither on watchlist, both disqualified:**
+- **SOL +2.13%** ($35.85M) — 1h candles rising into a pullback then flat (75.08→75.58→75.44→75.45), volume declining sharply the last 2 candles (41.1k→27.5k→4.6k). **FAILS 3-Candle Gate** (volume not rising). Perplexity: governance disinflation vote still at proposal stage, Agave v4.2 upgrade dated Aug-17 (not today) — no confirmed same-day catalyst; one source calls today's move a market-wide beta move, not SOL-specific. No OPTION_B override.
+- **XMR +2.65%** ($3.53M) — thin hourly volume (~$0.1-0.2M/hr), no coin-specific catalyst found. **FAILS 3-Candle Gate + liquidity quality.**
+- Perplexity's "BICO +48.84%" headline is stale/wrong venue — live MEXC BICOUSDT is +14.41% on only $0.86M volume, well below the liquidity floor. Disqualified.
+
+**Decision: NO NEW ENTRY.** No candidate clears both the momentum gate and the 3-Candle Confirmation Gate with a genuine catalyst; SOL/XMR aren't on today's watchlist and lack confirmed same-day catalysts, SKYAI fails liquidity and is still above its pullback zone, ADA/ETH/BNB show no trigger. Preserve $33.5845 (100%) dry powder. ADA remains PRIMARY execution-validated re-entry into tomorrow's Aug-9 SEC spot-ADA-ETF eligibility milestone *only* on a volume-confirmed 3-candle breakout ≥ $0.20 / ≥ +5%. No ClickUp alert (no trade fired, no state change). Re-evaluate at evening-scan.
+
+Sources: live MEXC `/api/v3/ticker/24hr` (full board, corrected `priceChangePercent` scaling) + `/ticker/price` + `/klines?interval=60m` + `account`; **Perplexity (sonar)** ×2 (afternoon altcoin pump check, SOL/XMR catalyst check).
